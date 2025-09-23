@@ -1,9 +1,8 @@
 import os
 import json
-import time
 import asyncio
-import gradio as gr
 import sys
+
 from shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'analysts'))
@@ -13,7 +12,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
 from langchain.memory import ConversationBufferMemory
 from langchain_openai import ChatOpenAI
-
+from gradio_chatbox import MarketLensChatbox
 
 # Import the real financial analysis Agent
 from analyst import analyze_for_manager
@@ -54,6 +53,14 @@ def write_file(spec: str) -> str:
 
 
 
+# Global configuration for enabled analysis types
+enabled_analysis_types = {
+    "news": True,
+    "fundamentals": True,
+    "market": True,
+    "sentiment": True
+}
+
 @tool(args_schema=StockAnalysisInput)
 def analyze_stock(ticker: str, intent: str = "news") -> str:
     """Professional stock analysis tool.
@@ -63,6 +70,19 @@ def analyze_stock(ticker: str, intent: str = "news") -> str:
         intent: Analysis type - news, fundamentals, market, sentiment
     """
     try:
+        # Check if the analysis type is enabled
+        if not enabled_analysis_types.get(intent, False):
+            return json.dumps({
+                "error": f"Analysis type '{intent}' is currently disabled in configuration",
+                "ticker": ticker,
+                "channel": intent,
+                "data": {},
+                "summary": f"{intent.capitalize()} analysis is disabled. Please enable it in the configuration panel."
+            }, ensure_ascii=False)
+        
+        # Status message for UI (this will be picked up by the agent executor)
+        print(f"[ANALYSIS_STATUS] 🔍 Calling {intent} analysis agent for {ticker}...")
+        
         # Call the financial analysis Agent directly
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -77,20 +97,28 @@ def analyze_stock(ticker: str, intent: str = "news") -> str:
 #        Main Agent Configuration      #
 ########################################
 
-def build_main_agent():
+def build_main_agent(config=None):
     """Main Agent: Manages conversations, maintains context, handles files, and calls financial analysis experts."""
     tools = [read_file, write_file, analyze_stock]
     
+    # Dynamic prompt based on enabled analysis types
+    if config:
+        enabled_types = [k for k, v in config.items() if v]
+        analysis_desc = f"Currently enabled analysis types: {', '.join(enabled_types)}" if enabled_types else "All analysis types are disabled"
+    else:
+        analysis_desc = "All analysis types are enabled"
+    
     prompt = ChatPromptTemplate.from_messages([
         ("system", 
-         "You are the Market Lens AI Main Agent, a professional financial market analysis assistant. "
-         "Goal: Understand user's financial analysis needs -> Call professional analysis tools -> Provide clear market insights. "
-         "Guidelines:\n"
-         "1) Use the analyze_stock tool for stock analysis, which automatically identifies tickers and analysis intent.\n"
-         "2) Use read_file / write_file for file operations.\n"
-         "3) Provide professional, accurate, and insightful responses.\n"
-         "4) analyze_stock supports: news, fundamentals, market, sentiment analysis.\n"
-         "5) Always respond in Chinese."),
+         f"You are the Market Lens AI Main Agent, a professional financial market analysis assistant. "
+         f"Goal: Understand user's financial analysis needs -> Call professional analysis tools -> Provide clear market insights. "
+         f"Guidelines:\n"
+         f"1) Use the analyze_stock tool for stock analysis, which automatically identifies tickers and analysis intent.\n"
+         f"2) Use read_file / write_file for file operations.\n"
+         f"3) Provide professional, accurate, and insightful responses.\n"
+         f"4) {analysis_desc}. Only use enabled analysis types.\n"
+         f"5) When calling analysis tools, inform the user which specific agent is being invoked.\n"
+         f"6) Always respond in Chinese."),
         MessagesPlaceholder("chat_history"),
         ("user", "{input}"),
         MessagesPlaceholder("agent_scratchpad"),
@@ -111,90 +139,13 @@ def build_main_agent():
     return executor
 
 ########################################
-#        Streaming Response Function   #
-########################################
-
-def stream_agent_response(agent_executor: AgentExecutor, user_input: str):
-    """Stream Agent response with typewriter effect"""
-    try:
-        # Synchronously call Agent
-        response = agent_executor.invoke({"input": user_input})
-        output = response.get("output", "Sorry, no response received.")
-        
-        # Stream output character by character
-        partial = ""
-        for char in output:
-            partial += char
-            yield partial
-            # Pause slightly at punctuation marks
-            if char in "。！？，；：.!?,;:":
-                time.sleep(0.2)
-            else:
-                time.sleep(0.03)  # Delay per character
-                
-    except Exception as e:
-        yield f"[Error] {str(e)}"
-
-########################################
 #            Gradio Interface          #
 ########################################
 
-CSS = """
-.main-container {max-width: 1200px; margin: 0 auto; padding: 20px;}
-.header-text {text-align: center; margin-bottom: 20px; color: #2c3e50;}
-"""
-
 def create_chatbot():
-    # Global Agent instance
-    main_agent = build_main_agent()
-    
-    with gr.Blocks(title="Market Lens AI Agent", css=CSS) as demo:
-        with gr.Column(elem_classes=["main-container"]):
-            gr.Markdown("# 🤖 Market Lens AI Financial Analysis Assistant", elem_classes=["header-text"])
-            gr.Markdown("*Professional Stock Market Analysis & Investment Insights Platform*")
-            
-            chatbot = gr.Chatbot(
-                height=500,
-                show_copy_button=True,
-                avatar_images=(
-                    "https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.2/assets/72x72/1f464.png",
-                    "https://cdn.jsdelivr.net/gh/twitter/twemoji@v14.0.2/assets/72x72/1f916.png",
-                ),
-            )
-            
-            with gr.Row():
-                msg = gr.Textbox(
-                    placeholder="Enter your question (e.g., analyze AAPL fundamentals, check NVDA latest news)...", 
-                    container=False, 
-                    scale=7
-                )
-                submit = gr.Button("Send", scale=1, variant="primary")
-                clear = gr.Button("Clear", scale=1)
-        
-        # Main response function (streaming)
-        def respond(user_msg: str, chat_hist: list):
-            if not user_msg.strip():
-                return "", chat_hist
-            
-            # Add user message
-            chat_hist = chat_hist + [(user_msg, None)]
-            yield "", chat_hist
-            
-            # Stream response generation
-            for partial in stream_agent_response(main_agent, user_msg):
-                chat_hist[-1] = (user_msg, partial)
-                yield "", chat_hist
-        
-        # Clear function
-        def clear_history():
-            return [], ""
-        
-        # Event bindings
-        msg.submit(respond, [msg, chatbot], [msg, chatbot])
-        submit.click(respond, [msg, chatbot], [msg, chatbot])
-        clear.click(clear_history, outputs=[chatbot, msg])
-    
-    return demo
+    """Create the Market Lens AI chatbot interface"""
+    chatbox = MarketLensChatbox()
+    return chatbox.create_interface(build_main_agent, enabled_analysis_types)
 
 ########################################
 #            Launch Application        #
