@@ -1,0 +1,169 @@
+{
+  "ticker": "NVDA",
+  "channel": "news",
+  "overall_stance": "bullish",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-09-23T09:47:30+00:00",
+      "headline": "Stock Market Today: Nasdaq Futures Rise, S&P 500 Slips Amid Mixed Trade-Kenvue, Micron Tech, Nvidia In Focus - SPDR S&P 500  ( ARCA:SPY ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/equities/25/09/47812582/stock-market-today-nasdaq-futures-rise-sp-500-slips-amid-mixed-trade-kenvue-micron-tech-nvidia-i"
+      ],
+      "summary": [
+        "U.S. stock futures are fluctuating after record advances",
+        "Expectations for AI trade and potential Fed interest-rate cuts are driving market sentiment"
+      ],
+      "stance": "mixed",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-09-23T09:25:00+00:00",
+      "headline": "Intel Could Kill This Business Unit Thanks to the Nvidia Deal",
+      "evidence": [
+        "https://www.fool.com/investing/2025/09/23/intel-could-kill-this-business-thanks-to-the-nvidi/"
+      ],
+      "summary": [
+        "Intel's partnership with Nvidia could threaten its own business unit",
+        "Potential negative impact on Intel's competitiveness in the GPU market"
+      ],
+      "stance": "bearish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-09-23T09:15:00+00:00",
+      "headline": "AI Market Could Soar 6 Times by 2030: 2 Brilliant AI Stocks to Buy Now  ( Hint: Not Nvidia ) ",
+      "evidence": [
+        "https://www.fool.com/investing/2025/09/23/ai-market-could-soar-over-6-times-by-2030-2-brilli/"
+      ],
+      "summary": [
+        "AI market projected to grow significantly by 2030",
+        "Nvidia is not recommended as a buy in the current market"
+      ],
+      "stance": "bearish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-09-23T09:00:00+00:00",
+      "headline": "This Top AI Stock Has Clobbered Nvidia Stock Over 1 Year, 3 Years, and 5 Years  ( It's Also Beaten Palantir in Every Period ) ",
+      "evidence": [
+        "https://www.fool.com/investing/2025/09/23/cls-stock-best-ai-stocks-to-buy-2025/"
+      ],
+      "summary": [
+        "Nvidia stock has underperformed compared to a top AI competitor over multiple time frames",
+        "The competitor has consistently outperformed Nvidia and Palantir"
+      ],
+      "stance": "bearish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-09-23T08:33:00+00:00",
+      "headline": "What Are the 2 Best Bargain Artificial Intelligence  ( AI )  Stocks to Buy Right Now?",
+      "evidence": [
+        "https://www.fool.com/investing/2025/09/23/best-bargain-artificial-intelligence-ai-stock-buy/"
+      ],
+      "summary": [
+        "Article discusses top AI stocks to buy",
+        "Focus on companies with potential for significant growth"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-09-23T08:26:00+00:00",
+      "headline": "Stock Market News for Sep 23, 2025",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2755401/stock-market-news-for-sep-23-2025"
+      ],
+      "summary": [
+        "U.S. stock markets closed at a record high",
+        "Trend of record highs continues for three straight days"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-09-23T08:13:00+00:00",
+      "headline": "1 Unstoppable Stock That Could Join Nvidia, Microsoft, Meta, Amazon, and Broadcom in the $1 Trillion Club in 2026",
+      "evidence": [
+        "https://www.fool.com/investing/2025/09/23/1-stock-join-nvidia-broadcom-1-trillion-club-2026/"
+      ],
+      "summary": [
+        "Oracle reports record order backlog",
+        "Potential for substantial revenue growth"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-09-23T07:53:48+00:00",
+      "headline": "US Stocks Extend Records: Investor Sentiment Improves, Fear Index Remains In 'Greed' Zone - Apple  ( NASDAQ:AAPL ) , AAR  ( NYSE:AIR ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/equities/25/09/47811827/us-stocks-extend-records-investor-sentiment-improves-fear-index-remains-in-greed-zone"
+      ],
+      "summary": [
+        "U.S. stocks, including the Nasdaq Composite, settled higher",
+        "Investor sentiment improves as the Fear and Greed index remains in the 'Greed' zone"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-09-23T10:32:06.526924+00:00"
+}
