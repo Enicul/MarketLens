@@ -1,8 +1,12 @@
 import os
 import json
 import time
+import asyncio
 import gradio as gr
+import sys
+from shcema import StockAnalysisInput
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'analysts'))
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -11,123 +15,82 @@ from langchain.memory import ConversationBufferMemory
 from langchain_openai import ChatOpenAI
 
 
+# Import the real financial analysis Agent
+from analyst import analyze_for_manager
+
+
+
+# Removed redundant analyze_stock function, implementing all functionality directly in call_analyst
 
 ########################################
-#              SubAgent 工具           #
-########################################
-
-@tool
-def sub_search_news(query: str) -> str:
-    """子代理工具：模拟在新闻站点搜索并返回结构化结果（mock）。"""
-    data = [
-        {"site": "NewsSiteA", "title": f"{query} 的最新进展", "url": "https://a.example/item1", "summary": "要点A、B、C"},
-        {"site": "NewsSiteB", "title": f"{query} 深度解读", "url": "https://b.example/item2", "summary": "要点1、2、3"},
-    ]
-    return json.dumps({"source": "news", "query": query, "items": data}, ensure_ascii=False)
-
-@tool
-def sub_search_forums(query: str) -> str:
-    """子代理工具：模拟在论坛/社媒搜索并返回数据（mock）。"""
-    data = [
-        {"site": "ForumX", "thread": f"{query} 经验贴", "url": "https://x.example/t/777", "highlights": ["踩坑", "实践", "复盘"]},
-        {"site": "ForumY", "thread": f"{query} 工具清单", "url": "https://y.example/t/888", "highlights": ["清单", "链接", "对比"]},
-    ]
-    return json.dumps({"source": "forums", "query": query, "items": data}, ensure_ascii=False)
-
-@tool
-def sub_aggregate(payload: str) -> str:
-    """子代理工具：对搜索到的多路数据进行简要聚合（输入为JSON数组字符串）。"""
-    try:
-        arr = json.loads(payload)
-        bullets = []
-        for pack in arr:
-            kind = pack.get("source")
-            for it in pack.get("items", []):
-                if kind == "news":
-                    bullets.append(f"【新闻】{it['title']}（{it['site']}）=> {it['summary']}")
-                else:
-                    bullets.append(f"【论坛】{it['thread']}（{it['site']}）=> 亮点：{','.join(it['highlights'])}")
-        summary = "；".join(bullets[:6])
-        return json.dumps({"summary": summary, "count": len(bullets)}, ensure_ascii=False)
-    except Exception as e:
-        return json.dumps({"error": str(e)}, ensure_ascii=False)
-
-########################################
-#           Main Agent 工具            #
+#           Main Agent Tools           #
 ########################################
 
 @tool
 def read_file(path: str) -> str:
-    """读取文本文件内容。"""
+    """Read text file content."""
     try:
         with open(path, "r", encoding="utf-8") as f:
             return f.read()
     except Exception as e:
-        return f"[read_file错误] {e}"
+        return f"[read_file error] {e}"
 
 @tool
 def write_file(spec: str) -> str:
-    """写入文本文件。输入为JSON：{"path": "...", "content": "..."}。"""
+    """Write text file. Input as JSON: {"path": "...", "content": "..."}."""
     try:
         p = json.loads(spec)
         path = p["path"]
         content = p.get("content", "")
         with open(path, "w", encoding="utf-8") as f:
             f.write(content)
-        return f"[write_file成功] 已写入 {path}（{len(content)}字）"
+        return f"[write_file success] Written to {path} ({len(content)} chars)"
     except Exception as e:
-        return f"[write_file错误] {e}"
+        return f"[write_file error] {e}"
 
 ########################################
-#             SubAgent 构建            #
+#        Stock Analysis Tool           #
 ########################################
 
-def build_subagent():
-    """SubAgent：负责"搜索&整理"。Main Agent 通过工具调用它。"""
-    sub_tools = [sub_search_news, sub_search_forums, sub_aggregate]
-    
-    sub_prompt = ChatPromptTemplate.from_messages([
-        ("system", "你是SubAgent，擅长在不同站点搜索并进行要点整理。请根据用户意图合理调用工具，最后只输出简洁结构化结果（面向Main Agent）。"),
-        MessagesPlaceholder("chat_history"),
-        ("user", "{input}"),
-        MessagesPlaceholder("agent_scratchpad"),
-    ])
-    
-    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='') 
-    sub_agent = create_tool_calling_agent(llm, sub_tools, sub_prompt)
-    sub_exec = AgentExecutor(agent=sub_agent, tools=sub_tools, verbose=False, handle_parsing_errors=True)
-    return sub_exec
 
-# 将 SubAgent 暴露为 Main Agent 的一个工具
-subagent_executor = build_subagent()
 
-@tool
-def call_subagent(task: str) -> str:
-    """Main Agent 的工具：把任务转发给 SubAgent。"""
+@tool(args_schema=StockAnalysisInput)
+def analyze_stock(ticker: str, intent: str = "news") -> str:
+    """Professional stock analysis tool.
+    
+    Args:
+        ticker: Stock ticker symbol (e.g., AAPL, NVDA)
+        intent: Analysis type - news, fundamentals, market, sentiment
+    """
     try:
-        resp = subagent_executor.invoke({"input": task, "chat_history": []})
-        return resp.get("output") or json.dumps(resp, ensure_ascii=False)
+        # Call the financial analysis Agent directly
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        result = loop.run_until_complete(analyze_for_manager(ticker.upper(), intent))
+        loop.close()
+        
+        return json.dumps(result, ensure_ascii=False)
     except Exception as e:
-        return f"[SubAgent调用错误] {e}"
+        return json.dumps({"error": f"Analysis failed: {str(e)}"}, ensure_ascii=False)
 
 ########################################
-#             Main Agent 构建          #
+#        Main Agent Configuration      #
 ########################################
 
 def build_main_agent():
-    """Main Agent：与用户对话、记忆上下文、读写文件、调用 SubAgent。"""
-    tools = [read_file, write_file, call_subagent]
+    """Main Agent: Manages conversations, maintains context, handles files, and calls financial analysis experts."""
+    tools = [read_file, write_file, analyze_stock]
     
     prompt = ChatPromptTemplate.from_messages([
         ("system", 
-         "你是Main Agent（顶级AI公司的高级Python算法工程师形象），会与用户自然对话。"
-         "目标：理解用户需求 -> 合理使用工具（含SubAgent）-> 给出清晰汇报。"
-         "注意：\n"
-         "1) 若涉及信息检索，优先通过 call_subagent 工具把检索与整理交给子代理。\n"
-         "2) 文件相关使用 read_file / write_file。\n"
-         "3) 回答要简洁分点。\n"
-         "4) 所有外部数据允许Mock，重点展示能力链路。"
-         "5) 始终用中文回复。"),
+         "You are the Market Lens AI Main Agent, a professional financial market analysis assistant. "
+         "Goal: Understand user's financial analysis needs -> Call professional analysis tools -> Provide clear market insights. "
+         "Guidelines:\n"
+         "1) Use the analyze_stock tool for stock analysis, which automatically identifies tickers and analysis intent.\n"
+         "2) Use read_file / write_file for file operations.\n"
+         "3) Provide professional, accurate, and insightful responses.\n"
+         "4) analyze_stock supports: news, fundamentals, market, sentiment analysis.\n"
+         "5) Always respond in Chinese."),
         MessagesPlaceholder("chat_history"),
         ("user", "{input}"),
         MessagesPlaceholder("agent_scratchpad"),
@@ -148,32 +111,32 @@ def build_main_agent():
     return executor
 
 ########################################
-#           流式对话函数               #
+#        Streaming Response Function   #
 ########################################
 
 def stream_agent_response(agent_executor: AgentExecutor, user_input: str):
-    """流式输出 Agent 响应"""
+    """Stream Agent response with typewriter effect"""
     try:
-        # 同步调用 Agent
+        # Synchronously call Agent
         response = agent_executor.invoke({"input": user_input})
-        output = response.get("output", "抱歉，没有获取到响应。")
+        output = response.get("output", "Sorry, no response received.")
         
-        # 逐字符流式输出
+        # Stream output character by character
         partial = ""
         for char in output:
             partial += char
             yield partial
-            # 在标点符号处稍作停顿
-            if char in "。！？，；：":
+            # Pause slightly at punctuation marks
+            if char in "。！？，；：.!?,;:":
                 time.sleep(0.2)
             else:
-                time.sleep(0.03)  # 每个字符的延迟
+                time.sleep(0.03)  # Delay per character
                 
     except Exception as e:
-        yield f"[错误] {str(e)}"
+        yield f"[Error] {str(e)}"
 
 ########################################
-#             Gradio 界面              #
+#            Gradio Interface          #
 ########################################
 
 CSS = """
@@ -182,13 +145,13 @@ CSS = """
 """
 
 def create_chatbot():
-    # 全局 Agent 实例
+    # Global Agent instance
     main_agent = build_main_agent()
     
     with gr.Blocks(title="Market Lens AI Agent", css=CSS) as demo:
         with gr.Column(elem_classes=["main-container"]):
-            gr.Markdown("# 🤖 Market Lens AI 智能助手", elem_classes=["header-text"])
-            gr.Markdown("*基于多智能体架构的市场分析与信息检索助手*")
+            gr.Markdown("# 🤖 Market Lens AI Financial Analysis Assistant", elem_classes=["header-text"])
+            gr.Markdown("*Professional Stock Market Analysis & Investment Insights Platform*")
             
             chatbot = gr.Chatbot(
                 height=500,
@@ -201,32 +164,32 @@ def create_chatbot():
             
             with gr.Row():
                 msg = gr.Textbox(
-                    placeholder="请输入您的问题（例如：帮我查询 'LangChain 最佳实践' 的最新信息）...", 
+                    placeholder="Enter your question (e.g., analyze AAPL fundamentals, check NVDA latest news)...", 
                     container=False, 
                     scale=7
                 )
-                submit = gr.Button("发送", scale=1, variant="primary")
-                clear = gr.Button("清空", scale=1)
+                submit = gr.Button("Send", scale=1, variant="primary")
+                clear = gr.Button("Clear", scale=1)
         
-        # 主响应函数（流式）
+        # Main response function (streaming)
         def respond(user_msg: str, chat_hist: list):
             if not user_msg.strip():
                 return "", chat_hist
             
-            # 添加用户消息
+            # Add user message
             chat_hist = chat_hist + [(user_msg, None)]
             yield "", chat_hist
             
-            # 流式生成响应
+            # Stream response generation
             for partial in stream_agent_response(main_agent, user_msg):
                 chat_hist[-1] = (user_msg, partial)
                 yield "", chat_hist
         
-        # 清空函数
+        # Clear function
         def clear_history():
             return [], ""
         
-        # 事件绑定
+        # Event bindings
         msg.submit(respond, [msg, chatbot], [msg, chatbot])
         submit.click(respond, [msg, chatbot], [msg, chatbot])
         clear.click(clear_history, outputs=[chatbot, msg])
@@ -234,7 +197,7 @@ def create_chatbot():
     return demo
 
 ########################################
-#               启动应用               #
+#            Launch Application        #
 ########################################
 
 if __name__ == "__main__":
