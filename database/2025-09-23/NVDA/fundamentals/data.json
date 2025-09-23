@@ -1,0 +1,67 @@
+{
+  "ticker": "NVDA",
+  "company": {
+    "name": "NVIDIA Corp",
+    "exchange": "NASDAQ NMS",
+    "country": "US",
+    "currency": "USD"
+  },
+  "metrics": {
+    "market_cap_usd": 4268295000000.0,
+    "revenue_per_share_ttm": 6.7348,
+    "dividend_per_share_ttm": 0.04
+  },
+  "insiders": [
+    {
+      "person": "Kress Colette",
+      "code": "S",
+      "date": "2025-09-19",
+      "price": 177.5567,
+      "change_shares": -1085,
+      "post_shares": 772934,
+      "filing_id": "0001588670-25-000009",
+      "source": "sec"
+    },
+    {
+      "person": "Kress Colette",
+      "code": "S",
+      "date": "2025-09-19",
+      "price": 176.7002,
+      "change_shares": -3374,
+      "post_shares": 774019,
+      "filing_id": "0001588670-25-000009",
+      "source": "sec"
+    },
+    {
+      "person": "Kress Colette",
+      "code": "S",
+      "date": "2025-09-19",
+      "price": 175.9896,
+      "change_shares": -5541,
+      "post_shares": 777393,
+      "filing_id": "0001588670-25-000009",
+      "source": "sec"
+    },
+    {
+      "person": "Kress Colette",
+      "code": "S",
+      "date": "2025-09-19",
+      "price": 177.5504,
+      "change_shares": -1127,
+      "post_shares": 143060,
+      "filing_id": "0001588670-25-000009",
+      "source": "sec"
+    },
+    {
+      "person": "Kress Colette",
+      "code": "S",
+      "date": "2025-09-19",
+      "price": 176.7038,
+      "change_shares": -3282,
+      "post_shares": 144187,
+      "filing_id": "0001588670-25-000009",
+      "source": "sec"
+    }
+  ],
+  "retrieved_at": "2025-09-23T10:33:08.545654"
+}
