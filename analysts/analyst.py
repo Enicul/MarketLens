@@ -59,40 +59,57 @@ executor = AgentExecutor(
 )
 
 # ---- Helper the Main Manager would call ----
-async def analyze_for_manager(ticker: str, intent: str) -> dict:
+async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     """
-    intent ∈ {'news','fundamentals','market','sentiment'} (or any natural language;
-    the prompt lets the agent route).
-    Returns a dict parsed from the Analyst's JSON-only output.
+    Concurrent multi-tool analysis with high performance execution.
+    intents: Subset of ['news','fundamentals','market','sentiment']
     """
-    # Construct a minimal, explicit input for the Analyst
-    user_input = (
-        f"Ticker: {ticker}\n"
-        f"Intent: {intent}\n"
-        f"Please perform the analysis and RETURN JSON ONLY as specified."
-    )
-    resp = await executor.ainvoke({"input": user_input, "history": []})
-    out = resp["output"]
-    try:
-        # If the model ever emits stray text, wrap it to keep contract
-        cleaned = out.strip('```json').strip('```').strip()
-        return json.loads(cleaned)
-    except Exception:
-        return {"ticker": ticker, "channel": intent, "data": out, "summary": "Non-JSON output wrapped."}
+    # Tool mapping - elegant solution without if-else chains
+    tools_map = {
+        'news': get_news,
+        'fundamentals': get_fundamentals, 
+        'market': get_market,
+        'sentiment': get_sentiment
+    }
+    
+    # Concurrent execution of all analyses
+    tasks = []
+    for intent in intents:
+        if intent in tools_map:
+            tool = tools_map[intent]
+            tasks.append(asyncio.create_task(
+                tool.ainvoke({"ticker": ticker})
+            ))
+    
+    # Await all results - asyncio.gather is the proper way
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    
+    # Assemble results
+    output = {
+        "ticker": ticker,
+        "analyses": {}
+    }
+    
+    for intent, result in zip(intents, results):
+        if isinstance(result, Exception):
+            output["analyses"][intent] = {
+                "error": str(result),
+                "data": None
+            }
+        else:
+            output["analyses"][intent] = {
+                "data": result,
+                "error": None
+            }
+    
+    return output
 
 # ---- Demo ----
 async def main():
-    # Simulate Main Manager passing (ticker, intent)
-    tasks = [
-        ("AAPL", "fundamentals"),
-        # ("NVDA", "news"),
-        # ("TSLA", "sentiment"),
-        # ("MSFT", "market"),
-    ]
-    for tkr, intent in tasks:
-        print(f"\n=== Manager → Analyst: {tkr} / {intent} ===")
-        result = await analyze_for_manager(tkr, intent)
-        print(json.dumps(result, indent=2))
+    # Test concurrent analysis - all analyses in one shot
+    print("\n=== Concurrent Analysis Demo ===")
+    result = await analyze_for_manager("AAPL", ["news", "fundamentals", "market", "sentiment"])
+    print(json.dumps(result, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
     asyncio.run(main())
