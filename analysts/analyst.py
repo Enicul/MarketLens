@@ -74,9 +74,10 @@ async def analyze_for_manager(ticker: str, intent: str) -> dict:
     resp = await executor.ainvoke({"input": user_input, "history": []})
     out = resp["output"]
     try:
-        return json.loads(out)
-    except Exception:
         # If the model ever emits stray text, wrap it to keep contract
+        cleaned = out.strip('```json').strip('```').strip()
+        return json.loads(cleaned)
+    except Exception:
         return {"ticker": ticker, "channel": intent, "data": out, "summary": "Non-JSON output wrapped."}
 
 # ---- Demo ----
