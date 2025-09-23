@@ -1,11 +1,11 @@
 
 from pydantic import BaseModel, Field
-from typing import Literal
+from typing import Literal, List
 
 class StockAnalysisInput(BaseModel):
-    """Input parameters for stock analysis"""
+    """Concurrent stock analysis parameters - multiple analyses in one request"""
     ticker: str = Field(description="Stock ticker symbol, e.g., AAPL, NVDA, TSLA")
-    intent: Literal["news", "fundamentals", "market", "sentiment"] = Field(
-        default="news",
-        description="Analysis type: news (latest news), fundamentals (financial metrics), market (price data), sentiment (market sentiment)"
+    intents: List[Literal["news", "fundamentals", "market", "sentiment"]] = Field(
+        default=["news"],
+        description="List of analysis types to execute concurrently"
     )

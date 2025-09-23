@@ -51,7 +51,11 @@ Thumbs.db
 *.db
 *.sqlite
 *.sqlite3
+database/  # Cache directory for stock analysis data
 
 # Temporary files
 *.tmp
 *.temp
+
+# Environment variables
+.env

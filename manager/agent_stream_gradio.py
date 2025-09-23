@@ -62,33 +62,40 @@ enabled_analysis_types = {
 }
 
 @tool(args_schema=StockAnalysisInput)
-def analyze_stock(ticker: str, intent: str = "news") -> str:
-    """Professional stock analysis tool.
+def analyze_stock(ticker: str, intents: list[str] = ["news"]) -> str:
+    """Concurrent stock analysis tool - multiple analyses in one request.
     
     Args:
-        ticker: Stock ticker symbol (e.g., AAPL, NVDA)
-        intent: Analysis type - news, fundamentals, market, sentiment
+        ticker: Stock ticker symbol
+        intents: List of analysis types to execute concurrently
     """
     try:
-        # Check if the analysis type is enabled
-        if not enabled_analysis_types.get(intent, False):
+        # Filter enabled analysis types - skip disabled ones
+        enabled_intents = [i for i in intents if enabled_analysis_types.get(i, False)]
+        disabled_intents = [i for i in intents if not enabled_analysis_types.get(i, False)]
+        
+        if not enabled_intents:
             return json.dumps({
-                "error": f"Analysis type '{intent}' is currently disabled in configuration",
+                "error": "All requested analysis types are disabled",
                 "ticker": ticker,
-                "channel": intent,
-                "data": {},
-                "summary": f"{intent.capitalize()} analysis is disabled. Please enable it in the configuration panel."
+                "disabled_intents": disabled_intents
             }, ensure_ascii=False)
         
-        # Status message for UI (this will be picked up by the agent executor)
-        print(f"[ANALYSIS_STATUS] 🔍 Calling {intent} analysis agent for {ticker}...")
+        # Status logging for transparency
+        print(f"[ANALYSIS_STATUS] 🚀 Executing {len(enabled_intents)} analyses concurrently: {', '.join(enabled_intents)}")
+        if disabled_intents:
+            print(f"[ANALYSIS_STATUS] ⚠️ Skipped disabled analyses: {', '.join(disabled_intents)}")
         
-        # Call the financial analysis Agent directly
+        # Concurrent execution - no time wasted
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        result = loop.run_until_complete(analyze_for_manager(ticker.upper(), intent))
+        result = loop.run_until_complete(analyze_for_manager(ticker.upper(), enabled_intents))
         loop.close()
         
+        # Add disabled info to result
+        if disabled_intents:
+            result["disabled_intents"] = disabled_intents
+            
         return json.dumps(result, ensure_ascii=False)
     except Exception as e:
         return json.dumps({"error": f"Analysis failed: {str(e)}"}, ensure_ascii=False)
@@ -98,7 +105,7 @@ def analyze_stock(ticker: str, intent: str = "news") -> str:
 ########################################
 
 def build_main_agent(config=None):
-    """Main Agent: Manages conversations, maintains context, handles files, and calls financial analysis experts."""
+    """Main Agent: Orchestrates conversations, maintains context, handles files, and delegates to specialized analysis agents."""
     tools = [read_file, write_file, analyze_stock]
     
     # Dynamic prompt based on enabled analysis types
@@ -110,15 +117,17 @@ def build_main_agent(config=None):
     
     prompt = ChatPromptTemplate.from_messages([
         ("system", 
-         f"You are the Market Lens AI Main Agent, a professional financial market analysis assistant. "
-         f"Goal: Understand user's financial analysis needs -> Call professional analysis tools -> Provide clear market insights. "
+         f"You are the Market Lens AI Main Agent, a professional financial market analysis assistant.\n"
+         f"Goal: Understand user needs -> Execute concurrent analyses -> Deliver professional insights\n"
          f"Guidelines:\n"
-         f"1) Use the analyze_stock tool for stock analysis, which automatically identifies tickers and analysis intent.\n"
-         f"2) Use read_file / write_file for file operations.\n"
-         f"3) Provide professional, accurate, and insightful responses.\n"
-         f"4) {analysis_desc}. Only use enabled analysis types.\n"
-         f"5) When calling analysis tools, inform the user which specific agent is being invoked.\n"
-         f"6) Always respond in Chinese."),
+         f"1) analyze_stock supports concurrent analysis - pass multiple types in 'intents' for maximum efficiency\n"
+         f"2) Intelligently select analysis combinations based on user needs:\n"
+         f"   - Comprehensive analysis: ['news','fundamentals','market','sentiment']\n"
+         f"   - Quick overview: ['news','market']\n"
+         f"   - Fundamental research: ['fundamentals','sentiment']\n"
+         f"3) File operations via read_file/write_file\n"
+         f"4) {analysis_desc}. Only use enabled analysis types\n"
+         f"5) Always respond in Chinese (per user preference)"),
         MessagesPlaceholder("chat_history"),
         ("user", "{input}"),
         MessagesPlaceholder("agent_scratchpad"),
