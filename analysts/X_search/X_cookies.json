@@ -1,0 +1,60 @@
+{
+    "primary": [
+        {
+            "name": "auth_token",
+            "value": "3ea527212681f5de61e520a7bcccff0818c768fb",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "sameSite": "None"
+        },
+        {
+            "name": "ct0",
+            "value": "9f6fe266650866053296d74db18fab26c209105ececd8971786bac4d2f916e0ed16a7c73788c5ae26ead794896dd101346f84502fff71b911f73722252c34e8f7c43bb98219a3933f109afd24291dcaa",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": false,
+            "sameSite": "Lax"
+        },
+        {
+            "name": "guest_id",
+            "value": "v1%3A174737822718684742",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": false,
+            "sameSite": "None"
+        }
+    ],
+    "backup": [
+        {
+            "name": "auth_token",
+            "value": "f4b20dc9e9d507be7c4d1edc1f66ac1dfb24f205",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": true,
+            "sameSite": "None"
+        },
+        {
+            "name": "ct0",
+            "value": "793699cf842864abcf00ec7e1c86db0a36c2ca30fbb0cd23c0e3255cf8994fea1ad979d7e2b47e52c99d5ebb66d7831f7c2686f42a46ad50318d85031839b57fdb13029e3c9db3e7318d13477d3c0630",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": false,
+            "sameSite": "Lax"
+        },
+        {
+            "name": "guest_id",
+            "value": "v1%3A174629081286372973",
+            "domain": ".x.com",
+            "path": "/",
+            "secure": true,
+            "httpOnly": false,
+            "sameSite": "None"
+        }
+    ]
+}

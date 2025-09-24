@@ -1,0 +1,64 @@
+{
+  "stock_basic_info": {
+    "ticker": "AAPL",
+    "current_price": 256.08,
+    "change": 10.58,
+    "change_percent": 4.31,
+    "volume": 101865199,
+    "market_cap": 3800326733824,
+    "pe_ratio": 38.91793,
+    "pb_ratio": 57.792816,
+    "dividend_yield": 0.41,
+    "beta": 1.109,
+    "high_52w": 260.1,
+    "low_52w": 169.21,
+    "timestamp": "2025-09-23T11:04:04.231306"
+  },
+  "technical_indicators": {
+    "current_rsi": 74.15687915239884,
+    "current_macd": 2.4289232063613326,
+    "price_vs_ma20": 108.6064907200011
+  },
+  "price_analysis": {
+    "high_1mo": 256.6400146484375,
+    "low_1mo": 224.69000244140625,
+    "avg_close": 235.7870002746582,
+    "volatility": 6.859573181236209
+  },
+  "market_sentiment": {
+    "news_count": 5,
+    "recent_news": [
+      {
+        "title": "",
+        "summary": "",
+        "publisher": "",
+        "link": "",
+        "published": 0,
+        "related_tickers": []
+      },
+      {
+        "title": "",
+        "summary": "",
+        "publisher": "",
+        "link": "",
+        "published": 0,
+        "related_tickers": []
+      },
+      {
+        "title": "",
+        "summary": "",
+        "publisher": "",
+        "link": "",
+        "published": 0,
+        "related_tickers": []
+      }
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 20,
+    "data_period": "1mo",
+    "start_date": "2025-08-25",
+    "end_date": "2025-09-22",
+    "last_updated": "2025-09-23T11:04:04.666824"
+  }
+}
