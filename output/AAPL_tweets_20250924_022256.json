@@ -1,0 +1,116 @@
+{
+  "ticker": "AAPL",
+  "count": 10,
+  "tweets": [
+    {
+      "username": "Schwab Network",
+      "user_id": "SchwabNetwork",
+      "content": ".\n@JayWoods3\n at the NYSE says the tech rotation is fascinating, with $AAPL rallying and acting like a staple stock. He's watching the $260 level. For the $RUT, a 10-year yield below 4% is key for further gains.",
+      "timestamp": "2025-09-23T14:48:39.000Z",
+      "likes": 7,
+      "retweets": 2,
+      "replies": 6,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Shervin Shares",
+      "user_id": "ShervinShares",
+      "content": "Apple Watch Ultra 3 real-life Satellite Test! I updated my location on Find My Friends using satellite! . How it works: - requires an active cellular plan in another country/region (mine is in USA, but I don’t have connection in Europe) - Find My satellite updates are in these",
+      "timestamp": "2025-09-19T23:58:56.000Z",
+      "likes": 4,
+      "retweets": 1,
+      "replies": 1,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "CryptoCalc | iOS & Mac app",
+      "user_id": "cryptocalcapp",
+      "content": " Crypto Fear & Greed Index: 40 (Neutral)\n\n  CryptoCalc - crypto and stock calculator for iOS/macOS: \nhttps://\nitunes.apple.com/app/id15860665\n89\n…\n\n#Crypto #FearAndGreed",
+      "timestamp": "2025-09-23T13:22:33.000Z",
+      "likes": 4,
+      "retweets": 2,
+      "replies": 0,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Bullish Jason",
+      "user_id": "BullishJason",
+      "content": "$AAPL - Added Puts on break of demand sitting at 254.90. Sellers were aggressive with rest of market after lunch. \n\n2hr chart shows perfect retest of previous demand that has now converted into supply.\n\n12 min chart also shows test of highs and rejection. \n\nI'd expect minor",
+      "timestamp": "2025-09-24T01:53:32.000Z",
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "caleb silver",
+      "user_id": "calebsilver",
+      "content": "Which companies will ultimately be the big winners in #ArtificialIntelligence ? \n@DanielTNiles\n  shares his predictions with me on The \n@Investopedia\n  Express podcast this week. The full episode and interview available here: \nhttp://\nbit.ly/4mxBALJ",
+      "timestamp": "2025-09-22T17:36:24.000Z",
+      "likes": 3,
+      "retweets": 2,
+      "replies": 0,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Corgi4Joy",
+      "user_id": "Corgi4joy",
+      "content": "$AAPL stock with strongest relative strength",
+      "timestamp": "2025-09-22T14:58:32.000Z",
+      "likes": 5,
+      "retweets": 1,
+      "replies": 0,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Harish Karada",
+      "user_id": "HarishKarada",
+      "content": "\nHe is a finance professor: \n@h0554435741\n. His daily stock recommendations are so accurate that they usually rise. You can follow him. \n#Stock #Chips\n#StockInvestment $AAPL\n #StockIndex $INTU \n#NewQualityProductivity $TXN \n#GoldMarket $SBUX",
+      "timestamp": "2025-09-21T23:57:55.000Z",
+      "likes": 1,
+      "retweets": 0,
+      "replies": 9,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Qualtrim",
+      "user_id": "qualtrim",
+      "content": "10 Stock Market Buyback Machines. \n\nThese companies are aggressively reducing their share count – as a result, rewarding long-term holders.\n\n1. Apple – $AAPL\n\n- 5Y CAGR → -3%\n- $110B program authorized.\n\nApple has retired over 40% of its shares since 2013.",
+      "timestamp": "2025-09-23T11:21:35.000Z",
+      "likes": 208,
+      "retweets": 11,
+      "replies": 17,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Rocky - The Stock Trader Hub",
+      "user_id": "RockyTSTH",
+      "content": "$AAPL  - $245 strike calls next week expiry coming in hot with one huge million dollar call buyer. $250 strike 10/17 calls coming in as well.",
+      "timestamp": "2025-09-19T17:04:14.000Z",
+      "likes": 5,
+      "retweets": 1,
+      "replies": 10,
+      "is_retweet": false,
+      "is_reply": false
+    },
+    {
+      "username": "Time Traveler Carlssin Trades",
+      "user_id": "StockMarketMcro",
+      "content": "$AAPL HAS LARGE INST BUYERS RETAIL PLAYING SHORT/PUT ON IT. \n@TIM_COOK\n SIR",
+      "timestamp": "2025-09-23T17:39:02.000Z",
+      "likes": 3,
+      "retweets": 0,
+      "replies": 8,
+      "is_retweet": false,
+      "is_reply": false
+    }
+  ]
+}
