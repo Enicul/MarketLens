@@ -3,6 +3,8 @@ import asyncio
 import json
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+load_dotenv()
+
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
@@ -11,8 +13,6 @@ from fundamentals import get_fundamentals
 from news import get_news
 from market import get_market
 from sentiment import get_sentiment
-
-load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
@@ -73,19 +73,35 @@ async def analyze_for_manager(ticker: str, intent: str) -> dict:
     )
     resp = await executor.ainvoke({"input": user_input, "history": []})
     out = resp["output"]
-    try:
-        return json.loads(out)
-    except Exception:
-        # If the model ever emits stray text, wrap it to keep contract
-        return {"ticker": ticker, "channel": intent, "data": out, "summary": "Non-JSON output wrapped."}
+
+    # 直接接受结构化结果
+    if isinstance(out, dict):
+        return out
+    if isinstance(out, list):
+        return {"ticker": ticker, "channel": intent, "data": out, "summary": ""}
+
+    # 字符串：尝试解析 JSON；失败则宽松返回
+    if isinstance(out, str):
+        try:
+            return json.loads(out)
+        except Exception:
+            text = out.strip()
+            first_line = text.splitlines()[0].strip() if text else ""
+            if len(first_line) > 200:
+                first_line = first_line[:200] + "..."
+            return {"ticker": ticker, "channel": intent, "data": text, "summary": first_line}
+
+    # 其他类型兜底
+    text = str(out)
+    return {"ticker": ticker, "channel": intent, "data": text, "summary": text[:200] + ("..." if len(text) > 200 else "")}
 
 # ---- Demo ----
 async def main():
     # Simulate Main Manager passing (ticker, intent)
     tasks = [
-        ("AAPL", "fundamentals"),
+        #("AAPL", "fundamentals"),
         # ("NVDA", "news"),
-        # ("TSLA", "sentiment"),
+         ("TSLA", "sentiment"),
         # ("MSFT", "market"),
     ]
     for tkr, intent in tasks:

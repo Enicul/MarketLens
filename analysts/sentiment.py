@@ -1,18 +1,15 @@
 # analysts/sentiment.py
-from langchain_core.tools import tool
+"""将 sentiment 工具导出给上层使用。
 
+此处直接复用 `analysts/X_search/sentiment.py` 中已实现的 LangChain StructuredTool：
+- get_sentiment: 与 fundamentals 同风格的工具封装（async coroutine）
+"""
 
-# 加这里
+try:
+    from analysts.X_search.sentiment import get_sentiment  # type: ignore
+except Exception:
+    from analysts.X_search.sentiment import get_sentiment  # type: ignore
 
-
-@tool("get_sentiment")
-async def get_sentiment(ticker: str) -> dict:
-    """
-    Fetch overall sentiment analysis for the given ticker (placeholder).
-    Later we will add retrieval logic here.
-    """
-    return {
-        "ticker": ticker,
-        "channel": "sentiment",
-        "note": "sentiment analysis not implemented yet"
-    }
+__all__ = [
+    "get_sentiment",
+]
