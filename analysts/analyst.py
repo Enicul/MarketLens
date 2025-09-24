@@ -5,6 +5,8 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+load_dotenv()
+
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
@@ -13,8 +15,6 @@ from fundamentals import get_fundamentals
 from news import get_news
 from market import get_market
 from sentiment import get_sentiment
-
-load_dotenv()
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
