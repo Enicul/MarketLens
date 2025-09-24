@@ -1,0 +1,3 @@
+[submodule "Trader/Kronos"]
+	path = Trader/Kronos
+	url = https://github.com/shiyu-coder/Kronos.git
