@@ -1,11 +1,15 @@
 # analyst.py
 import asyncio
+import os
+import sys
 import json
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 load_dotenv()
+
+sys.path.append(os.path.dirname(__file__))
 
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder

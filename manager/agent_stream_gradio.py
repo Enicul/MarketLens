@@ -4,9 +4,7 @@ import asyncio
 import sys
 
 from shcema import StockAnalysisInput
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'analysts'))
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
@@ -15,7 +13,7 @@ from langchain_openai import ChatOpenAI
 from gradio_chatbox import MarketLensChatbox
 
 # Import the real financial analysis Agent
-from analyst import analyze_for_manager
+from analysts.analyst import analyze_for_manager
 
 
 
