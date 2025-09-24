@@ -6,8 +6,8 @@ from analyst import analyze_for_manager   # helper we wrote inside analyst.py
 async def main():
     # Manager chooses which stock + which analysis channel
     tasks = [
-        ("AAPL", "fundamentals"),
-#        ("NVDA", "news"),
+        # ("AAPL", "fundamentals"),
+       ("NVDA", "news"),
 #        ("TSLA", "sentiment"),
 #        ("MSFT", "market"),
     ]

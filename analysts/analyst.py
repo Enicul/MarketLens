@@ -1,6 +1,8 @@
 # analyst.py
 import asyncio
 import json
+from pathlib import Path
+from datetime import datetime
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 load_dotenv()
@@ -58,56 +60,128 @@ executor = AgentExecutor(
     handle_parsing_errors=True,
 )
 
+# ---- Cache management ----
+def _get_cache_path(date: str, ticker: str, intent: str) -> Path:
+    """Generate cache path. Simple and deterministic."""
+    return Path(f"database/{date}/{ticker}/{intent}/data.json")
+
+def _load_from_cache(ticker: str, intent: str) -> dict | None:
+    """Load cached data if exists and fresh (same day)."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    cache_path = _get_cache_path(today, ticker, intent)
+    
+    if cache_path.exists():
+        with open(cache_path, 'r') as f:
+            return json.load(f)
+    return None
+
+def _save_to_cache(ticker: str, intent: str, data: dict) -> None:
+    """Save data to cache. Create dirs if needed."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    cache_path = _get_cache_path(today, ticker, intent)
+    
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(cache_path, 'w') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
 # ---- Helper the Main Manager would call ----
-async def analyze_for_manager(ticker: str, intent: str) -> dict:
+async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     """
-    intent ∈ {'news','fundamentals','market','sentiment'} (or any natural language;
-    the prompt lets the agent route).
-    Returns a dict parsed from the Analyst's JSON-only output.
+    Concurrent multi-tool analysis with intelligent caching.
+    intents: Subset of ['news','fundamentals','market','sentiment']
     """
-    # Construct a minimal, explicit input for the Analyst
-    user_input = (
-        f"Ticker: {ticker}\n"
-        f"Intent: {intent}\n"
-        f"Please perform the analysis and RETURN JSON ONLY as specified."
-    )
-    resp = await executor.ainvoke({"input": user_input, "history": []})
-    out = resp["output"]
-
-    # 直接接受结构化结果
-    if isinstance(out, dict):
-        return out
-    if isinstance(out, list):
-        return {"ticker": ticker, "channel": intent, "data": out, "summary": ""}
-
-    # 字符串：尝试解析 JSON；失败则宽松返回
-    if isinstance(out, str):
-        try:
-            return json.loads(out)
-        except Exception:
-            text = out.strip()
-            first_line = text.splitlines()[0].strip() if text else ""
-            if len(first_line) > 200:
-                first_line = first_line[:200] + "..."
-            return {"ticker": ticker, "channel": intent, "data": text, "summary": first_line}
-
-    # 其他类型兜底
-    text = str(out)
-    return {"ticker": ticker, "channel": intent, "data": text, "summary": text[:200] + ("..." if len(text) > 200 else "")}
+    # Tool mapping - still elegant
+    tools_map = {
+        'news': get_news,
+        'fundamentals': get_fundamentals, 
+        'market': get_market,
+        'sentiment': get_sentiment
+    }
+    
+    # Prepare tasks - only for non-cached intents
+    tasks = []
+    task_intents = []
+    cached_results = {}
+    
+    for intent in intents:
+        if intent not in tools_map:
+            continue
+            
+        # Check cache first - why waste API calls?
+        cached = _load_from_cache(ticker, intent)
+        if cached:
+            cached_results[intent] = cached
+            print(f"[CACHE HIT] {ticker}/{intent} - using cached data")
+        else:
+            tool = tools_map[intent]
+            tasks.append(asyncio.create_task(
+                tool.ainvoke({"ticker": ticker})
+            ))
+            task_intents.append(intent)
+            print(f"[CACHE MISS] {ticker}/{intent} - fetching fresh data")
+    
+    # Execute only necessary tasks
+    fresh_results = []
+    if tasks:
+        fresh_results = await asyncio.gather(*tasks, return_exceptions=True)
+    
+    # Assemble results
+    output = {
+        "ticker": ticker,
+        "analyses": {}
+    }
+    
+    # Add cached results
+    for intent, data in cached_results.items():
+        output["analyses"][intent] = {
+            "data": data,
+            "error": None,
+            "cached": True
+        }
+    
+    # Add fresh results and save to cache
+    for intent, result in zip(task_intents, fresh_results):
+        if isinstance(result, Exception):
+            output["analyses"][intent] = {
+                "error": str(result),
+                "data": None,
+                "cached": False
+            }
+        else:
+            output["analyses"][intent] = {
+                "data": result,
+                "error": None,
+                "cached": False
+            }
+            # Save successful results to cache
+            _save_to_cache(ticker, intent, result)
+    
+    return output
 
 # ---- Demo ----
 async def main():
-    # Simulate Main Manager passing (ticker, intent)
-    tasks = [
-        #("AAPL", "fundamentals"),
-        # ("NVDA", "news"),
-         ("TSLA", "sentiment"),
-        # ("MSFT", "market"),
-    ]
-    for tkr, intent in tasks:
-        print(f"\n=== Manager → Analyst: {tkr} / {intent} ===")
-        result = await analyze_for_manager(tkr, intent)
-        print(json.dumps(result, indent=2))
+    # Test concurrent analysis - all analyses in one shot
+    print("\n=== Concurrent Analysis Demo ===")
+    result = await analyze_for_manager("AAPL", ["news", "fundamentals", "market", "sentiment"])
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+
+    # Test concurrent analysis with caching
+    print("\n=== Concurrent Analysis Demo with Caching ===")
+    
+    # First call - all cache misses
+    print("\n[First Call - Expect all CACHE MISS]")
+    result1 = await analyze_for_manager("AAPL", ["news", "fundamentals", "market", "sentiment"])
+    print(f"Cached items: {sum(1 for a in result1['analyses'].values() if a.get('cached'))}")
+    
+    # Second call - all cache hits
+    print("\n[Second Call - Expect all CACHE HIT]")
+    result2 = await analyze_for_manager("AAPL", ["news", "fundamentals", "market", "sentiment"])
+    print(f"Cached items: {sum(1 for a in result2['analyses'].values() if a.get('cached'))}")
+    
+    # Partial call - mixed hits
+    print("\n[Third Call - Mixed cache status]")
+    result3 = await analyze_for_manager("NVDA", ["news", "market"])  # New ticker
+    print(json.dumps(result3, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
     asyncio.run(main())
