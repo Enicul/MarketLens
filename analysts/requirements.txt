@@ -22,3 +22,5 @@ asyncio
 
 requests>=2.28.0
 beautifulsoup4>=4.11.0
+
+# playwright install chromium
