@@ -1,15 +1,27 @@
 # analysts/sentiment.py
-"""将 sentiment 工具导出给上层使用。
+"""导出与 Agent 兼容的 sentiment 工具。
 
-此处直接复用 `analysts/X_search/sentiment.py` 中已实现的 LangChain StructuredTool：
-- get_sentiment: 与 fundamentals 同风格的工具封装（async coroutine）
+本模块将 `analysts.X_search.sentonent.get_sentiment_func` 封装为 LangChain 的
+`StructuredTool`，名称仍为 `get_sentiment`，以保持上层 Agent 与既有调用不变。
 """
 
-try:
-    from analysts.X_search.sentiment import get_sentiment  # type: ignore
-except Exception:
-    from analysts.X_search.sentiment import get_sentiment  # type: ignore
+from langchain.tools import StructuredTool
 
-__all__ = [
-    "get_sentiment",
-]
+try:
+    from analysts.X_search.sentiment import get_sentiment_func  # type: ignore
+except Exception:
+    from analysts.X_search.sentiment import get_sentiment_func  # type: ignore
+
+
+get_sentiment = StructuredTool.from_function(
+    func=get_sentiment_func,
+    coroutine=get_sentiment_func,
+    name="get_sentiment",
+    description=(
+        "Get recent tweet samples and basic interaction stats from X/Twitter for a given stock ticker. "
+        "Returns a JSON string. Useful for gauging short-term market sentiment signals."
+    ),
+)
+
+
+__all__ = ["get_sentiment"]
