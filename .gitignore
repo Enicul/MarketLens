@@ -11,6 +11,9 @@ downloads/
 eggs/
 .eggs/
 lib/
+!analysts/
+!analysts/lib/
+!analysts/lib/**
 lib64/
 parts/
 sdist/
