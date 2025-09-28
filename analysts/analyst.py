@@ -1,5 +1,7 @@
 # analyst.py
 import asyncio
+import os
+import sys
 import json
 from pathlib import Path
 from datetime import datetime
@@ -8,13 +10,16 @@ from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
+from .lib.fundamentals import get_fundamentals
+from .lib.news import get_news
+from .lib.yahoo import get_market  
+from .lib.X_search import get_sentiment  
 
-from fundamentals import get_fundamentals
-from news import get_news
-from market import get_market
-from sentiment import get_sentiment
-
+# Setup environment and path
 load_dotenv()
+sys.path.append(os.path.dirname(__file__))
+
+
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
