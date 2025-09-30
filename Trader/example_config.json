@@ -1,0 +1,33 @@
+{
+  "analysis_config": {
+    "lookback": 400,
+    "pred_len": 120,
+    "trend_threshold": 0.03,
+    "temperature": 1.0,
+    "top_p": 0.9,
+    "sample_count": 1
+  },
+  "trading_config": {
+    "risk_tolerance": "medium",
+    "max_position_size": 0.1,
+    "stop_loss_percentage": 0.05,
+    "take_profit_percentage": 0.15
+  },
+  "output_config": {
+    "save_results": true,
+    "output_directory": "./output",
+    "generate_report": true,
+    "include_charts": false
+  },
+  "model_config": {
+    "device": "cpu",
+    "model_name": "kronos-small",
+    "tokenizer_name": "kronos-tokenizer-base"
+  },
+  "metadata": {
+    "created_by": "MarketLens-Trader",
+    "version": "1.0",
+    "description": "量化交易分析配置文件"
+  }
+}
+
