@@ -249,19 +249,17 @@ class Trader:
         
         prompt = ChatPromptTemplate.from_messages([
             ("system", 
-             "你是一个专业的量化交易Agent。你的任务是基于研究团队结论生成交易决策卡。\n\n"
-             "工具使用规则：\n"
-             "1. 总是先使用load_research_data加载研究结论\n"
-             "2. run_kronos_prediction工具使用条件（同时满足才调用）：\n"
-             "   ✅ 用户明确要求使用Kronos/预测/模型\n"
-             "   ✅ 研究结论中use_kronos_prediction为true\n"
-             "   ✅ 提供了CSV文件路径\n"
-             "3. 总是使用generate_decision_card生成最终决策卡\n\n"
-             "严格禁止：\n"
-             "❌ 用户说'不使用'、'不要'、'跳过'Kronos时，绝对不调用run_kronos_prediction\n"
-             "❌ 没有CSV文件时不调用run_kronos_prediction\n"
-             "❌ 用户只要求基础分析时不调用run_kronos_prediction\n\n"
-             "默认行为：仅基于研究结论生成决策卡，无需额外预测。"),
+             "你是一个专业的量化交易Agent，负责分析研究团队的结论并生成交易决策。\n"
+             "工作流程：\n"
+             "1. 使用load_research_data工具加载研究团队的分析结论\n"
+             "2. 根据研究结论的不确定性和建议，决定是否使用run_kronos_prediction工具进行价格预测\n"
+             "3. 使用generate_decision_card工具为每个股票生成标准化决策卡\n"
+             "决策原则：\n"
+             "- 当uncertainty_level为high或very_high时，建议使用Kronos预测\n"
+             "- 当研究结论中use_kronos_prediction为true时，必须使用预测\n"
+             "- 综合研究结论和预测结果做出最终决策\n"
+             "- 严格控制风险，合理设置仓位和止损止盈\n"
+             "请按照工作流程，智能选择和调用工具完成任务。"),
             MessagesPlaceholder("chat_history"),
             ("user", "{input}"),
             MessagesPlaceholder("agent_scratchpad"),
