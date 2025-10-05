@@ -2,10 +2,10 @@
   "ticker": "NVDA",
   "period": "1mo",
   "interval": "1d",
-  "json_path": "output\\NVDA_analysis_20250924_105107.json",
-  "filename": "NVDA_analysis_20250924_105107.json",
-  "size_bytes": 1707,
-  "retrieved_at": "2025-09-24T02:51:07.841494",
+  "json_path": "output/NVDA_analysis_20250924_104919.json",
+  "filename": "NVDA_analysis_20250924_104919.json",
+  "size_bytes": 1646,
+  "retrieved_at": "2025-09-24T02:49:19.260735",
   "content": {
     "stock_basic_info": {
       "ticker": "NVDA",
@@ -20,7 +20,7 @@
       "beta": 2.102,
       "high_52w": 184.55,
       "low_52w": 86.62,
-      "timestamp": "2025-09-24T10:51:07.835634"
+      "timestamp": "2025-09-24T10:49:19.259596"
     },
     "technical_indicators": {
       "moving_averages": {
@@ -33,7 +33,7 @@
         "rsi": 59.130973032532296,
         "stochastic_k": 70.13061905988923,
         "stochastic_d": 81.09510460890182,
-        "macd": 0.740788485209265
+        "macd": 0.7407884852091797
       },
       "bollinger_bands": {
         "upper_band": 184.83105848575136,
@@ -65,7 +65,7 @@
       "data_period": "1mo",
       "start_date": "2025-08-25",
       "end_date": "2025-09-23",
-      "last_updated": "2025-09-24T10:51:07.835634"
+      "last_updated": "2025-09-24T10:49:19.259618"
     }
   }
 }
