@@ -1,0 +1,151 @@
+{
+  "ticker": "NVDA",
+  "channel": "sentiment",
+  "overall_sentiment": "bullish",
+  "sentiment_score": 0.1691,
+  "sentiment_breakdown": {
+    "bullish": 0.04,
+    "bearish": 0.06,
+    "neutral": 0.9
+  },
+  "metrics": {
+    "total_tweets": 100,
+    "total_influence": 27206,
+    "influence_concentration": 0.266,
+    "sentiment_volatility": 74.186,
+    "quality_score": 0.44
+  },
+  "top_tweets": [
+    {
+      "username": "@redaction",
+      "content": "- Waterloo CS graduate\n- Worked at Amazon\n- Worked at Nvidia\n- Evidently smart\n\n- Squandered NVDA stock options\n- Dead broke at 37\n- Getting evicted\n- Basically no romantic history\n- Terminally autistic\n\nPretty grim sight",
+      "timestamp": "2025-09-23T23:57:03.000Z",
+      "influence_score": 85.11,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6641,
+        "retweets": 226,
+        "replies": 150
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "8 WAYS ROBOTICS IS GETTING BUILT OUT ACROSS SECTORS\n\n1. $PLTR & $PATH are the traffic controllers for the whole fleet while $NVDA, $AVGO & $QCOM are the engines & nervous system that let the robots sense and act.\n\n2. $AVAV, $ONDS, $RCAT & $UMAC are building the UAV drone fleets",
+      "timestamp": "2025-10-04T12:35:16.000Z",
+      "influence_score": 57.01,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1955,
+        "retweets": 605,
+        "replies": 85
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "10 MONOPOLIES SHAPING THE FUTURE\n\n1. $GOOGL owns search\n2. $TSM is the AI factory\n3. $TSLA leads real-world AI\n4. $ASML is the AI kingmaker\n5. $NVDA powers AI compute\n6. $AMZN built global logistics\n7. $AXON runs public safety tech\n8. $PLTR is AI¡¯s operating system\n9. $META",
+      "timestamp": "2025-10-04T11:44:37.000Z",
+      "influence_score": 51.11,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1820,
+        "retweets": 346,
+        "replies": 100
+      }
+    },
+    {
+      "username": "Evan",
+      "content": "Jensen Huang currently owns 853,708,603 shares of Nvidia $NVDA stock ... Nvidia closed trading Friday at $178.19 per share\n\nThat means Jensen's Nvidia shares are currently worth $152.1 Billion up from $14B at the start of 2023\n\nNvidia pays a $0.01 per share dividend ... that",
+      "timestamp": "2025-09-27T17:26:04.000Z",
+      "influence_score": 47.39,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1920,
+        "retweets": 130,
+        "replies": 66
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "UPDATED PULLBACK LEVELS TO WATCH ON POPULAR STOCKS\n\n$NVDA, $TSLA, $AMD, $PLTR, $IREN, $CIFR, $OPEN, $NBIS, $ONDS, $ACHR, $OSCR, $OKLO, $RKLB, $ASTS, $IONQ, $HIMS, $HOOD, $SOFI, $EOSE, $TEM",
+      "timestamp": "2025-10-04T14:03:41.000Z",
+      "influence_score": 42.28,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1282,
+        "retweets": 230,
+        "replies": 46
+      }
+    },
+    {
+      "username": "Dividend Talks on YouTube",
+      "content": "10 years ago, ¡°AI data centers¡± weren¡¯t even a thing.\n\nToday: $14B market.\n\nBy 2034: projected $157B+\n\nEveryone talks $NVDA & $AMD.\n\nBut the hidden gems may be in the picks & shovels:\n\n- $AEHR ¡ú testing equipment for next-gen chips.\n\n- $NVTS ¡ú power semis for data center",
+      "timestamp": "2025-09-30T17:26:11.000Z",
+      "influence_score": 34.97,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 847,
+        "retweets": 172,
+        "replies": 32
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "JENSEN SAYS $NVDA AI TAM COULD REACH $5T ANNUALLY\n\nThe world is about to build the entire next wave of the digital economy on NVIDIA¡¯s rails with their GPUs becoming the core engine behind every major secular growth theme for decades.",
+      "timestamp": "2025-09-27T11:30:21.000Z",
+      "influence_score": 32.25,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 778,
+        "retweets": 108,
+        "replies": 46
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Warren Buffett did not invest in NVDA, AMZN, TSLA, MSFT, GOOG, META and he only invested in AAPL in 2016, 36 years after the stock had already gone up 9,400% from its listing.\n\nYet, Buffett has made over $183 billion from investing in stocks (no one even comes close). He is now",
+      "timestamp": "2024-06-26T07:41:52.000Z",
+      "influence_score": 28.44,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 581,
+        "retweets": 97,
+        "replies": 34
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "$NVDA JENSEN PRAISED $GOOGL CUSTOM TPUS\n\nThe nod shows how far Google¡¯s own chips have come. By owning the chips, the software that runs them & the cloud they live in, Google makes TPUs faster & cheaper across its data centers. An underrated moat.",
+      "timestamp": "2025-09-26T14:36:58.000Z",
+      "influence_score": 28.41,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 570,
+        "retweets": 86,
+        "replies": 65
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "It was just announced that after 25 years of being in the Dow Jones index, Intel (INTC) will be removed and replaced by Nvidia (NVDA) on 8 November\n\nOne of the reasons why the US stock market always goes up in the long run is because unprofitable/less relevant companies are",
+      "timestamp": "2024-11-03T04:48:51.000Z",
+      "influence_score": 25.98,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 498,
+        "retweets": 76,
+        "replies": 25
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 1.0,
+    "search_keywords": [
+      "$NVDA",
+      "Nvidia",
+      "Ó¢Î°´ï"
+    ],
+    "generated_at": "2025-10-05T02:59:54.356582+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}
