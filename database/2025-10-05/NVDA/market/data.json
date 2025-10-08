@@ -1,0 +1,69 @@
+{
+  "ticker": "NVDA",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-05T02:55:58.918005",
+  "stock_basic_info": {
+    "ticker": "NVDA",
+    "current_price": 187.62,
+    "change": -1.32,
+    "change_percent": -0.7,
+    "volume": 136011661,
+    "market_cap": 4567983980544,
+    "pe_ratio": 53.45299,
+    "pb_ratio": 45.616337,
+    "dividend_yield": 0.02,
+    "beta": 2.123,
+    "high_52w": 191.05,
+    "low_52w": 86.62,
+    "timestamp": "2025-10-05T10:55:58.917030"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 178.71304473876953,
+      "price_vs_ma_20": 104.98393969586135
+    },
+    "oscillators": {
+      "rsi": 62.15216850566127,
+      "stochastic_k": 84.84978786643167,
+      "stochastic_d": 90.24919466354758
+    },
+    "bollinger_bands": {
+      "upper_band": 190.22562939199662,
+      "lower_band": 167.20046008554243,
+      "price_vs_upper_band": 98.63024016104596
+    },
+    "volume_indicators": {
+      "volume_ma20": 178839260.0,
+      "volume_vs_ma20": 76.79549781183394
+    },
+    "volatility_indicators": {
+      "atr": 5.560715811593192,
+      "atr_percent": 2.96381833296604
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 191.0500030517578,
+      "low_1mo": 164.06075893837155,
+      "avg_close": 177.86008245294744,
+      "volatility": 6.17362494678671
+    },
+    "trend_analysis": {
+      "trend_20_days": 11.479162431904571
+    },
+    "key_levels": [
+      191.0500030517578,
+      188.13999938964844,
+      166.7306038641957,
+      164.06075893837155
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-04",
+    "end_date": "2025-10-03",
+    "last_updated": "2025-10-05T10:55:58.918005"
+  }
+}

@@ -12,7 +12,7 @@ from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
 from .lib.fundamentals import get_fundamentals
 from .lib.news import get_news
-from .lib.yahoo import get_market  
+from .lib.yahoo import get_market, get_market_csv
 from .lib.X_search import get_sentiment  
 
 # Setup environment and path
@@ -92,10 +92,33 @@ def _save_to_cache(ticker: str, intent: str, data: dict) -> None:
 # ---- Helper the Main Manager would call ----
 async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     """
-    Concurrent multi-tool analysis with intelligent caching.
+    Direct CSV generation with market analysis caching.
+    Always generates CSV file to database/{date}/{ticker}/market_csv/ folder.
     intents: Subset of ['news','fundamentals','market','sentiment']
     """
-    # Tool mapping - still elegant
+    
+    # 创建database目录结构
+    today = datetime.now().strftime("%Y-%m-%d")
+    # 确保路径相对于项目根目录
+    project_root = Path(__file__).resolve().parents[1]  
+    csv_output_dir = project_root / "database" / today / ticker / "market_csv"
+    csv_output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # 直接调用get_market_csv生成CSV文件
+    try:
+        csv_result = await get_market_csv.ainvoke({
+            "ticker": ticker,
+            "period": "3mo",
+            "interval": "1d",
+            "output_dir": str(csv_output_dir)
+        })
+        print(f"[CSV GENERATED] {ticker} - CSV saved to: {csv_result['csv_path']}")
+        
+    except Exception as e:
+        print(f"[CSV ERROR] {ticker} - Failed to generate CSV: {e}")
+        csv_result = {"error": str(e)}
+    
+    # Tool mapping for other analyses
     tools_map = {
         'news': get_news,
         'fundamentals': get_fundamentals, 
@@ -133,6 +156,7 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # Assemble results
     output = {
         "ticker": ticker,
+        "csv_generation": csv_result,  # 添加CSV生成结果
         "analyses": {}
     }
     
