@@ -234,11 +234,10 @@ class Trader:
     
     def __init__(self, openai_api_key: str = None):
         """初始化Trader Agent"""
-        # 设置OpenAI API密钥
-        if openai_api_key:
-            os.environ['OPENAI_API_KEY'] = openai_api_key
-        elif not os.environ.get('OPENAI_API_KEY'):
-            os.environ['OPENAI_API_KEY'] = "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"
+        # 设置本地模型API
+        if not openai_api_key:
+            openai_api_key = "dummy-key"  # 本地模型不需要真实API密钥
+        os.environ['OPENAI_API_KEY'] = openai_api_key
         
         self.agent_executor = self._build_agent()
         print("✅ Trader Agent初始化成功")
@@ -265,7 +264,11 @@ class Trader:
             MessagesPlaceholder("agent_scratchpad"),
         ])
         
-        llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+        llm = ChatOpenAI(
+            model="qwq-32b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
         agent = create_tool_calling_agent(llm, tools, prompt)
         
         return AgentExecutor(
