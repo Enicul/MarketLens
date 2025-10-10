@@ -6,8 +6,7 @@ Trader子Agent - 基于LangChain工具调用的智能交易决策系统
 import os
 import json
 import pandas as pd
-import numpy as np
-from typing import Dict, List, Optional
+from typing import Dict, List
 from datetime import datetime
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
