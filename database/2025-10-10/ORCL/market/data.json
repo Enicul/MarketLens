@@ -1,0 +1,69 @@
+{
+  "ticker": "ORCL",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-10T05:02:32.765429",
+  "stock_basic_info": {
+    "ticker": "ORCL",
+    "current_price": 296.96,
+    "change": 8.83,
+    "change_percent": 3.06,
+    "volume": 26348629,
+    "market_cap": 846571372544,
+    "pe_ratio": 68.90023,
+    "pb_ratio": 34.928253,
+    "dividend_yield": 0.67,
+    "beta": 1.531,
+    "high_52w": 345.72,
+    "low_52w": 118.86,
+    "timestamp": "2025-10-10T13:02:32.763793"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 295.62474822998047,
+      "price_vs_ma_20": 100.45166828321793
+    },
+    "oscillators": {
+      "rsi": 44.574506609532634,
+      "stochastic_k": 45.25696870130399,
+      "stochastic_d": 32.67540451640804
+    },
+    "bollinger_bands": {
+      "upper_band": 320.0630858159818,
+      "lower_band": 271.1864106439791,
+      "price_vs_upper_band": 92.78170604960465
+    },
+    "volume_indicators": {
+      "volume_ma20": 30489205.0,
+      "volume_vs_ma20": 86.73660070834906
+    },
+    "volatility_indicators": {
+      "atr": 13.25940433603593,
+      "atr_percent": 4.465047386035406
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 345.12108878692953,
+      "low_1mo": 270.53053507975545,
+      "avg_close": 297.6174011230469,
+      "volatility": 13.661181123820146
+    },
+    "trend_analysis": {
+      "trend_20_days": 1.8123543562546456
+    },
+    "key_levels": [
+      345.12108878692953,
+      330.42658790343654,
+      328.92917982716904,
+      270.53053507975545
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-10",
+    "end_date": "2025-10-09",
+    "last_updated": "2025-10-10T13:02:32.765419"
+  }
+}
