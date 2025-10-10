@@ -62,3 +62,4 @@ database/  # Cache directory for stock analysis data
 
 # Environment variables
 .env
+.temp/
