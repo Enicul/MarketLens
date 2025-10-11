@@ -7,14 +7,14 @@ class Config:
     集中配置管理
     """
     # 浏览器设置
-    HEADLESS = True
+    HEADLESS = False
     DELAY_RANGE = (1, 3)
     DISABLE_MEDIA = True
     
     # 爬取设置
-    MAX_TWEETS_PER_STOCK = 100
+    MAX_TWEETS_PER_STOCK = 80
     MAX_SCROLL_ATTEMPTS = 50
-    PARALLEL_PAGES = 6
+    PARALLEL_PAGES = 8
     
     # 文件路径 - 专业的数据文件管理
     _MODULE_DIR = os.path.dirname(os.path.abspath(__file__))

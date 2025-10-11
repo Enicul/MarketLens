@@ -168,30 +168,35 @@ class TwitterScraper:
         try:
             await page.goto("https://x.com/home", wait_until="domcontentloaded", timeout=60_000)
 
-            if await self._is_logged_in(page):
-                logger.info("Already logged in")
-                # persist state for future runs
-                if self.config.storage_state_path:
-                    await self._context.storage_state(path=self.config.storage_state_path)
-                return
-
+            # 浏览器显示完全由headless配置控制，无论是否已登录都会显示浏览器（如果headless=False）
             if self.config.headless:
-                raise RuntimeError("Not logged in. Run in non-headless mode first.")
-
-            logger.warning("Please log in manually")
-            await page.goto("https://x.com/i/flow/login", wait_until="domcontentloaded", timeout=60_000)
-
-            # Wait for login completion
-            for _ in range(150):  # up to ~5 minutes
+                # 在headless模式下，如果已登录则直接返回，如果未登录则抛出错误
                 if await self._is_logged_in(page):
-                    if self.config.storage_state_path:
-                        await self._context.storage_state(path=self.config.storage_state_path)
-                        logger.info(f"Login state saved to {self.config.storage_state_path}")
-                    logger.info("Login completed")
+                    logger.info("Already logged in (headless mode)")
                     return
-                await asyncio.sleep(2)
+                else:
+                    raise RuntimeError("Not logged in. Run in non-headless mode first.")
+            else:
+                # 在非headless模式下，始终显示浏览器界面
+                if await self._is_logged_in(page):
+                    logger.info("Already logged in, but browser will be displayed due to headless=False")
+                    # 即使已登录，也会显示浏览器界面让用户看到爬取过程
+                    return
+                else:
+                    logger.warning("Not logged in. Please log in manually")
+                    await page.goto("https://x.com/i/flow/login", wait_until="domcontentloaded", timeout=60_000)
 
-            raise TimeoutError("Login timeout")
+                    # Wait for login completion
+                    for _ in range(150):  # up to ~5 minutes
+                        if await self._is_logged_in(page):
+                            if self.config.storage_state_path:
+                                await self._context.storage_state(path=self.config.storage_state_path)
+                                logger.info(f"Login state saved to {self.config.storage_state_path}")
+                            logger.info("Login completed")
+                            return
+                        await asyncio.sleep(2)
+
+                    raise TimeoutError("Login timeout")
         finally:
             await page.close()
 
