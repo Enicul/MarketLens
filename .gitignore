@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+**/__pycache__/ 
 *.py[cod]
 *$py.class
 *.so
@@ -81,3 +82,10 @@ database/
 # Additional cache files
 *.cache
 *.session
+analysts/lib/X_search/__pycache__/search.cpython-310.pyc
+analysts/lib/__pycache__/fundamentals.cpython-311.pyc
+analysts/lib/__pycache__/fundamentals.cpython-311.pyc
+analysts/lib/__pycache__/news.cpython-311.pyc
+analysts/lib/X_search/__pycache__/__init__.cpython-310.pyc
+analysts/lib/__pycache__/news.cpython-311.pyc
+analysts/lib/yahoo/__pycache__/yahoo_tool.cpython-311.pyc

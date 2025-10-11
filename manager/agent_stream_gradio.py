@@ -2,10 +2,18 @@ import os
 import json
 import asyncio
 import sys
+import logging
 
 from shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+# 配置日志级别，减少HTTP请求日志
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("requests").setLevel(logging.WARNING)
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -314,12 +322,22 @@ def create_chatbot():
 ########################################
 
 if __name__ == "__main__":
+    print("\n" + "="*60)
+    print("🚀 Market Lens AI - Gradio Interface Starting...")
+    print("="*60)
+    
     demo = create_chatbot()
     # 启动时清空历史
     history_manager.clear()
+    
+    print("✅ Gradio interface ready!")
+    print("📱 Access at: http://localhost:7860")
+    print("📋 Application logs will appear below:")
+    print("-"*60)
+    
     demo.launch(
         server_name="0.0.0.0", 
         server_port=7860, 
         share=False, 
-        debug=True
+        debug=False  # 关闭debug模式减少日志
     )

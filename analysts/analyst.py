@@ -96,6 +96,8 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     Always generates CSV file to database/{date}/{ticker}/market_csv/ folder.
     intents: Subset of ['news','fundamentals','market','sentiment']
     """
+    print(f"\n[ANALYST] 🚀 Starting analysis for {ticker} - {', '.join(intents)}")
+    print("-" * 50)
     
     # 创建database目录结构
     today = datetime.now().strftime("%Y-%m-%d")
@@ -105,6 +107,7 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     csv_output_dir.mkdir(parents=True, exist_ok=True)
     
     # 直接调用get_market_csv生成CSV文件
+    print(f"[CSV] 📊 Generating market data CSV for {ticker}")
     try:
         csv_result = await get_market_csv.ainvoke({
             "ticker": ticker,
@@ -112,10 +115,10 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
             "interval": "1d",
             "output_dir": str(csv_output_dir)
         })
-        print(f"[CSV GENERATED] {ticker} - CSV saved to: {csv_result['csv_path']}")
+        print(f"[CSV] ✅ {ticker} - CSV saved to: {csv_result['csv_path']}")
         
     except Exception as e:
-        print(f"[CSV ERROR] {ticker} - Failed to generate CSV: {e}")
+        print(f"[CSV] ❌ {ticker} - Failed to generate CSV: {e}")
         csv_result = {"error": str(e)}
     
     # Tool mapping for other analyses
@@ -142,6 +145,7 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
             print(f"[CACHE HIT] {ticker}/{intent} - using cached data")
         else:
             tool = tools_map[intent]
+            print(f"[START] {ticker}/{intent} - calling {tool.name}")
             tasks.append(asyncio.create_task(
                 tool.ainvoke({"ticker": ticker})
             ))
@@ -151,7 +155,9 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # Execute only necessary tasks
     fresh_results = []
     if tasks:
+        print(f"[PROCESSING] {len(tasks)} tools running...")
         fresh_results = await asyncio.gather(*tasks, return_exceptions=True)
+        print(f"[COMPLETE] {len(fresh_results)} tools finished")
     
     # Assemble results
     output = {
@@ -171,12 +177,14 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # Add fresh results and save to cache
     for intent, result in zip(task_intents, fresh_results):
         if isinstance(result, Exception):
+            print(f"[ERROR] {ticker}/{intent} - {str(result)[:50]}...")
             output["analyses"][intent] = {
                 "error": str(result),
                 "data": None,
                 "cached": False
             }
         else:
+            print(f"[SUCCESS] {ticker}/{intent} - data collected")
             output["analyses"][intent] = {
                 "data": result,
                 "error": None,
@@ -185,6 +193,8 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
             # Save successful results to cache
             _save_to_cache(ticker, intent, result)
     
+    print(f"[ANALYST] ✅ Analysis complete for {ticker}")
+    print("=" * 50)
     return output
 
 # ---- Demo ----

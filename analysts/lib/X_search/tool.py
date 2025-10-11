@@ -17,6 +17,8 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
     Returns:
         包含情绪分析结果的字典
     """
+    print(f"\n[SENTIMENT] 🐦 Starting Twitter sentiment analysis for {ticker}")
+    print("  " + "-" * 40)
     # 爬虫配置 - 看好了，这才叫简洁的配置使用
     config = ScraperConfig(
         headless=Config.HEADLESS,
@@ -36,14 +38,17 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
     try:
         async with TwitterScraper(config) as scraper:
             # 数据获取层
+            print(f"[SENTIMENT] 📥 Scraping tweets for {ticker}")
             tweets = await scraper.scrape_stock_tweets(ticker)
+            print(f"[SENTIMENT] 📊 Found {len(tweets)} tweets")
             
             # 分析层
+            print(f"[SENTIMENT] 🔍 Analyzing sentiment...")
             analyzer = AdvancedSentimentAnalyzer()
             metrics, top_tweets = analyzer.analyze(tweets)
             
             # 数据组装层 - 专业的数据结构
-            return {
+            result = {
                 "ticker": ticker,
                 "channel": "sentiment",
                 "overall_sentiment": metrics.overall_sentiment,
@@ -65,9 +70,13 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
                     "processing_note": "Professional sentiment analysis with integrated architecture"
                 }
             }
+            print(f"[SENTIMENT] ✅ Complete for {ticker} - {metrics.overall_sentiment} ({metrics.sentiment_score:.3f})")
+            print("  " + "=" * 40)
+            return result
             
     except Exception as e:
         # 错误处理 - 专业的错误响应
+        print(f"[SENTIMENT] ❌ Error for {ticker}: {str(e)[:50]}...")
         return _build_error_response(ticker, e)
 
 

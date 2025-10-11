@@ -205,10 +205,10 @@ class YahooFinanceTool:
         hist_data = self.get_historical_data(symbol, period, interval)
         df = hist_data.data.reset_index()
         
-        # 列名映射
+        # 列名映射 - 主要OHLCV列使用英文标准格式
         rename_map = {
-            'Date': '日期', 'Open': '开盘价', 'High': '最高价', 
-            'Low': '最低价', 'Close': '收盘价', 'Volume': '成交量',
+            'Date': 'timestamp', 'Open': 'open', 'High': 'high', 
+            'Low': 'low', 'Close': 'close', 'Volume': 'volume',
             'RSI': 'RSI指标', 'MACD': 'MACD', 'MACD_Signal': 'MACD信号线',
             'MACD_Histogram': 'MACD柱状图', 'BB_Upper': '布林带上轨',
             'BB_Middle': '布林带中轨', 'BB_Lower': '布林带下轨',
@@ -224,8 +224,12 @@ class YahooFinanceTool:
                 rename_map[col] = f"成交量{col.split('_')[2]}{time_unit}均线"
         
         df = df.rename(columns=rename_map)
-        if '日期' in df.columns:
-            df['日期'] = df['日期'].dt.strftime('%Y-%m-%d')
+        if 'timestamp' in df.columns:
+            df['timestamp'] = df['timestamp'].dt.strftime('%Y-%m-%d')
+        
+        # 添加amount列（成交金额 = close * volume）
+        if 'close' in df.columns and 'volume' in df.columns:
+            df['amount'] = df['close'] * df['volume']
         
         filename = f"{symbol}_{period}_{interval}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
         filepath = os.path.join(self.output_dir, filename)
