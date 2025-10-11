@@ -142,6 +142,7 @@ class MarketLensChatbox:
         self, 
         agent_executor: AgentExecutor, 
         user_input: str, 
+        session_id: str,
         status_callback: Optional[Callable] = None
     ):
         """Stream Agent response with typewriter effect and status updates"""
@@ -150,9 +151,14 @@ class MarketLensChatbox:
             if status_callback:
                 status_callback("🤖 AI Agent is thinking...")
             
-            # Synchronously call Agent
+            # Call Agent
             response = agent_executor.invoke({"input": user_input})
             output = response.get("output", "Sorry, no response received.")
+            
+            # Save to history (使用新的历史管理器)
+            from chat_history_manager import get_history_manager
+            history_manager = get_history_manager()
+            history_manager.add(session_id, user_input, output)
             
             # Check intermediate steps for tool calls
             steps = response.get("intermediate_steps", [])
@@ -193,8 +199,12 @@ class MarketLensChatbox:
     ) -> gr.Blocks:
         """Create the complete Gradio interface with control panel and chat"""
         
-        # Build initial agent
-        main_agent = agent_builder(enabled_analysis_types)
+        # Use a fixed session ID for now to maintain history across refreshes
+        # In production, you might want to use user authentication or cookies
+        session_id = "default_session"
+        
+        # Build initial agent with session ID
+        main_agent, agent_session_id = agent_builder(enabled_analysis_types, session_id)
         
         with gr.Blocks(title="Market Lens AI Agent", css=self.CSS, theme=gr.themes.Soft()) as demo:
             with gr.Column(elem_classes=["main-container"]):
@@ -223,7 +233,7 @@ class MarketLensChatbox:
                         bubble_full_width=False,
                         show_label=False,
                         elem_classes=["chatbot-container"],
-                        type="tuples",  # Explicitly set to tuples format for now
+                        type="messages",  # Updated to new format
                     )
                 
                     # Analysis status display
@@ -260,14 +270,21 @@ class MarketLensChatbox:
                     return "", chat_hist, gr.update(visible=False)
                 
                 # Update global config
+                current_config = {
+                    "news": news,
+                    "fundamentals": fundamentals,
+                    "market": market,
+                    "sentiment": sentiment
+                }
                 update_config_status(news, fundamentals, market, sentiment)
                 
-                # Rebuild agent with new config
-                nonlocal main_agent
-                main_agent = agent_builder(enabled_analysis_types)
+                # Always rebuild agent to get latest history
+                nonlocal main_agent, agent_session_id
+                enabled_analysis_types.update(current_config)
+                main_agent, agent_session_id = agent_builder(enabled_analysis_types, session_id)
                 
-                # Add user message
-                chat_hist = chat_hist + [(user_msg, None)]
+                # Add user message (new format)
+                chat_hist = chat_hist + [{"role": "user", "content": user_msg}]
                 yield "", chat_hist, gr.update(value="🔄 Processing...", visible=True)
                 
                 # Status update function
@@ -275,9 +292,12 @@ class MarketLensChatbox:
                 def update_status(msg):
                     current_status["value"] = msg
                 
-                # Stream response generation
-                for partial in self.stream_response(main_agent, user_msg, update_status):
-                    chat_hist[-1] = (user_msg, partial)
+                # Stream response generation with session ID
+                assistant_message = {"role": "assistant", "content": ""}
+                chat_hist.append(assistant_message)
+                
+                for partial in self.stream_response(main_agent, user_msg, session_id, update_status):
+                    assistant_message["content"] = partial
                     status_msg = current_status["value"]
                     if status_msg:
                         yield "", chat_hist, gr.update(value=status_msg, visible=True)
