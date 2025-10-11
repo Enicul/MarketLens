@@ -9,7 +9,7 @@ from langchain_core.tools import tool
 
 # ========= Shared schema bits =========
 class EvidenceItem(BaseModel):
-    source: Literal["fundamentals","news","sentiment"]
+    source: Literal["fundamentals","news","sentiment","market"]
     pointer: str
     note: str
 
@@ -45,11 +45,6 @@ class DecisionPack(BaseModel):
     rationale: str
     evidence_citations: List[EvidenceItem]
     meta: Dict[str, Any]
-    
-class EvidenceItem(BaseModel):
-    source: Literal["fundamentals","news","sentiment","market"]
-    pointer: str
-    note: str
 
 
 # ========= Prompt =========

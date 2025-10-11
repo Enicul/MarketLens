@@ -105,6 +105,19 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         
         if disabled_intents:
             result["disabled_intents"] = disabled_intents
+        
+        # 检查是否有部分分析失败，但仍有成功的数据
+        successful_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is None]
+        failed_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is not None]
+        
+        if failed_analyses and successful_analyses:
+            print(f"[ANALYST] ⚠️ 部分分析失败: {', '.join(failed_analyses)} (成功: {', '.join(successful_analyses)})")
+            result["partial_success"] = True
+            result["failed_analyses"] = failed_analyses
+            result["successful_analyses"] = successful_analyses
+        elif failed_analyses and not successful_analyses:
+            print(f"[ANALYST] ❌ 所有分析都失败: {', '.join(failed_analyses)}")
+            result["complete_failure"] = True
             
         return json.dumps(result, ensure_ascii=False)
     except Exception as e:
@@ -276,6 +289,7 @@ def build_main_agent(config=None, session_id="default"):
          f"- call_trader 的 research_data 参数：直接传递call_researcher的完整返回值（JSON字符串）\n"
          f"- 不要修改、解析或重新格式化工具返回的JSON数据，直接传递给下一个工具\n"
          f"- 如果用户明确只要某个步骤，可以单独执行\n"
+         f"- 如果数据收集部分失败，仍有可用数据时，继续处理成功的数据\n"
          f"- 始终用中文回复用户"),
     ]
     
