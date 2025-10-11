@@ -7,7 +7,7 @@ class Config:
     集中配置管理
     """
     # 浏览器设置
-    HEADLESS = False
+    HEADLESS = True
     DELAY_RANGE = (1, 3)
     DISABLE_MEDIA = True
     

@@ -2,18 +2,11 @@ import os
 import json
 import asyncio
 import sys
-import logging
+import datetime
 
 from shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-# 配置日志级别，减少HTTP请求日志
-logging.getLogger("httpx").setLevel(logging.WARNING)
-logging.getLogger("httpcore").setLevel(logging.WARNING)
-logging.getLogger("openai").setLevel(logging.WARNING)
-logging.getLogger("urllib3").setLevel(logging.WARNING)
-logging.getLogger("requests").setLevel(logging.WARNING)
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -118,6 +111,10 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         elif failed_analyses and not successful_analyses:
             print(f"[ANALYST] ❌ 所有分析都失败: {', '.join(failed_analyses)}")
             result["complete_failure"] = True
+        
+        today = datetime.now().strftime("%Y-%m-%d")
+        with open(f"database/{today}/{ticker}/analyst_result.json", "w", encoding="utf-8") as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
             
         return json.dumps(result, ensure_ascii=False)
     except Exception as e:
@@ -156,6 +153,10 @@ def call_researcher(ticker: str, analyst_data: str) -> str:
         result = loop.run_until_complete(research_for_manager(ticker.upper(), data))
         loop.close()
         
+        today = datetime.now().strftime("%Y-%m-%d")
+        with open(f"database/{today}/{ticker}/researcher_result.json", "w", encoding="utf-8") as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+        
         return json.dumps(result, ensure_ascii=False)
     except json.JSONDecodeError as e:
         return json.dumps({
@@ -183,6 +184,8 @@ def call_trader(research_data: str, csv_file_path: str = None) -> str:
         JSON格式的交易决策卡
     """
     try:
+        print(research_data)
+        print(csv_file_path)
         # Parse research data with better error handling
         if isinstance(research_data, str):
             research_data = research_data.strip()

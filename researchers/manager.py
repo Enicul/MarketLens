@@ -59,3 +59,17 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
             "time_horizon": time_horizon
         }
     }
+
+
+if __name__ == "__main__":
+    import asyncio
+    import json
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    with open("analyst_result.json", "r", encoding="utf-8") as f:
+        analyst_data = json.load(f)
+    result = asyncio.run(research_for_manager("AAPL", analyst_data))
+    with open("researcher_result.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
