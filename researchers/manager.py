@@ -21,18 +21,31 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
     # 验证数据完整性
     validation = validate_analyst_data(analyst_data)
     
-    bundle = to_research_bundle(analyst_data)
+    try:
+        bundle = to_research_bundle(analyst_data)
+    except Exception as e:
+        raise ValueError(f"数据转换失败: {str(e)}") from e
     
-    bull = await bullish_research_tool.ainvoke({"ticker": ticker, "analyst_bundle": bundle})
-    bear = await bearish_research_tool.ainvoke({"ticker": ticker, "analyst_bundle": bundle})
+    try:
+        bull = await bullish_research_tool.ainvoke({"ticker": ticker, "analyst_bundle": bundle})
+    except Exception as e:
+        raise ValueError(f"多头研究失败: {str(e)}") from e
     
-    decision = await moderate_debate_tool.ainvoke({
-        "ticker": ticker,
-        "bullish": bull,
-        "bearish": bear,
-        "risk_tolerance": risk_tolerance,
-        "time_horizon": time_horizon
-    })
+    try:
+        bear = await bearish_research_tool.ainvoke({"ticker": ticker, "analyst_bundle": bundle})
+    except Exception as e:
+        raise ValueError(f"空头研究失败: {str(e)}") from e
+    
+    try:
+        decision = await moderate_debate_tool.ainvoke({
+            "ticker": ticker,
+            "bullish": bull,
+            "bearish": bear,
+            "risk_tolerance": risk_tolerance,
+            "time_horizon": time_horizon
+        })
+    except Exception as e:
+        raise ValueError(f"辩论综合失败: {str(e)}") from e
     
     return {
         "analyses": analyst_data.get("analyses", {}),

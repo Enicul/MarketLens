@@ -66,6 +66,27 @@ def _summarize_sentiment(s: Optional[Dict[str,Any]]) -> str:
     if not s: return "(no sentiment)"
     return "Sentiment: " + ", ".join(f"{k}={v}" for k,v in list(s.items())[:8])
 
+def _summarize_market(m: Optional[Dict[str, Any]]) -> str:
+    if not m: return "(no market data)"
+    stock_info = m.get("stock_basic_info", {})
+    tech_ind = m.get("technical_indicators", {})
+    price_analysis = m.get("price_analysis", {})
+    
+    lines = []
+    if stock_info:
+        lines.append(f"Current: ${stock_info.get('current_price')} ({stock_info.get('change_percent'):+.2f}%)")
+        lines.append(f"52w: ${stock_info.get('low_52w')} - ${stock_info.get('high_52w')}")
+    
+    if tech_ind:
+        mas = tech_ind.get("moving_averages", {})
+        osc = tech_ind.get("oscillators", {})
+        if mas:
+            lines.append(f"MA: {', '.join(f'{k}={v:.2f}' for k,v in list(mas.items())[:3])}")
+        if osc and osc.get("rsi"):
+            lines.append(f"RSI: {osc.get('rsi'):.1f}")
+    
+    return "Market Data:\n" + "\n".join(lines) if lines else "(no market data)"
+
 PROMPT = ChatPromptTemplate.from_messages([
     ("system",
      "You are a bearish equity researcher. Produce a **strict JSON** per schema. "
@@ -75,6 +96,7 @@ PROMPT = ChatPromptTemplate.from_messages([
      "Fundamentals (summary):\n{fund_summary}\n\n"
      "News (summary):\n{news_summary}\n\n"
      "Sentiment (summary):\n{sent_summary}\n\n"
+     "Market & Technical (summary):\n{market_summary}\n\n"
      "Recent debate history:\n{history}\n\n"
      "Latest bull argument:\n{latest_bull}\n\n"
      "JSON Schema:\n{json_schema}\n\n"
@@ -105,6 +127,7 @@ class BearishResearcher:
         fundamentals = analyst_bundle.get("fundamentals") or _first(analyst_bundle, "channels.fundamentals", default={})
         news         = analyst_bundle.get("news")         or _first(analyst_bundle, "channels.news", "news_pack", default={})
         sentiment    = analyst_bundle.get("sentiment")    or _first(analyst_bundle, "channels.sentiment", default=None)
+        market       = analyst_bundle.get("market")       or _first(analyst_bundle, "channels.market", default=None)
         evidence_map_extra = []
         if _sent_ok(sentiment):
             evidence_map_extra.append({
@@ -121,6 +144,7 @@ class BearishResearcher:
         fund_summary = _summarize_fundamentals(fundamentals)
         news_summary = _summarize_news(news)
         sent_summary = _summarize_sentiment(sentiment)
+        market_summary = _summarize_market(market)
         history_txt  = "\n".join(f"{h.get('role')}: {h.get('text')}" for h in (debate_history or [])[-6:]) or "(no history)"
         latest_bull  = latest_bull or "(no bull argument provided)"
         schema_hint  = json.dumps(BearishResearch.model_json_schema(), indent=2)
@@ -128,6 +152,7 @@ class BearishResearcher:
         msgs = PROMPT.format_messages(
             ticker=ticker, market=market or "Unknown", currency=currency or "USD",
             fund_summary=fund_summary, news_summary=news_summary, sent_summary=sent_summary,
+            market_summary=market_summary,
             history=history_txt, latest_bull=latest_bull, json_schema=schema_hint
         )
 

@@ -106,20 +106,24 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     csv_output_dir = project_root / "database" / today / ticker / "market_csv"
     csv_output_dir.mkdir(parents=True, exist_ok=True)
     
-    # 直接调用get_market_csv生成CSV文件
-    print(f"[CSV] 📊 Generating market data CSV for {ticker}")
-    try:
-        csv_result = await get_market_csv.ainvoke({
-            "ticker": ticker,
-            "period": "3mo",
-            "interval": "1d",
-            "output_dir": str(csv_output_dir)
-        })
-        print(f"[CSV] ✅ {ticker} - CSV saved to: {csv_result['csv_path']}")
-        
-    except Exception as e:
-        print(f"[CSV] ❌ {ticker} - Failed to generate CSV: {e}")
-        csv_result = {"error": str(e)}
+    # 直接调用get_market_csv生成CSV文件（仅在需要market数据时）
+    csv_result = None
+    if "market" in intents:
+        print(f"[CSV] 📊 Generating market data CSV for {ticker}")
+        try:
+            csv_result = await get_market_csv.ainvoke({
+                "ticker": ticker,
+                "period": "3mo",
+                "interval": "1d",
+                "output_dir": str(csv_output_dir)
+            })
+            print(f"[CSV] ✅ {ticker} - CSV saved to: {csv_result['csv_path']}")
+            
+        except Exception as e:
+            print(f"[CSV] ❌ {ticker} - Failed to generate CSV: {e}")
+            csv_result = {"error": str(e)}
+    else:
+        print(f"[CSV] ⏭️ Skipping CSV generation (market not requested)")
     
     # Tool mapping for other analyses
     tools_map = {
@@ -162,9 +166,12 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # Assemble results
     output = {
         "ticker": ticker,
-        "csv_generation": csv_result,  # 添加CSV生成结果
         "analyses": {}
     }
+    
+    # 只有在生成了CSV时才添加到输出中
+    if csv_result is not None:
+        output["csv_generation"] = csv_result
     
     # Add cached results
     for intent, data in cached_results.items():
@@ -177,12 +184,22 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # Add fresh results and save to cache
     for intent, result in zip(task_intents, fresh_results):
         if isinstance(result, Exception):
-            print(f"[ERROR] {ticker}/{intent} - {str(result)[:50]}...")
-            output["analyses"][intent] = {
-                "error": str(result),
+            error_msg = str(result)
+            print(f"[ERROR] {ticker}/{intent} - {error_msg[:100]}...")
+            
+            # 提供更详细的错误信息
+            error_details = {
+                "error": error_msg,
+                "error_type": type(result).__name__,
                 "data": None,
                 "cached": False
             }
+            
+            # 如果是sentiment相关的HTML解析错误，提供更友好的错误信息
+            if "sentiment" in intent.lower() and any(keyword in error_msg.lower() for keyword in ["html", "parsed tree", "empty"]):
+                error_details["user_friendly_error"] = "社交媒体数据暂时不可用，可能是网络或反爬虫限制"
+            
+            output["analyses"][intent] = error_details
         else:
             print(f"[SUCCESS] {ticker}/{intent} - data collected")
             output["analyses"][intent] = {
@@ -191,7 +208,10 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
                 "cached": False
             }
             # Save successful results to cache
-            _save_to_cache(ticker, intent, result)
+            try:
+                _save_to_cache(ticker, intent, result)
+            except Exception as cache_error:
+                print(f"[WARNING] Failed to cache {ticker}/{intent}: {cache_error}")
     
     print(f"[ANALYST] ✅ Analysis complete for {ticker}")
     print("=" * 50)
