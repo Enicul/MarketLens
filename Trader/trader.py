@@ -6,8 +6,7 @@ Trader子Agent - 基于LangChain工具调用的智能交易决策系统
 import os
 import json
 import pandas as pd
-import numpy as np
-from typing import Dict, List, Optional
+from typing import Dict, List
 from datetime import datetime
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
@@ -20,14 +19,88 @@ from langchain_openai import ChatOpenAI
 #           Trader Tools               #
 ########################################
 
+def _convert_researcher_to_symbol(ticker, final_decision, analyses):
+    """转换单个researcher数据为symbol格式"""
+    # 提取current_price
+    current_price = 0.0
+    market_data = analyses.get("market", {}).get("data", {})
+    if isinstance(market_data, dict):
+        stock_info = market_data.get("stock_basic_info", {})
+        current_price = stock_info.get("current_price", 0.0)
+    
+    # 从scorecard提取不确定性级别
+    scorecard = final_decision.get("scorecard", {})
+    uncertainty_value = scorecard.get("uncertainty", 0.3)
+    if uncertainty_value >= 0.6:
+        uncertainty_level = "very_high"
+    elif uncertainty_value >= 0.4:
+        uncertainty_level = "high"
+    elif uncertainty_value >= 0.2:
+        uncertainty_level = "medium"
+    else:
+        uncertainty_level = "low"
+    
+    action = final_decision.get("action", {})
+    
+    return {
+        "symbol": ticker,
+        "current_price": current_price,
+        "recommendation": action.get("recommendation", "HOLD"),
+        "confidence": action.get("confidence", 0.5),
+        "rationale": final_decision.get("rationale", ""),
+        "uncertainty_level": uncertainty_level,
+        "use_kronos_prediction": False,
+        "final_decision": {
+            "stance_summary": final_decision.get("stance_summary", {}),
+            "consensus": final_decision.get("consensus", []),
+            "disagreements": final_decision.get("disagreements", []),
+            "key_upside": final_decision.get("key_upside", []),
+            "key_risks": final_decision.get("key_risks", []),
+            "scorecard": scorecard,
+            "action": action,
+            "triggers_up": action.get("triggers_up", []),
+            "triggers_down": action.get("triggers_down", []),
+            "evidence_citations": final_decision.get("evidence_citations", [])
+        }
+    }
+
 @tool
 def load_research_data(json_file_path: str) -> str:
-    """加载和解析研究团队的分析结论"""
+    """加载和解析研究团队的分析结论，支持单股票和多股票"""
     try:
         with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        print(f"✅ 成功加载研究数据: {len(data.get('symbols', []))}个股票")
-        return json.dumps(data, ensure_ascii=False)
+        
+        # 情况1: 单个researcher输出
+        if "final_decision" in data and "ticker" in data:
+            symbol = _convert_researcher_to_symbol(
+                data.get("ticker", "UNKNOWN"),
+                data.get("final_decision", {}),
+                data.get("analyses", {})
+            )
+            converted_data = {"symbols": [symbol]}
+            print(f"✅ 成功加载研究数据: 1个股票 (Researcher格式)")
+            return json.dumps(converted_data, ensure_ascii=False)
+        
+        # 情况2: 多个researcher输出列表
+        elif isinstance(data, list):
+            symbols = []
+            for item in data:
+                if "final_decision" in item and "ticker" in item:
+                    symbol = _convert_researcher_to_symbol(
+                        item.get("ticker", "UNKNOWN"),
+                        item.get("final_decision", {}),
+                        item.get("analyses", {})
+                    )
+                    symbols.append(symbol)
+            converted_data = {"symbols": symbols}
+            print(f"✅ 成功加载研究数据: {len(symbols)}个股票 (Researcher列表格式)")
+            return json.dumps(converted_data, ensure_ascii=False)
+        
+        # 情况3: 原始symbols格式
+        else:
+            print(f"✅ 成功加载研究数据: {len(data.get('symbols', []))}个股票")
+            return json.dumps(data, ensure_ascii=False)
     except Exception as e:
         return json.dumps({"error": f"加载研究数据失败: {e}"}, ensure_ascii=False)
 
@@ -234,11 +307,10 @@ class Trader:
     
     def __init__(self, openai_api_key: str = None):
         """初始化Trader Agent"""
-        # 设置OpenAI API密钥
-        if openai_api_key:
-            os.environ['OPENAI_API_KEY'] = openai_api_key
-        elif not os.environ.get('OPENAI_API_KEY'):
-            os.environ['OPENAI_API_KEY'] = "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"
+        # 设置本地模型API
+        if not openai_api_key:
+            openai_api_key = "dummy-key"  # 本地模型不需要真实API密钥
+        os.environ['OPENAI_API_KEY'] = openai_api_key
         
         self.agent_executor = self._build_agent()
         print("✅ Trader Agent初始化成功")
@@ -252,20 +324,28 @@ class Trader:
              "你是一个专业的量化交易Agent，负责分析研究团队的结论并生成交易决策。\n"
              "工作流程：\n"
              "1. 使用load_research_data工具加载研究团队的分析结论\n"
+             "   - 数据包含完整的final_decision信息（多空观点、共识、分歧、风险、上行空间等）\n"
              "2. 根据研究结论的不确定性和建议，决定是否使用run_kronos_prediction工具进行价格预测\n"
              "3. 使用generate_decision_card工具为每个股票生成标准化决策卡\n"
              "决策原则：\n"
+             "- 参考final_decision中的完整信息：stance_summary（多空论点）、consensus（共识）、disagreements（分歧）\n"
+             "- 重点关注key_upside（上行因素）和key_risks（关键风险）\n"
+             "- 使用scorecard（评分卡）评估多空强度和不确定性\n"
+             "- triggers_up/triggers_down提供了触发条件参考\n"
              "- 当uncertainty_level为high或very_high时，建议使用Kronos预测\n"
              "- 当研究结论中use_kronos_prediction为true时，必须使用预测\n"
-             "- 综合研究结论和预测结果做出最终决策\n"
-             "- 严格控制风险，合理设置仓位和止损止盈\n"
+             "- 综合所有信息做出最终决策，严格控制风险\n"
              "请按照工作流程，智能选择和调用工具完成任务。"),
             MessagesPlaceholder("chat_history"),
             ("user", "{input}"),
             MessagesPlaceholder("agent_scratchpad"),
         ])
         
-        llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1)
+        llm = ChatOpenAI(
+            model="qwq-32b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
         agent = create_tool_calling_agent(llm, tools, prompt)
         
         return AgentExecutor(

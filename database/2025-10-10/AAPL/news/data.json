@@ -1,0 +1,169 @@
+{
+  "ticker": "AAPL",
+  "channel": "news",
+  "overall_stance": "bullish",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-10T09:20:00+00:00",
+      "headline": "Warren Buffett's AI Bets: 24% of Berkshire Hathaway's $304 Billion Stock Portfolio Is Held in These 2 Artificial Intelligence  ( AI )  Growth Stocks",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/10/warren-buffett-ai-stocks-berkshire-hathaway/"
+      ],
+      "summary": [
+        "Warren Buffett has significant investments in AI growth stocks",
+        "Berkshire Hathaway's portfolio reflects confidence in AI sector"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-10T09:11:07+00:00",
+      "headline": "Irving Azoff Slams YouTube For Paying Artists Just One-Fifth Of What Spotify And Apple Do: '...Nobody Stands Up To Them' - Apple  ( NASDAQ:AAPL ) , Amazon.com  ( NASDAQ:AMZN ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/tech/25/10/48142827/irving-azoff-slams-youtube-for-paying-artists-just-one-fifth-of-what-spotify-and-apple-do-nobody-sta"
+      ],
+      "summary": [
+        "Irving Azoff criticizes YouTube for low artist payments",
+        "Apple is mentioned positively in comparison to YouTube and Spotify"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-10T08:55:00+00:00",
+      "headline": "5 Monster Stocks to Hold for the Next 20 Years",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/10/5-monster-stocks-to-hold-for-the-next-20-years/"
+      ],
+      "summary": [
+        "AAPL is mentioned as one of the 'Monster Stocks' to hold long-term",
+        "Focus on companies with wide moats and adaptability is emphasized"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-10T08:20:00+00:00",
+      "headline": "Stock Split Watch: Is This Magnificent Seven Stock  ( That's Never Done a Split )  Next?",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/10/stock-split-watch-is-this-magnificent-seven-stock/"
+      ],
+      "summary": [
+        "Discussion of potential stock split for AAPL",
+        "Company focuses on winning in the AI sector"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-10T07:35:00+00:00",
+      "headline": "Prediction: These 4 Artificial Intelligence  ( AI )  Stocks Will Be Worth More Than $7 Trillion by 2030",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/10/prediction-these-4-ai-stocks-will-be-worth-more-th/"
+      ],
+      "summary": [
+        "AI stocks predicted to grow significantly by 2030",
+        "AAPL is among the top AI stocks mentioned"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-10T04:26:00+00:00",
+      "headline": "Mar Vista U.S. Quality Q3 2025 Top Contributors And Detractors",
+      "evidence": [
+        "https://finnhub.io/api/news?id=61f9cfef1b5114457fb84a0afa89e92db3f565ce6681014b6d15c8516819c147"
+      ],
+      "summary": [
+        "Apple was a top contributor to Mar Vista U.S. Quality portfolio in Q3 2025",
+        "Indicates strong performance relative to peers"
+      ],
+      "stance": "bullish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-09T22:08:12+00:00",
+      "headline": "Stock Market Today: Markets Pull Back From Records as Gold Retreats and Investors Take Profits",
+      "evidence": [
+        "https://www.fool.com/data-news/2025/10/09/stock-market-today-markets-pull-back-from-records/"
+      ],
+      "summary": [
+        "Stocks slipped as investors took profits after record highs",
+        "Gold retreated from historic levels"
+      ],
+      "stance": "bearish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AAPL"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-10-09T21:45:04+00:00",
+      "headline": "Apple  ( AAPL )  Declines More Than Market: Some Information for Investors",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2765790/apple-aapl-declines-more-than-market-some-information-for-investors"
+      ],
+      "summary": [
+        "Apple (AAPL) closed at $254.04",
+        "Stock declined by -1.56% compared to the last close"
+      ],
+      "stance": "bearish",
+      "stance_confidence": 0.6,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-10T11:16:00.973769+00:00"
+}
