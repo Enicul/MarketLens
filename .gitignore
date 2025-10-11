@@ -63,3 +63,21 @@ database/  # Cache directory for stock analysis data
 # Environment variables
 .env
 .temp/
+
+# Cookies and session data
+cookies/
+*.cookies
+state.json
+
+# Dataset directories
+dataset/
+datasets/
+**/dataset/
+**/datasets/
+# Database directories
+database/
+**/database/
+
+# Additional cache files
+*.cache
+*.session
