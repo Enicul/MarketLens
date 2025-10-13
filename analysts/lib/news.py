@@ -1,6 +1,6 @@
 # analysts/news.py
 from __future__ import annotations
-import os, re, json, hashlib, asyncio, time
+import os, re, json, hashlib, asyncio, time, logging
 from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any, Optional
 
@@ -15,6 +15,9 @@ from langchain.prompts import ChatPromptTemplate
 
 from dotenv import load_dotenv
 load_dotenv()
+
+# 抑制trafilatura的ERROR日志输出（这些错误不影响功能）
+logging.getLogger('trafilatura').setLevel(logging.CRITICAL)
 
 
 

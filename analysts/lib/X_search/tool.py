@@ -45,7 +45,7 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
             # 分析层
             print(f"[SENTIMENT] 🔍 Analyzing sentiment...")
             analyzer = AdvancedSentimentAnalyzer()
-            metrics, top_tweets = analyzer.analyze(tweets)
+            metrics, top_tweets = analyzer.analyze(tweets, top_k=Config.TOP_TWEETS_TO_SAVE)
             
             # 数据组装层 - 专业的数据结构
             result = {

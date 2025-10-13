@@ -50,8 +50,13 @@ class AdvancedSentimentAnalyzer:
     def __init__(self):
         self.patterns = SentimentPatterns()
     
-    def analyze(self, tweets: List[Tweet]) -> Tuple[SentimentMetrics, List[Dict[str, Any]]]:
-        """核心分析方法"""
+    def analyze(self, tweets: List[Tweet], top_k: int = 30) -> Tuple[SentimentMetrics, List[Dict[str, Any]]]:
+        """核心分析方法
+        
+        Args:
+            tweets: 推文列表
+            top_k: 保存前K条最重要的推文（默认10条，设置为None保存全部）
+        """
         if not tweets:
             raise ValueError("No tweets to analyze. Maybe try a stock people actually care about?")
         
@@ -67,8 +72,9 @@ class AdvancedSentimentAnalyzer:
             tweets, weighted_sentiments, weighted_sentiment, total_influence
         )
         
-        # 处理推文详情
-        tweet_details = self._process_top_tweets(tweets)
+        # 处理推文详情 - 如果top_k为None则保存全部
+        save_count = top_k if top_k is not None else len(tweets)
+        tweet_details = self._process_top_tweets(tweets, save_count)
         
         return metrics, tweet_details
     
@@ -143,13 +149,18 @@ class AdvancedSentimentAnalyzer:
             confidence_level=min(1.0, len(tweets) / 50)
         )
     
-    def _process_top_tweets(self, tweets: List[Tweet]) -> List[Dict[str, Any]]:
-        """处理热门推文"""
+    def _process_top_tweets(self, tweets: List[Tweet], top_k: int = 30) -> List[Dict[str, Any]]:
+        """处理热门推文
+        
+        Args:
+            tweets: 所有推文列表
+            top_k: 保存前K条最重要的推文（默认10条）
+        """
         sorted_tweets = sorted(
             tweets, 
             key=lambda t: t.engagement_score ** 0.5 * (1 + len(t.content) / 280), 
             reverse=True
-        )[:10]
+        )[:top_k]
         
         return [
             {
