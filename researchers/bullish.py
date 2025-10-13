@@ -123,7 +123,12 @@ PROMPT = ChatPromptTemplate.from_messages([
 # ===== Researcher =====
 class BullishResearcher:
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0, timeout: int = 30, retries: int = 2):
-        self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
+        # self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
+        self.llm = ChatOpenAI(
+            model="qwen/qwen3-235b-a22b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
         self.retries = retries
 
     async def run(

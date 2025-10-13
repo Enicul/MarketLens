@@ -20,7 +20,12 @@ load_dotenv()
 sys.path.append(os.path.dirname(__file__))
 
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+llm = ChatOpenAI(
+            model="qwen/qwen3-235b-a22b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
 prompt = ChatPromptTemplate.from_messages(
