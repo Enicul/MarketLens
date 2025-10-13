@@ -310,6 +310,7 @@ def build_main_agent(config=None, session_id="default"):
     prompt = ChatPromptTemplate.from_messages(messages)
     
     llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='') 
+    #llm = ChatOpenAI(model="qwen/qwen3-235b-a22b", temperature=0.1, base_url="https://zehenglmstudio.cpolar.top/v1")
     agent = create_tool_calling_agent(llm, tools, prompt)
     
     executor = AgentExecutor(

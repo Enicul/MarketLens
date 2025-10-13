@@ -127,7 +127,7 @@ class BearishResearcher:
         fundamentals = analyst_bundle.get("fundamentals") or _first(analyst_bundle, "channels.fundamentals", default={})
         news         = analyst_bundle.get("news")         or _first(analyst_bundle, "channels.news", "news_pack", default={})
         sentiment    = analyst_bundle.get("sentiment")    or _first(analyst_bundle, "channels.sentiment", default=None)
-        market       = analyst_bundle.get("market")       or _first(analyst_bundle, "channels.market", default=None)
+        market_data  = analyst_bundle.get("market")       or _first(analyst_bundle, "channels.market", default=None)
         evidence_map_extra = []
         if _sent_ok(sentiment):
             evidence_map_extra.append({
@@ -144,7 +144,7 @@ class BearishResearcher:
         fund_summary = _summarize_fundamentals(fundamentals)
         news_summary = _summarize_news(news)
         sent_summary = _summarize_sentiment(sentiment)
-        market_summary = _summarize_market(market)
+        market_summary = _summarize_market(market_data)
         history_txt  = "\n".join(f"{h.get('role')}: {h.get('text')}" for h in (debate_history or [])[-6:]) or "(no history)"
         latest_bull  = latest_bull or "(no bull argument provided)"
         schema_hint  = json.dumps(BearishResearch.model_json_schema(), indent=2)

@@ -76,7 +76,7 @@ def _load_from_cache(ticker: str, intent: str) -> dict | None:
     cache_path = _get_cache_path(today, ticker, intent)
     
     if cache_path.exists():
-        with open(cache_path, 'r') as f:
+        with open(cache_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     return None
 
@@ -86,7 +86,7 @@ def _save_to_cache(ticker: str, intent: str, data: dict) -> None:
     cache_path = _get_cache_path(today, ticker, intent)
     
     cache_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(cache_path, 'w') as f:
+    with open(cache_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 # ---- Helper the Main Manager would call ----

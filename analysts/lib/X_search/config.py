@@ -12,9 +12,12 @@ class Config:
     DISABLE_MEDIA = True
     
     # 爬取设置
-    MAX_TWEETS_PER_STOCK = 80
+    MAX_TWEETS_PER_STOCK = 40
     MAX_SCROLL_ATTEMPTS = 50
     PARALLEL_PAGES = 8
+    
+    # 数据保存设置
+    TOP_TWEETS_TO_SAVE = 30  # 保存前30条最重要的推文（设为None则保存全部）
     
     # 文件路径 - 专业的数据文件管理
     _MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
