@@ -2,6 +2,7 @@ import gradio as gr
 import time
 from typing import Callable, Optional, Dict
 from langchain.agents import AgentExecutor
+from langchain_core.messages import HumanMessage, AIMessage
 
 
 class MarketLensChatbox:
@@ -142,50 +143,50 @@ class MarketLensChatbox:
         self, 
         agent_executor: AgentExecutor, 
         user_input: str, 
-        session_id: str,
+        chat_history: list,
         status_callback: Optional[Callable] = None
     ):
-        """Stream Agent response with typewriter effect and status updates"""
+        """执行Agent Loop并流式输出响应"""
         try:
-            # Update status when starting
+            # 更新状态
             if status_callback:
                 status_callback("🤖 AI Agent is thinking...")
             
-            # Call Agent
-            response = agent_executor.invoke({"input": user_input})
+            # 构建消息历史（真正的Agent Loop）
+            messages = []
+            for msg in chat_history:
+                if msg["role"] == "user":
+                    messages.append(HumanMessage(content=msg["content"]))
+                else:
+                    messages.append(AIMessage(content=msg["content"]))
+            
+            # 调用Agent，传入完整的对话历史
+            response = agent_executor.invoke({
+                "input": user_input,
+                "messages": messages
+            })
             output = response.get("output", "Sorry, no response received.")
             
-            # Save to history (使用新的历史管理器)
-            from chat_history_manager import get_history_manager
-            history_manager = get_history_manager()
-            history_manager.add(session_id, user_input, output)
-            
-            # Check intermediate steps for tool calls
+            # 检查中间步骤（用于状态更新）
             steps = response.get("intermediate_steps", [])
             for step in steps:
                 if len(step) > 0 and hasattr(step[0], "tool"):
                     tool_name = step[0].tool
-                    if tool_name == "analyze_stock" and len(step) > 1:
-                        # Parse the tool input to get details
-                        tool_input = step[0].tool_input
-                        if isinstance(tool_input, dict):
-                            ticker = tool_input.get("ticker", "")
-                            intent = tool_input.get("intent", "")
-                            if status_callback:
-                                status_callback(f"📊 Calling {intent} analysis for {ticker}...")
+                    if status_callback:
+                        status_callback(f"🔧 Using tool: {tool_name}")
             
-            # Stream output character by character
+            # 流式输出
             partial = ""
             for i, char in enumerate(output):
                 partial += char
                 yield partial
-                # Pause slightly at punctuation marks
+                # 标点符号处稍作停顿
                 if char in "。！？，；：.!?,;:":
-                    time.sleep(0.2)
+                    time.sleep(0.1)
                 else:
-                    time.sleep(0.03)  # Delay per character
+                    time.sleep(0.02)
             
-            # Clear status when done
+            # 清除状态
             if status_callback:
                 status_callback("")
                     
@@ -197,14 +198,10 @@ class MarketLensChatbox:
         agent_builder: Callable,
         enabled_analysis_types: Dict[str, bool]
     ) -> gr.Blocks:
-        """Create the complete Gradio interface with control panel and chat"""
+        """创建Gradio界面，实现真正的Agent Loop"""
         
-        # Use a fixed session ID for now to maintain history across refreshes
-        # In production, you might want to use user authentication or cookies
-        session_id = "default_session"
-        
-        # Build initial agent with session ID
-        main_agent, agent_session_id = agent_builder(enabled_analysis_types, session_id)
+        # 初始化Agent（只创建一次）
+        main_agent = agent_builder(enabled_analysis_types)
         
         with gr.Blocks(title="Market Lens AI Agent", css=self.CSS, theme=gr.themes.Soft()) as demo:
             with gr.Column(elem_classes=["main-container"]):
@@ -264,12 +261,12 @@ class MarketLensChatbox:
                 else:
                     return f"📊 Enabled: {', '.join(enabled)}"
             
-            # Main response function (streaming) with status updates
+            # 主响应函数（实现Agent Loop）
             def respond(user_msg: str, chat_hist: list, news, fundamentals, market, sentiment):
                 if not user_msg.strip():
                     return "", chat_hist, gr.update(visible=False)
                 
-                # Update global config
+                # 更新配置
                 current_config = {
                     "news": news,
                     "fundamentals": fundamentals,
@@ -278,25 +275,26 @@ class MarketLensChatbox:
                 }
                 update_config_status(news, fundamentals, market, sentiment)
                 
-                # Always rebuild agent to get latest history
-                nonlocal main_agent, agent_session_id
-                enabled_analysis_types.update(current_config)
-                main_agent, agent_session_id = agent_builder(enabled_analysis_types, session_id)
+                # 如果配置改变，重建Agent
+                if enabled_analysis_types != current_config:
+                    nonlocal main_agent
+                    enabled_analysis_types.update(current_config)
+                    main_agent = agent_builder(enabled_analysis_types)
                 
-                # Add user message (new format)
+                # 添加用户消息
                 chat_hist = chat_hist + [{"role": "user", "content": user_msg}]
                 yield "", chat_hist, gr.update(value="🔄 Processing...", visible=True)
                 
-                # Status update function
+                # 状态更新函数
                 current_status = {"value": ""}
                 def update_status(msg):
                     current_status["value"] = msg
                 
-                # Stream response generation with session ID
+                # 流式生成响应（传入完整历史）
                 assistant_message = {"role": "assistant", "content": ""}
                 chat_hist.append(assistant_message)
                 
-                for partial in self.stream_response(main_agent, user_msg, session_id, update_status):
+                for partial in self.stream_response(main_agent, user_msg, chat_hist[:-1], update_status):
                     assistant_message["content"] = partial
                     status_msg = current_status["value"]
                     if status_msg:
@@ -304,7 +302,7 @@ class MarketLensChatbox:
                     else:
                         yield "", chat_hist, gr.update(visible=False)
                 
-                # Hide status after completion
+                # 隐藏状态
                 yield "", chat_hist, gr.update(visible=False)
             
             # Clear function

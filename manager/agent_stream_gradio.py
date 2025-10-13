@@ -19,9 +19,7 @@ from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import HumanMessage
 from gradio_chatbox import MarketLensChatbox
-from chat_history_manager import get_history_manager
 
 # Import the real financial analysis Agent
 from analysts.analyst import analyze_for_manager
@@ -109,6 +107,8 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         # 检查是否有部分分析失败，但仍有成功的数据
         successful_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is None]
         failed_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is not None]
+
+        print(f"[ANALYST] successful_analyses: {successful_analyses}")
         
         if failed_analyses and successful_analyses:
             print(f"[ANALYST] ⚠️ 部分分析失败: {', '.join(failed_analyses)} (成功: {', '.join(successful_analyses)})")
@@ -193,7 +193,7 @@ def call_trader(research_data: str, csv_file_path: str = None) -> str:
         if "error" in data:
             return json.dumps({"error": "Research数据包含错误，无法生成交易决策", "details": data.get("error")}, ensure_ascii=False)
         
-        print(f"[TRADER] 💹 生成交易决策")
+        print("[TRADER] 💹 生成交易决策")
         print(f"[DEBUG] Research data keys: {list(data.keys())}")
         
         # Save researcher data directly (Trader will handle format conversion)
@@ -241,32 +241,18 @@ def call_trader(research_data: str, csv_file_path: str = None) -> str:
 #        Main Agent Configuration      #
 ########################################
 
-# 历史管理器单例（优雅的替代全局变量）
-history_manager = get_history_manager()
-
-
-def build_main_agent(config=None, session_id="default"):
-    """Main Agent: Orchestrates conversations, maintains context, handles files, and delegates to specialized analysis agents."""
+def build_main_agent(config=None):
+    """创建一个简洁的AI Agent，不需要复杂的历史管理"""
     tools = [read_file, write_file, call_analyst, call_researcher, call_trader]
     
-    # 使用专业的历史管理器（支持多进程同步）
-    history_manager.reload()
-    
-    # 获取历史消息（限制为最近10轮对话）
-    history_messages = history_manager.get_messages(session_id, limit=10)
-    
-    print(f"[DEBUG] Loading history for session: {session_id}")
-    print(f"[DEBUG] Found {len(history_messages)} history messages")
-    
-    # Dynamic prompt based on enabled analysis types
+    # 动态配置描述
     if config:
         enabled_types = [k for k, v in config.items() if v]
-        analysis_desc = f"当前启用的分析类型: {', '.join(enabled_types)}" if enabled_types else "所有分析类型都已禁用"
+        analysis_desc = f"当前启用: {', '.join(enabled_types)}" if enabled_types else "所有分析类型都已禁用"
     else:
         analysis_desc = "所有分析类型都已启用"
     
-    # Build messages with history
-    messages = [
+    prompt = ChatPromptTemplate.from_messages([
         ("system", 
          f"你是 Market Lens AI 主 Agent，专业的金融市场分析助手。\n\n"
          f"🎯 目标: 理解用户需求 → 执行分析流程 → 交付专业洞察\n\n"
@@ -279,49 +265,30 @@ def build_main_agent(config=None, session_id="default"):
          f"- 完整流程: call_analyst → call_researcher → call_trader\n"
          f"- 研究分析: call_analyst → call_researcher\n"
          f"- 快速查询: 仅 call_analyst\n\n"
-         f"💡 分析类型组合建议:\n"
-         f"- 全面分析: ['news','fundamentals','market','sentiment']\n"
-         f"- 快速概览: ['news','market']\n"
-         f"- 基本面研究: ['fundamentals','sentiment']\n\n"
          f"⚙️ 配置状态: {analysis_desc}\n\n"
          f"📌 关键注意事项:\n"
-         f"- call_researcher 的 analyst_data 参数：直接传递call_analyst的完整返回值（JSON字符串）\n"
-         f"- call_trader 的 research_data 参数：直接传递call_researcher的完整返回值（JSON字符串）\n"
-         f"- 不要修改、解析或重新格式化工具返回的JSON数据，直接传递给下一个工具\n"
-         f"- 如果用户明确只要某个步骤，可以单独执行\n"
-         f"- 如果数据收集部分失败，仍有可用数据时，继续处理成功的数据\n"
+         f"- 直接传递工具返回的JSON数据，不要解析或重新格式化\n"
+         f"- 如果部分分析失败但仍有可用数据，继续处理\n"
          f"- 始终用中文回复用户"),
-    ]
+        MessagesPlaceholder("messages"),
+        ("human", "{input}"),
+        MessagesPlaceholder("agent_scratchpad")
+    ])
     
-    # Add history messages if available (limit to last 10 exchanges)
-    if history_messages:
-        recent_history = history_messages[-20:]  # Last 10 exchanges (user + assistant)
-        for msg in recent_history:
-            role = "human" if isinstance(msg, HumanMessage) else "assistant"
-            # 转义花括号以避免模板解析错误
-            content = msg.content.replace('{', '{{').replace('}', '}}')
-            messages.append((role, content))
-            print(f"[DEBUG] Added history: {role[:4]}: {msg.content[:50]}...")
-    
-    # Add placeholders for current conversation
-    messages.append(("human", "{input}"))
-    messages.append(MessagesPlaceholder("agent_scratchpad"))
-    
-    prompt = ChatPromptTemplate.from_messages(messages)
-    
-    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='') 
-    #llm = ChatOpenAI(model="qwen/qwen3-235b-a22b", temperature=0.1, base_url="https://zehenglmstudio.cpolar.top/v1")
+    # llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='')
+    llm = ChatOpenAI(
+            model="qwen/qwen3-235b-a22b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
     agent = create_tool_calling_agent(llm, tools, prompt)
     
-    executor = AgentExecutor(
+    return AgentExecutor(
         agent=agent,
         tools=tools,
         verbose=False,
         handle_parsing_errors=True,
     )
-    
-    # Return a tuple with executor and session_id
-    return (executor, session_id)
 
 ########################################
 #            Gradio Interface          #
@@ -342,8 +309,6 @@ if __name__ == "__main__":
     print("="*60)
     
     demo = create_chatbot()
-    # 启动时清空历史
-    history_manager.clear()
     
     print("✅ Gradio interface ready!")
     print("📱 Access at: http://localhost:7860")
@@ -354,5 +319,5 @@ if __name__ == "__main__":
         server_name="0.0.0.0", 
         server_port=7860, 
         share=False, 
-        debug=False  # 关闭debug模式减少日志
+        debug=False
     )

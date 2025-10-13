@@ -203,7 +203,13 @@ async def fetch_rss_fallback(lookback_hours: int = 24) -> List[Dict[str, Any]]:
     return results
 
 # ---------- LLM summarizer ----------
-_llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# _llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+_llm = ChatOpenAI(
+            model="qwen/qwen3-235b-a22b",
+            temperature=0.1,
+            base_url="https://zehenglmstudio.cpolar.top/v1"
+        )
+
 
 
 _prompt = ChatPromptTemplate.from_messages([
