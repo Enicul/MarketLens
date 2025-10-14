@@ -112,12 +112,12 @@ def _sent_ok(s):
 
 class BearishResearcher:
     def __init__(self, model="gpt-4o-mini", temperature=0, timeout=30):
-        # self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
-        self.llm = ChatOpenAI(
-            model="qwen/qwen3-235b-a22b",
-            temperature=0.1,
-            base_url="https://zehenglmstudio.cpolar.top/v1"
-        )
+        self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
+        # self.llm = ChatOpenAI(
+        #     model="qwen/qwen3-235b-a22b",
+        #     temperature=0.1,
+        #     base_url="https://zehenglmstudio.cpolar.top/v1"
+        # )
 
     async def run(
         self,

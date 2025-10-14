@@ -3,7 +3,7 @@ import json
 import asyncio
 import sys
 import logging
-
+from datetime import datetime
 from shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -118,31 +118,31 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         elif failed_analyses and not successful_analyses:
             print(f"[ANALYST] ❌ 所有分析都失败: {', '.join(failed_analyses)}")
             result["complete_failure"] = True
-            
-        return json.dumps(result, ensure_ascii=False)
+        today = datetime.now().strftime("%Y-%m-%d")
+        analyst_data_path = f"database/{today}/{ticker}/analyst_{ticker}.json"
+        with open(analyst_data_path, "w", encoding="utf-8") as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+        return analyst_data_path
     except Exception as e:
         return json.dumps({"error": f"数据收集失败: {str(e)}"}, ensure_ascii=False)
 
 
 @tool
-def call_researcher(ticker: str, analyst_data: str) -> str:
+def call_researcher(ticker: str, analyst_data_path: str) -> str:
     """基于Analyst数据进行深度研究，生成多空辩论和投资建议。
     
     Args:
         ticker: 股票代码
-        analyst_data: call_analyst返回的JSON数据（必须先调用call_analyst）
+        analyst_data_path: call_analyst返回的JSON数据文件路径（必须先调用call_analyst）
     
     Returns:
         JSON格式的研究报告（包含多空观点、辩论、投资建议）
     """
     try:
-        # Parse analyst data with better error handling
-        if isinstance(analyst_data, str):
-            # Try to clean up potential formatting issues
-            analyst_data = analyst_data.strip()
-            data = json.loads(analyst_data)
-        else:
-            data = analyst_data
+        # Try to clean up potential formatting issues
+        analyst_data_path = analyst_data_path.strip()
+        with open(analyst_data_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
         
         if "error" in data:
             return json.dumps({"error": "Analyst数据包含错误，无法进行研究", "details": data.get("error")}, ensure_ascii=False)
@@ -155,13 +155,17 @@ def call_researcher(ticker: str, analyst_data: str) -> str:
         asyncio.set_event_loop(loop)
         result = loop.run_until_complete(research_for_manager(ticker.upper(), data))
         loop.close()
-        
-        return json.dumps(result, ensure_ascii=False)
+        today = datetime.now().strftime("%Y-%m-%d")
+        researcher_data_path = f"database/{today}/{ticker}/researcher_{ticker}.json"
+        with open(researcher_data_path, "w", encoding="utf-8") as f:
+            json.dump(result, f, ensure_ascii=False, indent=2)
+
+        return researcher_data_path
     except json.JSONDecodeError as e:
         return json.dumps({
             "error": "analyst_data格式错误，需要有效的JSON",
             "details": str(e),
-            "received_type": str(type(analyst_data))
+            "received_type": str(type(researcher_data_path))
         }, ensure_ascii=False)
     except Exception as e:
         import traceback
@@ -172,23 +176,21 @@ def call_researcher(ticker: str, analyst_data: str) -> str:
 
 
 @tool
-def call_trader(research_data: str, csv_file_path: str = None) -> str:
+def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None) -> str:
     """基于Researcher报告生成交易决策，可选使用Kronos模型预测。
     
     Args:
-        research_data: call_researcher返回的JSON数据（必须先调用call_researcher）
+        ticker: 股票代码
+        research_data_path: call_researcher返回的JSON数据文件路径（必须先调用call_researcher）
         csv_file_path: 可选，CSV文件路径（用于Kronos预测，来自analyst的market数据）
     
     Returns:
         JSON格式的交易决策卡
     """
     try:
-        # Parse research data with better error handling
-        if isinstance(research_data, str):
-            research_data = research_data.strip()
-            data = json.loads(research_data)
-        else:
-            data = research_data
+        research_data_path = research_data_path.strip()
+        with open(research_data_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
         
         if "error" in data:
             return json.dumps({"error": "Research数据包含错误，无法生成交易决策", "details": data.get("error")}, ensure_ascii=False)
@@ -215,7 +217,11 @@ def call_trader(research_data: str, csv_file_path: str = None) -> str:
             trader = Trader()
             csv_files = [csv_file_path] if csv_file_path else None
             result = trader.analyze_and_decide(temp_research_file, csv_files=csv_files)
-            return result
+            today = datetime.now().strftime("%Y-%m-%d")
+            trader_data_path = f"database/{today}/{ticker}/trader_{ticker}.json"
+            with open(trader_data_path, "w", encoding="utf-8") as f:
+                json.dump(result, f, ensure_ascii=False, indent=2)
+            return trader_data_path
         finally:
             # Always cleanup temp file
             try:
@@ -228,7 +234,7 @@ def call_trader(research_data: str, csv_file_path: str = None) -> str:
         return json.dumps({
             "error": "research_data格式错误，需要有效的JSON",
             "details": str(e),
-            "received_type": str(type(research_data))
+            "received_type": str(type(research_data_path))
         }, ensure_ascii=False)
     except Exception as e:
         import traceback
@@ -275,12 +281,12 @@ def build_main_agent(config=None):
         MessagesPlaceholder("agent_scratchpad")
     ])
     
-    # llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='')
-    llm = ChatOpenAI(
-            model="qwen/qwen3-235b-a22b",
-            temperature=0.1,
-            base_url="https://zehenglmstudio.cpolar.top/v1"
-        )
+    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='')
+    # llm = ChatOpenAI(
+    #         model="qwen/qwen3-235b-a22b",
+    #         temperature=0.1,
+    #         base_url="https://zehenglmstudio.cpolar.top/v1"
+    #     )
     agent = create_tool_calling_agent(llm, tools, prompt)
     
     return AgentExecutor(
