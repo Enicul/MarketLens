@@ -342,10 +342,10 @@ class Trader:
         ])
         
         llm = ChatOpenAI(
-            model="qwq-32b",
-            temperature=0.1,
-            base_url="https://zehenglmstudio.cpolar.top/v1"
-        )
+                model="qwen/qwen3-235b-a22b",
+                temperature=0.1,
+                base_url="https://zehenglmstudio.cpolar.top/v1"
+            )
         agent = create_tool_calling_agent(llm, tools, prompt)
         
         return AgentExecutor(

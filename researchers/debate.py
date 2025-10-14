@@ -193,12 +193,12 @@ def _ensure_measurable_triggers(trigs: List[str], fallback: List[str]) -> List[s
 # ========= Moderator =========
 class DebateModerator:
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0, timeout: int = 40, retries: int = 2):
-        # self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
-        self.llm = ChatOpenAI(
-            model="qwen/qwen3-235b-a22b",
-            temperature=0.1,
-            base_url="https://zehenglmstudio.cpolar.top/v1"
-        )
+        self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
+        # self.llm = ChatOpenAI(
+        #     model="qwen/qwen3-235b-a22b",
+        #     temperature=0.1,
+        #     base_url="https://zehenglmstudio.cpolar.top/v1"
+        # )
         self.retries = retries
 
     @staticmethod
