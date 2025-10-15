@@ -6,7 +6,7 @@ Trader子Agent - 基于LangChain工具调用的智能交易决策系统
 import os
 import json
 import pandas as pd
-from typing import Dict, List
+from typing import Dict, List, Optional
 from datetime import datetime
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
@@ -208,7 +208,7 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
 
 @tool
 def generate_decision_card(symbol: str, current_price: float, recommendation: str, 
-                          confidence: float, reasoning: str, prediction_data: str = None) -> str:
+                          confidence: float, reasoning: str, prediction_data: Optional[str] = None) -> str:
     """生成标准化交易决策卡"""
     try:
         # 解析预测数据
