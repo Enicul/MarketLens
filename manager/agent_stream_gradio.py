@@ -221,7 +221,7 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
             trader_data_path = f"database/{today}/{ticker}/trader_{ticker}.json"
             with open(trader_data_path, "w", encoding="utf-8") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
-            return trader_data_path
+            return result
         finally:
             # Always cleanup temp file
             try:
