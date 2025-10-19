@@ -224,10 +224,7 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
             print(f"[ANALYST] ⚠️ 跳过已禁用: {', '.join(disabled_intents)}")
         
         # Execute analyst data collection
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        result = loop.run_until_complete(analyze_for_manager(ticker.upper(), enabled_intents))
-        loop.close()
+        result = asyncio.run(analyze_for_manager(ticker.upper(), enabled_intents))
         
         if disabled_intents:
             result["disabled_intents"] = disabled_intents
@@ -279,10 +276,7 @@ def call_researcher(ticker: str, analyst_data_path: str) -> str:
         print(f"[DEBUG] Analyst data keys: {list(data.keys())}")
         
         # Execute researcher analysis
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        result = loop.run_until_complete(research_for_manager(ticker.upper(), data))
-        loop.close()
+        result = asyncio.run(research_for_manager(ticker.upper(), data))
         today = datetime.now().strftime("%Y-%m-%d")
         researcher_data_path = f"database/{today}/{ticker}/researcher_{ticker}.json"
         with open(researcher_data_path, "w", encoding="utf-8") as f:
@@ -449,7 +443,10 @@ MessagesPlaceholder("messages"),
         MessagesPlaceholder("agent_scratchpad")
     ])
     
-    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, streaming=True, api_key='')
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    if not openai_api_key:
+        raise RuntimeError("OPENAI_API_KEY is not set. Please configure your OpenAI credentials before启动代理。")
+    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, streaming=True, api_key=openai_api_key)
     # llm = ChatOpenAI(
     #         model="qwen/qwen3-235b-a22b",
     #         temperature=0.1,
