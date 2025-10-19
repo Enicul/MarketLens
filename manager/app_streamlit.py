@@ -1,5 +1,6 @@
-import os
+﻿import os
 import sys
+import asyncio
 import copy
 import base64
 import json
@@ -10,11 +11,18 @@ import streamlit as st
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain_core.messages import HumanMessage, AIMessage
 
+if sys.platform.startswith("win"):
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+
 # Ensure repository root is on path for sibling imports
 CURRENT_DIR = os.path.dirname(__file__)
 REPO_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 if REPO_ROOT not in sys.path:
     sys.path.append(REPO_ROOT)
+
+# Provide compatibility for environments without st.experimental_rerun
+if not hasattr(st, "experimental_rerun") and hasattr(st, "rerun"):
+    st.experimental_rerun = st.rerun  # type: ignore[attr-defined]
 
 # Local imports (reuse existing agent configuration)
 from manager.agent_stream_gradio import build_main_agent, enabled_analysis_types  # type: ignore
@@ -273,93 +281,81 @@ def _format_session_label(session_id: str) -> str:
 
 
 def render_login() -> None:
-    """Render login interface with email/password and guest access."""
+    """Render the login interface with email/password form and guest access."""
     render_app_header(show_title=False, show_subtitle=False)
     st.markdown("<div style='height: 2rem;'></div>", unsafe_allow_html=True)
 
     spacer_left, card_col, spacer_right = st.columns([1, 1.6, 1], gap="large")
     with card_col:
-        with st.container():
-            title_container = st.container()
-            with title_container:
-                st.markdown(
-                    "<h3 style='display:flex;align-items:center;justify-content:center;margin-bottom: 0;'>"
-                    "<span style='margin-right:10px;'>欢迎登录</span>"
-                    f"<img src='data:image/png;base64,{_load_icon_base64(str(ICON_PATH), ICON_PATH.stat().st_mtime if ICON_PATH.exists() else 0.0)}' "
-                    "alt='Market Lens Icon' style='height:36px;width:36px;object-fit:contain;margin-right:10px;' />"
-                    "<span>Market Lens</span>"
-                    "</h3>",
-                    unsafe_allow_html=True,
-                )
+        st.markdown(
+            "<h3 style='display:flex;align-items:center;justify-content:center;margin-bottom:24px;'>"
+            "<span style='margin-right:10px;'>欢迎登录</span>"
+            f"<img src='data:image/png;base64,{_load_icon_base64(str(ICON_PATH), ICON_PATH.stat().st_mtime if ICON_PATH.exists() else 0.0)}' "
+            "alt='Market Lens Icon' style='height:40px;width:40px;object-fit:contain;margin-right:10px;' />"
+            "<span>Market Lens</span>"
+            "</h3>",
+            unsafe_allow_html=True,
+        )
 
-            left_col, right_col = st.columns([1.15, 1], vertical_alignment="center")
-            with left_col:
-                if LOGIN_GIF_PATH.exists():
-                    st.image(str(LOGIN_GIF_PATH), use_container_width=True)
-                else:
-                    st.info("登录动画缺失，请联系管理员补充 `static/image/login.gif`。")
-            with right_col:
-                st.markdown(
-                    "<div style='border-left: 3px solid #e2e8f0; padding-left: 20px;'>",
-                    unsafe_allow_html=True,
-                )
-        st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+        left_col, right_col = st.columns([1.15, 1], vertical_alignment="center")
+        with left_col:
+            if LOGIN_GIF_PATH.exists():
+                st.image(str(LOGIN_GIF_PATH), use_container_width=True)
+            else:
+                st.info("登录动画缺失，请联系管理员补充 `static/image/login.gif`。")
 
-        if st.session_state.get("login_error"):
-            st.error(st.session_state.login_error)
-
-        email = st.text_input("邮箱", placeholder="name@example.com", label_visibility="collapsed")
-        password = st.text_input("密码", type="password", placeholder="请输入密码", label_visibility="collapsed")
-        with st.container():
-            submit_col, guest_col = st.columns([1, 1], gap="small")
-            with submit_col:
-                login_submit = st.button("登录", use_container_width=True)
-            with guest_col:
-                guest_submit = st.button("游客登录", use_container_width=True)
-
-        if login_submit:
-            with st.spinner("正在验证凭证..."):
-                if not email or not password:
-                    st.session_state.login_error = "请完整填写邮箱和密码后再登录。"
-                elif _validate_credentials(email, password):
-                    st.session_state.auth = {
-                        "is_authenticated": True,
-                        "user_email": email.strip(),
-                        "role": "member",
-                    }
-                    st.session_state.pop("login_error", None)
-                    try:
-                        st.rerun()
-                    except AttributeError:
-                        try:
-                            st.experimental_rerun()  # type: ignore[attr-defined]
-                        except AttributeError:
-                            st.stop()
-                else:
-                    st.session_state.login_error = "账号或密码不正确，请重试。"
-        elif guest_submit:
-            st.session_state.auth = {
-                "is_authenticated": True,
-                "user_email": "游客模式",
-                "role": "guest",
-            }
-            st.session_state.pop("login_error", None)
-            try:
-                st.rerun()
-            except AttributeError:
-                try:
-                    st.experimental_rerun()  # type: ignore[attr-defined]
-                except AttributeError:
-                    st.stop()
-
-                st.markdown("</div>", unsafe_allow_html=True)
-
+        with right_col:
             st.markdown(
-                "<p style='text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 1.2rem;'>"
-                "请输入邮箱和密码登录/选择游客模式"
-                "</p>",
+                "<div style='border-left: 3px solid #e2e8f0; padding-left: 24px;'>",
                 unsafe_allow_html=True,
             )
+            st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+
+            if st.session_state.get("login_error"):
+                st.error(st.session_state.login_error)
+
+            with st.form("login_form", clear_on_submit=False):
+                email = st.text_input("邮箱", placeholder="name@example.com", label_visibility="collapsed")
+                password = st.text_input("密码", type="password", placeholder="请输入密码", label_visibility="collapsed")
+
+                submit_col, guest_col = st.columns(2)
+                with submit_col:
+                    login_submit = st.form_submit_button("登录", use_container_width=True)
+                with guest_col:
+                    guest_submit = st.form_submit_button("游客登录", use_container_width=True)
+
+                if login_submit:
+                    with st.spinner("正在验证凭证..."):
+                        if not email or not password:
+                            st.session_state.login_error = "请完整填写邮箱和密码后再登录。"
+                        elif _validate_credentials(email, password):
+                            st.session_state.auth = {
+                                "is_authenticated": True,
+                                "user_email": email.strip(),
+                                "role": "member",
+                            }
+                            st.session_state.pop("login_error", None)
+                            st.experimental_rerun()  # type: ignore[attr-defined]
+                        else:
+                            st.session_state.login_error = "账号或密码不正确，请重试。"
+                elif guest_submit:
+                    st.session_state.auth = {
+                        "is_authenticated": True,
+                        "user_email": "游客模式",
+                        "role": "guest",
+                    }
+                    st.session_state.pop("login_error", None)
+                    st.experimental_rerun()  # type: ignore[attr-defined]
+
+            st.markdown("</div>", unsafe_allow_html=True)
+
+
+        st.markdown(
+            "<p style='text-align: center; color: #94a3b8; font-size: 0.85rem; margin-top: 1.2rem;'>"
+            "请输入邮箱和密码登录/选择游客模式"
+            "</p>",
+            unsafe_allow_html=True,
+        )
 
 
 def render_sidebar() -> None:

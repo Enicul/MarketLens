@@ -4,6 +4,7 @@ import asyncio
 import sys
 import logging
 from datetime import datetime
+from typing import Any, Dict, Optional
 from shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -25,14 +26,141 @@ from gradio_chatbox import MarketLensChatbox
 from analysts.analyst import analyze_for_manager
 from researchers.manager import research_for_manager
 from Trader import Trader
+from risk_management.orchestrator import run_risk_management
+from risk_management.utils import TraderDataError
 
 
 
 # Removed redundant analyze_stock function, implementing all functionality directly in call_analyst
+def _format_percentage(value: Optional[float], default: str = "—") -> str:
+    if value is None:
+        return default
+    return f"{value * 100:.1f}%"
+
+
+def _extract_price(value: Any) -> Optional[float]:
+    if isinstance(value, dict):
+        return value.get("price")
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
+def format_risk_readout(
+    report_or_path: Any,
+    ticker: str,
+    trader_text: Optional[str] = None
+) -> str:
+    """Convert risk-management output into a user-facing summary without exposing file paths."""
+    report: Dict[str, Any]
+    if isinstance(report_or_path, str):
+        try:
+            with open(report_or_path, "r", encoding="utf-8") as f:
+                report = json.load(f)
+        except Exception:
+            report = {}
+    elif isinstance(report_or_path, dict):
+        report = report_or_path
+    else:
+        report = {}
+
+    trader_decision = report.get("trader_decision") or {}
+    synthesis = report.get("synthesis") or {}
+    execution = synthesis.get("execution") or {}
+    follow_up = synthesis.get("follow_up") or []
+    risk_budget = synthesis.get("risk_budget")
+    confidence = synthesis.get("confidence")
+    action = execution.get("action") or synthesis.get("summary")
+    position_size = execution.get("position_size")
+    stop_loss = _extract_price(execution.get("stop_loss"))
+    take_profit = _extract_price(execution.get("take_profit"))
+    hedging = execution.get("hedging_ideas") or []
+    rationale = synthesis.get("rationale") or []
+
+    direction = trader_decision.get("decision")
+    current_price_raw = trader_decision.get("current_price")
+    try:
+        current_price = float(current_price_raw) if current_price_raw is not None else None
+    except (TypeError, ValueError):
+        current_price = None
+
+    lines = [
+        f"{ticker.upper()} 风险管理结论：{action or '维持现有仓位，紧盯关键风险信号。'}"
+    ]
+
+    summary_parts = []
+    if direction:
+        summary_parts.append(f"交易方向 {direction}")
+    if confidence is not None:
+        summary_parts.append(f"风险置信度 {confidence * 100:.1f}%")
+    if risk_budget:
+        summary_parts.append({
+            "low": "保守预算",
+            "medium": "中性预算",
+            "high": "积极预算",
+        }.get(risk_budget, str(risk_budget)))
+    if summary_parts:
+        lines.append("，".join(summary_parts))
+
+    if position_size is not None:
+        lines.append(f"建议仓位：{_format_percentage(position_size)}")
+    if current_price is not None:
+        lines.append(f"当前价格：{current_price:.2f}")
+    if stop_loss is not None:
+        lines.append(f"止损：{stop_loss:.2f}")
+    if take_profit is not None:
+        lines.append(f"止盈：{take_profit:.2f}")
+
+    if hedging:
+        lines.append("风险对冲建议：" + "；".join(hedging[:2]))
+
+    if follow_up:
+        lines.append("跟踪要点：" + "；".join(follow_up[:3]))
+    elif rationale:
+        lines.append("关键理由：" + "；".join(rationale[:2]))
+    elif trader_text:
+        lines.append(trader_text.strip())
+
+    return "\n".join(lines)
 
 ########################################
 #           Main Agent Tools           #
 ########################################
+
+@tool
+def call_risk_manager(ticker: str, trader_data: str, include_raw: bool = False) -> str:
+    """Run multi-perspective risk management on trader output.
+
+    Args:
+        ticker: Stock ticker symbol.
+        trader_data: Trader decision card JSON string or file path.
+        include_raw: Set true to retain raw trader payload inside the report.
+
+    Returns:
+        JSON string summarising the risk report generation status.
+    """
+    snippet = trader_data.strip() if isinstance(trader_data, str) else str(trader_data)
+    if len(snippet) > 200:
+        snippet = snippet[:200] + "..."
+    print(f"[RISK] 🔄 调用风险管理工具，ticker={ticker}, include_raw={include_raw}")
+    print(f"[RISK] 📥 trader_data 输入片段: {snippet}")
+    try:
+        saved_path, summary = run_risk_management(
+            ticker=ticker,
+            trader_data=trader_data,
+            include_raw=include_raw,
+        )
+        print(f"[RISK] ✅ 风险报告生成成功: {saved_path}")
+        print(f"[RISK] 📊 摘要: {summary}")
+        return json.dumps({"status": "success", "summary": summary}, ensure_ascii=False)
+    except TraderDataError as exc:
+        print(f"[RISK] ❌ Trader 数据加载失败: {exc}")
+        return json.dumps({"status": "error", "error_type": "TraderDataError", "message": str(exc)}, ensure_ascii=False)
+    except Exception as exc:
+        import traceback
+        print(f"[RISK] ❌ 风险管理模块异常: {exc}")
+        traceback.print_exc()
+        return json.dumps({"status": "error", "error_type": exc.__class__.__name__, "message": str(exc)}, ensure_ascii=False)
 
 @tool
 def read_file(path: str) -> str:
@@ -221,7 +349,41 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
             trader_data_path = f"database/{today}/{ticker}/trader_{ticker}.json"
             with open(trader_data_path, "w", encoding="utf-8") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
-            return result
+            print(f"[TRADER] 📁 交易决策已保存至 {trader_data_path}")
+
+            trader_notes = result if isinstance(result, str) else json.dumps(result, ensure_ascii=False)
+
+            # Automatically trigger risk management using saved trader output
+            human_readout = None
+            risk_meta: Dict[str, Any] = {}
+            try:
+                risk_path, risk_summary = run_risk_management(
+                    ticker=ticker,
+                    trader_data=trader_data_path,
+                    include_raw=False,
+                )
+                risk_meta = {k: v for k, v in risk_summary.items() if k != "saved_path"}
+                human_readout = format_risk_readout(risk_path, ticker, trader_text=trader_notes)
+            except Exception as risk_exc:
+                print(f"[RISK] ⚠️ 自动风险管理失败: {risk_exc}")
+                risk_meta = {"risk_error": str(risk_exc)}
+                trader_excerpt = trader_notes
+                human_readout = (
+                    f"{ticker.upper()} 风险模块暂不可用，请谨慎观望。"
+                    f"交易建议概要：{trader_excerpt[:200]}..."
+                )
+                risk_meta.setdefault("warning", "自动风控失败，仅供参考")
+
+            if not human_readout:
+                human_readout = f"{ticker.upper()} 交易建议概要：{trader_notes[:200]}..."
+
+            response_payload: Dict[str, Any] = {
+                "status": "success",
+                "trader_notes": trader_notes,
+                "human_readout": human_readout,
+            }
+            response_payload.update(risk_meta)
+            return json.dumps(response_payload, ensure_ascii=False)
         finally:
             # Always cleanup temp file
             try:
@@ -249,39 +411,45 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
 
 def build_main_agent(config=None):
     """创建一个简洁的AI Agent，不需要复杂的历史管理"""
-    tools = [read_file, write_file, call_analyst, call_researcher, call_trader]
+    tools = [read_file, write_file, call_analyst, call_researcher, call_trader, call_risk_manager]
     
     # 动态配置描述
     if config:
         enabled_types = [k for k, v in config.items() if v]
-        analysis_desc = f"当前启用: {', '.join(enabled_types)}" if enabled_types else "所有分析类型都已禁用"
+        analysis_desc = f"当前启用：{', '.join(enabled_types)}" if enabled_types else "所有分析类型都已禁用"
     else:
         analysis_desc = "所有分析类型都已启用"
     
     prompt = ChatPromptTemplate.from_messages([
         ("system", 
-         f"你是 Market Lens AI 主 Agent，专业的金融市场分析助手。\n\n"
-         f"🎯 目标: 理解用户需求 → 执行分析流程 → 交付专业洞察\n\n"
-         f"📋 可用工具:\n"
-         f"1. call_analyst: 收集股票原始数据（新闻/基本面/市场/情绪）\n"
-         f"2. call_researcher: 基于数据进行深度研究（多空辩论+投资建议）\n"
-         f"3. call_trader: 基于研究报告生成交易决策（可选Kronos预测）\n"
-         f"4. read_file / write_file: 文件操作\n\n"
-         f"🔄 推荐工作流程:\n"
-         f"- 完整流程: call_analyst → call_researcher → call_trader\n"
-         f"- 研究分析: call_analyst → call_researcher\n"
-         f"- 快速查询: 仅 call_analyst\n\n"
-         f"⚙️ 配置状态: {analysis_desc}\n\n"
-         f"📌 关键注意事项:\n"
-         f"- 直接传递工具返回的JSON数据，不要解析或重新格式化\n"
-         f"- 如果部分分析失败但仍有可用数据，继续处理\n"
-         f"- 始终用中文回复用户"),
-        MessagesPlaceholder("messages"),
+         "你是 Market Lens AI 主代理，专业的金融市场分析助手。\n\n"
+         "🎯 目标：理解用户需求，执行分析流程，交付专业洞察。\n\n"
+         "📋 可用工具：\n"
+         "1. call_analyst：收集股票原始数据（新闻 / 基本面 / 市场 / 情绪）。\n"
+         "2. call_researcher：基于数据进行深度研究（多空辩论、投资建议）。\n"
+         "3. call_trader：生成交易决策并返回 human_readout（包含风控概览）。\n"
+         "4. call_risk_manager：必要时单独复查风险（默认流程已自动执行）。\n"
+         "5. read_file / write_file：文件操作。\n\n"
+         "🔄 推荐工作流程：\n"
+         "- 完整流程：call_analyst → call_researcher → call_trader。\n"
+         "- 研究分析：call_analyst → call_researcher。\n"
+         "- 快速查询：call_analyst。\n\n"
+         "⚠️ 回复要求：\n"
+         "- 不得在用户回复中暴露任何文件路径或内部存储位置。\n"
+         "- 当工具返回 human_readout 字段时，优先引用其中要点作为答复核心。\n"
+         "- 输出需具体可执行：包含方向、仓位、止损 / 止盈、触发条件等关键数值。\n"
+         "- 若风控失败，需提醒谨慎并说明已知的交易要点。\n\n"
+         f"⚙️ 配置状态：{analysis_desc}\n\n"
+         "📌 关键注意事项：\n"
+         "- 传递工具返回的 JSON，不要擅自删改字段。\n"
+         "- 如果部分分析失败但仍有可用数据，也要继续处理并提示缺口。\n"
+         "- 全程使用中文回复用户。"),
+MessagesPlaceholder("messages"),
         ("human", "{input}"),
         MessagesPlaceholder("agent_scratchpad")
     ])
     
-    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, api_key='')
+    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, streaming=True, api_key='')
     # llm = ChatOpenAI(
     #         model="qwen/qwen3-235b-a22b",
     #         temperature=0.1,
