@@ -300,7 +300,7 @@ def render_login() -> None:
         left_col, right_col = st.columns([1.15, 1], vertical_alignment="center")
         with left_col:
             if LOGIN_GIF_PATH.exists():
-                st.image(str(LOGIN_GIF_PATH), use_container_width=True)
+                st.image(str(LOGIN_GIF_PATH), width="stretch")
             else:
                 st.info("登录动画缺失，请联系管理员补充 `static/image/login.gif`。")
 
@@ -320,9 +320,9 @@ def render_login() -> None:
 
                 submit_col, guest_col = st.columns(2)
                 with submit_col:
-                    login_submit = st.form_submit_button("登录", use_container_width=True)
+                    login_submit = st.form_submit_button("登录", width="stretch")
                 with guest_col:
-                    guest_submit = st.form_submit_button("游客登录", use_container_width=True)
+                    guest_submit = st.form_submit_button("游客登录", width="stretch")
 
                 if login_submit:
                     with st.spinner("正在验证凭证..."):
@@ -382,7 +382,7 @@ def render_sidebar() -> None:
             unsafe_allow_html=True,
         )
 
-        if st.button("退出登录", use_container_width=True):
+        if st.button("退出登录", width="stretch"):
             st.session_state.logout_requested = True
             try:
                 st.rerun()
@@ -472,11 +472,11 @@ def render_sidebar() -> None:
                     st.session_state[pending_key] = updated_name
 
         col_create, col_delete = st.columns(2)
-        if col_create.button("➕ 新建", use_container_width=True):
+        if col_create.button("➕ 新建", width="stretch"):
             new_session = HISTORY_MANAGER.create_session()
             _switch_session(new_session)
 
-        if col_delete.button("🗑️ 删除", use_container_width=True):
+        if col_delete.button("🗑️ 删除", width="stretch"):
             current = st.session_state.session_id
             HISTORY_MANAGER.clear(session_id=current)
             remaining = HISTORY_MANAGER.list_sessions()

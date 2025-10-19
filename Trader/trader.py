@@ -307,10 +307,12 @@ class Trader:
     
     def __init__(self, openai_api_key: str = None):
         """初始化Trader Agent"""
-        # 设置本地模型API
+        # 设置模型所需的 OpenAI API 密钥
         if not openai_api_key:
-            openai_api_key = "dummy-key"  # 本地模型不需要真实API密钥
-        os.environ['OPENAI_API_KEY'] = openai_api_key
+            openai_api_key = os.getenv("OPENAI_API_KEY")
+        if not openai_api_key:
+            raise RuntimeError("OPENAI_API_KEY 未配置，Trader Agent 无法调用 OpenAI 接口。")
+        os.environ["OPENAI_API_KEY"] = openai_api_key
         
         self.agent_executor = self._build_agent()
         print("✅ Trader Agent初始化成功")
