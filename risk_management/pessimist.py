@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import Optional, Tuple
 
 from langchain.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
+from config import LLM_GOOGLE
 
 from .schema import (
     AdjustmentBand,
@@ -98,30 +98,17 @@ def _build_scenarios(trader: TraderDecisionCard, target_position: float) -> list
 class PessimisticRiskEvaluator:
     """Produce a RiskPerspective focused on downside containment."""
 
-    model: str = "gpt-4o-mini"
-    temperature: float = 0.2
-    use_llm: bool = True
-
     def __post_init__(self) -> None:
-        self._llm: Optional[ChatOpenAI] = None
-        if self.use_llm:
-            try:
-                self._llm = ChatOpenAI(model=self.model, temperature=self.temperature, timeout=40)
-            except Exception:
-                self._llm = None
+        self._llm = LLM_GOOGLE
 
     @property
     def view_name(self) -> str:
         return "pessimistic"
 
     def generate(self, trader_card: TraderDecisionCard) -> RiskPerspective:
-        if self._llm:
-            try:
-                perspective = self._llm_generate(trader_card)
-                if perspective:
-                    return perspective
-            except Exception:
-                pass
+        perspective = self._llm_generate(trader_card)
+        if perspective:
+            return perspective
         return self._rule_based(trader_card)
 
     def _llm_generate(self, trader_card: TraderDecisionCard) -> Optional[RiskPerspective]:

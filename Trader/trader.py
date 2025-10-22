@@ -12,7 +12,7 @@ from datetime import datetime
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
+from config import LLM_GOOGLE
 
 
 ########################################
@@ -439,19 +439,13 @@ class Trader:
     """
     智能交易Agent - 基于LangChain工具调用的决策系统
     """
-    
-    def __init__(self, openai_api_key: str = None):
+
+    def __init__(self) -> None:
         """初始化Trader Agent"""
-        # 设置模型所需的 OpenAI API 密钥
-        if not openai_api_key:
-            openai_api_key = os.getenv("OPENAI_API_KEY")
-        if not openai_api_key:
-            raise RuntimeError("OPENAI_API_KEY 未配置，Trader Agent 无法调用 OpenAI 接口。")
-        os.environ["OPENAI_API_KEY"] = openai_api_key
-        
+        self.llm = LLM_GOOGLE
         self.agent_executor = self._build_agent()
         print("✅ Trader Agent初始化成功")
-    
+
     def _build_agent(self) -> AgentExecutor:
         """构建Trader Agent"""
         tools = [load_research_data, run_kronos_prediction, generate_decision_card]
@@ -476,12 +470,7 @@ class Trader:
             MessagesPlaceholder("agent_scratchpad"),
         ])
         
-        llm = ChatOpenAI(
-                model="qwen/qwen3-235b-a22b",
-                temperature=0.1,
-                base_url="https://zehenglmstudio.cpolar.top/v1"
-            )
-        agent = create_tool_calling_agent(llm, tools, prompt)
+        agent = create_tool_calling_agent(self.llm, tools, prompt)
         
         return AgentExecutor(
             agent=agent,
