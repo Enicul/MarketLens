@@ -1,3 +1,4 @@
+import asyncio
 import traceback
 from datetime import datetime, timezone
 from typing import Dict, Any
@@ -36,47 +37,65 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
     )
     
     try:
-        async with TwitterScraper(config) as scraper:
-            # 数据获取层
-            print(f"[SENTIMENT] 📥 Scraping tweets for {ticker}")
-            tweets = await scraper.scrape_stock_tweets(ticker)
-            print(f"[SENTIMENT] 📊 Found {len(tweets)} tweets")
-            
-            # 分析层
-            print(f"[SENTIMENT] 🔍 Analyzing sentiment...")
-            analyzer = AdvancedSentimentAnalyzer()
-            metrics, top_tweets = analyzer.analyze(tweets, top_k=Config.TOP_TWEETS_TO_SAVE)
-            
-            # 数据组装层 - 专业的数据结构
-            result = {
-                "ticker": ticker,
-                "channel": "sentiment",
-                "overall_sentiment": metrics.overall_sentiment,
-                "sentiment_score": metrics.sentiment_score,
-                "sentiment_breakdown": metrics.sentiment_breakdown,
-                "metrics": {
-                    "total_tweets": len(tweets),
-                    "total_influence": sum(t.engagement_score for t in tweets),
-                    "influence_concentration": metrics.influence_concentration,
-                    "sentiment_volatility": metrics.sentiment_volatility,
-                    "quality_score": metrics.quality_score
-                },
-                "top_tweets": top_tweets,
-                "analysis_metadata": {
-                    "algorithm_version": "3.0-professional",  # 不是modular，是professional
-                    "confidence_level": metrics.confidence_level,
-                    "search_keywords": Config.get_search_keywords(ticker),
-                    "generated_at": datetime.now(timezone.utc).isoformat(),
-                    "processing_note": "Professional sentiment analysis with integrated architecture"
-                }
+        # 添加重试机制
+        max_retries = 2
+        tweets = []
+        
+        for attempt in range(max_retries):
+            try:
+                async with TwitterScraper(config) as scraper:
+                    # 数据获取层
+                    print(f"[SENTIMENT] 📥 Scraping tweets for {ticker} (attempt {attempt + 1})")
+                    tweets = await scraper.scrape_stock_tweets(ticker)
+                    print(f"[SENTIMENT] 📊 Found {len(tweets)} tweets")
+                    break  # 成功则跳出重试循环
+            except Exception as retry_error:
+                print(f"[SENTIMENT] ⚠️ Attempt {attempt + 1} failed: {str(retry_error)[:50]}...")
+                if attempt == max_retries - 1:  # 最后一次尝试
+                    raise retry_error
+                await asyncio.sleep(2)  # 等待2秒后重试
+        
+        # 分析层
+        print(f"[SENTIMENT] 🔍 Analyzing sentiment...")
+        analyzer = AdvancedSentimentAnalyzer()
+        metrics, top_tweets = analyzer.analyze(tweets)
+        
+        # 数据组装层 - 专业的数据结构
+        result = {
+            "ticker": ticker,
+            "channel": "sentiment",
+            "overall_sentiment": metrics.overall_sentiment,
+            "sentiment_score": metrics.sentiment_score,
+            "sentiment_breakdown": metrics.sentiment_breakdown,
+            "metrics": {
+                "total_tweets": len(tweets),
+                "total_influence": sum(t.engagement_score for t in tweets),
+                "influence_concentration": metrics.influence_concentration,
+                "sentiment_volatility": metrics.sentiment_volatility,
+                "quality_score": metrics.quality_score
+            },
+            "top_tweets": top_tweets,
+            "analysis_metadata": {
+                "algorithm_version": "3.0-professional",  # 不是modular，是professional
+                "confidence_level": metrics.confidence_level,
+                "search_keywords": Config.get_search_keywords(ticker),
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "processing_note": "Professional sentiment analysis with integrated architecture"
             }
-            print(f"[SENTIMENT] ✅ Complete for {ticker} - {metrics.overall_sentiment} ({metrics.sentiment_score:.3f})")
-            print("  " + "=" * 40)
-            return result
+        }
+        print(f"[SENTIMENT] ✅ Complete for {ticker} - {metrics.overall_sentiment} ({metrics.sentiment_score:.3f})")
+        print("  " + "=" * 40)
+        return result
             
     except Exception as e:
         # 错误处理 - 专业的错误响应
-        print(f"[SENTIMENT] ❌ Error for {ticker}: {str(e)[:50]}...")
+        error_msg = str(e)
+        print(f"[SENTIMENT] ❌ Error for {ticker}: {error_msg[:50]}...")
+        
+        # 如果是浏览器相关错误，提供更友好的错误信息
+        if "Executable doesn't exist" in error_msg or "chromium" in error_msg.lower():
+            print(f"[SENTIMENT] 💡 Tip: Run 'playwright install chromium' to fix browser issues")
+        
         return _build_error_response(ticker, e)
 
 

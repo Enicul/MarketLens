@@ -7,17 +7,14 @@ class Config:
     集中配置管理
     """
     # 浏览器设置
-    HEADLESS = False
+    HEADLESS = False  # 建议使用 headless 模式提高稳定性
     DELAY_RANGE = (1, 3)
     DISABLE_MEDIA = True
     
     # 爬取设置
-    MAX_TWEETS_PER_STOCK = 40
+    MAX_TWEETS_PER_STOCK = 80
     MAX_SCROLL_ATTEMPTS = 50
-    PARALLEL_PAGES = 8
-    
-    # 数据保存设置
-    TOP_TWEETS_TO_SAVE = 30  # 保存前30条最重要的推文（设为None则保存全部）
+    PARALLEL_PAGES = 2  # 减少并行页面数量提高稳定性
     
     # 文件路径 - 专业的数据文件管理
     _MODULE_DIR = os.path.dirname(os.path.abspath(__file__))

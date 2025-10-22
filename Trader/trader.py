@@ -49,7 +49,7 @@ def _convert_researcher_to_symbol(ticker, final_decision, analyses):
         "confidence": action.get("confidence", 0.5),
         "rationale": final_decision.get("rationale", ""),
         "uncertainty_level": uncertainty_level,
-        "use_kronos_prediction": False,
+        "use_kronos_prediction": None,
         "final_decision": {
             "stance_summary": final_decision.get("stance_summary", {}),
             "consensus": final_decision.get("consensus", []),
@@ -78,6 +78,11 @@ def load_research_data(json_file_path: str) -> str:
                 data.get("final_decision", {}),
                 data.get("analyses", {})
             )
+            # 添加CSV路径（如果存在）
+            csv_path = data.get("csv_path")
+            if csv_path:
+                symbol["csv_path"] = csv_path
+                print(f"📊 找到CSV文件: {csv_path}")
             converted_data = {"symbols": [symbol]}
             print(f"✅ 成功加载研究数据: 1个股票 (Researcher格式)")
             return json.dumps(converted_data, ensure_ascii=False)
@@ -92,6 +97,10 @@ def load_research_data(json_file_path: str) -> str:
                         item.get("final_decision", {}),
                         item.get("analyses", {})
                     )
+                    # 添加CSV路径（如果存在）
+                    csv_path = item.get("csv_path")
+                    if csv_path:
+                        symbol["csv_path"] = csv_path
                     symbols.append(symbol)
             converted_data = {"symbols": symbols}
             print(f"✅ 成功加载研究数据: {len(symbols)}个股票 (Researcher列表格式)")
@@ -111,10 +120,25 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
     try:
         import sys
         sys.path.append(os.path.join(os.path.dirname(__file__), 'Kronos'))
-        from Kronos.model import Kronos, KronosTokenizer, KronosPredictor
+        from model import Kronos, KronosTokenizer, KronosPredictor
         
-        # 加载数据（使用CSV文件中的所有参数）
+        # 加载数据
         df = pd.read_csv(csv_file_path)
+        
+        # 列名映射（中文→英文）
+        column_mapping = {
+            '日期': 'timestamp',
+            '开盘价': 'open',
+            '最高价': 'high',
+            '最低价': 'low',
+            '收盘价': 'close',
+            '成交量': 'volume'
+        }
+        df.rename(columns=column_mapping, inplace=True)
+        
+        # 计算amount字段（如果不存在）
+        if 'amount' not in df.columns and 'close' in df.columns and 'volume' in df.columns:
+            df['amount'] = df['close'] * df['volume']
         
         # 验证必需列
         required_cols = ['open', 'high', 'low', 'close', 'volume', 'amount']
@@ -146,7 +170,7 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
         else:
             y_timestamp = pd.date_range(start=x_timestamp.iloc[-1], periods=prediction_length+1, freq='5min')[1:]
         
-        # 执行预测（确保时间戳格式正确）
+        # 执行预测
         pred_df = predictor.predict(
             df=x_df,
             x_timestamp=x_timestamp,
@@ -158,47 +182,158 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
             verbose=False
         )
         
-        # 生成简洁的预测图
+        # 创建输出目录
+        today = datetime.now().strftime("%Y-%m-%d")
+        output_dir = os.path.join("database", today, symbol, "Kronos_output")
+        os.makedirs(output_dir, exist_ok=True)
+        
+        timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
+        
+        # 1. 保存预测CSV（添加时间戳列）
+        pred_df_with_time = pred_df.copy()
+        pred_df_with_time.insert(0, 'timestamp', y_timestamp)
+        csv_path = os.path.join(output_dir, f"{symbol}_prediction_{timestamp_str}.csv")
+        pred_df_with_time.to_csv(csv_path, index=False)
+        
+        # 2. 保存专业金融预测图像
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
+        import matplotlib.dates as mdates
+        from matplotlib.patches import Rectangle
         
-        plt.figure(figsize=(10, 6))
+        # 设置专业金融图表样式
+        plt.style.use('seaborn-v0_8-darkgrid')
         
-        # 绘制历史和预测价格
-        hist_close = df['close'].tail(100)
+        # 设置英文字体
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica', 'sans-serif']
+        plt.rcParams['axes.unicode_minus'] = False
+        
+        fig, ax = plt.subplots(figsize=(14, 8), facecolor='white')
+        
+        # 准备时间轴数据
+        hist_length = min(60, len(df))  # 显示最近60天历史数据
+        hist_close = df['close'].tail(hist_length)
+        hist_timestamps = df[timestamp_col].tail(hist_length)
         pred_close = pred_df['close']
         
-        hist_x = range(len(hist_close))
-        pred_x = range(len(hist_close), len(hist_close) + len(pred_close))
+        # 转换时间戳
+        hist_dates = pd.to_datetime(hist_timestamps)
+        pred_dates = pd.to_datetime(y_timestamp)
         
-        plt.plot(hist_x, hist_close, label='Historical', color='blue', linewidth=2)
-        plt.plot(pred_x, pred_close, label='Predicted', color='red', linewidth=2, linestyle='--')
-        plt.title(f'{symbol} Price Prediction')
-        plt.ylabel('Price')
-        plt.xlabel('Time Points')
-        plt.legend()
-        plt.grid(True, alpha=0.3)
+        # 绘制历史价格（深蓝色实线）
+        ax.plot(hist_dates, hist_close, 
+                color='#1f77b4', linewidth=2.5, 
+                label=f'Historical Price ({hist_length} days)', alpha=0.9)
         
-        # 保存图片
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        plot_path = f"prediction_{symbol}_{timestamp}.png"
-        plt.savefig(plot_path, dpi=100, bbox_inches='tight')
+        # 绘制预测价格（红色虚线）
+        ax.plot(pred_dates, pred_close, 
+                color='#d62728', linewidth=2.5, linestyle='--', 
+                label=f'Kronos Prediction ({len(pred_close)} days)', alpha=0.9)
+        
+        # 添加预测区间阴影
+        pred_min = pred_close.min()
+        pred_max = pred_close.max()
+        ax.fill_between(pred_dates, pred_min, pred_max, 
+                       color='#d62728', alpha=0.1, 
+                       label=f'Prediction Range (${pred_min:.2f} - ${pred_max:.2f})')
+        
+        # 在历史和预测之间添加分割线
+        transition_date = hist_dates.iloc[-1]
+        ax.axvline(x=transition_date, color='gray', linestyle=':', alpha=0.7, linewidth=1.5)
+        ax.text(transition_date, ax.get_ylim()[1]*0.95, 'Prediction Start', 
+                rotation=90, ha='right', va='top', fontsize=10, color='gray')
+        
+        # 设置专业的标题和标签
+        current_price = hist_close.iloc[-1]
+        pred_mean = pred_close.mean()
+        change_pct = ((pred_mean - current_price) / current_price) * 100
+        
+        ax.set_title(f'{symbol} Stock Price Prediction Analysis | Kronos AI Model\n'
+                    f'Current Price: ${current_price:.2f} → Predicted Avg: ${pred_mean:.2f} '
+                    f'({change_pct:+.1f}%)', 
+                    fontsize=16, fontweight='bold', pad=20)
+        
+        ax.set_ylabel('Stock Price (USD)', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Time', fontsize=12, fontweight='bold')
+        
+        # 设置时间轴格式
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+        ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
+        plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
+        
+        # 设置网格
+        ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
+        ax.set_facecolor('#fafafa')
+        
+        # 设置图例
+        legend = ax.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)
+        legend.get_frame().set_facecolor('white')
+        legend.get_frame().set_alpha(0.9)
+        
+        # 添加价格统计信息
+        stats_text = f'''Prediction Statistics:
+Min Price: ${pred_close.min():.2f}
+Max Price: ${pred_close.max():.2f}
+Avg Price: ${pred_close.mean():.2f}
+Std Dev: ${pred_close.std():.2f}
+Forecast Days: {len(pred_close)}'''
+        
+        ax.text(0.02, 0.98, stats_text, transform=ax.transAxes, 
+                verticalalignment='top', bbox=dict(boxstyle='round', 
+                facecolor='white', alpha=0.8), fontsize=10)
+        
+        # 设置Y轴格式（显示美元符号）
+        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:.0f}'))
+        
+        # 调整布局
+        plt.tight_layout()
+        
+        # 保存高质量图片
+        plot_path = os.path.join(output_dir, f"{symbol}_prediction_{timestamp_str}.png")
+        plt.savefig(plot_path, dpi=300, bbox_inches='tight', 
+                   facecolor='white', edgecolor='none')
         plt.close()
         
-        # 预测结果
-        result = {
+        # 3. 保存元数据
+        metadata = {
             "symbol": symbol,
-            "plot_path": plot_path,
+            "prediction_time": datetime.now().isoformat(),
+            "input_csv": csv_file_path,
+            "prediction_length": prediction_length,
+            "lookback_length": lookback,
             "prediction_summary": {
                 "min_price": float(pred_df['close'].min()),
                 "max_price": float(pred_df['close'].max()),
                 "mean_price": float(pred_df['close'].mean()),
-                "prediction_length": len(pred_df)
+                "std_price": float(pred_df['close'].std())
+            },
+            "output_files": {
+                "csv": csv_path,
+                "plot": plot_path
             }
         }
         
+        metadata_path = os.path.join(output_dir, f"{symbol}_metadata_{timestamp_str}.json")
+        with open(metadata_path, 'w', encoding='utf-8') as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
+        
+        # 返回结果
+        result = {
+            "symbol": symbol,
+            "output_dir": output_dir,
+            "csv_path": csv_path,
+            "plot_path": plot_path,
+            "metadata_path": metadata_path,
+            "prediction_summary": metadata["prediction_summary"]
+        }
+        
         print(f"✅ Kronos预测完成: {symbol}")
+        print(f"   📁 输出目录: {output_dir}")
+        print(f"   📊 CSV文件: {os.path.basename(csv_path)}")
+        print(f"   📈 图表文件: {os.path.basename(plot_path)}")
+        print(f"   📝 元数据文件: {os.path.basename(metadata_path)}")
         return json.dumps(result, ensure_ascii=False)
         
     except Exception as e:
@@ -325,19 +460,17 @@ class Trader:
             ("system", 
              "你是一个专业的量化交易Agent，负责分析研究团队的结论并生成交易决策。\n"
              "工作流程：\n"
-             "1. 使用load_research_data工具加载研究团队的分析结论\n"
-             "   - 数据包含完整的final_decision信息（多空观点、共识、分歧、风险、上行空间等）\n"
-             "2. 根据研究结论的不确定性和建议，决定是否使用run_kronos_prediction工具进行价格预测\n"
-             "3. 使用generate_decision_card工具为每个股票生成标准化决策卡\n"
-             "决策原则：\n"
-             "- 参考final_decision中的完整信息：stance_summary（多空论点）、consensus（共识）、disagreements（分歧）\n"
-             "- 重点关注key_upside（上行因素）和key_risks（关键风险）\n"
-             "- 使用scorecard（评分卡）评估多空强度和不确定性\n"
-             "- triggers_up/triggers_down提供了触发条件参考\n"
-             "- 当uncertainty_level为high或very_high时，建议使用Kronos预测\n"
-             "- 当研究结论中use_kronos_prediction为true时，必须使用预测\n"
-             "- 综合所有信息做出最终决策，严格控制风险\n"
-             "请按照工作流程，智能选择和调用工具完成任务。"),
+             "1. load_research_data加载研究数据（自动包含csv_path字段）\n"
+             "2. 分析用户请求，判断是否需要Kronos预测\n"
+             "3. 如需Kronos预测：run_kronos_prediction(csv_file_path=symbol['csv_path'], symbol=symbol['symbol'])\n"
+             "4. generate_decision_card生成决策卡（可选传入prediction_data）\n"
+             "Kronos调用决策：\n"
+             "- 用户明确要求预测/价格预测/未来走势/Kronos时，必须调用Kronos\n"
+             "- 用户要求完整分析/全面分析时，建议调用Kronos\n"
+             "- uncertainty_level为high/very_high时，建议调用Kronos\n"
+             "- 只要csv_path存在且用户有预测需求，就应该调用Kronos\n"
+             "- 综合研究结论和预测结果做出最终决策\n"
+             "请按照工作流程完成任务。"),
             MessagesPlaceholder("chat_history"),
             ("user", "{input}"),
             MessagesPlaceholder("agent_scratchpad"),

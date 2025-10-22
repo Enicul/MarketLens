@@ -177,6 +177,9 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     # 只有在生成了CSV时才添加到输出中
     if csv_result is not None:
         output["csv_generation"] = csv_result
+        # 提取 csv_path 到顶层便于下游使用
+        if "csv_path" in csv_result:
+            output["csv_path"] = csv_result["csv_path"]
     
     # Add cached results
     for intent, data in cached_results.items():

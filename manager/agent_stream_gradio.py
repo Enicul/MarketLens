@@ -298,13 +298,14 @@ def call_researcher(ticker: str, analyst_data_path: str) -> str:
 
 
 @tool
-def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None) -> str:
+def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None, user_request: str = "") -> str:
     """基于Researcher报告生成交易决策，可选使用Kronos模型预测。
     
     Args:
         ticker: 股票代码
         research_data_path: call_researcher返回的JSON数据文件路径（必须先调用call_researcher）
         csv_file_path: 可选，CSV文件路径（用于Kronos预测，来自analyst的market数据）
+        user_request: 用户的原始请求，用于判断是否需要Kronos预测
     
     Returns:
         JSON格式的交易决策卡
@@ -338,7 +339,15 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
             # Initialize trader and generate decision
             trader = Trader()
             csv_files = [csv_file_path] if csv_file_path else None
-            result = trader.analyze_and_decide(temp_research_file, csv_files=csv_files)
+            
+            # 构建包含用户请求的完整请求
+            trader_request = f"请基于研究结论生成交易决策卡。研究文件: {temp_research_file}"
+            if user_request:
+                trader_request += f"\n用户原始请求: {user_request}"
+            if csv_files:
+                trader_request += f"\nCSV文件: {', '.join(csv_files)}"
+            
+            result = trader.process_request(trader_request, temp_research_file, csv_files)
             today = datetime.now().strftime("%Y-%m-%d")
             trader_data_path = f"database/{today}/{ticker}/trader_{ticker}.json"
             with open(trader_data_path, "w", encoding="utf-8") as f:
@@ -421,7 +430,7 @@ def build_main_agent(config=None):
          "📋 可用工具：\n"
          "1. call_analyst：收集股票原始数据（新闻 / 基本面 / 市场 / 情绪）。\n"
          "2. call_researcher：基于数据进行深度研究（多空辩论、投资建议）。\n"
-         "3. call_trader：生成交易决策并返回 human_readout（包含风控概览）。\n"
+         "3. call_trader：生成交易决策，支持user_request参数传递用户需求。\n"
          "4. call_risk_manager：必要时单独复查风险（默认流程已自动执行）。\n"
          "5. read_file / write_file：文件操作。\n\n"
          "🔄 推荐工作流程：\n"
@@ -436,6 +445,8 @@ def build_main_agent(config=None):
          f"⚙️ 配置状态：{analysis_desc}\n\n"
          "📌 关键注意事项：\n"
          "- 传递工具返回的 JSON，不要擅自删改字段。\n"
+         "- 调用call_trader时，将用户的原始请求通过user_request参数传递。\n"
+         "- 如果用户要求预测/价格预测/未来走势/Kronos，务必在user_request中体现。\n"
          "- 如果部分分析失败但仍有可用数据，也要继续处理并提示缺口。\n"
          "- 全程使用中文回复用户。"),
 MessagesPlaceholder("messages"),
