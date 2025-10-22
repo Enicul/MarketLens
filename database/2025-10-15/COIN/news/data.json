@@ -1,0 +1,161 @@
+{
+  "ticker": "COIN",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-15T06:01:36+00:00",
+      "headline": "Taiwanese Stablecoin Infrastructure Company OwlTing Secures Nasdaq Listing",
+      "evidence": [
+        "https://decrypt.co/344343/taiwanese-stablecoin-infrastructure-owlting-nasdaq-listing"
+      ],
+      "summary": [
+        "Taiwanese Stablecoin Infrastructure Company OwlTing Secures Nasdaq Listing"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-15T03:57:12+00:00",
+      "headline": "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East",
+      "evidence": [
+        "https://decrypt.co/344337/coinbase-coindcx-expand-south-asia-middle-east"
+      ],
+      "summary": [
+        "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-15T01:19:38+00:00",
+      "headline": "Stablecoin Issuers Race for US Bank Charters as Stripe's Bridge Joins the Queue",
+      "evidence": [
+        "https://decrypt.co/344333/stablecoin-issuers-race-bank-charters-stripes-bridge-joins"
+      ],
+      "summary": [
+        "Stablecoin Issuers Race for US Bank Charters as Stripe's Bridge Joins the Queue"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-14T22:37:25+00:00",
+      "headline": "Japanese Regulator Eyes Ban on Crypto Insider Trading: Nikkei",
+      "evidence": [
+        "https://decrypt.co/344301/japanese-regulator-eyes-ban-crypto-insider-trading"
+      ],
+      "summary": [
+        "Japanese Regulator Eyes Ban on Crypto Insider Trading: Nikkei"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-10-14T21:45:03+00:00",
+      "headline": "Coinbase Global, Inc.  ( COIN )  Dips More Than Broader Market: What You Should Know",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2768731/coinbase-global-inc-coin-dips-more-than-broader-market-what-you-should-know"
+      ],
+      "summary": [
+        "Coinbase Global, Inc.  ( COIN )  Dips More Than Broader Market: What You Should Know"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-14T21:18:02+00:00",
+      "headline": "Brazilian stablecoin opens door to the country's double-digit yields",
+      "evidence": [
+        "https://cointelegraph.com/news/brazil-brlv-stablecoin-high-yield-bond-access"
+      ],
+      "summary": [
+        "Brazilian stablecoin opens door to the country's double-digit yields"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-14T17:17:51+00:00",
+      "headline": "What's Going On With Cloudflare Stock Tuesday? - Cloudflare  ( NYSE:NET ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/tech/25/10/48206767/cloudflare-partners-with-top-payment-giants-to-build-trust-in-agentic-commerce"
+      ],
+      "summary": [
+        "What's Going On With Cloudflare Stock Tuesday? - Cloudflare  ( NYSE:NET ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-14T17:07:00+00:00",
+      "headline": "Is Coinbase Eyeing BVNK Buyout to Boost Stablecoin Expansion?",
+      "evidence": [
+        "https://finnhub.io/api/news?id=47ce6844a1f287b655aea5ce2e655d27578e1658f8d8397778ad1d3b1f5b9b5d"
+      ],
+      "summary": [
+        "Is Coinbase Eyeing BVNK Buyout to Boost Stablecoin Expansion?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-15T08:00:08.215782+00:00"
+}

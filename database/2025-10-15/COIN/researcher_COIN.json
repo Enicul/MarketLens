@@ -1,0 +1,892 @@
+{
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-15T06:01:36+00:00",
+            "headline": "Taiwanese Stablecoin Infrastructure Company OwlTing Secures Nasdaq Listing",
+            "evidence": [
+              "https://decrypt.co/344343/taiwanese-stablecoin-infrastructure-owlting-nasdaq-listing"
+            ],
+            "summary": [
+              "Taiwanese Stablecoin Infrastructure Company OwlTing Secures Nasdaq Listing"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-15T03:57:12+00:00",
+            "headline": "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East",
+            "evidence": [
+              "https://decrypt.co/344337/coinbase-coindcx-expand-south-asia-middle-east"
+            ],
+            "summary": [
+              "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-15T01:19:38+00:00",
+            "headline": "Stablecoin Issuers Race for US Bank Charters as Stripe's Bridge Joins the Queue",
+            "evidence": [
+              "https://decrypt.co/344333/stablecoin-issuers-race-bank-charters-stripes-bridge-joins"
+            ],
+            "summary": [
+              "Stablecoin Issuers Race for US Bank Charters as Stripe's Bridge Joins the Queue"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-14T22:37:25+00:00",
+            "headline": "Japanese Regulator Eyes Ban on Crypto Insider Trading: Nikkei",
+            "evidence": [
+              "https://decrypt.co/344301/japanese-regulator-eyes-ban-crypto-insider-trading"
+            ],
+            "summary": [
+              "Japanese Regulator Eyes Ban on Crypto Insider Trading: Nikkei"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Zacks Commentary",
+            "published_at": "2025-10-14T21:45:03+00:00",
+            "headline": "Coinbase Global, Inc.  ( COIN )  Dips More Than Broader Market: What You Should Know",
+            "evidence": [
+              "https://www.zacks.com/stock/news/2768731/coinbase-global-inc-coin-dips-more-than-broader-market-what-you-should-know"
+            ],
+            "summary": [
+              "Coinbase Global, Inc.  ( COIN )  Dips More Than Broader Market: What You Should Know"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-14T21:18:02+00:00",
+            "headline": "Brazilian stablecoin opens door to the country's double-digit yields",
+            "evidence": [
+              "https://cointelegraph.com/news/brazil-brlv-stablecoin-high-yield-bond-access"
+            ],
+            "summary": [
+              "Brazilian stablecoin opens door to the country's double-digit yields"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-14T17:17:51+00:00",
+            "headline": "What's Going On With Cloudflare Stock Tuesday? - Cloudflare  ( NYSE:NET ) ",
+            "evidence": [
+              "https://www.benzinga.com/markets/tech/25/10/48206767/cloudflare-partners-with-top-payment-giants-to-build-trust-in-agentic-commerce"
+            ],
+            "summary": [
+              "What's Going On With Cloudflare Stock Tuesday? - Cloudflare  ( NYSE:NET ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-14T17:07:00+00:00",
+            "headline": "Is Coinbase Eyeing BVNK Buyout to Boost Stablecoin Expansion?",
+            "evidence": [
+              "https://finnhub.io/api/news?id=47ce6844a1f287b655aea5ce2e655d27578e1658f8d8397778ad1d3b1f5b9b5d"
+            ],
+            "summary": [
+              "Is Coinbase Eyeing BVNK Buyout to Boost Stablecoin Expansion?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-15T08:00:08.215782+00:00"
+      },
+      "error": null,
+      "cached": true
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "COIN",
+        "company": {
+          "name": "Coinbase Global Inc",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 87757190000.0,
+          "revenue_per_share_ttm": 25.1273
+        },
+        "insiders": [
+          {
+            "person": "Armstrong Brian",
+            "code": "C",
+            "date": "2025-10-05",
+            "price": 0,
+            "change_shares": 0,
+            "post_shares": 22781225,
+            "filing_id": "0001679788-25-000199",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-02",
+            "price": 356.5371,
+            "change_shares": -2148,
+            "post_shares": 526,
+            "filing_id": "0001679788-25-000199",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-02",
+            "price": 355.9118,
+            "change_shares": -13729,
+            "post_shares": 2674,
+            "filing_id": "0001679788-25-000199",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-02",
+            "price": 355.0439,
+            "change_shares": -5274,
+            "post_shares": 16403,
+            "filing_id": "0001679788-25-000199",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-02",
+            "price": 353.859,
+            "change_shares": -3849,
+            "post_shares": 21677,
+            "filing_id": "0001679788-25-000199",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-15T07:57:28.056093"
+      },
+      "error": null,
+      "cached": true
+    },
+    "market": {
+      "data": {
+        "ticker": "COIN",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-15T07:57:21.575505",
+        "stock_basic_info": {
+          "ticker": "COIN",
+          "current_price": 341.55,
+          "change": -15.44,
+          "change_percent": -4.33,
+          "volume": 9388226,
+          "market_cap": 87757225984,
+          "pe_ratio": 32.90462,
+          "pb_ratio": 7.2414446,
+          "beta": 3.684,
+          "high_52w": 444.65,
+          "low_52w": 142.58,
+          "timestamp": "2025-10-15T15:57:21.574036"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 348.03149871826173,
+            "price_vs_ma_20": 98.1376654270768
+          },
+          "oscillators": {
+            "rsi": 56.106445981377796,
+            "stochastic_k": 38.628989595101366,
+            "stochastic_d": 49.0583204168222
+          },
+          "bollinger_bands": {
+            "upper_band": 400.1365544065958,
+            "lower_band": 295.92644302992767,
+            "price_vs_upper_band": 85.35835679884055
+          },
+          "volume_indicators": {
+            "volume_ma20": 10134660.0,
+            "volume_vs_ma20": 92.97302524209002
+          },
+          "volatility_indicators": {
+            "atr": 19.509286063058035,
+            "atr_percent": 5.711985583464178
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 402.1600036621094,
+            "low_1mo": 303.3999938964844,
+            "avg_close": 346.1618166836825,
+            "volatility": 25.509477601642075
+          },
+          "trend_analysis": {
+            "trend_20_days": 6.547913150185974
+          },
+          "key_levels": [
+            402.1600036621094,
+            303.3999938964844
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 22,
+          "data_period": "1mo",
+          "start_date": "2025-09-15",
+          "end_date": "2025-10-14",
+          "last_updated": "2025-10-15T15:57:21.575490"
+        }
+      },
+      "error": null,
+      "cached": true
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "sentiment",
+        "overall_sentiment": "bullish",
+        "sentiment_score": 0.2143,
+        "sentiment_breakdown": {
+          "bullish": 0.083,
+          "bearish": 0.125,
+          "neutral": 0.792
+        },
+        "metrics": {
+          "total_tweets": 24,
+          "total_influence": 12504,
+          "influence_concentration": 0.516,
+          "sentiment_volatility": 101.679,
+          "quality_score": 0.667
+        },
+        "top_tweets": [
+          {
+            "username": "CoinMarketCap",
+            "content": "Thoughts and prayers...",
+            "timestamp": "2025-10-06T15:40:16.000Z",
+            "influence_score": 80.3,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 5096,
+              "retweets": 496,
+              "replies": 360
+            }
+          },
+          {
+            "username": "CZ  BNB",
+            "content": "This is NOT a listing. No trading. Just a facility to convert a forked coin/airdrop.\n\n» Binance Convert Adds ETHW | Binance Support \nhttps://\nbinance.com/en/support/ann\nouncement/9c2bed1a271a4a25b6dc2d03bd8a148d\n…",
+            "timestamp": "2022-09-21T09:04:49.000Z",
+            "influence_score": 43.07,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 1276,
+              "retweets": 283,
+              "replies": 13
+            }
+          },
+          {
+            "username": "25hoursawake",
+            "content": "BREAKING: Analyst Confirms Private #XRP Valuation Hits $327,000 Per Coin! \n\nAs the $650T global real estate market begins shifting toward tokenization on the XRP Ledger through \n@RealFiTeam\n and REAL Token, the foundation for a new digital real estate era is rapidly forming.",
+            "timestamp": "2025-10-12T13:17:08.000Z",
+            "influence_score": 25.79,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 414,
+              "retweets": 103,
+              "replies": 45
+            }
+          },
+          {
+            "username": "Vida",
+            "content": "Here's some important market timing indicators that I'm gonna use to dodge the epic flush that's gonna happen one day in the next couple of months:\n1. Binance meme coin's average funding rate, when it reaches above 0.08% level, is in the dangerous zone and indicates retails are",
+            "timestamp": "2024-11-11T23:14:27.000Z",
+            "influence_score": 23.92,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 356,
+              "retweets": 98,
+              "replies": 20
+            }
+          },
+          {
+            "username": "CoinMarketCap",
+            "content": "Week in Crypto Adoption: India's RBI Digital Push, Dubai's Crackdown, Malaysia's Islamic finance unlocks $5T stablecoin market\n\nIndia preps RBI blockchain currency to crush \"unbacked crypto\"! Dubai drops $163K fines on 19 rogue operators! Malaysia greenlights the world's first",
+            "timestamp": "2025-10-08T16:10:09.000Z",
+            "influence_score": 13.82,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 101,
+              "retweets": 19,
+              "replies": 52
+            }
+          },
+          {
+            "username": "CoinMarketCap",
+            "content": "CMC News: Gold-Backed Crypto Tokens Surge Past $3 Billion.\n\n \nhttps://\nbit.ly/3WsG0IV",
+            "timestamp": "2025-10-08T17:24:06.000Z",
+            "influence_score": 21.02,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 263,
+              "retweets": 49,
+              "replies": 81
+            }
+          },
+          {
+            "username": "aeon one",
+            "content": "The world has never seen this much power in one teeny tiny coin : SPX6900 is limitless. \n\nStop trading and believe in something.\n\nSoar the sky with the aeons",
+            "timestamp": "2025-10-13T04:43:53.000Z",
+            "influence_score": 17.09,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 215,
+              "retweets": 35,
+              "replies": 7
+            }
+          },
+          {
+            "username": "Coin Bureau Trading",
+            "content": "We know how it is...  \n\n#Altcoins #Crypto",
+            "timestamp": "2025-10-10T23:40:33.000Z",
+            "influence_score": 22.85,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 329,
+              "retweets": 81,
+              "replies": 31
+            }
+          },
+          {
+            "username": "CoinMarketCap",
+            "content": "Week in Solana: SOL Bounces After Black Swan Market Crash\n\nSolana's still stacking wins while the charts cool off. The crypto market suffered its biggest liquidation—$19B wiped in 24 hours. SOL dropped below $175 but bounced back to $198. CME launched SOL futures options! Jupiter",
+            "timestamp": "2025-10-14T21:00:11.000Z",
+            "influence_score": 12.92,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 81,
+              "retweets": 21,
+              "replies": 44
+            }
+          },
+          {
+            "username": "CoinMarketCap",
+            "content": "CMC News: $BNB Overtakes $XRP To Claim Third Spot in Crypto Rankings",
+            "timestamp": "2025-10-08T10:30:04.000Z",
+            "influence_score": 20.76,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 260,
+              "retweets": 40,
+              "replies": 91
+            }
+          },
+          {
+            "username": "CoinShares",
+            "content": "The largest weekly ETPs inflows on record: $5.95B\n\n\n@Bitcoin\n saw its largest weekly inflows on record totalling US$3.55B, with \n@solana\n also breaking its record, at US$706.5M. \n@ethereum\n saw inflows totalling US$1.48B whilst XRP (\n@Ripple\n) also saw substantive inflows of US$219.4M.",
+            "timestamp": "2025-10-06T12:58:14.000Z",
+            "influence_score": 12.45,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 127,
+              "retweets": 10,
+              "replies": 8
+            }
+          },
+          {
+            "username": "CoinDesk",
+            "content": "BTC dropped below $111K as China's retaliatory trade measures hit global markets.\n A trader (identified as Xero XB 317) that recently profited $192M, opened a new $163M short position on Bitcoin.\n BitMind Technologies bought 202,037 Ether (ETH), capitalizing on market",
+            "timestamp": "2025-10-14T17:30:44.000Z",
+            "influence_score": 11.36,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 56,
+              "retweets": 23,
+              "replies": 27
+            }
+          },
+          {
+            "username": "Agabalim",
+            "content": "\"so you sold your retirement for epileptic?\"\n\n\"yes, CZ\"\n\n\"and you believe this coin will flip the stock market?\"\n\n\"that's correct, CZ\"\n\nOk well join us!its early",
+            "timestamp": "2025-10-08T07:15:21.000Z",
+            "influence_score": 13.45,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 75,
+              "retweets": 43,
+              "replies": 20
+            }
+          },
+          {
+            "username": "GKash || gkash.base.eth",
+            "content": "A few months ago, I earned $2,500 from the Zora airdrop.\n\nToday, my creator coin has hit over $80K+ market cap.\n→ Activate your creator coin on zora\n→ Start earning from your contents.\n all on \n@zora",
+            "timestamp": "2025-10-08T16:53:48.000Z",
+            "influence_score": 11.49,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 91,
+              "retweets": 10,
+              "replies": 21
+            }
+          },
+          {
+            "username": "CoinDCX : India Ka Crypto Coach",
+            "content": "Uptober brings another milestone! Bitcoin hits a new ATH of $125K, and the market's buzzing. Here's what's driving the market this week\n\n#MarketWeeklyByCoinDCX \n@aashryaa",
+            "timestamp": "2025-10-08T06:48:28.000Z",
+            "influence_score": 8.89,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 43,
+              "retweets": 14,
+              "replies": 8
+            }
+          },
+          {
+            "username": "CoinDCX : India Ka Crypto Coach",
+            "content": "Where experience met ambition. The CoinDCX Live Trading Competition saw veterans and first-timers alike fight it out with strategy, adrenaline, and ₹50,000 at stake.",
+            "timestamp": "2025-10-04T06:23:03.000Z",
+            "influence_score": 8.77,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 36,
+              "retweets": 16,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Sir Doge of the Coin",
+            "content": "The current state of the Irish housing market",
+            "timestamp": "2025-10-08T00:36:36.000Z",
+            "influence_score": 8.25,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 40,
+              "retweets": 6,
+              "replies": 16
+            }
+          },
+          {
+            "username": "MILLI",
+            "content": "GMILLI  Market took a hit. Now it’s cool-down time",
+            "timestamp": "2025-10-11T13:15:09.000Z",
+            "influence_score": 8.06,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 42,
+              "retweets": 8,
+              "replies": 7
+            }
+          },
+          {
+            "username": "Kapsa(the, DΨor𐤊)",
+            "content": "Yesterday we saw the biggest volume spike for $QTC since it's inception week. 500k trading volume on a 7M MC coin? We are going much higher. #Qubitcoin \n@qubitcoinx",
+            "timestamp": "2025-10-15T07:22:18.000Z",
+            "influence_score": 4.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 2,
+              "replies": 4
+            }
+          },
+          {
+            "username": "Pastor Coin",
+            "content": "Bitcoin has hit 0/30 bull market top indicators. But my timeline would have me believe we topped already, and this is the beginning of the bear market. \n\nEmotions or data?",
+            "timestamp": "2025-10-15T03:29:21.000Z",
+            "influence_score": 3.74,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 10,
+              "retweets": 1,
+              "replies": 2
+            }
+          },
+          {
+            "username": "BONAFIDE AMERICAN",
+            "content": "TAKEUSDT\n\nTarget 1: 0.2654 \nTarget 2: 0.2741 \nTarget 3: 0.3002 \nTarget 4: 0.3438 \n.\n#TAO $DOGE $BTC $ETH $SPY $QQQ $SOL $GME $AMC $ADA $COIN $HOOD $SMCI $AMD\n#Bitcoin100k  #crypto #btc #eth #altcoin #trading #signal #memecoin #forex #xau #investing #gold #blockchain #SUI",
+            "timestamp": "2025-10-15T07:54:09.000Z",
+            "influence_score": 1.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 1
+            }
+          },
+          {
+            "username": "BONAFIDE AMERICAN",
+            "content": "DUSDT\n\nTarget 1: 0.0253 \nTarget 2: 0.0258 \nTarget 3: 0.0271 \n.\n#TAO $DOGE $BTC $ETH $SPY $QQQ $SOL $GME $AMC $ADA $COIN $HOOD $SMCI $AMD\n\nClick below #Bitcoin100k  #crypto #btc #eth #altcoin #trading #signal #memecoin #forex #xau #investing #gold #blockchain #SUI $SUI",
+            "timestamp": "2025-10-15T07:54:51.000Z",
+            "influence_score": 1.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 1
+            }
+          },
+          {
+            "username": "Biggles.hl",
+            "content": "If BTC gives any deeper discounts, I’ll buy a clean 100k coin\nBull market not over\nBuyer of last resort\n\nChop, then up. Squibbly line to 200k\n\nNever fade the King",
+            "timestamp": "2025-10-15T07:55:20.000Z",
+            "influence_score": 1.0,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 1,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "DieCs",
+            "content": "Decentralization matters. But the real villain isn’t the coin or the narrative. It’s the market structure itself. With leverage, latency cascades & fake liquidity baked in, flash crashes are inevitable, regardless of the trigger.",
+            "timestamp": "2025-10-15T07:55:35.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 0.48,
+          "search_keywords": [
+            "$COIN"
+          ],
+          "generated_at": "2025-10-15T07:57:57.314386+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": true
+    }
+  },
+  "bullish_research": {
+    "stance": "bullish",
+    "thesis": "Coinbase Global Inc (COIN) is well-positioned for growth in the expanding cryptocurrency market, supported by strong market sentiment and strategic investments.",
+    "arguments": [
+      "Coinbase has a significant market capitalization of approximately $87.76 billion, indicating strong investor confidence.",
+      "The company is actively expanding its footprint in emerging markets, such as its investment in India's CoinDCX, which could lead to increased revenue streams.",
+      "The overall sentiment around COIN is bullish, with a sentiment score of 0.2143, suggesting positive market perception."
+    ],
+    "counters": [
+      {
+        "claim_id": "1",
+        "rebuttal": "The lack of earnings per share (EPS) does not necessarily indicate poor financial health, as the company is in a growth phase and investing in future opportunities.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "The absence of EPS is common in growth companies that prioritize expansion over immediate profitability."
+          }
+        ]
+      },
+      {
+        "claim_id": "2",
+        "rebuttal": "A recent dip in stock price is a normal market fluctuation and does not reflect the long-term potential of the company.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "Current: $341.55 (-4.33%)",
+            "note": "Market corrections are typical, and COIN's long-term growth trajectory remains intact."
+          }
+        ]
+      },
+      {
+        "claim_id": "3",
+        "rebuttal": "The high percentage of neutral sentiment does not negate the underlying bullish sentiment and potential for growth.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "overall_sentiment=bullish, sentiment_score=0.2143",
+            "note": "The bullish sentiment indicates a positive outlook despite a majority of neutral responses."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "Regulatory changes in the cryptocurrency market could impact operations.",
+      "Market volatility may affect short-term stock performance."
+    ],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "MarketCap=87757190000.0",
+        "note": "Strong market capitalization reflects investor confidence."
+      },
+      {
+        "source": "news",
+        "pointer": "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East",
+        "note": "Strategic investments in emerging markets can drive future growth."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_score=0.2143",
+        "note": "Positive market perception supports a bullish outlook."
+      },
+      {
+        "source": "market",
+        "pointer": "52w: $142.58 - $444.65",
+        "note": "The stock has shown significant growth potential over the past year."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=bullish, sentiment_score=0.2143",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "COIN",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-15T07:57:28.056093",
+      "news_ref": "2025-10-15T08:00:08.215782+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "bearish_research": {
+    "stance": "bearish",
+    "thesis": "Coinbase Global Inc (COIN) faces significant challenges that undermine its growth potential in the cryptocurrency market.",
+    "arguments": [
+      "The lack of earnings per share (EPS) indicates that the company is not generating profits, which raises concerns about its financial health.",
+      "The recent dip in stock price (-4.33%) suggests a bearish trend, indicating that investor confidence may be waning.",
+      "The overall sentiment score of 0.2143, despite being labeled bullish, is heavily influenced by a high percentage of neutral sentiment (79.2%), which does not reflect strong positive market perception."
+    ],
+    "counters": [],
+    "uncertainties": [],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "EPS=None",
+        "note": "The absence of earnings per share raises concerns about profitability."
+      },
+      {
+        "source": "market",
+        "pointer": "Current price: $341.55 (-4.33%)",
+        "note": "The recent decline in stock price indicates a bearish trend."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "Overall sentiment score: 0.2143",
+        "note": "High percentage of neutral sentiment (79.2%) undermines the perceived bullish sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=bullish, sentiment_score=0.2143",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "COIN",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-15T07:57:28.056093",
+      "news_ref": "2025-10-15T08:00:08.215782+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "final_decision": {
+    "ticker": "COIN",
+    "stance_summary": {
+      "bullish_thesis": "Coinbase is positioned for growth in the cryptocurrency market with strong market sentiment and strategic investments.",
+      "bearish_thesis": "Coinbase faces significant challenges, including lack of profitability and a bearish trend in stock price."
+    },
+    "consensus": [
+      "The company currently has no earnings per share (EPS).",
+      "The overall sentiment score is 0.2143, indicating a mix of bullish and neutral sentiment."
+    ],
+    "disagreements": [
+      {
+        "topic": "Market Sentiment",
+        "bull_view": "The sentiment score of 0.2143 indicates a positive market perception.",
+        "bear_view": "The high percentage of neutral sentiment (79.2%) undermines the perceived bullish sentiment."
+      },
+      {
+        "topic": "Stock Price Movement",
+        "bull_view": "The recent dip in stock price is a normal market fluctuation.",
+        "bear_view": "The recent dip in stock price (-4.33%) suggests a bearish trend."
+      }
+    ],
+    "key_upside": [
+      "Strong market capitalization of approximately $87.76 billion reflects investor confidence.",
+      "Strategic investments in emerging markets, such as India's CoinDCX, could drive future growth."
+    ],
+    "key_risks": [
+      "Lack of earnings per share raises concerns about profitability.",
+      "Regulatory changes in the cryptocurrency market could impact operations."
+    ],
+    "scorecard": {
+      "bull_strength": 0.7,
+      "bear_strength": 0.6,
+      "uncertainty": 0.4,
+      "net_score": -0.30000000000000004
+    },
+    "action": {
+      "recommendation": "SELL",
+      "confidence": 0.6,
+      "time_horizon": "medium",
+      "triggers_up": [
+        "Positive earnings report indicating profitability.",
+        "Significant increase in market sentiment score above 0.3."
+      ],
+      "triggers_down": [
+        "Further decline in stock price beyond current levels.",
+        "Negative regulatory news impacting cryptocurrency operations."
+      ]
+    },
+    "rationale": "While Coinbase has strong market potential and strategic investments, the lack of profitability and recent stock price decline raise significant concerns, leading to a recommendation to sell.",
+    "evidence_citations": [
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.eps_ttm",
+        "note": "The absence of earnings per share raises concerns about profitability."
+      },
+      {
+        "source": "market",
+        "pointer": "Current price: $341.55 (-4.33%)",
+        "note": "The recent decline in stock price indicates a bearish trend."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "Overall sentiment score: 0.2143",
+        "note": "High percentage of neutral sentiment (79.2%) undermines the perceived bullish sentiment."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.market_cap_usd",
+        "note": "Strong market capitalization reflects investor confidence."
+      },
+      {
+        "source": "news",
+        "pointer": "Coinbase to Invest in India's CoinDCX, Expand in South Asia and the Middle East",
+        "note": "Strategic investments in emerging markets can drive future growth."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "meta": {
+      "input_refs": {
+        "fundamentals_ref": "2025-10-15T07:57:28.056093",
+        "news_ref": "2025-10-15T08:00:08.215782+00:00"
+      },
+      "model": "gpt-4o-mini",
+      "risk_tolerance": "medium",
+      "time_horizon": "medium"
+    }
+  },
+  "debate_history": [
+    {
+      "role": "bullish",
+      "text": "Coinbase Global Inc (COIN) is well-positioned for growth in the expanding cryptocurrency market, supported by strong market sentiment and strategic investments.\n- Coinbase has a significant market capitalization of approximately $87.76 billion, indicating strong investor confidence.\n- The company is actively expanding its footprint in emerging markets, such as its investment in India's CoinDCX, which could lead to increased revenue streams.\n- The overall sentiment around COIN is bullish, with a sentiment score of 0.2143, suggesting positive market perception."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase Global Inc (COIN) faces significant challenges that undermine its growth potential in the cryptocurrency market.\n- The lack of earnings per share (EPS) indicates that the company is not generating profits, which raises concerns about its financial health.\n- The recent dip in stock price (-4.33%) suggests a bearish trend, indicating that investor confidence may be waning.\n- The overall sentiment score of 0.2143, despite being labeled bullish, is heavily influenced by a high percentage of neutral sentiment (79.2%), which does not reflect strong positive market perception."
+    },
+    {
+      "role": "bullish",
+      "text": "Coinbase Global Inc (COIN) is well-positioned for growth in the expanding cryptocurrency market, supported by strong market sentiment and strategic investments.\n- Coinbase has a significant market capitalization of approximately $87.76 billion, indicating strong investor confidence.\n- The company is actively expanding its footprint in emerging markets, such as its investment in India's CoinDCX, which could lead to increased revenue streams.\n- The overall sentiment around COIN is bullish, with a sentiment score of 0.2143, suggesting positive market perception."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase Global Inc (COIN) faces significant challenges that undermine its growth potential in the cryptocurrency market.\n- The lack of earnings per share (EPS) indicates that the company is not generating profits, which raises concerns about its financial health.\n- The recent dip in stock price (-4.33%) suggests a bearish trend, indicating that investor confidence may be waning.\n- The overall sentiment score of 0.2143, despite being labeled bullish, is heavily influenced by a high percentage of neutral sentiment (79.2%), which does not reflect strong positive market perception."
+    },
+    {
+      "role": "bullish",
+      "text": "Coinbase Global Inc (COIN) is well-positioned for growth in the expanding cryptocurrency market, supported by strong market sentiment and strategic investments.\n- Coinbase has a significant market capitalization of approximately $87.76 billion, indicating strong investor confidence.\n- The company is actively expanding its footprint in emerging markets, such as its investment in India's CoinDCX, which could lead to increased revenue streams.\n- The overall sentiment around COIN is bullish, with a sentiment score of 0.2143, suggesting positive market perception."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase Global Inc (COIN) faces significant challenges that undermine its growth potential in the cryptocurrency market.\n- The lack of earnings per share (EPS) indicates that the company is not generating profits, which raises concerns about its financial health.\n- The recent dip in stock price (-4.33%) suggests a bearish trend, indicating that investor confidence may be waning.\n- The overall sentiment score of 0.2143, despite being labeled bullish, is heavily influenced by a high percentage of neutral sentiment (79.2%), which does not reflect strong positive market perception."
+    }
+  ],
+  "rounds": 3,
+  "ticker": "COIN",
+  "data_validation": {
+    "news_available": true,
+    "fundamentals_available": true,
+    "sentiment_available": true,
+    "market_available": true
+  },
+  "meta": {
+    "risk_tolerance": "medium",
+    "time_horizon": "medium"
+  }
+}

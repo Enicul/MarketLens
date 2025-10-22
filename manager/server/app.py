@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import queue
+import re
 import secrets
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -32,6 +33,8 @@ from manager.memory_manager import (
 from manager.server.auth import AUTH_MANAGER, AuthSession, validate_credentials
 from manager.server.messages import TOOL_DISPLAY_NAMES, format_chat_history
 from manager.server.state import USER_STATE
+
+ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
 
 class LoginRequest(BaseModel):
@@ -368,7 +371,8 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
     """Forward log entries from queue to websocket and persist them."""
     manager_actor = "manager"
     manager_label = "Manager 主代理"
-    last_thinking_message: Optional[str] = None
+    last_thinking_messages: Dict[str, str] = {}
+    last_invoked_tool: Optional[str] = None
 
     def _strip_think_blocks(text: str) -> str:
         """Remove <think>…</think> segments to avoid exposing raw chain-of-thought."""
@@ -384,21 +388,21 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
             cleaned = cleaned[:start] + cleaned[end + len("</think>") :]
         return cleaned.strip()
 
-    async def _emit_manager_thinking(message: str) -> None:
+    async def _emit_manager_thinking(message: str, actor_key: str, label: str) -> None:
         try:
             await websocket.send_json(
                 {
                     "type": "thinking_status",
-                    "actor": manager_actor,
-                    "label": manager_label,
+                    "actor": actor_key,
+                    "label": label,
                     "status": "start",
                 }
             )
             await websocket.send_json(
                 {
                     "type": "thinking_content",
-                    "actor": manager_actor,
-                    "label": manager_label,
+                    "actor": actor_key,
+                    "label": label,
                     "content": message,
                 }
             )
@@ -411,8 +415,8 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
                 await websocket.send_json(
                     {
                         "type": "thinking_status",
-                        "actor": manager_actor,
-                        "label": manager_label,
+                        "actor": actor_key,
+                        "label": label,
                         "status": "stop",
                     }
                 )
@@ -431,45 +435,92 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
             except queue.Empty:
                 if entries:
                     for item in entries:
-                        raw_message = item.get("message", "").strip()
+                        raw_message = item.get("message", "")
+                        if not raw_message:
+                            continue
+                        raw_message = raw_message.strip()
                         if " | " in raw_message:
                             parts = raw_message.split(" | ", 2)
                             if len(parts) == 3:
                                 raw_message = parts[2]
+                        raw_message = ANSI_ESCAPE_RE.sub("", raw_message)
+                        raw_message = raw_message.replace("\r", "").strip()
                         if not raw_message:
                             continue
-                        progress_message = raw_message
+
+                        lines = [line.strip() for line in raw_message.splitlines() if line.strip()]
+                        if not lines:
+                            continue
+
+                        invoking_line = next((line for line in lines if line.startswith("Invoking:")), None)
+                        if invoking_line:
+                            match = re.search(r"Invoking:\s*`([^`]+)`", invoking_line)
+                            last_invoked_tool = match.group(1).strip() if match else None
+
                         thinking_message: Optional[str] = None
-                        if raw_message.lower().startswith("responded:"):
-                            thinking_message = raw_message.split("responded:", 1)[1].strip()
-                            progress_message = thinking_message or ""
-                            if progress_message:
-                                progress_message = _strip_think_blocks(progress_message)
-                        if progress_message:
-                            progress_message = progress_message.strip()
+                        progress_message: Optional[str] = None
+
+                        responded_line = next(
+                            (line for line in lines if line.lower().startswith("responded:")), None
+                        )
+                        if responded_line:
+                            thinking_parts = [responded_line.split("responded:", 1)[1].strip()]
+                            try:
+                                responded_index = lines.index(responded_line)
+                            except ValueError:
+                                responded_index = -1
+                            if responded_index != -1:
+                                for extra_line in lines[responded_index + 1 :]:
+                                    if extra_line.startswith("Invoking:"):
+                                        continue
+                                    if extra_line.lower().startswith("responded:"):
+                                        break
+                                    thinking_parts.append(extra_line)
+                            thinking_message = "\n".join(part for part in thinking_parts if part)
+                            progress_message = _strip_think_blocks(thinking_message)
+                        else:
+                            non_invoking_lines = [line for line in lines if not line.startswith("Invoking:")]
+                            if not non_invoking_lines:
+                                continue
+                            progress_message = _strip_think_blocks("\n".join(non_invoking_lines))
+
+                        progress_message = progress_message.strip()
+                        if not progress_message:
+                            continue
+
+                        actor_key = last_invoked_tool or manager_actor
+                        actor_label = manager_label
+                        if actor_key != manager_actor:
+                            actor_label = TOOL_DISPLAY_NAMES.get(actor_key, actor_key)
+
                         if thinking_message:
                             clean_thinking = progress_message
-                            if clean_thinking and clean_thinking != last_thinking_message:
-                                last_thinking_message = clean_thinking
+                            previous_thinking = last_thinking_messages.get(actor_key)
+                            if clean_thinking and clean_thinking != previous_thinking:
+                                last_thinking_messages[actor_key] = clean_thinking
                                 if len(clean_thinking) > 800:
                                     clean_thinking = clean_thinking[:797] + "..."
-                                await _emit_manager_thinking(clean_thinking)
-                        message_to_store = progress_message or raw_message
+                                await _emit_manager_thinking(clean_thinking, actor_key, actor_label)
+
+                        message_to_store = progress_message
                         if len(message_to_store) > 800:
                             message_to_store = message_to_store[:797] + "..."
                         level = item.get("level")
+                        tool_key = actor_key if thinking_message else "log"
                         try:
                             await _push_progress(
                                 websocket,
                                 session_id,
                                 message=message_to_store,
-                                tool="log",
+                                tool=tool_key,
                                 stage="thinking" if thinking_message else "log",
                                 level=level,
                                 timestamp=item.get("timestamp"),
                             )
                         except WebSocketDisconnect:
                             return
+                        if thinking_message:
+                            last_invoked_tool = None
                 await asyncio.sleep(0.2)
     except asyncio.CancelledError:
         pass

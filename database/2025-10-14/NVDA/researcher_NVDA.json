@@ -1,0 +1,947 @@
+{
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "NVDA",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T11:25:25+00:00",
+            "headline": "Why This Small Nvidia-Backed Stock Jumped Over 50% in One Day",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/14/why-this-small-nvidia-backed-stock-jumped-over-50/"
+            ],
+            "summary": [
+              "Why This Small Nvidia-Backed Stock Jumped Over 50% in One Day"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-14T11:00:00+00:00",
+            "headline": "U.S. Army Awards $7.9M Contract to Skydio for Short Range Reconnaissance Tranche 2 - Science Applications Intl  ( NASDAQ:SAIC ) ",
+            "evidence": [
+              "https://www.benzinga.com/pressreleases/25/10/n48193675/u-s-army-awards-7-9m-contract-to-skydio-for-short-range-reconnaissance-tranche-2"
+            ],
+            "summary": [
+              "U.S. Army Awards $7.9M Contract to Skydio for Short Range Reconnaissance Tranche 2 - Science Applications Intl  ( NASDAQ:SAIC ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T10:45:00+00:00",
+            "headline": "1 Growth Stock and 1 High-Yield Dividend Stock to Buy Hand Over Fist in October",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/14/buy-growth-stock-high-yield-dividend-stock-october/"
+            ],
+            "summary": [
+              "1 Growth Stock and 1 High-Yield Dividend Stock to Buy Hand Over Fist in October"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T10:30:00+00:00",
+            "headline": "TSMC Just Shared Fantastic News for Nvidia and Broadcom Investors",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/14/tsmc-just-shared-fantastic-news-nvidia-broadcom/"
+            ],
+            "summary": [
+              "TSMC Just Shared Fantastic News for Nvidia and Broadcom Investors"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T10:17:21+00:00",
+            "headline": "Flower City Capital Boosts Largest Holding With $3 Million Buy in Vanguard Russell 1000 ETF",
+            "evidence": [
+              "https://www.fool.com/coverage/filings/2025/10/14/flower-city-capital-boosts-largest-holding-with-usd3-million-buy-in-vanguard-russell-1000-etf/"
+            ],
+            "summary": [
+              "Flower City Capital Boosts Largest Holding With $3 Million Buy in Vanguard Russell 1000 ETF"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T10:10:00+00:00",
+            "headline": "Is Nebius Stock a Buy Now?",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/14/is-nebius-stock-a-buy-now/"
+            ],
+            "summary": [
+              "Is Nebius Stock a Buy Now?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-14T09:44:54+00:00",
+            "headline": "Stock Market Today: S&P 500, Nasdaq Futures Tumble Ahead Of Big Bank Earnings-Goldman Sachs, JPMorgan, Citigroup In Focus - Invesco QQQ Trust, Series 1  ( NASDAQ:QQQ ) , SPDR S&P 500  ( ARCA:SPY ) ",
+            "evidence": [
+              "https://www.benzinga.com/markets/equities/25/10/48191943/stock-market-today-sp-500-nasdaq-futures-tumble-ahead-of-big-bank-earnings-goldman-sachs-jpmorga"
+            ],
+            "summary": [
+              "Stock Market Today: S&P 500, Nasdaq Futures Tumble Ahead Of Big Bank Earnings-Goldman Sachs, JPMorgan, Citigroup In Focus - Invesco QQQ Trust, Series 1  ( NASDAQ:QQQ ) , SPDR S&P 500  ( ARCA:SPY ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "NVDA"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-14T09:30:00+00:00",
+            "headline": "Is AMD a Better Buy Than Nvidia After Its OpenAI Deal?",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/14/is-amd-a-better-buy-than-nvidia-after-its-openai-d/"
+            ],
+            "summary": [
+              "Is AMD a Better Buy Than Nvidia After Its OpenAI Deal?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-14T12:08:01.609236+00:00"
+      },
+      "error": null,
+      "cached": true
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "NVDA",
+        "company": {
+          "name": "NVIDIA Corp",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 4575447000000.0,
+          "revenue_per_share_ttm": 6.7348,
+          "dividend_per_share_ttm": 0.04
+        },
+        "insiders": [
+          {
+            "person": "HUANG JEN HSUN",
+            "code": "S",
+            "date": "2025-10-10",
+            "price": 195.3234,
+            "change_shares": -5596,
+            "post_shares": 70558203,
+            "filing_id": "0001197649-25-000046",
+            "source": "sec"
+          },
+          {
+            "person": "HUANG JEN HSUN",
+            "code": "S",
+            "date": "2025-10-10",
+            "price": 194.7326,
+            "change_shares": -7373,
+            "post_shares": 70563799,
+            "filing_id": "0001197649-25-000046",
+            "source": "sec"
+          },
+          {
+            "person": "HUANG JEN HSUN",
+            "code": "S",
+            "date": "2025-10-10",
+            "price": 193.7078,
+            "change_shares": -6632,
+            "post_shares": 70571172,
+            "filing_id": "0001197649-25-000046",
+            "source": "sec"
+          },
+          {
+            "person": "HUANG JEN HSUN",
+            "code": "S",
+            "date": "2025-10-10",
+            "price": 192.7424,
+            "change_shares": -11305,
+            "post_shares": 70577804,
+            "filing_id": "0001197649-25-000046",
+            "source": "sec"
+          },
+          {
+            "person": "HUANG JEN HSUN",
+            "code": "S",
+            "date": "2025-10-10",
+            "price": 191.8925,
+            "change_shares": -1308,
+            "post_shares": 70589109,
+            "filing_id": "0001197649-25-000046",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-14T12:05:43.967525"
+      },
+      "error": null,
+      "cached": true
+    },
+    "market": {
+      "data": {
+        "ticker": "NVDA",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-14T12:05:40.196686",
+        "stock_basic_info": {
+          "ticker": "NVDA",
+          "current_price": 188.32,
+          "change": 5.28,
+          "change_percent": 2.88,
+          "volume": 151504733,
+          "market_cap": 4585027534848,
+          "pe_ratio": 53.805717,
+          "pb_ratio": 45.786533,
+          "dividend_yield": 0.02,
+          "beta": 2.123,
+          "high_52w": 195.62,
+          "low_52w": 86.62,
+          "timestamp": "2025-10-14T20:05:40.195019"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 182.4445007324219,
+            "price_vs_ma_20": 103.22043501898368
+          },
+          "oscillators": {
+            "rsi": 62.57311257435408,
+            "stochastic_k": 67.5411695741378,
+            "stochastic_d": 66.60828764835394
+          },
+          "bollinger_bands": {
+            "upper_band": 194.33908077814087,
+            "lower_band": 170.5499206867029,
+            "price_vs_upper_band": 96.90279822780805
+          },
+          "volume_indicators": {
+            "volume_ma20": 181928875.0,
+            "volume_vs_ma20": 84.17064086171038
+          },
+          "volatility_indicators": {
+            "atr": 5.834286281040737,
+            "atr_percent": 3.098070334606674
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 195.6199951171875,
+            "low_1mo": 168.41000366210938,
+            "avg_close": 182.22095307849702,
+            "volatility": 5.886526166618589
+          },
+          "trend_analysis": {
+            "trend_20_days": 7.685271080826209
+          },
+          "key_levels": [
+            195.6199951171875,
+            168.41000366210938
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 21,
+          "data_period": "1mo",
+          "start_date": "2025-09-15",
+          "end_date": "2025-10-13",
+          "last_updated": "2025-10-14T20:05:40.196675"
+        }
+      },
+      "error": null,
+      "cached": true
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "NVDA",
+        "channel": "sentiment",
+        "overall_sentiment": "bearish",
+        "sentiment_score": -0.2231,
+        "sentiment_breakdown": {
+          "bullish": 0.075,
+          "bearish": 0.1,
+          "neutral": 0.825
+        },
+        "metrics": {
+          "total_tweets": 40,
+          "total_influence": 234209,
+          "influence_concentration": 0.879,
+          "sentiment_volatility": 94.69,
+          "quality_score": 0.95
+        },
+        "top_tweets": [
+          {
+            "username": "Kevin Xu",
+            "content": "My niece turned 1 today.\n\nEveryone else brought toys.\nI got her 5 shares of $NVDA.\n\n17 years later, I hope she looks at it and thinks: uncle Kev got me started.",
+            "timestamp": "2025-10-08T18:50:00.000Z",
+            "influence_score": 453.62,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 183501,
+              "retweets": 9552,
+              "replies": 3165
+            }
+          },
+          {
+            "username": "Shay Boloor",
+            "content": "8 WAYS ROBOTICS IS GETTING BUILT OUT ACROSS SECTORS\n\n1. $PLTR & $PATH are the traffic controllers for the whole fleet while $NVDA, $AVGO & $QCOM are the engines & nervous system that let the robots sense and act.\n\n2. $AVAV, $ONDS, $RCAT & $UMAC are building the UAV drone fleets",
+            "timestamp": "2025-10-04T12:35:16.000Z",
+            "influence_score": 77.61,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3625,
+              "retweets": 1143,
+              "replies": 113
+            }
+          },
+          {
+            "username": "Shay Boloor",
+            "content": "Breaking down the AI deals between $NVDA, $AMD & OpenAI",
+            "timestamp": "2025-10-06T17:13:00.000Z",
+            "influence_score": 129.14,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 11953,
+              "retweets": 2184,
+              "replies": 355
+            }
+          },
+          {
+            "username": "The AI Investor",
+            "content": "“When we give a keynote, everyone’s stock price goes up. When someone else gives a keynote, our stock price goes down. That shows our vision of the future is inclusive for other people” - Jensen Huang\n\nIt's because $NVDA is the market maker while others are share takers.",
+            "timestamp": "2025-10-08T04:13:00.000Z",
+            "influence_score": 31.13,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 808,
+              "retweets": 68,
+              "replies": 25
+            }
+          },
+          {
+            "username": "Adam Khoo",
+            "content": "Warren Buffett did not invest in NVDA, AMZN, TSLA, MSFT, GOOG, META and he only invested in AAPL in 2016, 36 years after the stock had already gone up 9,400% from its listing.\n\nYet, Buffett has made over $183 billion from investing in stocks (no one even comes close). He is now",
+            "timestamp": "2024-06-26T07:41:52.000Z",
+            "influence_score": 28.41,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 581,
+              "retweets": 96,
+              "replies": 34
+            }
+          },
+          {
+            "username": "Trading Warz",
+            "content": "BREAKING: My FULL Fibonacci COURSE from Beginner to PRO $SPY $TSLA $AMD $OSCR $NVDA\n\nThis is how I took 5k to 84k in 1 year now 7 figures STEP BY STEP!\n\nTo celebrate I will also throw in my CHECKLIST and Indicators\n\nJust comment \"ME\" and DROP A for ME!",
+            "timestamp": "2025-10-13T02:13:00.000Z",
+            "influence_score": 28.02,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 483,
+              "retweets": 53,
+              "replies": 196
+            }
+          },
+          {
+            "username": "Adam Khoo",
+            "content": "It was just announced that after 25 years of being in the Dow Jones index, Intel (INTC) will be removed and replaced by Nvidia (NVDA) on 8 November\n\nOne of the reasons why the US stock market always goes up in the long run is because unprofitable/less relevant companies are",
+            "timestamp": "2024-11-03T04:48:51.000Z",
+            "influence_score": 25.96,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 499,
+              "retweets": 75,
+              "replies": 25
+            }
+          },
+          {
+            "username": "Biggr",
+            "content": "Revenues of AI infrastructure companies are soaring.\n\nMorgan Stanley estimates that capital expenditures on AI will exceed $3 trillion in the next three years.\n\nHere are our top 10 AI infrastructure stock picks: \n\n1. $NBIS\n\n- Cloud company partnering with $NVDA.\n- It has just",
+            "timestamp": "2025-10-06T19:14:17.000Z",
+            "influence_score": 21.82,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 345,
+              "retweets": 58,
+              "replies": 15
+            }
+          },
+          {
+            "username": "Freddie Castro",
+            "content": "Look at this list. Every high-volume stock in the green today — except $OPEN.\n\nNVDA +2.8%\nPLUG +14%\nBITF +25%\nNVTS +21%\n\nYet Opendoor sits red at –3.96% while moving 111M shares on 349M avg volume.\n\nWhy? Simple. It’s got one of the highest short interests on the board.\n\nMarket",
+            "timestamp": "2025-10-13T20:36:19.000Z",
+            "influence_score": 20.71,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 300,
+              "retweets": 47,
+              "replies": 35
+            }
+          },
+          {
+            "username": "The Analyst",
+            "content": "Monday will be decisive for $NVDA\n\nIf the stock stays below the red line at $196.78, I expect a slight correction.\n\nBut if $NVDA breaks through that level, the corrective assumption is invalide.\n\nIn both scenarios, prices should rise in the mid-term.\n\nMinimum target: $248",
+            "timestamp": "2025-10-12T18:03:58.000Z",
+            "influence_score": 17.09,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 172,
+              "retweets": 45,
+              "replies": 30
+            }
+          },
+          {
+            "username": "Shay Boloor",
+            "content": "$IREN revenue up 130% CAGR over the last two years and that’s still entirely Bitcoin $BTC driven.\n\nThe AI revenue hasn’t even started yet but once the GPU cloud ramps & the $NVDA 10.9k units come online then this becomes a power & compute story.",
+            "timestamp": "2025-10-14T11:56:07.000Z",
+            "influence_score": 15.46,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 160,
+              "retweets": 23,
+              "replies": 33
+            }
+          },
+          {
+            "username": "Adam Khoo",
+            "content": "Despite announcing better than expected Q2 Revenue and Earnings, Nvidia (NVDA) stock is selling off and is down over 15% from its recent highs. \n\nHas NVDA bubble burst or is there still a long runway of growth? In this video, we will also look at SuperMicro Computer (SMCI)'s",
+            "timestamp": "2024-08-29T13:05:49.000Z",
+            "influence_score": 12.25,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 120,
+              "retweets": 13,
+              "replies": 4
+            }
+          },
+          {
+            "username": "RAKESH RAJAK",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #MarketCapitalization $JPM  \n #UnemploymentRate $TGT  \n #Volatility $SBUX  \n #Liquidity $ADAP",
+            "timestamp": "2025-10-14T12:02:03.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Avinash Yadav",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n#StockMarket $NFLX \n #Dividends $UBER \n #Portfolio $JPM  \n #RoboAdvisor $CPOP",
+            "timestamp": "2025-10-14T11:58:52.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Ehtesham",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #BearMarket $LLY \n #DayTrading $INTC  \n #Inflation $SBUX  \n #MarginCall $PFE",
+            "timestamp": "2025-10-14T12:00:30.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Neeraj Goswami",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #NYSE $F \n #TechnicalAnalysis $GM \n #RiskManagement $GORV \n #Arbitrage $SAVA",
+            "timestamp": "2025-10-14T11:49:43.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Being Waseem",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #BearMarket $MRNA \n #SharePrice $GS  \n #tylenol $GORV \n #METSERA Stock $NSTK",
+            "timestamp": "2025-10-14T11:45:07.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Niraj Kumar",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #PennyStocks $NVDA  \n #Equity $TGT  \n #BuyAndHold $HSDT \n #LimitOrder $CPOP",
+            "timestamp": "2025-10-14T12:03:36.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "manoranjan swain",
+            "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#PERatio  $AMD \n#FundamentalAnalysis  $WMT  \n#Liquidity  $NVDA \n#Inflation  $GDEV",
+            "timestamp": "2025-10-14T11:57:31.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Abhi Babu",
+            "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #DividendYield $PEP \n #Inflation $PYPL \n #Bearish $F \n #MarginCall $ADBE",
+            "timestamp": "2025-10-14T12:05:07.000Z",
+            "influence_score": 6.0,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "sudhakar Mega family fan",
+            "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#TechnicalAnalysis  $CAT \n#Brokerage  $JNJ \n#Bullish  $NVDA  \n#MarginCall  $MS",
+            "timestamp": "2025-10-14T12:03:59.000Z",
+            "influence_score": 6.0,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Anil Kumar",
+            "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#StockSplit  $AMD \n#BuyAndHold  $NKE \n#Inflation   $SBUX  \n#HedgeFund  $NVDA",
+            "timestamp": "2025-10-14T11:56:20.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Jitendra Patel",
+            "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#SecondaryMarket $BSLK\n #TechnicalAnalysis $FLXS\n #FiscalPolicy $VCIG \n#GDP $SSKN",
+            "timestamp": "2025-10-14T11:31:32.000Z",
+            "influence_score": 6.0,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Md Shahjad Raza",
+            "content": "I would like to recommend the best investor to everyone: \n@sandratetzner\n I bought the stocks he recommended and made $18,888.\n#stock $GWH \n#StockSplit $IPDN \n#StopLossOrder $GMHS \n#DividendYield $AGH \n$NVDA  $LAW",
+            "timestamp": "2025-10-14T12:01:56.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Bhuvan Verma",
+            "content": "I thought stock like $ELAB were hype… until I followed \n@Kylacsxrnard\n. 10 days later, my yearly income, done.\n$ELAB $GWAV #Stock\n#PreferredStock $KO \n#StopLossOrder $MSFT  \n#Inflation $NVDA  \n#CircuitBreaker $PFE",
+            "timestamp": "2025-10-14T12:04:43.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "sharath kumar",
+            "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#LongPosition $LASE\n #DayTrading $KNDI\n #CandlestickChart $SSYS \n#Bullish $EFOI",
+            "timestamp": "2025-10-14T11:54:35.000Z",
+            "influence_score": 6.0,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "SUBASH CHOWHAN",
+            "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#Liquidity $CTNM\n #InsiderTrading $IONZ\n #MarketManipulation $SSYS \n#OTC $SLE",
+            "timestamp": "2025-10-14T11:53:03.000Z",
+            "influence_score": 6.0,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "YADAV ROHIT",
+            "content": "I would like to recommend the best investor to everyone: \n@sandratetzner\n I bought the stocks he recommended and made $18,888.\n#stock $GWH \n#IPO $SSKN \n#BlueChipStocks $SMC \n#SharePrice $HLF \n$NVDA  $NNNN",
+            "timestamp": "2025-10-14T11:48:59.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Elikasuresh",
+            "content": "Trust me: \n@sandratetzner\n stock tweets are so accurate, I made $20,000 in a week following them. It's true.\n#risingstocks $SGBX\n#PreferredStock $SMC \n#StockSplit $MSW \n#LongPosition $WVVI \n$NVDA  $FUSB",
+            "timestamp": "2025-10-14T11:38:00.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Seasonax",
+            "content": "NVIDIA $NVDA just struck a $100B deal with OpenAI, tightening its grip on the AI boom.\nEarnings drop Nov 11  and historically, this period shows a +9.8% average return. \n\nWill history repeat itself? \n\n#nvidia #ai #openai #trading #investment",
+            "timestamp": "2025-10-13T06:33:55.000Z",
+            "influence_score": 5.48,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 21,
+              "retweets": 4,
+              "replies": 1
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 0.8,
+          "search_keywords": [
+            "$NVDA",
+            "Nvidia",
+            "英伟达"
+          ],
+          "generated_at": "2025-10-14T12:06:10.024282+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": true
+    }
+  },
+  "bullish_research": {
+    "stance": "bullish",
+    "thesis": "NVIDIA Corp (NVDA) is positioned for significant growth due to its leadership in AI technology and strong market performance.",
+    "arguments": [
+      "NVIDIA's market capitalization of $4.58 trillion reflects its strong position in the tech industry, particularly in AI and gaming sectors.",
+      "The recent price increase of 2.88% indicates positive market sentiment and investor confidence in NVIDIA's future prospects.",
+      "NVIDIA's revenue per share of $6.73 suggests strong financial performance and potential for future earnings growth."
+    ],
+    "counters": [
+      {
+        "claim_id": "1",
+        "rebuttal": "NVIDIA's high market capitalization is justified by its leading role in the rapidly growing AI sector, which is expected to drive substantial revenue growth in the coming years.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "Current market capitalization of $4.58 trillion.",
+            "note": "This reflects NVIDIA's dominance in AI and gaming, which are key growth areas."
+          },
+          {
+            "source": "market",
+            "pointer": "Recent price increase of 2.88%.",
+            "note": "Indicates strong investor confidence and positive market sentiment."
+          }
+        ]
+      },
+      {
+        "claim_id": "2",
+        "rebuttal": "The lack of EPS does not diminish NVIDIA's growth potential, as the company is heavily investing in AI and infrastructure, which will yield returns in the future.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "Revenue per share of $6.73.",
+            "note": "Demonstrates strong financial performance and potential for future earnings growth."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "Market volatility could impact stock performance in the short term.",
+      "Potential regulatory challenges in the tech industry."
+    ],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "MarketCap=4575447000000.0, Rev/Share=6.7348, Dividend=0.04",
+        "note": "Strong fundamentals support growth potential."
+      },
+      {
+        "source": "market",
+        "pointer": "Current price of $188.32 with a 52-week range of $86.62 - $195.62.",
+        "note": "Indicates strong market performance and resilience."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "Sentiment score of -0.2231.",
+        "note": "Despite bearish sentiment, the overall market performance remains strong."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=bearish, sentiment_score=-0.2231",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "NVDA",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-14T12:05:43.967525",
+      "news_ref": "2025-10-14T12:08:01.609236+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "bearish_research": {
+    "stance": "bearish",
+    "thesis": "NVIDIA Corp (NVDA) is overvalued and faces significant risks that could lead to a decline in stock price.",
+    "arguments": [
+      "NVIDIA's current market capitalization of $4.58 trillion is unsustainable given its lack of earnings per share (EPS) and high valuation metrics.",
+      "The recent price increase of 2.88% does not reflect the underlying fundamentals, as the company has not demonstrated consistent profitability.",
+      "The sentiment analysis shows a bearish sentiment score of -0.2231, indicating a lack of confidence among investors."
+    ],
+    "counters": [],
+    "uncertainties": [],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "MarketCap=4575447000000.0, EPS=None, Rev/Share=6.7348, Dividend=0.04",
+        "note": "Lack of earnings per share indicates potential financial instability."
+      },
+      {
+        "source": "market",
+        "pointer": "Current: $188.32 (+2.88%), 52w: $86.62 - $195.62",
+        "note": "Current price does not justify the high market cap."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=bearish, sentiment_score=-0.2231",
+        "note": "Bearish sentiment indicates declining investor confidence."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=bearish, sentiment_score=-0.2231",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "NVDA",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-14T12:05:43.967525",
+      "news_ref": "2025-10-14T12:08:01.609236+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "final_decision": {
+    "ticker": "NVDA",
+    "stance_summary": {
+      "bullish_thesis": "NVIDIA is positioned for significant growth due to its leadership in AI technology and strong market performance.",
+      "bearish_thesis": "NVIDIA is overvalued and faces significant risks that could lead to a decline in stock price."
+    },
+    "consensus": [
+      "NVIDIA's current market capitalization is $4.58 trillion.",
+      "The recent price increase of 2.88% indicates market activity."
+    ],
+    "disagreements": [
+      {
+        "topic": "Market Capitalization",
+        "bull_view": "Justified by leading role in AI and gaming sectors.",
+        "bear_view": "Unsustainable given lack of earnings per share."
+      },
+      {
+        "topic": "Profitability",
+        "bull_view": "Strong revenue per share indicates potential for future earnings growth.",
+        "bear_view": "Lack of consistent profitability raises concerns."
+      },
+      {
+        "topic": "Investor Sentiment",
+        "bull_view": "Positive market sentiment despite bearish sentiment score.",
+        "bear_view": "Bearish sentiment score indicates declining investor confidence."
+      }
+    ],
+    "key_upside": [
+      "Leadership in AI technology could drive substantial revenue growth.",
+      "Strong revenue per share suggests potential for future earnings growth."
+    ],
+    "key_risks": [
+      "High market capitalization may not be sustainable.",
+      "Market volatility and potential regulatory challenges could impact performance."
+    ],
+    "scorecard": {
+      "bull_strength": 0.7,
+      "bear_strength": 0.6,
+      "uncertainty": 0.4,
+      "net_score": -0.30000000000000004
+    },
+    "action": {
+      "recommendation": "SELL",
+      "confidence": 0.6,
+      "time_horizon": "medium",
+      "triggers_up": [
+        "Demonstration of consistent profitability.",
+        "Positive regulatory developments in the tech industry."
+      ],
+      "triggers_down": [
+        "Significant decline in market capitalization.",
+        "Increased market volatility impacting stock performance."
+      ]
+    },
+    "rationale": "While NVIDIA shows strong potential in AI and gaming, the high market capitalization and lack of consistent profitability raise significant concerns, leading to a recommendation to sell.",
+    "evidence_citations": [
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.market_cap_usd",
+        "note": "Strong fundamentals support growth potential."
+      },
+      {
+        "source": "market",
+        "pointer": "Current price of $188.32 with a 52-week range of $86.62 - $195.62.",
+        "note": "Current price does not justify the high market cap."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Bearish sentiment indicates declining investor confidence."
+      }
+    ],
+    "meta": {
+      "input_refs": {
+        "fundamentals_ref": "2025-10-14T12:05:43.967525",
+        "news_ref": "2025-10-14T12:08:01.609236+00:00"
+      },
+      "model": "gpt-4o-mini",
+      "risk_tolerance": "medium",
+      "time_horizon": "medium"
+    }
+  },
+  "debate_history": [
+    {
+      "role": "bullish",
+      "text": "NVIDIA Corp (NVDA) is positioned for significant growth due to its leadership in AI technology and strong market performance.\n- NVIDIA's market capitalization of $4.58 trillion reflects its strong position in the tech industry, particularly in AI and gaming sectors.\n- The recent price increase of 2.88% indicates positive market sentiment and investor confidence in NVIDIA's future prospects.\n- NVIDIA's revenue per share of $6.73 suggests strong financial performance and potential for future earnings growth."
+    },
+    {
+      "role": "bearish",
+      "text": "NVIDIA Corp (NVDA) is overvalued and faces significant risks that could lead to a decline in stock price.\n- NVIDIA's current market capitalization of $4.58 trillion is unsustainable given its lack of earnings per share (EPS) and high valuation metrics.\n- The recent price increase of 2.88% does not reflect the underlying fundamentals, as the company has not demonstrated consistent profitability.\n- The sentiment analysis shows a bearish sentiment score of -0.2231, indicating a lack of confidence among investors."
+    },
+    {
+      "role": "bullish",
+      "text": "NVIDIA Corp (NVDA) is poised for significant growth driven by its leadership in AI technology and strong market performance.\n- NVIDIA's market capitalization of $4.58 trillion reflects its strong position in the tech industry, particularly in AI and gaming sectors.\n- The recent price increase of 2.88% indicates positive market sentiment and investor confidence in NVIDIA's future prospects.\n- NVIDIA's revenue per share of $6.73 suggests strong financial performance and potential for future earnings growth."
+    },
+    {
+      "role": "bearish",
+      "text": "NVIDIA Corp (NVDA) is overvalued and faces significant risks that could lead to a decline in stock price.\n- NVIDIA's current market capitalization of $4.58 trillion is unsustainable given its lack of earnings per share (EPS) and high valuation metrics.\n- The recent price increase of 2.88% does not reflect the underlying fundamentals, as the company has not demonstrated consistent profitability.\n- The sentiment analysis shows a bearish sentiment score of -0.2231, indicating a lack of confidence among investors."
+    },
+    {
+      "role": "bullish",
+      "text": "NVIDIA Corp (NVDA) is positioned for significant growth due to its leadership in AI technology and strong market performance.\n- NVIDIA's market capitalization of $4.58 trillion reflects its strong position in the tech industry, particularly in AI and gaming sectors.\n- The recent price increase of 2.88% indicates positive market sentiment and investor confidence in NVIDIA's future prospects.\n- NVIDIA's revenue per share of $6.73 suggests strong financial performance and potential for future earnings growth."
+    },
+    {
+      "role": "bearish",
+      "text": "NVIDIA Corp (NVDA) is overvalued and faces significant risks that could lead to a decline in stock price.\n- NVIDIA's current market capitalization of $4.58 trillion is unsustainable given its lack of earnings per share (EPS) and high valuation metrics.\n- The recent price increase of 2.88% does not reflect the underlying fundamentals, as the company has not demonstrated consistent profitability.\n- The sentiment analysis shows a bearish sentiment score of -0.2231, indicating a lack of confidence among investors."
+    }
+  ],
+  "rounds": 3,
+  "ticker": "NVDA",
+  "data_validation": {
+    "news_available": true,
+    "fundamentals_available": true,
+    "sentiment_available": true,
+    "market_available": true
+  },
+  "meta": {
+    "risk_tolerance": "medium",
+    "time_horizon": "medium"
+  }
+}

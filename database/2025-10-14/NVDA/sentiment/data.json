@@ -1,0 +1,391 @@
+{
+  "ticker": "NVDA",
+  "channel": "sentiment",
+  "overall_sentiment": "bearish",
+  "sentiment_score": -0.2231,
+  "sentiment_breakdown": {
+    "bullish": 0.075,
+    "bearish": 0.1,
+    "neutral": 0.825
+  },
+  "metrics": {
+    "total_tweets": 40,
+    "total_influence": 234209,
+    "influence_concentration": 0.879,
+    "sentiment_volatility": 94.69,
+    "quality_score": 0.95
+  },
+  "top_tweets": [
+    {
+      "username": "Kevin Xu",
+      "content": "My niece turned 1 today.\n\nEveryone else brought toys.\nI got her 5 shares of $NVDA.\n\n17 years later, I hope she looks at it and thinks: uncle Kev got me started.",
+      "timestamp": "2025-10-08T18:50:00.000Z",
+      "influence_score": 453.62,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 183501,
+        "retweets": 9552,
+        "replies": 3165
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "8 WAYS ROBOTICS IS GETTING BUILT OUT ACROSS SECTORS\n\n1. $PLTR & $PATH are the traffic controllers for the whole fleet while $NVDA, $AVGO & $QCOM are the engines & nervous system that let the robots sense and act.\n\n2. $AVAV, $ONDS, $RCAT & $UMAC are building the UAV drone fleets",
+      "timestamp": "2025-10-04T12:35:16.000Z",
+      "influence_score": 77.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3625,
+        "retweets": 1143,
+        "replies": 113
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "Breaking down the AI deals between $NVDA, $AMD & OpenAI",
+      "timestamp": "2025-10-06T17:13:00.000Z",
+      "influence_score": 129.14,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 11953,
+        "retweets": 2184,
+        "replies": 355
+      }
+    },
+    {
+      "username": "The AI Investor",
+      "content": "“When we give a keynote, everyone’s stock price goes up. When someone else gives a keynote, our stock price goes down. That shows our vision of the future is inclusive for other people” - Jensen Huang\n\nIt's because $NVDA is the market maker while others are share takers.",
+      "timestamp": "2025-10-08T04:13:00.000Z",
+      "influence_score": 31.13,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 808,
+        "retweets": 68,
+        "replies": 25
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Warren Buffett did not invest in NVDA, AMZN, TSLA, MSFT, GOOG, META and he only invested in AAPL in 2016, 36 years after the stock had already gone up 9,400% from its listing.\n\nYet, Buffett has made over $183 billion from investing in stocks (no one even comes close). He is now",
+      "timestamp": "2024-06-26T07:41:52.000Z",
+      "influence_score": 28.41,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 581,
+        "retweets": 96,
+        "replies": 34
+      }
+    },
+    {
+      "username": "Trading Warz",
+      "content": "BREAKING: My FULL Fibonacci COURSE from Beginner to PRO $SPY $TSLA $AMD $OSCR $NVDA\n\nThis is how I took 5k to 84k in 1 year now 7 figures STEP BY STEP!\n\nTo celebrate I will also throw in my CHECKLIST and Indicators\n\nJust comment \"ME\" and DROP A for ME!",
+      "timestamp": "2025-10-13T02:13:00.000Z",
+      "influence_score": 28.02,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 483,
+        "retweets": 53,
+        "replies": 196
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "It was just announced that after 25 years of being in the Dow Jones index, Intel (INTC) will be removed and replaced by Nvidia (NVDA) on 8 November\n\nOne of the reasons why the US stock market always goes up in the long run is because unprofitable/less relevant companies are",
+      "timestamp": "2024-11-03T04:48:51.000Z",
+      "influence_score": 25.96,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 499,
+        "retweets": 75,
+        "replies": 25
+      }
+    },
+    {
+      "username": "Biggr",
+      "content": "Revenues of AI infrastructure companies are soaring.\n\nMorgan Stanley estimates that capital expenditures on AI will exceed $3 trillion in the next three years.\n\nHere are our top 10 AI infrastructure stock picks: \n\n1. $NBIS\n\n- Cloud company partnering with $NVDA.\n- It has just",
+      "timestamp": "2025-10-06T19:14:17.000Z",
+      "influence_score": 21.82,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 345,
+        "retweets": 58,
+        "replies": 15
+      }
+    },
+    {
+      "username": "Freddie Castro",
+      "content": "Look at this list. Every high-volume stock in the green today — except $OPEN.\n\nNVDA +2.8%\nPLUG +14%\nBITF +25%\nNVTS +21%\n\nYet Opendoor sits red at –3.96% while moving 111M shares on 349M avg volume.\n\nWhy? Simple. It’s got one of the highest short interests on the board.\n\nMarket",
+      "timestamp": "2025-10-13T20:36:19.000Z",
+      "influence_score": 20.71,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 300,
+        "retweets": 47,
+        "replies": 35
+      }
+    },
+    {
+      "username": "The Analyst",
+      "content": "Monday will be decisive for $NVDA\n\nIf the stock stays below the red line at $196.78, I expect a slight correction.\n\nBut if $NVDA breaks through that level, the corrective assumption is invalide.\n\nIn both scenarios, prices should rise in the mid-term.\n\nMinimum target: $248",
+      "timestamp": "2025-10-12T18:03:58.000Z",
+      "influence_score": 17.09,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 172,
+        "retweets": 45,
+        "replies": 30
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "$IREN revenue up 130% CAGR over the last two years and that’s still entirely Bitcoin $BTC driven.\n\nThe AI revenue hasn’t even started yet but once the GPU cloud ramps & the $NVDA 10.9k units come online then this becomes a power & compute story.",
+      "timestamp": "2025-10-14T11:56:07.000Z",
+      "influence_score": 15.46,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 160,
+        "retweets": 23,
+        "replies": 33
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Despite announcing better than expected Q2 Revenue and Earnings, Nvidia (NVDA) stock is selling off and is down over 15% from its recent highs. \n\nHas NVDA bubble burst or is there still a long runway of growth? In this video, we will also look at SuperMicro Computer (SMCI)'s",
+      "timestamp": "2024-08-29T13:05:49.000Z",
+      "influence_score": 12.25,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 120,
+        "retweets": 13,
+        "replies": 4
+      }
+    },
+    {
+      "username": "RAKESH RAJAK",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #MarketCapitalization $JPM  \n #UnemploymentRate $TGT  \n #Volatility $SBUX  \n #Liquidity $ADAP",
+      "timestamp": "2025-10-14T12:02:03.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Avinash Yadav",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n#StockMarket $NFLX \n #Dividends $UBER \n #Portfolio $JPM  \n #RoboAdvisor $CPOP",
+      "timestamp": "2025-10-14T11:58:52.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Ehtesham",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #BearMarket $LLY \n #DayTrading $INTC  \n #Inflation $SBUX  \n #MarginCall $PFE",
+      "timestamp": "2025-10-14T12:00:30.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Neeraj Goswami",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #NYSE $F \n #TechnicalAnalysis $GM \n #RiskManagement $GORV \n #Arbitrage $SAVA",
+      "timestamp": "2025-10-14T11:49:43.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Being Waseem",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #BearMarket $MRNA \n #SharePrice $GS  \n #tylenol $GORV \n #METSERA Stock $NSTK",
+      "timestamp": "2025-10-14T11:45:07.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Niraj Kumar",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #PennyStocks $NVDA  \n #Equity $TGT  \n #BuyAndHold $HSDT \n #LimitOrder $CPOP",
+      "timestamp": "2025-10-14T12:03:36.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "manoranjan swain",
+      "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#PERatio  $AMD \n#FundamentalAnalysis  $WMT  \n#Liquidity  $NVDA \n#Inflation  $GDEV",
+      "timestamp": "2025-10-14T11:57:31.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Abhi Babu",
+      "content": "Follow him: \n@fta360\n His stock recommendations are rising every day. My $5,000 investment turned into $72,000. He's definitely worth following.\n$BBAI $NVDA \n #DividendYield $PEP \n #Inflation $PYPL \n #Bearish $F \n #MarginCall $ADBE",
+      "timestamp": "2025-10-14T12:05:07.000Z",
+      "influence_score": 6.0,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "sudhakar Mega family fan",
+      "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#TechnicalAnalysis  $CAT \n#Brokerage  $JNJ \n#Bullish  $NVDA  \n#MarginCall  $MS",
+      "timestamp": "2025-10-14T12:03:59.000Z",
+      "influence_score": 6.0,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Anil Kumar",
+      "content": "He is a gold medal stock analyst: \n@ta60330173\n who posts stock recommendations on X every day, and they are indeed very accurate.\n #Stock $BYND $SPY \n#StockSplit  $AMD \n#BuyAndHold  $NKE \n#Inflation   $SBUX  \n#HedgeFund  $NVDA",
+      "timestamp": "2025-10-14T11:56:20.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Jitendra Patel",
+      "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#SecondaryMarket $BSLK\n #TechnicalAnalysis $FLXS\n #FiscalPolicy $VCIG \n#GDP $SSKN",
+      "timestamp": "2025-10-14T11:31:32.000Z",
+      "influence_score": 6.0,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Md Shahjad Raza",
+      "content": "I would like to recommend the best investor to everyone: \n@sandratetzner\n I bought the stocks he recommended and made $18,888.\n#stock $GWH \n#StockSplit $IPDN \n#StopLossOrder $GMHS \n#DividendYield $AGH \n$NVDA  $LAW",
+      "timestamp": "2025-10-14T12:01:56.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Bhuvan Verma",
+      "content": "I thought stock like $ELAB were hype… until I followed \n@Kylacsxrnard\n. 10 days later, my yearly income, done.\n$ELAB $GWAV #Stock\n#PreferredStock $KO \n#StopLossOrder $MSFT  \n#Inflation $NVDA  \n#CircuitBreaker $PFE",
+      "timestamp": "2025-10-14T12:04:43.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "sharath kumar",
+      "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#LongPosition $LASE\n #DayTrading $KNDI\n #CandlestickChart $SSYS \n#Bullish $EFOI",
+      "timestamp": "2025-10-14T11:54:35.000Z",
+      "influence_score": 6.0,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "SUBASH CHOWHAN",
+      "content": "Big stock moves every day!I get buy/sell signals before the bell from \n@namachan1010\n— don’t miss the next run!\n$NVDA $OPEN #stocks \n#Liquidity $CTNM\n #InsiderTrading $IONZ\n #MarketManipulation $SSYS \n#OTC $SLE",
+      "timestamp": "2025-10-14T11:53:03.000Z",
+      "influence_score": 6.0,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "YADAV ROHIT",
+      "content": "I would like to recommend the best investor to everyone: \n@sandratetzner\n I bought the stocks he recommended and made $18,888.\n#stock $GWH \n#IPO $SSKN \n#BlueChipStocks $SMC \n#SharePrice $HLF \n$NVDA  $NNNN",
+      "timestamp": "2025-10-14T11:48:59.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Elikasuresh",
+      "content": "Trust me: \n@sandratetzner\n stock tweets are so accurate, I made $20,000 in a week following them. It's true.\n#risingstocks $SGBX\n#PreferredStock $SMC \n#StockSplit $MSW \n#LongPosition $WVVI \n$NVDA  $FUSB",
+      "timestamp": "2025-10-14T11:38:00.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Seasonax",
+      "content": "NVIDIA $NVDA just struck a $100B deal with OpenAI, tightening its grip on the AI boom.\nEarnings drop Nov 11  and historically, this period shows a +9.8% average return. \n\nWill history repeat itself? \n\n#nvidia #ai #openai #trading #investment",
+      "timestamp": "2025-10-13T06:33:55.000Z",
+      "influence_score": 5.48,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 21,
+        "retweets": 4,
+        "replies": 1
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 0.8,
+    "search_keywords": [
+      "$NVDA",
+      "Nvidia",
+      "英伟达"
+    ],
+    "generated_at": "2025-10-14T12:06:10.024282+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}

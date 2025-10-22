@@ -1,0 +1,1 @@
+"❌ 分析失败: 1 validation error for generate_decision_card\nprediction_data\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.11/v/string_type"

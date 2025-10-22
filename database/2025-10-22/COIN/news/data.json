@@ -1,0 +1,161 @@
+{
+  "ticker": "COIN",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T06:12:01+00:00",
+      "headline": "OpenAI launches browser with a brain powered by agentic AI",
+      "evidence": [
+        "https://cointelegraph.com/news/openai-announces-browser-with-brain-powered-agentic-ai"
+      ],
+      "summary": [
+        "OpenAI launches browser with a brain powered by agentic AI"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T03:51:55+00:00",
+      "headline": "Coinbase CEO reveals 'private transactions' are coming to Base",
+      "evidence": [
+        "https://cointelegraph.com/news/private-transactions-coming-base-coinbase-ceo"
+      ],
+      "summary": [
+        "Coinbase CEO reveals 'private transactions' are coming to Base"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T02:41:22+00:00",
+      "headline": "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'",
+      "evidence": [
+        "https://cointelegraph.com/news/stablecoins-yield-banks-interest-kraken-ceo-dave-ripley"
+      ],
+      "summary": [
+        "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-21T19:36:28+00:00",
+      "headline": "Bitcoin whale opens $235M BTC short, after netting $200M from market crash",
+      "evidence": [
+        "https://cointelegraph.com/news/11b-bitcoin-whale-235m-btc-short-market-crash"
+      ],
+      "summary": [
+        "Bitcoin whale opens $235M BTC short, after netting $200M from market crash"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-21T19:20:29+00:00",
+      "headline": "Bitcoin Surges Back To $112,000 As Ethereum, XRP, Dogecoin Rally On Fed's Crypto Payment Signals",
+      "evidence": [
+        "https://www.benzinga.com/crypto/cryptocurrency/25/10/48338839/bitcoin-surges-back-to-112000-as-ethereum-xrp-dogecoin-rally-on-feds-crypto-payment-signals"
+      ],
+      "summary": [
+        "Bitcoin Surges Back To $112,000 As Ethereum, XRP, Dogecoin Rally On Fed's Crypto Payment Signals"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-21T18:05:20+00:00",
+      "headline": "Fed Considering 'Skinny' Master Accounts for Crypto Banks on 'Streamlined Timeline'",
+      "evidence": [
+        "https://decrypt.co/345255/fed-considering-skinny-master-accounts-crypto-banks"
+      ],
+      "summary": [
+        "Fed Considering 'Skinny' Master Accounts for Crypto Banks on 'Streamlined Timeline'"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-21T17:27:53+00:00",
+      "headline": "Amazon’s AWS Outage Exposes Major Vulnerability In Ethereum NFTs",
+      "evidence": [
+        "https://finnhub.io/api/news?id=8c2a9e10e6551347b1ac8bf854cee4f371e09f4003c73af38879d943742de9dc"
+      ],
+      "summary": [
+        "Amazon’s AWS Outage Exposes Major Vulnerability In Ethereum NFTs"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-21T17:07:00+00:00",
+      "headline": "Cybersecurity expert offers blunt verdict on AWS outage",
+      "evidence": [
+        "https://finnhub.io/api/news?id=26b48cd48b6ccd48c6d432f43128e0899ebc1aa209492cac6f2a4209f295093f"
+      ],
+      "summary": [
+        "Cybersecurity expert offers blunt verdict on AWS outage"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-22T08:23:38.976746+00:00"
+}

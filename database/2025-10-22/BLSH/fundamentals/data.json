@@ -1,0 +1,13 @@
+{
+  "ticker": "BLSH",
+  "company": {
+    "name": "Bullish",
+    "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+    "country": "KY",
+    "currency": "USD"
+  },
+  "metrics": {
+    "market_cap_usd": 8629658000.0
+  },
+  "retrieved_at": "2025-10-22T02:01:13.638968"
+}

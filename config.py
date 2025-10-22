@@ -54,5 +54,6 @@ LLM_GOOGLE = ChatGoogleGenerativeAI(
     temperature=0.3,
     google_api_key=google_api_key,
     convert_system_message_to_human=False,
+    verbose=True,
     streaming=True,
 )

@@ -1,0 +1,66 @@
+{
+  "ticker": "COIN",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-22T08:23:21.122126",
+  "stock_basic_info": {
+    "ticker": "COIN",
+    "current_price": 338.62,
+    "change": -5.16,
+    "change_percent": -1.5,
+    "volume": 5941414,
+    "market_cap": 86336356352,
+    "pe_ratio": 32.559616,
+    "pb_ratio": 7.179324,
+    "beta": 3.684,
+    "high_52w": 444.65,
+    "low_52w": 142.58,
+    "timestamp": "2025-10-22T16:23:21.119561"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 349.3714965820312,
+      "price_vs_ma_20": 96.92261630670282
+    },
+    "oscillators": {
+      "rsi": 47.25234035133313,
+      "stochastic_k": 24.7067217494572,
+      "stochastic_d": 25.7178988692695
+    },
+    "bollinger_bands": {
+      "upper_band": 399.0325947552327,
+      "lower_band": 299.71039840882975,
+      "price_vs_upper_band": 84.86023436879827
+    },
+    "volume_indicators": {
+      "volume_ma20": 9242900.0,
+      "volume_vs_ma20": 64.3878003656861
+    },
+    "volatility_indicators": {
+      "atr": 19.775000435965403,
+      "atr_percent": 5.839879723913467
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 402.1600036621094,
+      "low_1mo": 303.3999938964844,
+      "avg_close": 347.24772505326706,
+      "volatility": 24.666753854717083
+    },
+    "trend_analysis": {
+      "trend_20_days": 5.236661801545351
+    },
+    "key_levels": [
+      402.1600036621094,
+      303.3999938964844
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-22",
+    "end_date": "2025-10-21",
+    "last_updated": "2025-10-22T16:23:21.122110"
+  }
+}
