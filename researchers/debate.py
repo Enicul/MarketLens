@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal, Tuple
 from pydantic import BaseModel, Field, ValidationError
-from langchain_openai import ChatOpenAI
+from config import LLM_GOOGLE
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -192,13 +192,8 @@ def _ensure_measurable_triggers(trigs: List[str], fallback: List[str]) -> List[s
 
 # ========= Moderator =========
 class DebateModerator:
-    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0, timeout: int = 40, retries: int = 2):
-        self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
-        # self.llm = ChatOpenAI(
-        #     model="qwen/qwen3-235b-a22b",
-        #     temperature=0.1,
-        #     base_url="https://zehenglmstudio.cpolar.top/v1"
-        # )
+    def __init__(self, temperature: float = 0, timeout: int = 40, retries: int = 2):
+        self.llm = LLM_GOOGLE
         self.retries = retries
 
     @staticmethod
@@ -306,7 +301,7 @@ class DebateModerator:
                 # Meta
                 out.setdefault("meta", {})
                 out["meta"].update({
-                    "model": "gpt-4o-mini",
+                    "model": "gemini-2.5-pro",
                     "risk_tolerance": risk_tolerance,
                     "time_horizon": time_horizon
                 })
