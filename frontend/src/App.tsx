@@ -29,10 +29,20 @@ const DEFAULT_CONFIG: AnalysisConfig = {
   sentiment: true
 };
 
-type ThinkingEntry = {
+type ThinkingLogEntry = {
+  actor: string;
   label: string;
-  active: boolean;
   content: string;
+  timestamp: string;
+};
+
+const TOOL_DISPLAY_LABELS: Record<string, string> = {
+  call_analyst: "Analyst 子代理",
+  call_researcher: "Researcher 子代理",
+  call_trader: "Trader 子代理",
+  call_risk_manager: "风险管理模块",
+  read_file: "文件读取工具",
+  write_file: "文件写入工具"
 };
 
 const formatTimestamp = (iso: string) => {
@@ -287,11 +297,13 @@ interface DashboardProps {
   messages: ChatMessage[];
   streamingReply: string;
   progress: ProgressEntry[];
-  thinkingState: Record<string, ThinkingEntry>;
+  thinkingLog: ThinkingLogEntry[];
   statusMessage: string | null;
   errorMessage: string | null;
   showProgressPanel: boolean;
+  showThinkingPanel: boolean;
   onToggleProgressPanel: () => void;
+  onToggleThinkingPanel: () => void;
   onSelectSession: (sessionId: string) => Promise<void>;
   onCreateSession: () => Promise<void>;
   onRenameSession: (sessionId: string, name: string) => Promise<void>;
@@ -311,11 +323,13 @@ function Dashboard({
   messages,
   streamingReply,
   progress,
-  thinkingState,
+  thinkingLog,
   statusMessage,
   errorMessage,
   showProgressPanel,
+  showThinkingPanel,
   onToggleProgressPanel,
+  onToggleThinkingPanel,
   onSelectSession,
   onCreateSession,
   onRenameSession,
@@ -328,14 +342,21 @@ function Dashboard({
   connected
 }: DashboardProps) {
   const progressArrow = showProgressPanel ? "▾" : "▸";
+  const thinkingArrow = showThinkingPanel ? "▾" : "▸";
   const progressEndRef = useRef<HTMLDivElement | null>(null);
-  const thinkingEntries = useMemo(() => Object.entries(thinkingState), [thinkingState]);
+  const thinkingEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (showProgressPanel) {
       progressEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [progress, showProgressPanel]);
+
+  useEffect(() => {
+    if (showThinkingPanel) {
+      thinkingEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [thinkingLog, showThinkingPanel]);
 
   return (
     <div className="dashboard">
@@ -366,25 +387,6 @@ function Dashboard({
             </span>
           </div>
         </header>
-        {thinkingEntries.length ? (
-          <div className="thinking-panel">
-            {thinkingEntries.map(([actor, entry]) => (
-              <div key={actor} className={`thinking-entry ${entry.active ? "active" : "idle"}`}>
-                <div className="thinking-entry-header">
-                  <span className="thinking-actor">{entry.label}</span>
-                  <span className={`thinking-status-dot ${entry.active ? "pulse" : "rest"}`} />
-                </div>
-                <div className="thinking-entry-body">
-                  {entry.content ? (
-                    <pre>{entry.content}</pre>
-                  ) : (
-                    <span className="thinking-placeholder">思考中…</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : null}
         <div className="workspace">
           <section className="chat-window">
             <div className="messages">
@@ -402,35 +404,66 @@ function Dashboard({
             <ChatComposer disabled={streaming} onSend={onSendMessage} />
           </section>
 
-          <aside className={`progress-panel ${showProgressPanel ? "open" : "closed"}`}>
-            <button className="progress-toggle" type="button" onClick={onToggleProgressPanel}>
-              <span className="progress-icon">{progressArrow}</span>
-              <span>实时进度</span>
-            </button>
-            {showProgressPanel ? (
-              <div className="progress-list">
-                {progress.length ? (
-                  progress.map((item, index) => {
-                    const stage = item.stage || item.level?.toLowerCase() || "log";
-                    const severity = stage === "error" || item.level === "ERROR" ? "error" : stage === "end" ? "done" : stage === "start" ? "start" : "log";
-                    return (
+          <div className="side-panels">
+            <aside className={`progress-panel model-thinking-panel ${showThinkingPanel ? "open" : "closed"}`}>
+              <button className="progress-toggle" type="button" onClick={onToggleThinkingPanel}>
+                <span className="progress-icon">{thinkingArrow}</span>
+                <span>Model Thinking</span>
+              </button>
+              {showThinkingPanel ? (
+                <div className="progress-list thinking-list">
+                  {thinkingLog.length ? (
+                    thinkingLog.map((entry, index) => (
                       <div
-                        key={`${item.timestamp}-${index}`}
-                        className={`progress-item progress-${severity}`}
-                        title={item.level ? `${item.level}` : undefined}
+                        key={`${entry.timestamp}-${index}`}
+                        className="progress-item thinking-item"
+                        title={entry.label}
                       >
-                        <span className="progress-time">{formatTimestamp(item.timestamp)}</span>
-                        <span className="progress-message">{item.message}</span>
+                        <span className="progress-time">{formatTimestamp(entry.timestamp)}</span>
+                        <span className="progress-message">
+                          {entry.label ? `[${entry.label}] ` : ""}
+                          {entry.content}
+                        </span>
                       </div>
-                    );
-                  })
-                ) : (
-                  <p className="empty-hint">等待任务执行…</p>
-                )}
-                <div ref={progressEndRef} />
-              </div>
-            ) : null}
-          </aside>
+                    ))
+                  ) : (
+                    <p className="empty-hint">等待模型动作…</p>
+                  )}
+                  <div ref={thinkingEndRef} />
+                </div>
+              ) : null}
+            </aside>
+
+            <aside className={`progress-panel ${showProgressPanel ? "open" : "closed"}`}>
+              <button className="progress-toggle" type="button" onClick={onToggleProgressPanel}>
+                <span className="progress-icon">{progressArrow}</span>
+                <span>实时进度</span>
+              </button>
+              {showProgressPanel ? (
+                <div className="progress-list">
+                  {progress.length ? (
+                    progress.map((item, index) => {
+                      const stage = item.stage || item.level?.toLowerCase() || "log";
+                      const severity = stage === "error" || item.level === "ERROR" ? "error" : stage === "end" ? "done" : stage === "start" ? "start" : "log";
+                      return (
+                        <div
+                          key={`${item.timestamp}-${index}`}
+                          className={`progress-item progress-${severity}`}
+                          title={item.level ? `${item.level}` : undefined}
+                        >
+                          <span className="progress-time">{formatTimestamp(item.timestamp)}</span>
+                          <span className="progress-message">{item.message}</span>
+                        </div>
+                      );
+                    })
+                  ) : (
+                    <p className="empty-hint">等待任务执行…</p>
+                  )}
+                  <div ref={progressEndRef} />
+                </div>
+              ) : null}
+            </aside>
+          </div>
         </div>
       </main>
     </div>
@@ -443,7 +476,7 @@ function App() {
   const [analysisConfig, setAnalysisConfig] = useState<AnalysisConfig>(DEFAULT_CONFIG);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [progress, setProgress] = useState<ProgressEntry[]>([]);
-  const [thinkingState, setThinkingState] = useState<Record<string, ThinkingEntry>>({});
+  const [thinkingLog, setThinkingLog] = useState<ThinkingLogEntry[]>([]);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [streamingReply, setStreamingReply] = useState("");
@@ -452,6 +485,14 @@ function App() {
   const [loginError, setLoginError] = useState<string | null>(null);
   const [loginLoading, setLoginLoading] = useState(false);
   const [progressVisible, setProgressVisible] = useState(true);
+  const [thinkingVisible, setThinkingVisible] = useState(true);
+
+  const deriveThinkingLabel = useCallback((tool?: string | null) => {
+    if (!tool || tool === "log" || tool === "manager") {
+      return "Manager 主代理";
+    }
+    return TOOL_DISPLAY_LABELS[tool] ?? tool;
+  }, []);
 
   const refreshSessions = useCallback(
     async (token: string, fallbackSessionId?: string | null) => {
@@ -487,21 +528,31 @@ function App() {
             )
             .slice(-200);
           setProgress(ordered);
+          const thinkingHistory = ordered
+            .filter((item) => (item.stage ?? "").toLowerCase() === "thinking" && item.message)
+            .map<ThinkingLogEntry>((item) => ({
+              actor: item.tool ?? "manager",
+              label: deriveThinkingLabel(item.tool),
+              content: item.message,
+              timestamp: item.timestamp ?? new Date().toISOString()
+            }));
+          setThinkingLog(thinkingHistory);
         } else {
           setMessages([]);
           setProgress([]);
+          setThinkingLog([]);
         }
       } catch (error) {
         setErrorMessage((error as Error).message);
       }
     })();
-  }, [auth, refreshSessions]);
+  }, [auth, refreshSessions, deriveThinkingLabel]);
 
   useEffect(() => {
     if (!auth?.token || !activeSessionId) {
       setMessages([]);
       setProgress([]);
-      setThinkingState({});
+      setThinkingLog([]);
       return;
     }
     (async () => {
@@ -517,12 +568,20 @@ function App() {
           )
           .slice(-200);
         setProgress(ordered);
-        setThinkingState({});
+        const thinkingHistory = ordered
+          .filter((item) => (item.stage ?? "").toLowerCase() === "thinking" && item.message)
+          .map<ThinkingLogEntry>((item) => ({
+            actor: item.tool ?? "manager",
+            label: deriveThinkingLabel(item.tool),
+            content: item.message,
+            timestamp: item.timestamp ?? new Date().toISOString()
+          }));
+        setThinkingLog(thinkingHistory);
       } catch (error) {
         setErrorMessage((error as Error).message);
       }
     })();
-  }, [auth?.token, activeSessionId]);
+  }, [auth?.token, activeSessionId, deriveThinkingLabel]);
 
   const wsHandlers = useMemo<WebSocketHandlers>(
     () => ({
@@ -540,57 +599,59 @@ function App() {
           }
           return [...prev.slice(-199), entry];
         });
-      },
-      onThinkingStatus: ({ actor, label, status, message }) => {
-        if (status === "start") {
-          setThinkingState((prev) => ({
-            ...prev,
-            [actor]: {
-              label: label ?? prev[actor]?.label ?? actor,
-              active: true,
-              content: "",
-            },
-          }));
-        } else {
-          setThinkingState((prev) => {
-            const existing = prev[actor];
-            if (!existing) {
+        if ((entry.stage ?? "").toLowerCase() === "thinking") {
+          const thinkingEntry: ThinkingLogEntry = {
+            actor: entry.tool ?? "manager",
+            label: deriveThinkingLabel(entry.tool),
+            content: entry.message,
+            timestamp: entry.timestamp ?? new Date().toISOString()
+          };
+          setThinkingLog((prev) => {
+            const last = prev[prev.length - 1];
+            if (
+              last &&
+              last.content === thinkingEntry.content &&
+              last.actor === thinkingEntry.actor
+            ) {
               return prev;
             }
-            const next: Record<string, ThinkingEntry> = {
-              ...prev,
-              [actor]: {
-                label: label ?? existing.label,
-                active: false,
-                content: status === "error" && message ? message : existing.content,
-              },
-            };
-            return next;
+            return [...prev.slice(-199), thinkingEntry];
           });
-          window.setTimeout(() => {
-            setThinkingState((current) => {
-              const entry = current[actor];
-              if (!entry || entry.active) {
-                return current;
-              }
-              const copy = { ...current };
-              delete copy[actor];
-              return copy;
-            });
-          }, 600);
+        }
+      },
+      onThinkingStatus: ({ actor, label, status, message }) => {
+        if (status === "error" && message) {
+          const timestamp = new Date().toISOString();
+          setThinkingLog((prev) => [
+            ...prev.slice(-199),
+            {
+              actor,
+              label: label ?? deriveThinkingLabel(actor),
+              content: message,
+              timestamp
+            }
+          ]);
         }
       },
       onThinkingContent: ({ actor, label, content }) => {
         const text = content.trim();
         if (!text) return;
-        setThinkingState((prev) => ({
-          ...prev,
-          [actor]: {
-            label: label ?? prev[actor]?.label ?? actor,
-            active: true,
-            content: text,
-          },
-        }));
+        const timestamp = new Date().toISOString();
+        setThinkingLog((prev) => {
+          const last = prev[prev.length - 1];
+          if (last && last.content === text && last.actor === actor) {
+            return prev;
+          }
+          return [
+            ...prev.slice(-199),
+            {
+              actor,
+              label: label ?? deriveThinkingLabel(actor),
+              content: text,
+              timestamp
+            }
+          ];
+        });
       },
       onFinal: ({ content, messages: history }: { content: string; messages: ChatMessage[] }) => {
         setIsStreaming(false);
@@ -606,7 +667,7 @@ function App() {
         setIsStreaming(false);
       }
     }),
-    []
+    [deriveThinkingLabel]
   );
 
   const { isConnected, sendMessage } = useChatWebSocket(
@@ -662,7 +723,8 @@ function App() {
       setMessages([]);
       setProgress([]);
       setProgressVisible(true);
-      setThinkingState({});
+      setThinkingLog([]);
+      setThinkingVisible(true);
       setActiveSessionId(null);
     }
   }, [auth]);
@@ -693,7 +755,7 @@ function App() {
       await refreshSessions(auth.token, created.id);
       setProgress([]);
       setProgressVisible(true);
-      setThinkingState({});
+      setThinkingLog([]);
     } catch (error) {
       setErrorMessage((error as Error).message);
     }
@@ -728,7 +790,7 @@ function App() {
           setActiveSessionId(next);
           setProgress([]);
           setProgressVisible(true);
-          setThinkingState({});
+          setThinkingLog([]);
           if (next && auth.token) {
             await activateSession(auth.token, next);
             const history = await fetchSessionMessages(auth.token, next);
@@ -779,11 +841,13 @@ function App() {
       messages={messages}
       streamingReply={streamingReply}
       progress={progress}
-      thinkingState={thinkingState}
+      thinkingLog={thinkingLog}
       statusMessage={statusMessage}
       errorMessage={errorMessage}
       showProgressPanel={progressVisible}
+      showThinkingPanel={thinkingVisible}
       onToggleProgressPanel={() => setProgressVisible((prev) => !prev)}
+      onToggleThinkingPanel={() => setThinkingVisible((prev) => !prev)}
       onSelectSession={handleSelectSession}
       onCreateSession={handleCreateSession}
       onRenameSession={handleRenameSession}
