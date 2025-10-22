@@ -88,25 +88,48 @@ class TwitterScraper:
 
     async def _start_browser(self):
         """Initialize browser and context"""
-        self._playwright = await async_playwright().start()
-        self._browser = await self._playwright.chromium.launch(
-            headless=self.config.headless,
-            args=[
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-gpu",
-                "--no-first-run",
-                "--no-default-browser-check",
-                "--disable-blink-features=AutomationControlled",
-            ],
-        )
+        try:
+            self._playwright = await async_playwright().start()
+            
+            # 检查 playwright 是否正常启动
+            if not self._playwright:
+                raise RuntimeError("Failed to start Playwright")
+            
+            self._browser = await self._playwright.chromium.launch(
+                headless=self.config.headless,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                    "--no-first-run",
+                    "--no-default-browser-check",
+                    "--disable-blink-features=AutomationControlled",
+                ],
+            )
+            
+            # 检查浏览器是否正常启动
+            if not self._browser or not self._browser.is_connected():
+                raise RuntimeError("Failed to launch browser or browser disconnected")
 
-        # Load storage state or cookies
-        context_kwargs = {}
-        if self.config.storage_state_path and Path(self.config.storage_state_path).exists():
-            context_kwargs["storage_state"] = self.config.storage_state_path
+            # Load storage state or cookies
+            context_kwargs = {}
+            if self.config.storage_state_path and Path(self.config.storage_state_path).exists():
+                context_kwargs["storage_state"] = self.config.storage_state_path
 
-        self._context = await self._browser.new_context(**context_kwargs)
+            # 创建上下文前再次检查浏览器状态
+            if not self._browser.is_connected():
+                raise RuntimeError("Browser disconnected before creating context")
+                
+            self._context = await self._browser.new_context(**context_kwargs)
+            
+            # 检查上下文是否创建成功
+            if not self._context or self._context.is_closed():
+                raise RuntimeError("Failed to create browser context")
+                
+        except Exception as e:
+            # 如果启动失败，清理资源
+            await self._cleanup()
+            raise RuntimeError(f"Browser initialization failed: {str(e)}")
 
         # Sane defaults for SPA like X
         self._context.set_default_timeout(45_000)
@@ -284,7 +307,17 @@ class TwitterScraper:
 #        return sorted_tweets[:self.config.max_tweets]
 
 
+    def _check_browser_state(self):
+        """Check if browser and context are still valid"""
+        if not self._browser or not self._browser.is_connected():
+            raise RuntimeError("Browser is not connected")
+        if not self._context or self._context.is_closed():
+            raise RuntimeError("Browser context is closed")
+
     async def scrape_stock_tweets(self, symbol: str) -> List[Tweet]:
+        # Check browser state before starting
+        self._check_browser_state()
+        
         query = self._build_search_query(symbol)
         collected_tweets: List[Tweet] = []
         seen_keys: Set[Tuple[str, str, str]] = set()
@@ -292,14 +325,21 @@ class TwitterScraper:
         pages = []
         try:
             for _ in range(self.config.parallel_pages):
-                page = await self._context.new_page()
-                if self.config.disable_media:
-                    await page.route(
-                        "**/*.{png,jpg,jpeg,gif,webp,mp4,webm}",
-                        lambda route: route.abort(),
-                    )
-                await page.set_extra_http_headers({"User-Agent": self.USER_AGENT})
-                pages.append(page)
+                try:
+                    page = await self._context.new_page()
+                    if self.config.disable_media:
+                        await page.route(
+                            "**/*.{png,jpg,jpeg,gif,webp,mp4,webm}",
+                            lambda route: route.abort(),
+                        )
+                    await page.set_extra_http_headers({"User-Agent": self.USER_AGENT})
+                    pages.append(page)
+                except Exception as e:
+                    logger.warning(f"Failed to create page: {e}")
+                    break
+            
+            if not pages:
+                raise RuntimeError("Failed to create any browser pages")
 
             async def worker(i: int, page: Page):
                 # tiny jitter so all 4 don't hit at the exact same millisecond
@@ -312,9 +352,10 @@ class TwitterScraper:
         finally:
             for page in pages:
                 try:
-                    await page.close()
-                except Exception:
-                    pass
+                    if not page.is_closed():
+                        await page.close()
+                except Exception as e:
+                    logger.debug(f"Page cleanup error: {e}")
 
         filtered = self._filter_tweets(collected_tweets)
         return sorted(filtered, key=lambda t: t.engagement_score, reverse=True)[:self.config.max_tweets]
@@ -520,20 +561,20 @@ class TwitterScraper:
         """Clean up resources"""
         # close context and browser, then stop playwright
         try:
-            if self._context:
+            if self._context and not self._context.is_closed():
                 await self._context.close()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"Context cleanup error: {e}")
         try:
-            if self._browser:
+            if self._browser and self._browser.is_connected():
                 await self._browser.close()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"Browser cleanup error: {e}")
         try:
             if self._playwright:
                 await self._playwright.stop()
-        except Exception:
-            pass
+        except Exception as e:
+            logger.debug(f"Playwright cleanup error: {e}")
 
 
 async def main():

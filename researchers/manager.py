@@ -79,7 +79,10 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
     except Exception as e:
         raise ValueError(f"辩论综合失败: {str(e)}") from e
     
-    return {
+    # 提取 CSV 路径（如果存在）
+    csv_path = analyst_data.get("csv_path")
+    
+    result = {
         "analyses": analyst_data.get("analyses", {}),
         "bullish_research": bull,
         "bearish_research": bear,
@@ -93,3 +96,9 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
             "time_horizon": time_horizon
         }
     }
+    
+    # 如果有 CSV 路径，添加到输出中
+    if csv_path:
+        result["csv_path"] = csv_path
+    
+    return result
