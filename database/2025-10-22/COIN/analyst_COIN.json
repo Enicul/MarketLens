@@ -1,0 +1,353 @@
+{
+  "ticker": "COIN",
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T06:12:01+00:00",
+            "headline": "OpenAI launches browser with a brain powered by agentic AI",
+            "evidence": [
+              "https://cointelegraph.com/news/openai-announces-browser-with-brain-powered-agentic-ai"
+            ],
+            "summary": [
+              "OpenAI launches browser with a brain powered by agentic AI"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T03:51:55+00:00",
+            "headline": "Coinbase CEO reveals 'private transactions' are coming to Base",
+            "evidence": [
+              "https://cointelegraph.com/news/private-transactions-coming-base-coinbase-ceo"
+            ],
+            "summary": [
+              "Coinbase CEO reveals 'private transactions' are coming to Base"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T02:41:22+00:00",
+            "headline": "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'",
+            "evidence": [
+              "https://cointelegraph.com/news/stablecoins-yield-banks-interest-kraken-ceo-dave-ripley"
+            ],
+            "summary": [
+              "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-21T19:36:28+00:00",
+            "headline": "Bitcoin whale opens $235M BTC short, after netting $200M from market crash",
+            "evidence": [
+              "https://cointelegraph.com/news/11b-bitcoin-whale-235m-btc-short-market-crash"
+            ],
+            "summary": [
+              "Bitcoin whale opens $235M BTC short, after netting $200M from market crash"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-21T19:20:29+00:00",
+            "headline": "Bitcoin Surges Back To $112,000 As Ethereum, XRP, Dogecoin Rally On Fed's Crypto Payment Signals",
+            "evidence": [
+              "https://www.benzinga.com/crypto/cryptocurrency/25/10/48338839/bitcoin-surges-back-to-112000-as-ethereum-xrp-dogecoin-rally-on-feds-crypto-payment-signals"
+            ],
+            "summary": [
+              "Bitcoin Surges Back To $112,000 As Ethereum, XRP, Dogecoin Rally On Fed's Crypto Payment Signals"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-21T18:05:20+00:00",
+            "headline": "Fed Considering 'Skinny' Master Accounts for Crypto Banks on 'Streamlined Timeline'",
+            "evidence": [
+              "https://decrypt.co/345255/fed-considering-skinny-master-accounts-crypto-banks"
+            ],
+            "summary": [
+              "Fed Considering 'Skinny' Master Accounts for Crypto Banks on 'Streamlined Timeline'"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-21T17:27:53+00:00",
+            "headline": "Amazon’s AWS Outage Exposes Major Vulnerability In Ethereum NFTs",
+            "evidence": [
+              "https://finnhub.io/api/news?id=8c2a9e10e6551347b1ac8bf854cee4f371e09f4003c73af38879d943742de9dc"
+            ],
+            "summary": [
+              "Amazon’s AWS Outage Exposes Major Vulnerability In Ethereum NFTs"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-21T17:07:00+00:00",
+            "headline": "Cybersecurity expert offers blunt verdict on AWS outage",
+            "evidence": [
+              "https://finnhub.io/api/news?id=26b48cd48b6ccd48c6d432f43128e0899ebc1aa209492cac6f2a4209f295093f"
+            ],
+            "summary": [
+              "Cybersecurity expert offers blunt verdict on AWS outage"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-22T08:23:38.976746+00:00"
+      },
+      "error": null,
+      "cached": false
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "COIN",
+        "company": {
+          "name": "Coinbase Global Inc",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 87004360000.0,
+          "revenue_per_share_ttm": 25.1273
+        },
+        "insiders": [
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 345.42,
+            "change_shares": -1742,
+            "post_shares": 3484,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 345.42,
+            "change_shares": -2250,
+            "post_shares": 84820,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 343.36,
+            "change_shares": -2150,
+            "post_shares": 87070,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "C",
+            "date": "2025-10-13",
+            "price": 0,
+            "change_shares": -25000,
+            "post_shares": 22731225,
+            "filing_id": "0001679788-25-000200",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-13",
+            "price": 364.1688,
+            "change_shares": -161,
+            "post_shares": 526,
+            "filing_id": "0001679788-25-000200",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-22T08:23:26.767174"
+      },
+      "error": null,
+      "cached": false
+    },
+    "market": {
+      "data": {
+        "ticker": "COIN",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-22T08:23:21.122126",
+        "stock_basic_info": {
+          "ticker": "COIN",
+          "current_price": 338.62,
+          "change": -5.16,
+          "change_percent": -1.5,
+          "volume": 5941414,
+          "market_cap": 86336356352,
+          "pe_ratio": 32.559616,
+          "pb_ratio": 7.179324,
+          "beta": 3.684,
+          "high_52w": 444.65,
+          "low_52w": 142.58,
+          "timestamp": "2025-10-22T16:23:21.119561"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 349.3714965820312,
+            "price_vs_ma_20": 96.92261630670282
+          },
+          "oscillators": {
+            "rsi": 47.25234035133313,
+            "stochastic_k": 24.7067217494572,
+            "stochastic_d": 25.7178988692695
+          },
+          "bollinger_bands": {
+            "upper_band": 399.0325947552327,
+            "lower_band": 299.71039840882975,
+            "price_vs_upper_band": 84.86023436879827
+          },
+          "volume_indicators": {
+            "volume_ma20": 9242900.0,
+            "volume_vs_ma20": 64.3878003656861
+          },
+          "volatility_indicators": {
+            "atr": 19.775000435965403,
+            "atr_percent": 5.839879723913467
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 402.1600036621094,
+            "low_1mo": 303.3999938964844,
+            "avg_close": 347.24772505326706,
+            "volatility": 24.666753854717083
+          },
+          "trend_analysis": {
+            "trend_20_days": 5.236661801545351
+          },
+          "key_levels": [
+            402.1600036621094,
+            303.3999938964844
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 22,
+          "data_period": "1mo",
+          "start_date": "2025-09-22",
+          "end_date": "2025-10-21",
+          "last_updated": "2025-10-22T16:23:21.122110"
+        }
+      },
+      "error": null,
+      "cached": false
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "sentiment",
+        "error": {
+          "message": "No tweets to analyze. Maybe try a stock people actually care about?",
+          "type": "ValueError",
+          "traceback": "Traceback (most recent call last):\n  File \"/Users/foreverwaterrr/Desktop/MarketLens/analysts/lib/X_search/tool.py\", line 48, in get_sentiment_func\n    metrics, top_tweets = analyzer.analyze(tweets, top_k=Config.TOP_TWEETS_TO_SAVE)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/foreverwaterrr/Desktop/MarketLens/analysts/lib/X_search/sentiment.py\", line 61, in analyze\n    raise ValueError(\"No tweets to analyze. Maybe try a stock people actually care about?\")\nValueError: No tweets to analyze. Maybe try a stock people actually care about?\n"
+        },
+        "overall_sentiment": "error",
+        "sentiment_score": 0.0,
+        "sentiment_breakdown": {
+          "bullish": 0,
+          "bearish": 0,
+          "neutral": 1.0
+        },
+        "metrics": {
+          "total_tweets": 0,
+          "total_influence": 0,
+          "influence_concentration": 0,
+          "sentiment_volatility": 0,
+          "quality_score": 0
+        },
+        "top_tweets": [],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 0,
+          "error_occurred": true,
+          "generated_at": "2025-10-22T08:25:14.389018+00:00"
+        }
+      },
+      "error": null,
+      "cached": false
+    }
+  },
+  "csv_generation": {
+    "ticker": "COIN",
+    "period": "3mo",
+    "interval": "1d",
+    "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-22/COIN/market_csv/COIN_3mo_1d_20251022_162319.csv",
+    "filename": "COIN_3mo_1d_20251022_162319.csv",
+    "size_bytes": 22183,
+    "retrieved_at": "2025-10-22T08:23:19.015472"
+  }
+}

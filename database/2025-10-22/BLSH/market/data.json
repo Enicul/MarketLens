@@ -1,0 +1,65 @@
+{
+  "ticker": "BLSH",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-22T02:01:09.975463",
+  "stock_basic_info": {
+    "ticker": "BLSH",
+    "current_price": 57.27,
+    "change": -1.49,
+    "change_percent": -2.54,
+    "volume": 1899169,
+    "market_cap": 8371942912,
+    "pb_ratio": 2.573123,
+    "high_52w": 118.0,
+    "low_52w": 47.88,
+    "timestamp": "2025-10-22T10:01:09.974889"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 62.401500129699706,
+      "price_vs_ma_20": 91.77664052743867
+    },
+    "oscillators": {
+      "rsi": 44.747776213916325,
+      "stochastic_k": 13.472866252081367,
+      "stochastic_d": 14.848898580595858
+    },
+    "bollinger_bands": {
+      "upper_band": 70.16723968191623,
+      "lower_band": 54.63576057748319,
+      "price_vs_upper_band": 81.61928660352235
+    },
+    "volume_indicators": {
+      "volume_ma20": 3784810.0,
+      "volume_vs_ma20": 50.29314549475403
+    },
+    "volatility_indicators": {
+      "atr": 4.4443574632917136,
+      "atr_percent": 7.7603587004847405
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 74.9800033569336,
+      "low_1mo": 55.209999084472656,
+      "avg_close": 63.027727127075195,
+      "volatility": 4.213426003179549
+    },
+    "trend_analysis": {
+      "trend_20_days": -15.26852557963761
+    },
+    "key_levels": [
+      70.5,
+      55.599998474121094,
+      55.209999084472656
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-22",
+    "end_date": "2025-10-21",
+    "last_updated": "2025-10-22T10:01:09.975454"
+  }
+}

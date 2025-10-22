@@ -479,7 +479,7 @@ MessagesPlaceholder("messages"),
         agent=agent,
         tools=tools,
         memory=memory,
-        verbose=False,
+        verbose=True,
         return_intermediate_steps=True,
         handle_parsing_errors=True,
     )

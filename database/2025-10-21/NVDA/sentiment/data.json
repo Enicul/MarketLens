@@ -1,0 +1,391 @@
+{
+  "ticker": "NVDA",
+  "channel": "sentiment",
+  "overall_sentiment": "strong_bullish",
+  "sentiment_score": 0.8883,
+  "sentiment_breakdown": {
+    "bullish": 0.075,
+    "bearish": 0.025,
+    "neutral": 0.9
+  },
+  "metrics": {
+    "total_tweets": 40,
+    "total_influence": 16597,
+    "influence_concentration": 0.56,
+    "sentiment_volatility": 88.085,
+    "quality_score": 0.525
+  },
+  "top_tweets": [
+    {
+      "username": "Shay Boloor",
+      "content": "WATCH THESE KEY FIB LEVELS ON THIS PULLBACK\n\nAI Utility\n• $IREN -- $42\n• $CIFR -- $12\n• $GLXY -- $33\n• $WULF -- $9\n• $CRWV -- $128\n\nAI Hardware\n• $NVDA -- $154\n• $TSM -- $241\n• $ASML -- $875\n• $ARM -- $144\n• $AMD -- $178\n\nAI Connectivity\n• $AVGO -- $284\n• $ALAB --",
+      "timestamp": "2025-10-11T12:36:41.000Z",
+      "influence_score": 96.44,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 5821,
+        "retweets": 1666,
+        "replies": 148
+      }
+    },
+    {
+      "username": "Shay Boloor",
+      "content": "OpenAI is planning a 5-year roadmap to fund >$1T in AI infra through partners like $ORCL, $NVDA, $AMD & $AVGO for 26GW of capacity. \n\nThe Stargate buildout positions it as core compute supplier for $MSFT, $GOOGL, $AMZN & $META while expanding into enterprise AI & govt contracts.",
+      "timestamp": "2025-10-15T09:08:54.000Z",
+      "influence_score": 50.7,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1588,
+        "retweets": 447,
+        "replies": 88
+      }
+    },
+    {
+      "username": "Investing visuals",
+      "content": "Which AI stock do you think is worth buying right now?\n\nChip design \n• $NVDA $183 \n• $AMD $233 \n• $AVGO $349  \n\nComponents \n• $MU $202 \n• $SMCI $45  \n\nManufacturers \n• $TSM $295 \n• $INTC $37  \n\nPower \n• $SU $246 \n• $CEG $386 \n\nEquipment \n• $ASML $1021 \n• $AMAT $224",
+      "timestamp": "2025-10-19T18:31:20.000Z",
+      "influence_score": 41.1,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 1129,
+        "retweets": 241,
+        "replies": 78
+      }
+    },
+    {
+      "username": "Trading Warz",
+      "content": "BREAKING: My FULL Fibonacci COURSE from Beginner to PRO $SPY $TSLA $AMD $OSCR $NVDA\n\nThis is how I took 5k to 84k in 1 year now 7 figures STEP BY STEP!\n\nTo celebrate I will also throw in my CHECKLIST and Indicators\n\nJust comment \"ME\" and DROP A for ME!",
+      "timestamp": "2025-10-13T02:13:00.000Z",
+      "influence_score": 29.5,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 529,
+        "retweets": 60,
+        "replies": 221
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "It was just announced that after 25 years of being in the Dow Jones index, Intel (INTC) will be removed and replaced by Nvidia (NVDA) on 8 November\n\nOne of the reasons why the US stock market always goes up in the long run is because unprofitable/less relevant companies are",
+      "timestamp": "2024-11-03T04:48:51.000Z",
+      "influence_score": 25.92,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 497,
+        "retweets": 75,
+        "replies": 25
+      }
+    },
+    {
+      "username": "Evan",
+      "content": "From $550 Million to $4.5 TRILLION\n\nHere is Nvidia's $NVDA market cap every October since going public in January 1999\n\n1999: $550 Million\n2000: $5 Billion\n2001: $4B\n2002: $1.3B\n2003: $2.7B\n2004: $2.5B\n2005: $6B\n2006: $10B\n2007: $20B\n2008: $5.5B\n2009: $8B\n2010: $6.5B\n2011: $7.5B",
+      "timestamp": "2025-10-21T02:36:41.000Z",
+      "influence_score": 18.08,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 255,
+        "retweets": 29,
+        "replies": 14
+      }
+    },
+    {
+      "username": "Blossom",
+      "content": "A $245 price target for $NVDA implies a $6T market cap.",
+      "timestamp": "2025-10-20T12:08:41.000Z",
+      "influence_score": 22.07,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 318,
+        "retweets": 78,
+        "replies": 13
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Yesterday, expectations of a September Interest Rate Cut by the Fed Triggered a Huge Rotation in the Stock Market. Large Cap Tech Stocks ($MSFT, $NVDA, $TSLA, $AAPL, $AMZN) sold off while previously unloved small cap stocks ($IWM) and rate sensitive sectors like Real Estate,",
+      "timestamp": "2024-07-12T08:04:54.000Z",
+      "influence_score": 12.37,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 127,
+        "retweets": 9,
+        "replies": 8
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Despite announcing better than expected Q2 Revenue and Earnings, Nvidia (NVDA) stock is selling off and is down over 15% from its recent highs. \n\nHas NVDA bubble burst or is there still a long runway of growth? In this video, we will also look at SuperMicro Computer (SMCI)'s",
+      "timestamp": "2024-08-29T13:05:49.000Z",
+      "influence_score": 12.25,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 120,
+        "retweets": 13,
+        "replies": 4
+      }
+    },
+    {
+      "username": "Shanda Baumberger",
+      "content": "I would like to recommend a stock blogger to everyone: \n@rtu2030407080\n. I make money every day by following his advice.#Stock $AAPL #PERatio #Stock $NVDA #TechnicalAnalysis $ORCL #Options $HOOD #Leverage $SMCI",
+      "timestamp": "2025-10-21T10:33:04.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Clair Ramsuer",
+      "content": "I would like to recommend a stock blogger to everyone: \n@rtu2030407080\n. I make money every day by following his advice.#Stock $AAPL #PERatio #PERatio $TSLA #BlueChip $NVDA #BullMarket $RGTI #LongPosition $NVTS",
+      "timestamp": "2025-10-21T10:33:56.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Delfina Schlichenmaye",
+      "content": "I would like to recommend a stock blogger to everyone: \n@rtu2030407080\n. I make money every day by following his advice.#Stock $AAPL #PERatio #IPO $NVDA #NYSE $NFLX #BullMarket $RGTI #ShortSelling $IREN",
+      "timestamp": "2025-10-21T10:31:15.000Z",
+      "influence_score": 6.08,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 10,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Haley Denker",
+      "content": "Thanks \n@MulhollowsBistr\n! I made $23,000 in just two days using this strategy. I'm so happy!\n$REPL $ANRO #Stock\n#StockMarket $GOOGL \n#CandlestickChart $AMZN  \n#401k $NVDA  \n#CircuitBreaker $PFE",
+      "timestamp": "2025-10-21T10:40:46.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Jacqualine Espree",
+      "content": "I would like to recommend a stock blogger to everyone: \n@omkhaaaald\n. I make money every day by following his advice. #stock #TSLA #SP500 #AI $NVDA #TSLA $PLTR #Tariffs $LLY #BullMarket $IREN",
+      "timestamp": "2025-10-21T10:37:16.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Guddu",
+      "content": "Huge thanks to  \n@marinka19951606\n I made $23,000 in two days following the strategy \n $BYND  $NVDA #Stock\n #Nasdaq $JNJ \n #LongPosition $PFE \n #SwingTrading $MRK \n #PERatio $AAPL",
+      "timestamp": "2025-10-21T10:35:25.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Brendan Schiaffino",
+      "content": "Thanks \n@MulhollowsBistr\n! I made $23,000 in just two days using this strategy. I'm so happy!\n$ARTV $KZR #Stock\n#PreferredStock$LLY\n#DayTrading $MA \n#MarketOrder $NVDA  \n#OTC $XLV",
+      "timestamp": "2025-10-21T10:23:14.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Brendan Schiaffino",
+      "content": "Thanks @MulhollowsBistr! I made $23,000 in just two days using this strategy. I'm so happy!\n$ARTV $KZR #Stock\n#PreferredStock$LLY\n#DayTrading $MA \n#MarketOrder $NVDA  \n#OTC $XLV",
+      "timestamp": "2025-10-21T10:23:14.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Rene Sellmann",
+      "content": "I find these charts by \n@charliebilello\n fascinating.\n\nBoth charts show “textbook” trading signals — support, resistance, RSI, overbought/oversold.\n\nYet Nvidia $NVDA kept breaking resistance… and Pfizer $PFE kept breaking support.\n\nIt’s a reminder that ultimately price follows",
+      "timestamp": "2025-10-20T12:00:11.000Z",
+      "influence_score": 4.36,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 13,
+        "retweets": 3,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Stock Stacks",
+      "content": "NEW VIDEO\n\nMy take on the current state of the market.\nYou can't trade in this market. Either ride it out or get in cash. $QQQ $SPY $TSLA $BTC $NVDA",
+      "timestamp": "2025-10-16T16:46:03.000Z",
+      "influence_score": 4.36,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 13,
+        "retweets": 2,
+        "replies": 2
+      }
+    },
+    {
+      "username": "Anun.Trades",
+      "content": "$PATH is such a hidden gem\n\n Partnered with $NVDA to power next-gen AI automation\n Sitting on $1.5B cash, zero debt, and strong FCF\n Expanding fast in the AI + RPA enterprise market — the automation wave is just starting\n Market still sleeping on it — setup looks",
+      "timestamp": "2025-10-21T07:07:24.000Z",
+      "influence_score": 3.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Market Rebellion",
+      "content": "NVIDIA $NVDA AI explosion: Semi sales exploding to $1T by 2027, says BofA! Massive upgrade.\n@jonnajarian\n \n@petenajarian\n #ITSNOTANOPTION",
+      "timestamp": "2025-10-20T19:43:00.000Z",
+      "influence_score": 3.74,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 2,
+        "replies": 2
+      }
+    },
+    {
+      "username": "WallStTitan",
+      "content": "$NVDA\n\nJensen Huang said: \n“The AI Industrial Revolution is creating extraordinary demand for skilled craft, plumbers, electricians, technicians, builders of the world’s new AI factories.”\n\nJensen Huang’s quote shows that AI isn’t just code, it’s construction. Behind every",
+      "timestamp": "2025-10-21T00:24:22.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Scott Redler",
+      "content": "Scott Redler’s #630club - LIVE Premarket Stock Update $NVDA $TSLA $IBIT $SPY   FREE NEWSLETTER: \nhttp://\nt3live.com/show",
+      "timestamp": "2025-10-21T10:33:25.000Z",
+      "influence_score": 3.46,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 1,
+        "replies": 1
+      }
+    },
+    {
+      "username": "Probasco Andrew",
+      "content": "$SGD success! 217% Locked Trade! The market always provides chances! \n\nDiscord: \nhttps://\nxp-chatroom.com/ProbascoAndrew - 14-day full access trial! Earn more!\n\nStock watchlist: $TSLA $PLUG $NVDA $BBD $HPE $TSLA $T $CIFR",
+      "timestamp": "2025-10-21T10:14:00.000Z",
+      "influence_score": 1.73,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "T3 Live",
+      "content": "Scott Redler’s #630club - LIVE Premarket Stock Update $NVDA $TSLA $IBIT $SPY   FREE NEWSLETTER: \nhttp://\nt3live.com/show",
+      "timestamp": "2025-10-21T10:33:24.000Z",
+      "influence_score": 2.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 2,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Stock market",
+      "content": "Best discord group for stock traders\n\n\nhttps://\ndiscord.gg/bg24NZTXBh\n\n$SPX $SPY $AMZN $AAPL $AMD $FB $SHOP $BYND $NVDA $GOOGL $MSFT $TSLA",
+      "timestamp": "2025-10-21T10:12:34.000Z",
+      "influence_score": 1.41,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Stock market",
+      "content": "Stay at home safe and earn money at home by trading marketplace safe Click here\n\nDiscord Link Here \nhttps://\ndiscord.gg/bg24NZTXBh\n\n$QQQ $RENT $GME $FFIE $AMC $GWAV $CRKN $SPY $GNS $HOLO $NVDA $CYN $BSFC $MULN $TSLA $NFLX $META $AAPL",
+      "timestamp": "2025-10-21T10:20:46.000Z",
+      "influence_score": 0.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Zohan",
+      "content": "Heikin Ashi Charts: What They Are and How May They Be Used \nhttps://\nfxopen.com/blog/en/how-to\n-use-a-heikin-ashi-chart-in-trading/\n… \n\n#SP500 #USDCAD $Gold #Silver #Coin #Gold #NVDA #NZDUSD #Gold #FOMC #IOTA $EUR #USDJPY",
+      "timestamp": "2025-10-21T10:18:09.000Z",
+      "influence_score": 0.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "DTradeLord",
+      "content": "57% Triggered Entry! $BNAI ascendancies! Know when to hold and when to progress! \n\nDiscord: \nhttps://\nxp-chatroom.com/DTradeLord - 14-day full-product access trial! Amplify your results!\n\nCurrent stock watchlist: $T $F $CIFR $NVDA $KVUE $SQQQ $SOXL $MARA",
+      "timestamp": "2025-10-21T10:18:00.000Z",
+      "influence_score": 0.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Zohan",
+      "content": "Apple (AAPL) Shares Hit an All-Time High \nhttps://\nfxopen.com/blog/en/oa-app\nle-aapl-shares-hit-an-all-time-high/\n… \n\n$Gold #Silver #Coin #Gold #NVDA #NZDUSD #Gold #FOMC #IOTA $EUR #USDJPY",
+      "timestamp": "2025-10-21T10:17:34.000Z",
+      "influence_score": 0.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 0.8,
+    "search_keywords": [
+      "$NVDA",
+      "Nvidia",
+      "英伟达"
+    ],
+    "generated_at": "2025-10-21T10:47:01.998767+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}

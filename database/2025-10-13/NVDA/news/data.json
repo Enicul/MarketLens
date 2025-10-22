@@ -1,0 +1,161 @@
+{
+  "ticker": "NVDA",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-13T12:51:25+00:00",
+      "headline": "How To Trade SPY, Top Tech Stocks Using Technical Analysis",
+      "evidence": [
+        "https://www.benzinga.com/Opinion/25/10/48173273/how-to-trade-spy-top-tech-stocks-using-technical-analysis-40"
+      ],
+      "summary": [
+        "How To Trade SPY, Top Tech Stocks Using Technical Analysis"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-13T12:45:00+00:00",
+      "headline": "Salarius Pharmaceuticals Regains Compliance with All Nasdaq Listing Requirements - Salarius Pharmaceuticals  ( NASDAQ:SLRX ) ",
+      "evidence": [
+        "https://www.benzinga.com/pressreleases/25/10/g48173232/salarius-pharmaceuticals-regains-compliance-with-all-nasdaq-listing-requirements"
+      ],
+      "summary": [
+        "Salarius Pharmaceuticals Regains Compliance with All Nasdaq Listing Requirements - Salarius Pharmaceuticals  ( NASDAQ:SLRX ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "GlobeNewswire",
+      "published_at": "2025-10-13T12:45:00+00:00",
+      "headline": "Salarius Pharmaceuticals Regains Compliance with All Nasdaq Listing Requirements",
+      "evidence": [
+        "https://www.globenewswire.com/news-release/2025/10/13/3165547/0/en/Salarius-Pharmaceuticals-Regains-Compliance-with-All-Nasdaq-Listing-Requirements.html"
+      ],
+      "summary": [
+        "Salarius Pharmaceuticals Regains Compliance with All Nasdaq Listing Requirements"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-13T12:38:42+00:00",
+      "headline": "Stock Market Today: Dow Jumps On Trump Tariff Comments; Nvidia, Tesla Rebound (Live Coverage)",
+      "evidence": [
+        "https://finnhub.io/api/news?id=5cdba5c96083f493bb5226f146b1426c8aea5a00bba7f6f36a1040a0b6f00d2a"
+      ],
+      "summary": [
+        "Stock Market Today: Dow Jumps On Trump Tariff Comments; Nvidia, Tesla Rebound (Live Coverage)"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-13T12:31:04+00:00",
+      "headline": "'Bitcoin Is the Best Risk-Reward Investment Right Now.' Nearly 20% of Millennials Are Adding Crypto to Retirement Portfolios",
+      "evidence": [
+        "https://finnhub.io/api/news?id=afe7a95585c55ebd9bc11daab81fc44781cd3430b9f61c65d536c2c8258053d5"
+      ],
+      "summary": [
+        "'Bitcoin Is the Best Risk-Reward Investment Right Now.' Nearly 20% of Millennials Are Adding Crypto to Retirement Portfolios"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "South China Morning Post",
+      "published_at": "2025-10-13T12:30:11+00:00",
+      "headline": "Singapore's Nanyang Biologics to list on Nasdaq amid Trump's pharma tariffs.",
+      "evidence": [
+        "https://www.scmp.com/business/banking-finance/article/3328844/singapores-nanyang-biologics-list-nasdaq-amid-trumps-tariffs-pharma-imports"
+      ],
+      "summary": [
+        "Singapore's Nanyang Biologics to list on Nasdaq amid Trump's pharma tariffs."
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-13T12:29:12+00:00",
+      "headline": "IREN, Nebius Emerge As Top 'AI Utility' Picks As Expert Says Next Wave Of AI Trade Is 'Industrial' - IREN  ( NASDAQ:IREN ) , Nebius Group  ( NASDAQ:NBIS ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/equities/25/10/48173027/iren-nebius-emerge-as-top-ai-utility-picks-as-expert-says-next-wave-of-ai-trade-is-industrial"
+      ],
+      "summary": [
+        "IREN, Nebius Emerge As Top 'AI Utility' Picks As Expert Says Next Wave Of AI Trade Is 'Industrial' - IREN  ( NASDAQ:IREN ) , Nebius Group  ( NASDAQ:NBIS ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-13T12:18:08+00:00",
+      "headline": "Cramer Warns Of 'Speculative Tsunami,' Says He's Avoiding Archer Aviation Stock - UiPath  ( NYSE:PATH ) , Archer Aviation  ( NYSE:ACHR ) ",
+      "evidence": [
+        "https://www.benzinga.com/trading-ideas/long-ideas/25/10/48172732/cramer-warns-of-speculative-tsunami-says-hes-avoiding-archer-aviation-stock"
+      ],
+      "summary": [
+        "Cramer Warns Of 'Speculative Tsunami,' Says He's Avoiding Archer Aviation Stock - UiPath  ( NYSE:PATH ) , Archer Aviation  ( NYSE:ACHR ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-13T13:06:51.720843+00:00"
+}

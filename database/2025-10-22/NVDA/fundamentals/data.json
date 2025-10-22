@@ -1,0 +1,67 @@
+{
+  "ticker": "NVDA",
+  "company": {
+    "name": "NVIDIA Corp",
+    "exchange": "NASDAQ NMS",
+    "country": "US",
+    "currency": "USD"
+  },
+  "metrics": {
+    "market_cap_usd": 4407733000000.0,
+    "revenue_per_share_ttm": 6.7348,
+    "dividend_per_share_ttm": 0.04
+  },
+  "insiders": [
+    {
+      "person": "HUANG JEN HSUN",
+      "code": "S",
+      "date": "2025-10-20",
+      "price": 184.9179,
+      "change_shares": -977,
+      "post_shares": 70108203,
+      "filing_id": "0001197649-25-000050",
+      "source": "sec"
+    },
+    {
+      "person": "HUANG JEN HSUN",
+      "code": "S",
+      "date": "2025-10-20",
+      "price": 184.0229,
+      "change_shares": -16675,
+      "post_shares": 70109180,
+      "filing_id": "0001197649-25-000050",
+      "source": "sec"
+    },
+    {
+      "person": "HUANG JEN HSUN",
+      "code": "S",
+      "date": "2025-10-20",
+      "price": 183.2928,
+      "change_shares": -47306,
+      "post_shares": 70125855,
+      "filing_id": "0001197649-25-000050",
+      "source": "sec"
+    },
+    {
+      "person": "HUANG JEN HSUN",
+      "code": "S",
+      "date": "2025-10-20",
+      "price": 182.5389,
+      "change_shares": -10042,
+      "post_shares": 70173161,
+      "filing_id": "0001197649-25-000050",
+      "source": "sec"
+    },
+    {
+      "person": "HUANG JEN HSUN",
+      "code": "S",
+      "date": "2025-10-17",
+      "price": 183.9567,
+      "change_shares": -270,
+      "post_shares": 70183203,
+      "filing_id": "0001197649-25-000050",
+      "source": "sec"
+    }
+  ],
+  "retrieved_at": "2025-10-22T04:13:11.949210"
+}

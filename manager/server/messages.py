@@ -81,10 +81,9 @@ def format_chat_history(messages: List[BaseMessage], tool_display_names: ToolDis
             display_messages.append({"role": "assistant", "content": msg.content})
         elif isinstance(msg, SystemMessage):
             if "tool_event" in msg.additional_kwargs:
-                event = msg.additional_kwargs["tool_event"]
-                content = render_tool_event(event, tool_display_names)
-                display_messages.append({"role": "tool", "content": content})
-            elif msg.content:
+                # Skip rendering tool call cards in chat history; progress panel covers these details.
+                continue
+            if msg.content:
                 display_messages.append({"role": "system", "content": msg.content})
 
     return display_messages

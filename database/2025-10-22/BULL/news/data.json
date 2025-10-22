@@ -1,0 +1,161 @@
+{
+  "ticker": "BULL",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T01:42:57+00:00",
+      "headline": "Japan's shipments to the U.S. continue to tumble despite trade deal — overall exports rebound",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/japan-exports-import-trade-data-september.html"
+      ],
+      "summary": [
+        "Japan's shipments to the U.S. continue to tumble despite trade deal — overall exports rebound"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T01:42:35+00:00",
+      "headline": "Asia markets fall as investors assess Japan trade data; SoftBank plunges over 10%",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/asia-markets-stock-market-today-wednesday-live-updates-japan-trade-data-sanae-takaichi.html"
+      ],
+      "summary": [
+        "Asia markets fall as investors assess Japan trade data; SoftBank plunges over 10%"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T00:15:21+00:00",
+      "headline": "Trump special counsel nominee Paul Ingrassia withdraws after racist texts flap",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/trump-special-counsel-nominee-paul-ingrassia-withdraws-after-racist-texts-flap.html"
+      ],
+      "summary": [
+        "Trump special counsel nominee Paul Ingrassia withdraws after racist texts flap"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T00:03:11+00:00",
+      "headline": "Capital One puts credit risk worries to rest, delivers a strong quarter and new buyback",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/capital-one-puts-credit-risk-worries-to-rest-delivers-a-strong-quarter-and-new-buyback.html"
+      ],
+      "summary": [
+        "Capital One puts credit risk worries to rest, delivers a strong quarter and new buyback"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-21T23:20:39+00:00",
+      "headline": "Trump wants $230 million from DOJ for investigating him: NYT",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/trump-doj-settlement-election-classified-documents.html"
+      ],
+      "summary": [
+        "Trump wants $230 million from DOJ for investigating him: NYT"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-21T21:32:15+00:00",
+      "headline": "Netflix shares drop after streamer misses earnings estimates, citing Brazilian tax dispute",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/netflix-nflx-earnings-q3-2025.html"
+      ],
+      "summary": [
+        "Netflix shares drop after streamer misses earnings estimates, citing Brazilian tax dispute"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-21T21:30:07+00:00",
+      "headline": "Mattel misses Wall Street estimates as North American sales sink",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/mattel-mat-earnings-q3-2025.html"
+      ],
+      "summary": [
+        "Mattel misses Wall Street estimates as North American sales sink"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "BULL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-21T21:30:02+00:00",
+      "headline": "CNBC exclusive: First look at Shield AI's new AI-piloted military fighter drone",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/21/exclusive-first-look-at-shield-ais-x-bat-ai-piloted-fighter-drone.html"
+      ],
+      "summary": [
+        "CNBC exclusive: First look at Shield AI's new AI-piloted military fighter drone"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-22T01:54:19.919063+00:00"
+}
