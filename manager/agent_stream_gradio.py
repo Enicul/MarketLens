@@ -5,7 +5,7 @@ import sys
 import logging
 from datetime import datetime
 from typing import Any, Dict, Optional
-from shcema import StockAnalysisInput
+from manager.shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -19,8 +19,9 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
-from gradio_chatbox import MarketLensChatbox
+# from langchain_openai import ChatOpenAI  # 如需使用 OpenAI 请取消注释
+from config import LLM_GOOGLE
+from manager.gradio_chatbox import MarketLensChatbox
 
 # Import the real financial analysis Agent
 from analysts.analyst import analyze_for_manager
@@ -29,6 +30,7 @@ from Trader import Trader
 from risk_management.orchestrator import run_risk_management
 from risk_management.utils import TraderDataError
 
+from manager.memory_manager import ToolAwareConversationMemory
 
 
 # Removed redundant analyze_stock function, implementing all functionality directly in call_analyst
@@ -219,9 +221,9 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
                 "disabled_intents": disabled_intents
             }, ensure_ascii=False)
         
-        print(f"[ANALYST] 📊 收集数据: {ticker} - {', '.join(enabled_intents)}")
+        logging.info(f"[ANALYST] 📊 收集数据: {ticker} - {', '.join(enabled_intents)}")
         if disabled_intents:
-            print(f"[ANALYST] ⚠️ 跳过已禁用: {', '.join(disabled_intents)}")
+            logging.warning(f"[ANALYST] ⚠️ 跳过已禁用: {', '.join(disabled_intents)}")
         
         # Execute analyst data collection
         result = asyncio.run(analyze_for_manager(ticker.upper(), enabled_intents))
@@ -253,7 +255,7 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
 
 
 @tool
-def call_researcher(ticker: str, analyst_data_path: str) -> str:
+async def call_researcher(ticker: str, analyst_data_path: str) -> str:
     """基于Analyst数据进行深度研究，生成多空辩论和投资建议。
     
     Args:
@@ -266,21 +268,30 @@ def call_researcher(ticker: str, analyst_data_path: str) -> str:
     try:
         # Try to clean up potential formatting issues
         analyst_data_path = analyst_data_path.strip()
-        with open(analyst_data_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+
+        def _read_json(path: str):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+
+        data = await asyncio.to_thread(_read_json, analyst_data_path)
         
         if "error" in data:
             return json.dumps({"error": "Analyst数据包含错误，无法进行研究", "details": data.get("error")}, ensure_ascii=False)
         
-        print(f"[RESEARCHER] 🔬 深度研究: {ticker}")
-        print(f"[DEBUG] Analyst data keys: {list(data.keys())}")
+        logging.info(f"[RESEARCHER] 🔬 深度研究: {ticker}")
+        logging.debug(f"[DEBUG] Analyst data keys: {list(data.keys())}")
         
         # Execute researcher analysis
-        result = asyncio.run(research_for_manager(ticker.upper(), data))
+        result = await research_for_manager(ticker.upper(), data)
         today = datetime.now().strftime("%Y-%m-%d")
         researcher_data_path = f"database/{today}/{ticker}/researcher_{ticker}.json"
-        with open(researcher_data_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
+
+        def _write_json(path: str, payload: Dict[str, Any]):
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(payload, f, ensure_ascii=False, indent=2)
+
+        await asyncio.to_thread(_write_json, researcher_data_path, result)
 
         return researcher_data_path
     except json.JSONDecodeError as e:
@@ -317,8 +328,8 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
         if "error" in data:
             return json.dumps({"error": "Research数据包含错误，无法生成交易决策", "details": data.get("error")}, ensure_ascii=False)
         
-        print("[TRADER] 💹 生成交易决策")
-        print(f"[DEBUG] Research data keys: {list(data.keys())}")
+        logging.info("[TRADER] 💹 生成交易决策")
+        logging.debug(f"[DEBUG] Research data keys: {list(data.keys())}")
         
         # Save researcher data directly (Trader will handle format conversion)
         import time
@@ -403,8 +414,8 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None)
 #        Main Agent Configuration      #
 ########################################
 
-def build_main_agent(config=None):
-    """创建一个简洁的AI Agent，不需要复杂的历史管理"""
+def build_main_agent(config=None, memory: ToolAwareConversationMemory | None = None):
+    """创建一个带 LangChain 原生记忆的 AgentExecutor。"""
     tools = [read_file, write_file, call_analyst, call_researcher, call_trader, call_risk_manager]
     
     # 动态配置描述
@@ -443,21 +454,22 @@ MessagesPlaceholder("messages"),
         MessagesPlaceholder("agent_scratchpad")
     ])
     
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    if not openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY is not set. Please configure your OpenAI credentials before启动代理。")
-    llm = ChatOpenAI(model="gpt-4o", temperature=0.3, streaming=True, api_key=openai_api_key)
-    # llm = ChatOpenAI(
-    #         model="qwen/qwen3-235b-a22b",
-    #         temperature=0.1,
-    #         base_url="https://zehenglmstudio.cpolar.top/v1"
-    #     )
+    llm = LLM_GOOGLE
     agent = create_tool_calling_agent(llm, tools, prompt)
-    
+
+    if memory is None:
+        memory = ToolAwareConversationMemory(
+            memory_key="messages",
+            return_messages=True,
+            input_key="input",
+        )
+
     return AgentExecutor(
         agent=agent,
         tools=tools,
+        memory=memory,
         verbose=False,
+        return_intermediate_steps=True,
         handle_parsing_errors=True,
     )
 
