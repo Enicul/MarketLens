@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, ValidationError
-from langchain_openai import ChatOpenAI
+from config import LLM_GOOGLE
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -111,13 +111,8 @@ def _sent_ok(s):
 
 
 class BearishResearcher:
-    def __init__(self, model="gpt-4o-mini", temperature=0, timeout=30):
-        self.llm = ChatOpenAI(model=model, temperature=temperature, timeout=timeout)
-        # self.llm = ChatOpenAI(
-        #     model="qwen/qwen3-235b-a22b",
-        #     temperature=0.1,
-        #     base_url="https://zehenglmstudio.cpolar.top/v1"
-        # )
+    def __init__(self, temperature=0, timeout=30):
+        self.llm = LLM_GOOGLE
 
     async def run(
         self,
