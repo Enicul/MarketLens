@@ -85,6 +85,14 @@ class RiskPerspective(BaseModel):
     def _enforce_three_scenarios(cls, value: List[PerspectiveScenario]) -> List[PerspectiveScenario]:
         if len(value) < 3:
             raise ValueError("scenarios must contain bull/base/bear entries")
+        
+        scenario_names = {scenario.name for scenario in value}
+        required_names = {"bull", "base", "bear"}
+        
+        if not required_names.issubset(scenario_names):
+            missing = required_names - scenario_names
+            raise ValueError(f"scenarios must contain bull/base/bear entries, missing: {missing}")
+        
         return value
 
 

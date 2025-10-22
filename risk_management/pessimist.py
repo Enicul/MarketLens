@@ -97,9 +97,13 @@ def _build_scenarios(trader: TraderDecisionCard, target_position: float) -> list
 @dataclass
 class PessimisticRiskEvaluator:
     """Produce a RiskPerspective focused on downside containment."""
+    
+    use_llm: bool = True
 
     def __post_init__(self) -> None:
-        self._llm = LLM_GOOGLE
+        self._llm: Optional[LLM_GOOGLE] = None
+        if self.use_llm:
+            self._llm = LLM_GOOGLE
 
     @property
     def view_name(self) -> str:
@@ -112,23 +116,29 @@ class PessimisticRiskEvaluator:
         return self._rule_based(trader_card)
 
     def _llm_generate(self, trader_card: TraderDecisionCard) -> Optional[RiskPerspective]:
-        schema_json = RiskPerspective.schema_json(indent=2, sort_keys=True)
-        trader_json = json.dumps(
-            trader_card.dict(exclude={"raw"}), ensure_ascii=False, indent=2, sort_keys=True
-        )
-        messages = PROMPT.format_messages(
-            ticker=trader_card.symbol,
-            trader_json=trader_json,
-            schema_json=schema_json,
-        )
-        raw = self._llm.invoke(messages).content
-        start = raw.find("{")
-        end = raw.rfind("}")
-        if start == -1 or end == -1:
-            raise ValueError("LLM response did not contain JSON.")
-        payload = json.loads(raw[start : end + 1])
-        perspective = RiskPerspective.parse_obj(payload)
-        return perspective
+        if not self._llm:
+            return None
+            
+        try:
+            schema_json = RiskPerspective.schema_json(indent=2, sort_keys=True)
+            trader_json = json.dumps(
+                trader_card.dict(exclude={"raw"}), ensure_ascii=False, indent=2, sort_keys=True
+            )
+            messages = PROMPT.format_messages(
+                ticker=trader_card.symbol,
+                trader_json=trader_json,
+                schema_json=schema_json,
+            )
+            raw = self._llm.invoke(messages).content
+            start = raw.find("{")
+            end = raw.rfind("}")
+            if start == -1 or end == -1:
+                return None  # Fall back to rule-based instead of raising error
+            payload = json.loads(raw[start : end + 1])
+            perspective = RiskPerspective.parse_obj(payload)
+            return perspective
+        except Exception:
+            return None  # Fall back to rule-based on any error
 
     def _rule_based(self, trader_card: TraderDecisionCard) -> RiskPerspective:
         base_position = _default_position(trader_card)
