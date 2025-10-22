@@ -6,26 +6,20 @@ import json
 from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
-from langchain.agents import AgentExecutor, create_openai_functions_agent
+from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
 from .lib.fundamentals import get_fundamentals
 from .lib.news import get_news
 from .lib.yahoo import get_market, get_market_csv
 from .lib.X_search import get_sentiment  
-
+from config import LLM_GOOGLE
 # Setup environment and path
 load_dotenv()
 sys.path.append(os.path.dirname(__file__))
 
 
-# llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
-llm = ChatOpenAI(
-            model="qwen/qwen3-235b-a22b",
-            temperature=0.1,
-            base_url="https://zehenglmstudio.cpolar.top/v1"
-        )
+llm = LLM_GOOGLE
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
 prompt = ChatPromptTemplate.from_messages(
@@ -57,7 +51,7 @@ prompt = ChatPromptTemplate.from_messages(
     ]
 )
 
-agent = create_openai_functions_agent(
+agent = create_tool_calling_agent(
     llm=llm,
     tools=[get_news, get_fundamentals, get_market, get_sentiment],
     prompt=prompt,
