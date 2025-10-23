@@ -91,7 +91,7 @@ class TwitterScraper:
         try:
             self._playwright = await async_playwright().start()
             
-            # 检查 playwright 是否正常启动
+            # Ensure Playwright initialized correctly
             if not self._playwright:
                 raise RuntimeError("Failed to start Playwright")
             
@@ -107,7 +107,7 @@ class TwitterScraper:
                 ],
             )
             
-            # 检查浏览器是否正常启动
+            # Validate the browser instance
             if not self._browser or not self._browser.is_connected():
                 raise RuntimeError("Failed to launch browser or browser disconnected")
 
@@ -116,18 +116,18 @@ class TwitterScraper:
             if self.config.storage_state_path and Path(self.config.storage_state_path).exists():
                 context_kwargs["storage_state"] = self.config.storage_state_path
 
-            # 创建上下文前再次检查浏览器状态
+            # Double-check browser connectivity before creating the context
             if not self._browser.is_connected():
                 raise RuntimeError("Browser disconnected before creating context")
                 
             self._context = await self._browser.new_context(**context_kwargs)
             
-            # 检查上下文是否创建成功
+            # Verify context creation
             if not self._context:
                 raise RuntimeError("Failed to create browser context")
                 
         except Exception as e:
-            # 如果启动失败，清理资源
+            # Clean up if initialization fails
             await self._cleanup()
             raise RuntimeError(f"Browser initialization failed: {str(e)}")
 
@@ -191,19 +191,18 @@ class TwitterScraper:
         try:
             await page.goto("https://x.com/home", wait_until="domcontentloaded", timeout=60_000)
 
-            # 浏览器显示完全由headless配置控制，无论是否已登录都会显示浏览器（如果headless=False）
+            # Headless flag fully controls browser visibility regardless of login state
             if self.config.headless:
-                # 在headless模式下，如果已登录则直接返回，如果未登录则抛出错误
+                # In headless mode, return immediately when authenticated; otherwise raise
                 if await self._is_logged_in(page):
                     logger.info("Already logged in (headless mode)")
                     return
                 else:
                     raise RuntimeError("Not logged in. Run in non-headless mode first.")
             else:
-                # 在非headless模式下，始终显示浏览器界面
+                # In non-headless mode, always show the browser window
                 if await self._is_logged_in(page):
-                    logger.info("Already logged in, but browser will be displayed due to headless=False")
-                    # 即使已登录，也会显示浏览器界面让用户看到爬取过程
+                    logger.info("Already logged in, but browser will be displayed because headless=False")
                     return
                 else:
                     logger.warning("Not logged in. Please log in manually")

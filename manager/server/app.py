@@ -82,28 +82,28 @@ class AnalysisConfigResponse(BaseModel):
 
 PROGRESS_TEMPLATES: Dict[str, Dict[str, str]] = {
     "call_analyst": {
-        "start": "[ANALYST] 正在收集多维市场数据（新闻 / 基本面 / 市场 / 情绪）…",
-        "end": "[ANALYST] 数据收集完成 ✅",
+        "start": "[ANALYST] Collecting multi-dimensional market data (news / fundamentals / market / sentiment)…",
+        "end": "[ANALYST] Data collection complete ✅",
     },
     "call_researcher": {
-        "start": "[RESEARCHER] 正在整合分析结果并撰写研报…",
-        "end": "[RESEARCHER] 研究结论准备就绪 ✅",
+        "start": "[RESEARCHER] Integrating analysis results and writing research report…",
+        "end": "[RESEARCHER] Research conclusions ready ✅",
     },
     "call_trader": {
-        "start": "[TRADER] 正在生成交易计划与风险控制策略…",
-        "end": "[TRADER] 交易建议已生成 ✅",
+        "start": "[TRADER] Generating trading plan and risk control strategy…",
+        "end": "[TRADER] Trading recommendations generated ✅",
     },
     "call_risk_manager": {
-        "start": "[RISK MANAGER] 正在复核风控参数与情景压力测试…",
-        "end": "[RISK MANAGER] 风控复核完成 ✅",
+        "start": "[RISK MANAGER] Reviewing risk control parameters and scenario stress testing…",
+        "end": "[RISK MANAGER] Risk review complete ✅",
     },
 }
 
 ANALYSIS_LABELS = {
-    "news": "新闻",
-    "fundamentals": "基本面",
-    "market": "市场",
-    "sentiment": "情绪",
+    "news": "News",
+    "fundamentals": "Fundamentals",
+    "market": "Market",
+    "sentiment": "Sentiment",
 }
 
 
@@ -387,7 +387,7 @@ def get_session_progress(session_id: str, session: AuthSession = Depends(get_cur
 async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id: str) -> None:
     """Forward log entries from queue to websocket and persist them."""
     manager_actor = "manager"
-    manager_label = "Manager 主代理"
+    manager_label = "Manager Lead Agent"
     last_thinking_messages: Dict[str, str] = {}
     last_invoked_tool: Optional[str] = None
 
@@ -558,7 +558,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
     @staticmethod
     def _actor_label(actor_key: str) -> str:
         if actor_key == "manager":
-            return "Manager 主代理"
+            return "Manager Lead Agent"
         return TOOL_DISPLAY_NAMES.get(actor_key, actor_key)
 
     def _current_actor_key(self) -> str:
@@ -584,7 +584,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
 
     async def on_llm_start(self, *args: Any, **kwargs: Any) -> None:
         self._response_parts = []
-        await _safe_send_json(self.websocket, {"type": "status", "message": "模型生成中..."})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "Model is generating..."})
         actor_key = self._current_actor_key()
         self._llm_actor_stack.append(actor_key)
         await self._send_thinking_status(actor_key, "start")
@@ -594,7 +594,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         await _safe_send_json(self.websocket, {"type": "token", "token": token})
 
     async def on_llm_end(self, response: LLMResult, **kwargs: Any) -> None:
-        await _safe_send_json(self.websocket, {"type": "status", "message": "生成完成"})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "Generation complete"})
         actor_key = self._llm_actor_stack.pop() if self._llm_actor_stack else "manager"
         label = self._actor_label(actor_key)
         thinking_text = _extract_thinking_text(response)
@@ -620,11 +620,11 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         )
 
     async def on_tool_start(self, serialized: Dict[str, Any], input_str: str, **kwargs: Any) -> None:
-        tool_name = serialized.get("name", "工具调用")
+        tool_name = serialized.get("name", "tool_call")
         self._tool_stack.append(tool_name)
         template = PROGRESS_TEMPLATES.get(tool_name, {})
         label = TOOL_DISPLAY_NAMES.get(tool_name, tool_name.upper())
-        message = template.get("start") or f"[{label}] 正在执行…"
+        message = template.get("start") or f"[{label}] Execution in progress…"
         await _push_progress(
             self.websocket,
             self.session_id,
@@ -636,8 +636,8 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
     async def on_tool_end(self, output: Any, **kwargs: Any) -> None:
         tool_name = self._tool_stack[-1] if self._tool_stack else None
         template = PROGRESS_TEMPLATES.get(tool_name or "", {})
-        label = TOOL_DISPLAY_NAMES.get(tool_name or "", "工具")
-        message = template.get("end") or f"[{label}] 阶段完成 ✅"
+        label = TOOL_DISPLAY_NAMES.get(tool_name or "", "Tool")
+        message = template.get("end") or f"[{label}] Stage complete ✅"
         await _push_progress(
             self.websocket,
             self.session_id,
@@ -659,7 +659,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         await _push_progress(
             self.websocket,
             self.session_id,
-            message=f"[{label}] 执行失败：{error}",
+            message=f"[{label}] Execution failed: {error}",
             tool=tool_name,
             stage="error",
         )
@@ -700,7 +700,7 @@ async def chat_websocket(
 
             user_input = event.get("content", "").strip()
             if not user_input:
-                if not await _safe_send_json(websocket, {"type": "error", "message": "请输入有效的问题"}):
+                if not await _safe_send_json(websocket, {"type": "error", "message": "Please enter a valid question"}):
                     break
                 continue
 
@@ -708,10 +708,10 @@ async def chat_websocket(
             analysis_config = USER_STATE.get_analysis_config(token)
             enabled_sections = [key for key, enabled in analysis_config.items() if enabled]
             if enabled_sections:
-                summary = "、".join(ANALYSIS_LABELS.get(key, key) for key in enabled_sections)
-                manager_msg = f"[MANAGER] 正在调度 Analyst 分析 {summary} 维度，并整合下游代理…"
+                summary = ", ".join(ANALYSIS_LABELS.get(key, key) for key in enabled_sections)
+                manager_msg = f"[MANAGER] Scheduling Analyst to analyze {summary} dimensions and integrate downstream agents…"
             else:
-                manager_msg = "[MANAGER] 正在调度子代理执行请求…"
+                manager_msg = "[MANAGER] Scheduling agent to execute request…"
             await _push_progress(
                 websocket,
                 session_id,
@@ -726,7 +726,7 @@ async def chat_websocket(
                 result = await agent.ainvoke({"input": user_input}, callbacks=[callback])  # type: ignore[arg-type]
             except Exception as exc:  # noqa: BLE001
                 if not await _safe_send_json(
-                    websocket, {"type": "error", "message": f"代理执行失败：{exc}"}
+                    websocket, {"type": "error", "message": f"Agent execution failed: {exc}"}
                 ):
                     break
                 continue
@@ -744,7 +744,7 @@ async def chat_websocket(
             await _push_progress(
                 websocket,
                 session_id,
-                message="[MANAGER] 分析完成 🎯",
+                message="[MANAGER] Analysis complete 🎯",
                 tool="manager",
                 stage="complete",
             )

@@ -21,9 +21,11 @@ PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are the optimistic risk officer for an investment desk. "
-            "Given a trader decision card, produce a JSON object describing an optimistic "
-            "but still risk-aware plan. The JSON must match the provided schema exactly.",
+            "You are the Market Lens optimistic risk officer briefing the portfolio manager.\n"
+            "Professional standards:\n"
+            "- Keep an upside-biased but risk-disciplined posture; never dismiss stop-loss or hedging needs.\n"
+            "- Build every recommendation from the trader decision card; do not invent external data.\n"
+            "- Return only JSON that fits the supplied schema; language should remain concise and professional.",
         ),
         (
             "human",
@@ -31,7 +33,9 @@ PROMPT = ChatPromptTemplate.from_messages(
             "Perspective: optimistic\n"
             "Trader decision (JSON):\n{trader_json}\n\n"
             "Target JSON schema:\n{schema_json}\n"
-            "Remember: return ONLY the JSON payload.",
+            "Quality checks:\n"
+            "- If a numeric input is missing, infer conservatively or explain the omission within the field notes.\n"
+            "- Respond ONLY with the JSON payload; no commentary.",
         ),
     ]
 )

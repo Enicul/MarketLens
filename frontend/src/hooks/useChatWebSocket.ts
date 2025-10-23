@@ -41,16 +41,16 @@ export function useChatWebSocket(
 
     ws.onopen = () => {
       setIsConnected(true);
-      handlers.onStatus?.("连接已建立");
+      handlers.onStatus?.("WebSocket connection established");
     };
 
     ws.onclose = () => {
       setIsConnected(false);
-      handlers.onStatus?.("连接已关闭");
+      handlers.onStatus?.("WebSocket connection closed");
     };
 
     ws.onerror = () => {
-      handlers.onError?.("WebSocket 连接异常");
+      handlers.onError?.("WebSocket connection error");
     };
 
     ws.onmessage = (event) => {
@@ -104,13 +104,13 @@ export function useChatWebSocket(
             });
             break;
           case "error":
-            handlers.onError?.(String(data.message ?? "未知错误"));
+            handlers.onError?.(String(data.message ?? "Unknown error"));
             break;
           default:
             break;
         }
       } catch (error) {
-        handlers.onError?.(`解析消息失败：${(error as Error).message}`);
+        handlers.onError?.(`Failed to parse message: ${(error as Error).message}`);
       }
     };
 
@@ -124,7 +124,7 @@ export function useChatWebSocket(
   const sendMessage = useCallback(
     (content: string) => {
       if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
-        throw new Error("连接尚未建立");
+        throw new Error("WebSocket connection is not open");
       }
       wsRef.current.send(JSON.stringify({ type: "user_message", content }));
     },

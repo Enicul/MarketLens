@@ -6,21 +6,22 @@ from langchain.tools import StructuredTool
 from .search import TwitterScraper, ScraperConfig
 from .config import Config  
 from .sentiment import AdvancedSentimentAnalyzer
+import logging
 
+logger = logging.getLogger(__name__)
 
 async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
     """
-    获取股票在 Twitter/X 平台上的社交媒体情绪数据
+    Gather Twitter/X social sentiment for the requested equity.
     
     Args:
-        ticker: 股票代码
+        ticker: Stock ticker symbol.
         
     Returns:
-        包含情绪分析结果的字典
+        A dictionary containing sentiment analysis results.
     """
-    print(f"\n[SENTIMENT] 🐦 Starting Twitter sentiment analysis for {ticker}")
-    print("  " + "-" * 40)
-    # 爬虫配置 - 看好了，这才叫简洁的配置使用
+    logger.info(f"\n[SENTIMENT] 🐦 Starting Twitter sentiment analysis for {ticker}")
+    # Scraper configuration
     config = ScraperConfig(
         headless=Config.HEADLESS,
         storage_state_path=Config.STORAGE_STATE_PATH,
@@ -37,30 +38,30 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
     )
     
     try:
-        # 添加重试机制
+        # Retry with lightweight backoff
         max_retries = 2
         tweets = []
         
         for attempt in range(max_retries):
             try:
                 async with TwitterScraper(config) as scraper:
-                    # 数据获取层
-                    print(f"[SENTIMENT] 📥 Scraping tweets for {ticker} (attempt {attempt + 1})")
+                    # Data acquisition layer
+                    logger.info(f"[SENTIMENT] 📥 Collecting tweets for {ticker} (attempt {attempt + 1}/{max_retries})")
                     tweets = await scraper.scrape_stock_tweets(ticker)
-                    print(f"[SENTIMENT] 📊 Found {len(tweets)} tweets")
-                    break  # 成功则跳出重试循环
+                    logger.info(f"[SENTIMENT] 📊 Tweets gathered: {len(tweets)}")
+                    break  # successful run
             except Exception as retry_error:
-                print(f"[SENTIMENT] ⚠️ Attempt {attempt + 1} failed: {str(retry_error)[:50]}...")
-                if attempt == max_retries - 1:  # 最后一次尝试
+                logger.warning(f"[SENTIMENT] ⚠️ Attempt {attempt + 1} failed: {str(retry_error)[:50]}...")
+                if attempt == max_retries - 1:  # final attempt
                     raise retry_error
-                await asyncio.sleep(2)  # 等待2秒后重试
+                await asyncio.sleep(2)  # wait before retry
         
-        # 分析层
-        print(f"[SENTIMENT] 🔍 Analyzing sentiment...")
+        # Analysis layer
+        logger.info(f"[SENTIMENT] 🔍 Running sentiment analytics...")
         analyzer = AdvancedSentimentAnalyzer()
         metrics, top_tweets = analyzer.analyze(tweets)
         
-        # 数据组装层 - 专业的数据结构
+        # Assembly layer
         result = {
             "ticker": ticker,
             "channel": "sentiment",
@@ -76,31 +77,30 @@ async def get_sentiment_func(ticker: str) -> Dict[str, Any]:
             },
             "top_tweets": top_tweets,
             "analysis_metadata": {
-                "algorithm_version": "3.0-professional",  # 不是modular，是professional
+                "algorithm_version": "3.0-professional",
                 "confidence_level": metrics.confidence_level,
                 "search_keywords": Config.get_search_keywords(ticker),
                 "generated_at": datetime.now(timezone.utc).isoformat(),
                 "processing_note": "Professional sentiment analysis with integrated architecture"
             }
         }
-        print(f"[SENTIMENT] ✅ Complete for {ticker} - {metrics.overall_sentiment} ({metrics.sentiment_score:.3f})")
-        print("  " + "=" * 40)
+        logger.info(f"[SENTIMENT] ✅ Sentiment analysis complete: {ticker} — {metrics.overall_sentiment} (score {metrics.sentiment_score:.3f})")
         return result
             
     except Exception as e:
-        # 错误处理 - 专业的错误响应
+        # Structured error handling
         error_msg = str(e)
-        print(f"[SENTIMENT] ❌ Error for {ticker}: {error_msg[:50]}...")
+        logger.error(f"[SENTIMENT] ❌ Error for {ticker}: {error_msg[:50]}...")
         
-        # 如果是浏览器相关错误，提供更友好的错误信息
+        # Provide actionable tips for browser issues
         if "Executable doesn't exist" in error_msg or "chromium" in error_msg.lower():
-            print(f"[SENTIMENT] 💡 Tip: Run 'playwright install chromium' to fix browser issues")
+            logger.warning(f"[SENTIMENT] 💡 Tip: run 'playwright install chromium' to install the browser dependency")
         
         return _build_error_response(ticker, e)
 
 
 def _build_error_response(ticker: str, error: Exception) -> Dict[str, Any]:
-    """构建错误响应"""
+    """Build a structured error response payload."""
     return {
         "ticker": ticker,
         "channel": "sentiment",
@@ -129,14 +129,14 @@ def _build_error_response(ticker: str, error: Exception) -> Dict[str, Any]:
     }
 
 
-# LangChain 工具
+# LangChain tool wrapper
 get_sentiment = StructuredTool.from_function(
     func=get_sentiment_func,
     coroutine=get_sentiment_func,
     name="get_sentiment",
     description=(
-        "获取指定股票在 Twitter/X 平台上的社交媒体情绪分析。"
-        "使用高级算法分析推文内容、用户影响力和市场情绪。"
-        "包含五级情绪分类、影响力加权和多维度质量指标。"
+        "Retrieve Twitter/X social sentiment for a given stock ticker. "
+        "Leverages an advanced analyzer to score tweet content, user influence, and market mood. "
+        "Includes multi-level sentiment classification, influence weighting, and quality metrics."
     ),
 )

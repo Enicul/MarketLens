@@ -140,53 +140,53 @@ class MarketLensChatbox:
         """
     
     def stream_response(
-        self, 
-        agent_executor: AgentExecutor, 
-        user_input: str, 
+        self,
+        agent_executor: AgentExecutor,
+        user_input: str,
         chat_history: list,
         status_callback: Optional[Callable] = None
     ):
-        """执行Agent Loop并流式输出响应"""
+        """Execute the agent loop and stream responses."""
         try:
-            # 更新状态
+            # Update status indicator
             if status_callback:
                 status_callback("🤖 AI Agent is thinking...")
-            
-            # 构建消息历史（真正的Agent Loop）
+
+            # Build conversation history for the agent loop
             messages = []
             for msg in chat_history:
                 if msg["role"] == "user":
                     messages.append(HumanMessage(content=msg["content"]))
                 else:
                     messages.append(AIMessage(content=msg["content"]))
-            
-            # 调用Agent，传入完整的对话历史
+
+            # Invoke the agent with full chat history
             response = agent_executor.invoke({
                 "input": user_input,
                 "messages": messages
             })
             output = response.get("output", "Sorry, no response received.")
-            
-            # 检查中间步骤（用于状态更新）
+
+            # Inspect intermediate steps for status updates
             steps = response.get("intermediate_steps", [])
             for step in steps:
                 if len(step) > 0 and hasattr(step[0], "tool"):
                     tool_name = step[0].tool
                     if status_callback:
                         status_callback(f"🔧 Using tool: {tool_name}")
-            
-            # 流式输出
+
+            # Stream token-by-token output
             partial = ""
             for i, char in enumerate(output):
                 partial += char
                 yield partial
-                # 标点符号处稍作停顿
+                # Slightly pause at punctuation for readability
                 if char in "。！？，；：.!?,;:":
                     time.sleep(0.1)
                 else:
                     time.sleep(0.02)
-            
-            # 清除状态
+
+            # Clear status line
             if status_callback:
                 status_callback("")
                     
@@ -198,9 +198,9 @@ class MarketLensChatbox:
         agent_builder: Callable,
         enabled_analysis_types: Dict[str, bool]
     ) -> gr.Blocks:
-        """创建Gradio界面，实现真正的Agent Loop"""
-        
-        # 初始化Agent（只创建一次）
+        """Create the Gradio interface with a genuine agent loop."""
+
+        # Initialize the agent once
         main_agent = agent_builder(enabled_analysis_types)
         
         with gr.Blocks(title="Market Lens AI Agent", css=self.CSS, theme=gr.themes.Soft()) as demo:
@@ -261,12 +261,12 @@ class MarketLensChatbox:
                 else:
                     return f"📊 Enabled: {', '.join(enabled)}"
             
-            # 主响应函数（实现Agent Loop）
+            # Primary response function (implements the agent loop)
             def respond(user_msg: str, chat_hist: list, news, fundamentals, market, sentiment):
                 if not user_msg.strip():
                     return "", chat_hist, gr.update(visible=False)
-                
-                # 更新配置
+
+                # Update configuration flags
                 current_config = {
                     "news": news,
                     "fundamentals": fundamentals,
@@ -274,26 +274,26 @@ class MarketLensChatbox:
                     "sentiment": sentiment
                 }
                 update_config_status(news, fundamentals, market, sentiment)
-                
-                # 如果配置改变，重建Agent
+
+                # Rebuild agent when configuration changes
                 if enabled_analysis_types != current_config:
                     nonlocal main_agent
                     enabled_analysis_types.update(current_config)
                     main_agent = agent_builder(enabled_analysis_types)
-                
-                # 添加用户消息
+
+                # Append user message to history
                 chat_hist = chat_hist + [{"role": "user", "content": user_msg}]
                 yield "", chat_hist, gr.update(value="🔄 Processing...", visible=True)
-                
-                # 状态更新函数
+
+                # Track streaming status updates
                 current_status = {"value": ""}
                 def update_status(msg):
                     current_status["value"] = msg
-                
-                # 流式生成响应（传入完整历史）
+
+                # Stream assistant response with full history
                 assistant_message = {"role": "assistant", "content": ""}
                 chat_hist.append(assistant_message)
-                
+
                 for partial in self.stream_response(main_agent, user_msg, chat_hist[:-1], update_status):
                     assistant_message["content"] = partial
                     status_msg = current_status["value"]
@@ -302,7 +302,7 @@ class MarketLensChatbox:
                     else:
                         yield "", chat_hist, gr.update(visible=False)
                 
-                # 隐藏状态
+                # Hide status indicator
                 yield "", chat_hist, gr.update(visible=False)
             
             # Clear function

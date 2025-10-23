@@ -10,13 +10,13 @@
         "NVDA"
       ],
       "publisher": "Benzinga",
-      "published_at": "2025-10-22T15:13:56+00:00",
-      "headline": "Trump Wanted Clean Energy Dead-It's Crushing Nvidia And AI Instead - Bloom Energy  ( NYSE:BE ) , Amprius Technologies  ( NYSE:AMPX ) ",
+      "published_at": "2025-10-23T03:51:44+00:00",
+      "headline": "Tesla's Q3 Earnings Divide Analysts, But Dan Ives Says 'The Worst Is In The Rearview Mirror' For The 'Most Undervalued' Name In AI - Ford Motor  ( NYSE:F ) , General Motors  ( NYSE:GM ) ",
       "evidence": [
-        "https://www.benzinga.com/news/25/10/48356705/clean-energy-stocks-beat-nvidia-under-trump"
+        "https://www.benzinga.com/markets/earnings/25/10/48371692/teslas-q3-earnings-divide-analysts-but-dan-ives-says-the-worst-is-in-the-rearview-mirror-for-the"
       ],
       "summary": [
-        "Trump Wanted Clean Energy Dead-It's Crushing Nvidia And AI Instead - Bloom Energy  ( NYSE:BE ) , Amprius Technologies  ( NYSE:AMPX ) "
+        "Tesla's Q3 Earnings Divide Analysts, But Dan Ives Says 'The Worst Is In The Rearview Mirror' For The 'Most Undervalued' Name In AI - Ford Motor  ( NYSE:F ) , General Motors  ( NYSE:GM ) "
       ],
       "stance": "neutral",
       "stance_confidence": 0.5,
@@ -28,52 +28,14 @@
       "ticker": [
         "NVDA"
       ],
-      "publisher": "Benzinga",
-      "published_at": "2025-10-22T15:04:18+00:00",
-      "headline": "Micron Unveils Memory Tech For AI Data Centers, Nvidia Team Up - Micron Technology  ( NASDAQ:MU ) ",
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-23T02:30:00+00:00",
+      "headline": "Inside The Dow: Key Earnings Ahead For Some Of The Index's YTD Winners",
       "evidence": [
-        "https://www.benzinga.com/markets/tech/25/10/48356271/micron-unveils-new-memory-tech-for-ai-data-centers-nvidia-team-up"
+        "https://finnhub.io/api/news?id=37708c8b85f7b4510bb31d9ecddec667d54496a8a6cc510195757962e0c5d35e"
       ],
       "summary": [
-        "Micron Unveils Memory Tech For AI Data Centers, Nvidia Team Up - Micron Technology  ( NASDAQ:MU ) "
-      ],
-      "stance": "neutral",
-      "stance_confidence": 0.5,
-      "signals": [],
-      "finbert": null
-    },
-    {
-      "type": "news_item",
-      "ticker": [
-        "NVDA"
-      ],
-      "publisher": "Benzinga",
-      "published_at": "2025-10-22T15:00:25+00:00",
-      "headline": "Assessing NVIDIA's Performance Against Competitors In Semiconductors & Semiconductor Equipment Industry - NVIDIA  ( NASDAQ:NVDA ) ",
-      "evidence": [
-        "https://www.benzinga.com/insights/news/25/10/48356097/assessing-nvidias-performance-against-competitors-in-semiconductors-amp-semiconductor-equipment-ind"
-      ],
-      "summary": [
-        "Assessing NVIDIA's Performance Against Competitors In Semiconductors & Semiconductor Equipment Industry - NVIDIA  ( NASDAQ:NVDA ) "
-      ],
-      "stance": "neutral",
-      "stance_confidence": 0.5,
-      "signals": [],
-      "finbert": null
-    },
-    {
-      "type": "news_item",
-      "ticker": [
-        "NVDA"
-      ],
-      "publisher": "Zacks Commentary",
-      "published_at": "2025-10-22T14:08:00+00:00",
-      "headline": "Texas Instruments Q3 Earnings Beat Estimates, Revenues Rise Y/Y",
-      "evidence": [
-        "https://www.zacks.com/stock/news/2774166/texas-instruments-q3-earnings-beat-estimates-revenues-rise-yy"
-      ],
-      "summary": [
-        "Texas Instruments Q3 Earnings Beat Estimates, Revenues Rise Y/Y"
+        "Inside The Dow: Key Earnings Ahead For Some Of The Index's YTD Winners"
       ],
       "stance": "neutral",
       "stance_confidence": 0.5,
@@ -86,32 +48,13 @@
         "NVDA"
       ],
       "publisher": "Motley Fool",
-      "published_at": "2025-10-22T14:07:00+00:00",
-      "headline": "3 Reasons to Buy Taiwan Semiconductor Stock Like There's No Tomorrow",
+      "published_at": "2025-10-23T01:05:00+00:00",
+      "headline": "This Small AI Stock Has Outpaced Nvidia. 1 Reason Why It's Still Rising.",
       "evidence": [
-        "https://www.fool.com/investing/2025/10/22/3-reasons-to-buy-taiwan-semiconductor-stock-like/"
+        "https://www.fool.com/investing/2025/10/22/this-small-ai-stock-has-outpaced-nvidia-1-reason-w/"
       ],
       "summary": [
-        "3 Reasons to Buy Taiwan Semiconductor Stock Like There's No Tomorrow"
-      ],
-      "stance": "neutral",
-      "stance_confidence": 0.5,
-      "signals": [],
-      "finbert": null
-    },
-    {
-      "type": "news_item",
-      "ticker": [
-        "NVDA"
-      ],
-      "publisher": "Benzinga",
-      "published_at": "2025-10-22T14:02:00+00:00",
-      "headline": "Ethernet Alliance's TEF 2025 Ignites the Ethernet for AI Revolution",
-      "evidence": [
-        "https://www.benzinga.com/pressreleases/25/10/g48353665/ethernet-alliances-tef-2025-ignites-the-ethernet-for-ai-revolution"
-      ],
-      "summary": [
-        "Ethernet Alliance's TEF 2025 Ignites the Ethernet for AI Revolution"
+        "This Small AI Stock Has Outpaced Nvidia. 1 Reason Why It's Still Rising."
       ],
       "stance": "neutral",
       "stance_confidence": 0.5,
@@ -124,13 +67,32 @@
         "NVDA"
       ],
       "publisher": "Motley Fool",
-      "published_at": "2025-10-22T13:52:10+00:00",
-      "headline": "Vicor  ( VICR )  Q3 2025 Earnings Call Transcript",
+      "published_at": "2025-10-23T00:59:57+00:00",
+      "headline": "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?",
       "evidence": [
-        "https://www.fool.com/earnings/call-transcripts/2025/10/22/vicor-vicr-q3-2025-earnings-call-transcript/"
+        "https://www.fool.com/coverage/filings/2025/10/23/is-amd-a-buy-after-investment-advisor-western-financial-initiated-a-position-in-the-stock/"
       ],
       "summary": [
-        "Vicor  ( VICR )  Q3 2025 Earnings Call Transcript"
+        "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-23T00:15:00+00:00",
+      "headline": "Broadcom: Our Best Year-To-Date Performer",
+      "evidence": [
+        "https://finnhub.io/api/news?id=9b4f29f4de92f486cba93eeb3127527007390a100049ec79cdd9da2205aaf9bc"
+      ],
+      "summary": [
+        "Broadcom: Our Best Year-To-Date Performer"
       ],
       "stance": "neutral",
       "stance_confidence": 0.5,
@@ -143,13 +105,51 @@
         "NVDA"
       ],
       "publisher": "Motley Fool",
-      "published_at": "2025-10-22T13:45:00+00:00",
-      "headline": "Prediction: 1 Artificial Intelligence  ( AI )  Stock Will Be Worth More Than Amazon and Palantir Combined by 2030  ( Hint: It's Not Nvidia ) ",
+      "published_at": "2025-10-22T23:50:47+00:00",
+      "headline": "Tesla  ( TSLA )  Q3 2025 Earnings Call Transcript",
       "evidence": [
-        "https://www.fool.com/investing/2025/10/22/prediction-1-artificial-intelligence-ai-stock-will/"
+        "https://www.fool.com/earnings/call-transcripts/2025/10/22/tesla-tsla-q3-2025-earnings-call-transcript/"
       ],
       "summary": [
-        "Prediction: 1 Artificial Intelligence  ( AI )  Stock Will Be Worth More Than Amazon and Palantir Combined by 2030  ( Hint: It's Not Nvidia ) "
+        "Tesla  ( TSLA )  Q3 2025 Earnings Call Transcript"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-22T23:50:00+00:00",
+      "headline": "Are We In A Bubble?",
+      "evidence": [
+        "https://finnhub.io/api/news?id=7a9641cf8dede0883c89f598cd1f8daf847d352c132a9dd870cb6f16261edf3a"
+      ],
+      "summary": [
+        "Are We In A Bubble?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-22T23:48:42+00:00",
+      "headline": "Is Arista Networks a Buy After Investment Company Stanley-Laman Group Began a Position in the Stock?",
+      "evidence": [
+        "https://www.fool.com/coverage/filings/2025/10/22/is-arista-networks-a-buy-after-investment-company-stanley-laman-group-began-a-position-in-the-stock/"
+      ],
+      "summary": [
+        "Is Arista Networks a Buy After Investment Company Stanley-Laman Group Began a Position in the Stock?"
       ],
       "stance": "neutral",
       "stance_confidence": 0.5,
@@ -157,5 +157,5 @@
       "finbert": null
     }
   ],
-  "generated_at": "2025-10-22T16:01:44.021679+00:00"
+  "generated_at": "2025-10-23T07:47:32.104696+00:00"
 }

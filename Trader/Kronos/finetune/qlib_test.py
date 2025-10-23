@@ -329,7 +329,6 @@ def main():
     print("--- Running with Configuration ---")
     for key, val in run_config.items():
         print(f"{key:>20}: {val}")
-    print("-" * 35)
 
     # --- 2. Load Data ---
     test_data_path = os.path.join(run_config['data_path'], "test_data.pkl")

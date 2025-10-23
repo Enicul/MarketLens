@@ -1,10 +1,13 @@
 import os
+import logging
 import httpx
 import datetime
 import asyncio
 from typing import Dict, Any
 from langchain.tools import StructuredTool
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -85,8 +88,15 @@ async def fetch_insiders(ticker: str) -> Any:
 
 # -------- Main Aggregator --------
 async def get_fundamentals_func(ticker: str) -> Dict[str, Any]:
-    profile, metrics = await fetch_profile_and_metrics(ticker)
-    insiders = await fetch_insiders(ticker)
+    logger.info(f"[FUNDAMENTALS] 📊 Fetching fundamentals: {ticker}")
+    try:
+        profile, metrics = await fetch_profile_and_metrics(ticker)
+        logger.debug(f"[FUNDAMENTALS] 📥 Profile and metrics retrieved: {ticker}")
+        insiders = await fetch_insiders(ticker)
+        logger.debug(f"[FUNDAMENTALS] 👥 Insider transaction data retrieved: {ticker}")
+    except Exception as e:
+        logger.error(f"[FUNDAMENTALS] ❌ Failed to pull data for {ticker}: {e}")
+        raise
 
     # --- Normalize company info ---
     company = {
@@ -143,6 +153,7 @@ async def get_fundamentals_func(ticker: str) -> Dict[str, Any]:
         "retrieved_at": datetime.datetime.utcnow().isoformat(),
     }
 
+    logger.info(f"[FUNDAMENTALS] ✅ Fundamentals normalized: {ticker}")
     return _prune_nones(result)
 
 

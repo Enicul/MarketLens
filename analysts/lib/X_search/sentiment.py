@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from .search import Tweet
 
 class SentimentPatterns:
-    """情绪模式匹配器"""
+    """Pattern library for bullish and bearish sentiment."""
     
     BULLISH = re.compile(
         r'\b(bull(?:ish)?|buy(?:ing)?|long|moon(?:ing)?|pump|calls?|upgrade|breakout|support|accumula\w+|'
@@ -23,7 +23,7 @@ class SentimentPatterns:
 
 @dataclass
 class SentimentMetrics:
-    """情绪分析指标"""
+    """Structured sentiment analytics payload."""
     overall_sentiment: str
     sentiment_score: float
     sentiment_breakdown: Dict[str, float]
@@ -34,10 +34,7 @@ class SentimentMetrics:
 
 
 class AdvancedSentimentAnalyzer:
-    """
-    专业的情绪分析器
-    整合了原来sentiment_analyzer.py的全部功能
-    """
+    """Professional sentiment analyzer consolidating legacy heuristics."""
     
     SENTIMENT_THRESHOLDS = {
         'strong_bullish': 0.3,
@@ -51,49 +48,49 @@ class AdvancedSentimentAnalyzer:
         self.patterns = SentimentPatterns()
     
     def analyze(self, tweets: List[Tweet], top_k: int = 30) -> Tuple[SentimentMetrics, List[Dict[str, Any]]]:
-        """核心分析方法
-        
+        """Core analysis entry point.
+
         Args:
-            tweets: 推文列表
-            top_k: 保存前K条最重要的推文（默认10条，设置为None保存全部）
+            tweets: Collection of scraped tweets.
+            top_k: Retain the top-k influential tweets (default 10; None keeps all).
         """
         if not tweets:
             raise ValueError("No tweets to analyze. Maybe try a stock people actually care about?")
         
-        # 计算加权情绪
+        # Compute weighted sentiment per tweet
         weighted_sentiments = self._calculate_weighted_sentiments(tweets)
         total_influence = sum(t.engagement_score for t in tweets)
         
-        # 聚合情绪分数
+        # Aggregate weighted sentiment score
         weighted_sentiment = self._aggregate_sentiment_score(weighted_sentiments)
         
-        # 生成指标
+        # Build analytics metrics
         metrics = self._generate_metrics(
             tweets, weighted_sentiments, weighted_sentiment, total_influence
         )
         
-        # 处理推文详情 - 如果top_k为None则保存全部
+        # Prepare tweet excerpts (preserves all when top_k is None)
         save_count = top_k if top_k is not None else len(tweets)
         tweet_details = self._process_top_tweets(tweets, save_count)
         
         return metrics, tweet_details
     
     def _calculate_weighted_sentiments(self, tweets: List[Tweet]) -> List[float]:
-        """计算每条推文的加权情绪分数"""
+        """Calculate weighted sentiment for each tweet."""
         weighted_sentiments = []
         
         for tweet in tweets:
-            # 影响力权重公式
+            # Influence weighting formula
             influence_weight = (
-                tweet.engagement_score ** 0.5  # 平方根缓解极端值
-                * (1 + len(tweet.content) / 280)  # 内容丰富度奖励
+                tweet.engagement_score ** 0.5  # square root dampens extremes
+                * (1 + len(tweet.content) / 280)  # reward richer context
             )
             
-            # 模式匹配计分
+            # Pattern-based scoring
             bullish_score = len(self.patterns.BULLISH.findall(tweet.content))
             bearish_score = len(self.patterns.BEARISH.findall(tweet.content))
             
-            # 归一化情绪分数
+            # Normalize sentiment score
             if bullish_score + bearish_score > 0:
                 sentiment_score = (bullish_score - bearish_score) / (bullish_score + bearish_score)
             else:
@@ -104,12 +101,12 @@ class AdvancedSentimentAnalyzer:
         return weighted_sentiments
     
     def _aggregate_sentiment_score(self, weighted_sentiments: List[float]) -> float:
-        """聚合加权情绪分数"""
+        """Aggregate weighted sentiment values."""
         total_weight = sum(abs(s) for s in weighted_sentiments)
         return sum(weighted_sentiments) / (total_weight or 1)
     
     def _classify_sentiment(self, score: float) -> str:
-        """智能情绪分类"""
+        """Map score to a qualitative sentiment bucket."""
         if score > self.SENTIMENT_THRESHOLDS['strong_bullish']:
             return 'strong_bullish'
         elif score > self.SENTIMENT_THRESHOLDS['bullish']:
@@ -128,7 +125,7 @@ class AdvancedSentimentAnalyzer:
         weighted_sentiment: float,
         total_influence: int
     ) -> SentimentMetrics:
-        """生成高级分析指标"""
+        """Generate advanced sentiment metrics."""
         return SentimentMetrics(
             overall_sentiment=self._classify_sentiment(weighted_sentiment),
             sentiment_score=round(weighted_sentiment, 4),
@@ -150,11 +147,11 @@ class AdvancedSentimentAnalyzer:
         )
     
     def _process_top_tweets(self, tweets: List[Tweet], top_k: int = 30) -> List[Dict[str, Any]]:
-        """处理热门推文
-        
+        """Extract and rank influential tweets.
+
         Args:
-            tweets: 所有推文列表
-            top_k: 保存前K条最重要的推文（默认10条）
+            tweets: Full tweet collection.
+            top_k: Retain the top-k influential tweets (default 10).
         """
         sorted_tweets = sorted(
             tweets, 
@@ -179,7 +176,7 @@ class AdvancedSentimentAnalyzer:
         ]
     
     def _classify_tweet_sentiment(self, content: str) -> str:
-        """单条推文情绪分类"""
+        """Classify sentiment for a single tweet."""
         has_bullish = bool(self.patterns.BULLISH.search(content))
         has_bearish = bool(self.patterns.BEARISH.search(content))
         

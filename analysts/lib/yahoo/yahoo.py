@@ -11,7 +11,7 @@ from functools import wraps
 
 logger = logging.getLogger(__name__)
 
-# 技术指标自适应配置
+# Adaptive indicator configuration
 INDICATOR_CONFIG = {
     '1m': {'ma': [5, 10, 20, 50], 'rsi': 14, 'macd': (12, 26, 9), 'bb': 20, 'stoch': (14, 3), 'atr': 14},
     '5m': {'ma': [5, 10, 20, 50], 'rsi': 14, 'macd': (12, 26, 9), 'bb': 20, 'stoch': (14, 3), 'atr': 14},
@@ -22,7 +22,7 @@ INDICATOR_CONFIG = {
 }
 
 def retry(max_retries=3, delay=1.0):
-    """重试装饰器"""
+    """Retry decorator with exponential-style delay."""
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -63,7 +63,7 @@ class HistoricalData:
     data_points: int
 
 class YahooFinanceTool:
-    """简化版Yahoo Finance工具"""
+    """Simplified Yahoo Finance utility."""
     
     def __init__(self, timeout: int = 30, output_dir: str = "output"):
         self.timeout = timeout
@@ -73,11 +73,12 @@ class YahooFinanceTool:
     def _get_ticker(self, symbol: str) -> yf.Ticker:
         ticker = yf.Ticker(symbol)
         if not ticker.info:
-            raise ValueError(f"无效股票代码: {symbol}")
+            raise ValueError(f"Invalid ticker symbol: {symbol}")
         return ticker
     
     @retry()
     def get_stock_info(self, symbol: str) -> StockData:
+        logger.info(f"[YAHOO] 📊 Fetching quote snapshot: {symbol}")
         ticker = self._get_ticker(symbol)
         info = ticker.info
         
@@ -85,6 +86,7 @@ class YahooFinanceTool:
         prev_close = info.get('previousClose', price)
         change = price - prev_close
         
+        logger.debug(f"[YAHOO] ✅ Quote retrieved: {symbol} - price ${price}")
         return StockData(
             ticker=symbol.upper(),
             current_price=round(price, 2),
@@ -102,14 +104,18 @@ class YahooFinanceTool:
     
     @retry()
     def get_historical_data(self, symbol: str, period: str = "1mo", interval: str = "1d") -> HistoricalData:
+        logger.info(f"[YAHOO] 📈 Pulling history for {symbol} — period={period}, interval={interval}")
         ticker = self._get_ticker(symbol)
         hist = ticker.history(period=period, interval=interval, timeout=self.timeout)
         
         if hist.empty:
-            raise ValueError(f"无历史数据: {symbol}")
+            logger.error(f"[YAHOO] ❌ No historical data: {symbol}")
+            raise ValueError(f"No historical data available: {symbol}")
         
+        logger.debug(f"[YAHOO] 🔄 Enriching with technical indicators...")
         hist = self._add_indicators(hist.dropna(), interval)
         
+        logger.info(f"[YAHOO] ✅ History prepared for {symbol} — {len(hist)} rows")
         return HistoricalData(
             ticker=symbol.upper(),
             data=hist,
@@ -121,11 +127,11 @@ class YahooFinanceTool:
         )
     
     def _add_indicators(self, df: pd.DataFrame, interval: str) -> pd.DataFrame:
-        """添加技术指标"""
+        """Augment the dataframe with technical indicators."""
         close = df['Close']
         config = INDICATOR_CONFIG.get(interval, INDICATOR_CONFIG['1d'])
         
-        # 移动平均线
+        # Moving averages
         for window in config['ma']:
             if len(df) >= window:
                 df[f'MA_{window}'] = close.rolling(window).mean()
@@ -145,7 +151,7 @@ class YahooFinanceTool:
             df['MACD_Signal'] = df['MACD'].ewm(span=config['macd'][2]).mean()
             df['MACD_Histogram'] = df['MACD'] - df['MACD_Signal']
         
-        # 布林带
+        # Bollinger Bands
         if len(df) >= config['bb']:
             sma = close.rolling(config['bb']).mean()
             std = close.rolling(config['bb']).std()
@@ -153,19 +159,19 @@ class YahooFinanceTool:
             df['BB_Middle'] = sma
             df['BB_Lower'] = sma - 2 * std
         
-        # 成交量均线
+        # Volume moving averages
         for window in [10, 20]:
             if len(df) >= window:
                 df[f'Volume_MA_{window}'] = df['Volume'].rolling(window).mean()
         
-        # 随机指标
+        # Stochastic oscillators
         if len(df) >= config['stoch'][0]:
             low_min = df['Low'].rolling(config['stoch'][0]).min()
             high_max = df['High'].rolling(config['stoch'][0]).max()
             df['Stoch_K'] = 100 * (close - low_min) / (high_max - low_min)
             df['Stoch_D'] = df['Stoch_K'].rolling(config['stoch'][1]).mean()
         
-        # ATR
+        # Average True Range
         if len(df) >= config['atr']:
             high_low = df['High'] - df['Low']
             high_close = (df['High'] - close.shift()).abs()
@@ -176,7 +182,7 @@ class YahooFinanceTool:
         return df
     
     def get_multiple_stocks(self, symbols: List[str]) -> Dict[str, StockData]:
-        """批量获取股票信息"""
+        """Retrieve quote snapshots for a list of symbols."""
         return {s: self.get_stock_info(s) for s in symbols if self._safe_get(s)}
     
     def _safe_get(self, symbol: str) -> Optional[StockData]:
@@ -186,7 +192,7 @@ class YahooFinanceTool:
             return None
     
     def get_market_summary(self) -> Dict[str, Any]:
-        """获取市场概况"""
+        """Collect a lightweight market overview for major indices."""
         indices = {'^GSPC': 'S&P 500', '^DJI': 'Dow Jones', '^IXIC': 'NASDAQ', '^VIX': 'VIX'}
         summary = {}
         
@@ -201,33 +207,34 @@ class YahooFinanceTool:
         return summary
     
     def export_kline_to_csv(self, symbol: str, period: str = "1mo", interval: str = "1d") -> str:
-        """导出K线数据到CSV"""
+        """Export candlestick data to a CSV file."""
+        logger.info(f"[YAHOO] 📁 Exporting CSV for {symbol} — {period}/{interval}")
         hist_data = self.get_historical_data(symbol, period, interval)
         df = hist_data.data.reset_index()
         
-        # 列名映射 - 主要OHLCV列使用英文标准格式
+        # Column mapping — keep OHLCV in standard English and label indicators clearly
         rename_map = {
             'Date': 'timestamp', 'Open': 'open', 'High': 'high', 
             'Low': 'low', 'Close': 'close', 'Volume': 'volume',
-            'RSI': 'RSI指标', 'MACD': 'MACD', 'MACD_Signal': 'MACD信号线',
-            'MACD_Histogram': 'MACD柱状图', 'BB_Upper': '布林带上轨',
-            'BB_Middle': '布林带中轨', 'BB_Lower': '布林带下轨',
-            'Stoch_K': '随机指标K', 'Stoch_D': '随机指标D', 'ATR': '平均真实波幅'
+            'RSI': 'RSI', 'MACD': 'MACD', 'MACD_Signal': 'MACD Signal',
+            'MACD_Histogram': 'MACD Histogram', 'BB_Upper': 'Bollinger Upper',
+            'BB_Middle': 'Bollinger Middle', 'BB_Lower': 'Bollinger Lower',
+            'Stoch_K': 'Stochastic %K', 'Stoch_D': 'Stochastic %D', 'ATR': 'Average True Range'
         }
         
-        # 动态添加MA和Volume MA列名
-        time_unit = {'1d': '日', '1h': '小时', '5m': '个5分钟', '1wk': '周', '1mo': '月'}.get(interval, '期')
+        # Dynamic moving-average captions
+        time_unit = {'1d': 'day', '1h': 'hour', '5m': '5-minute', '1wk': 'week', '1mo': 'month'}.get(interval, 'period')
         for col in df.columns:
             if col.startswith('MA_'):
-                rename_map[col] = f"{col.split('_')[1]}{time_unit}均线"
+                rename_map[col] = f"{col.split('_')[1]}-{time_unit} moving average"
             elif col.startswith('Volume_MA_'):
-                rename_map[col] = f"成交量{col.split('_')[2]}{time_unit}均线"
+                rename_map[col] = f"Volume {col.split('_')[2]}-{time_unit} moving average"
         
         df = df.rename(columns=rename_map)
         if 'timestamp' in df.columns:
             df['timestamp'] = df['timestamp'].dt.strftime('%Y-%m-%d')
         
-        # 添加amount列（成交金额 = close * volume）
+        # Add traded amount column (close * volume)
         if 'close' in df.columns and 'volume' in df.columns:
             df['amount'] = df['close'] * df['volume']
         
@@ -235,16 +242,17 @@ class YahooFinanceTool:
         filepath = os.path.join(self.output_dir, filename)
         df.to_csv(filepath, index=False, encoding='utf-8-sig')
         
-        logger.info(f"K线数据已导出到: {filepath} (共{len(df)}条)")
+        logger.info(f"[YAHOO] ✅ CSV saved: {filepath} ({len(df)} rows)")
         return filepath
     
     def export_analysis_to_json(self, symbol: str, period: str = "1mo", interval: str = "1d") -> str:
-        """导出分析数据到JSON"""
+        """Export enriched analysis data to JSON."""
+        logger.info(f"[YAHOO] 📊 Exporting analysis JSON for {symbol}")
         hist_data = self.get_historical_data(symbol, period, interval)
         stock_info = self.get_stock_info(symbol)
         df = hist_data.data
         
-        # 构建分析数据
+        # Compose analysis payload
         analysis = {
             "stock_basic_info": asdict(stock_info),
             "technical_indicators": self._extract_indicators(df),
@@ -264,11 +272,11 @@ class YahooFinanceTool:
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(analysis, f, ensure_ascii=False, indent=2, default=str)
         
-        logger.info(f"分析数据已导出到: {filepath}")
+        logger.info(f"[YAHOO] ✅ JSON saved: {filepath}")
         return filepath
     
     def _extract_indicators(self, df: pd.DataFrame) -> Dict[str, Any]:
-        """提取最新技术指标"""
+        """Pull the latest set of technical indicators from the dataframe."""
         if df.empty:
             return {}
         
@@ -284,30 +292,30 @@ class YahooFinanceTool:
             "volatility_indicators": {}
         }
         
-        # 移动平均线
+        # Moving averages
         for col in ['MA_20', 'MA_50']:
             if col in df.columns and not pd.isna(latest[col]):
                 indicators["moving_averages"][col.lower()] = float(latest[col])
                 indicators["moving_averages"][f"price_vs_{col.lower()}"] = float(close / latest[col] * 100)
         
-        # 震荡指标
+        # Oscillators
         for col, key in [('RSI', 'rsi'), ('Stoch_K', 'stochastic_k'), 
                          ('Stoch_D', 'stochastic_d'), ('MACD', 'macd')]:
             if col in df.columns and not pd.isna(latest[col]):
                 indicators["oscillators"][key] = float(latest[col])
         
-        # 布林带
+        # Bollinger Bands
         if 'BB_Upper' in df.columns:
             indicators["bollinger_bands"]["upper_band"] = float(latest['BB_Upper'])
             indicators["bollinger_bands"]["lower_band"] = float(latest['BB_Lower'])
             indicators["bollinger_bands"]["price_vs_upper_band"] = float(close / latest['BB_Upper'] * 100)
         
-        # 成交量
+        # Volume signals
         if 'Volume_MA_20' in df.columns:
             indicators["volume_indicators"]["volume_ma20"] = float(latest['Volume_MA_20'])
             indicators["volume_indicators"]["volume_vs_ma20"] = float(volume / latest['Volume_MA_20'] * 100)
         
-        # 波动性
+        # Volatility
         if 'ATR' in df.columns:
             indicators["volatility_indicators"]["atr"] = float(latest['ATR'])
             indicators["volatility_indicators"]["atr_percent"] = float(latest['ATR'] / close * 100)
@@ -315,7 +323,7 @@ class YahooFinanceTool:
         return indicators
     
     def _analyze_price(self, df: pd.DataFrame) -> Dict[str, Any]:
-        """价格分析"""
+        """Summarize price action characteristics."""
         if df.empty:
             return {}
         
@@ -331,14 +339,14 @@ class YahooFinanceTool:
             "key_levels": []
         }
         
-        # 趋势分析
+        # Trend analysis
         for days in [20, 30]:
             if len(df) >= days:
                 recent = close.iloc[-days:]
                 trend = (recent.iloc[-1] - recent.iloc[0]) / recent.iloc[0] * 100
                 analysis["trend_analysis"][f"trend_{days}_days"] = float(trend)
         
-        # 关键价格水平（简化版）
+        # Simplified key levels
         current_price = close.iloc[-1]
         highs = df['High'].rolling(20, center=True).max().dropna().unique()
         lows = df['Low'].rolling(20, center=True).min().dropna().unique()
@@ -351,11 +359,11 @@ class YahooFinanceTool:
 def test():
     tool = YahooFinanceTool()
     
-    print("获取AAPL信息:")
+    print("Fetching AAPL snapshot:")
     info = tool.get_stock_info("AAPL")
-    print(f"  价格: ${info.current_price} ({info.change_percent:+.2f}%)")
+    print(f"  Price: ${info.current_price} ({info.change_percent:+.2f}%)")
     
-    print("\n导出数据:")
+    print("\nExporting data:")
     csv_path = tool.export_kline_to_csv("AAPL", period="5d", interval="1h")
     print(f"  CSV: {os.path.basename(csv_path)}")
     

@@ -21,8 +21,11 @@ PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are the neutral risk officer for an investment desk. "
-            "Blend upside and downside considerations and produce JSON that matches the supplied schema.",
+            "You are the Market Lens neutral risk officer delivering an even-handed control plan.\n"
+            "Professional standards:\n"
+            "- Balance upside capture with downside protection using only the supplied trader decision inputs.\n"
+            "- Keep tone precise and execution-focused; flag missing data instead of fabricating values.\n"
+            "- Respond strictly in JSON matching the schema.",
         ),
         (
             "human",
@@ -30,7 +33,7 @@ PROMPT = ChatPromptTemplate.from_messages(
             "Perspective: neutral\n"
             "Trader decision (JSON):\n{trader_json}\n\n"
             "Target JSON schema:\n{schema_json}\n"
-            "Respond ONLY with the JSON payload.",
+            "Return ONLY the JSON payload. If assumptions are required, note them succinctly inside the relevant field.",
         ),
     ]
 )

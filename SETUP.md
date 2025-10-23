@@ -1,33 +1,33 @@
-# MarketLens 环境安装指南
+# MarketLens Environment Installation Guide
 
-## 📦 全新环境安装
+## 📦 Fresh Environment Installation
 
-### 1. 创建 Conda 环境
+### 1. Create Conda Environment
 
 ```bash
 conda create -n marketlens python=3.11 -y
 conda activate marketlens
 ```
 
-### 2. 安装依赖包
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. 配置环境变量
+### 3. Configure Environment Variables
 
-在项目根目录创建 `.env` 文件：
+Create `.env` file in project root:
 
 ```bash
-# Gemini API Key (主要使用)
-GOOGLE_API_KEY=你的_Gemini_API_密钥
+# Gemini API Key (primary use)
+GOOGLE_API_KEY=your_Gemini_API_key
 
-# OpenAI API Key (可选，用于切换模型)
-OPENAI_API_KEY=你的_OpenAI_API_密钥
+# OpenAI API Key (optional, for model switching)
+OPENAI_API_KEY=your_OpenAI_API_key
 ```
 
-### 4. 安装 Playwright 浏览器（如需使用）
+### 4. Install Playwright Browser (if needed)
 
 ```bash
 playwright install
@@ -35,105 +35,105 @@ playwright install
 
 ---
 
-## 🎯 获取 API 密钥
+## 🎯 Get API Keys
 
 ### Gemini API Key
-1. 访问 [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. 登录 Google 账号
-3. 点击 "Get API Key" 或 "Create API Key"
-4. 复制生成的密钥到 `.env` 文件
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Log in with Google account
+3. Click "Get API Key" or "Create API Key"
+4. Copy the generated key to `.env` file
 
-### OpenAI API Key（可选）
-1. 访问 [OpenAI Platform](https://platform.openai.com/api-keys)
-2. 创建新的 API Key
-3. 复制到 `.env` 文件
+### OpenAI API Key (Optional)
+1. Visit [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Create new API Key
+3. Copy to `.env` file
 
 ---
 
-## 🚀 运行应用
+## 🚀 Run Application
 
-### Gradio 界面（推荐）
+### Gradio Interface (Recommended)
 ```bash
 python manager/agent_stream_gradio.py
 ```
 
-访问: http://localhost:7860
+Visit: http://localhost:7860
 
-### FastAPI 服务器
+### FastAPI Server
 ```bash
 python manager/server/main.py
 ```
 
-访问: http://localhost:8000
+Visit: http://localhost:8000
 
 ---
 
-## 📋 核心依赖说明
+## 📋 Core Dependencies
 
-| 包名 | 版本 | 用途 |
+| Package | Version | Purpose |
 |------|------|------|
-| `langchain` | 0.3.27 | LLM 应用框架 |
-| `langchain-google-genai` | 2.0.9 | Gemini 模型集成 |
-| `langchain-openai` | 0.3.33 | OpenAI 模型集成 |
-| `gradio` | 5.49.1 | Web UI 界面 |
-| `fastapi` | 0.119.1 | API 服务器 |
-| `yfinance` | 0.2.66 | 金融数据获取 |
-| `beautifulsoup4` | 4.14.2 | HTML 解析 |
-| `trafilatura` | 2.0.0 | 网页内容提取 |
-| `playwright` | 1.55.0 | 浏览器自动化 |
+| `langchain` | 0.3.27 | LLM application framework |
+| `langchain-google-genai` | 2.0.9 | Gemini model integration |
+| `langchain-openai` | 0.3.33 | OpenAI model integration |
+| `gradio` | 5.49.1 | Web UI interface |
+| `fastapi` | 0.119.1 | API server |
+| `yfinance` | 0.2.66 | Financial data retrieval |
+| `beautifulsoup4` | 4.14.2 | HTML parsing |
+| `trafilatura` | 2.0.0 | Web content extraction |
+| `playwright` | 1.55.0 | Browser automation |
 
 ---
 
-## 🔧 配置说明
+## 🔧 Configuration
 
-### LLM 模型切换
+### LLM Model Switching
 
-编辑 `config.py`:
+Edit `config.py`:
 
 ```python
-# 使用 Gemini (默认)
+# Use Gemini (default)
 LLM_GOOGLE = ChatGoogleGenerativeAI(
-    model="gemini-2.5-pro",  # 或 gemini-1.5-pro, gemini-2.0-flash-exp
+    model="gemini-2.5-pro",  # or gemini-1.5-pro, gemini-2.0-flash-exp
     temperature=0.3,
     google_api_key=google_api_key,
     convert_system_message_to_human=False
 )
 
-# 切换到 OpenAI
-# 在 agent_stream_gradio.py 中取消注释 OpenAI 相关代码
+# Switch to OpenAI
+# Uncomment OpenAI related code in agent_stream_gradio.py
 ```
 
-### Verbose 模式（查看推理过程）
+### Verbose Mode (View Reasoning Process)
 
-编辑 `manager/agent_stream_gradio.py`:
+Edit `manager/agent_stream_gradio.py`:
 
 ```python
 return AgentExecutor(
     ...
-    verbose=True,  # 改为 True 查看详细推理过程
+    verbose=True,  # Change to True to view detailed reasoning process
     ...
 )
 ```
 
 ---
 
-## 🐛 常见问题
+## 🐛 Common Issues
 
-### 问题 1: `ModuleNotFoundError: No module named 'dotenv'`
+### Issue 1: `ModuleNotFoundError: No module named 'dotenv'`
 ```bash
 pip install python-dotenv
 ```
 
-### 问题 2: `GOOGLE_API_KEY is not set`
-确保 `.env` 文件在项目根目录，并包含正确的 API 密钥。
+### Issue 2: `GOOGLE_API_KEY is not set`
+Ensure `.env` file is in project root and contains correct API key.
 
-### 问题 3: Playwright 浏览器未安装
+### Issue 3: Playwright browser not installed
 ```bash
 playwright install chromium
 ```
 
-### 问题 4: 版本冲突
-删除环境重新创建：
+### Issue 4: Version conflicts
+Delete environment and recreate:
 ```bash
 conda deactivate
 conda env remove -n marketlens
@@ -144,45 +144,44 @@ pip install -r requirements.txt
 
 ---
 
-## 📊 系统要求
+## 📊 System Requirements
 
 - **Python**: 3.11
-- **操作系统**: macOS / Linux / Windows
-- **内存**: 建议 8GB+
-- **磁盘**: 至少 2GB 可用空间
+- **OS**: macOS / Linux / Windows
+- **Memory**: 8GB+ recommended
+- **Disk**: At least 2GB available space
 
 ---
 
-## ✅ 验证安装
+## ✅ Verify Installation
 
-运行测试脚本验证环境：
+Run test script to verify environment:
 
 ```bash
 python -c "
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 import gradio
-print('✅ 所有核心模块安装成功!')
-print(f'Gradio 版本: {gradio.__version__}')
+print('✅ All core modules installed successfully!')
+print(f'Gradio version: {gradio.__version__}')
 "
 ```
 
 ---
 
-## 📝 更新依赖
+## 📝 Update Dependencies
 
-如需更新某个包：
+To update a package:
 
 ```bash
-pip install --upgrade 包名
+pip install --upgrade package_name
 pip freeze > requirements.txt
 ```
 
 ---
 
-## 🆘 获取帮助
+## 🆘 Get Help
 
-- **GitHub Issues**: [项目地址]
-- **文档**: 查看 `README.md`
-- **日志**: 检查 `manager/LOG_SYSTEM_README.md`
-
+- **GitHub Issues**: [Project URL]
+- **Documentation**: Check `README.md`
+- **Logs**: Check `manager/LOG_SYSTEM_README.md`

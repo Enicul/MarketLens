@@ -1,5 +1,5 @@
 from .search import TwitterScraper, ScraperConfig, Tweet
-from .config import Config  # 分离的配置模块
+from .config import Config  # Dedicated configuration module
 from .sentiment import (
     AdvancedSentimentAnalyzer, 
     SentimentMetrics, 
@@ -7,22 +7,22 @@ from .sentiment import (
 )
 from .tool import get_sentiment, get_sentiment_func
 
-# 明确的模块导出
+# Explicit module exports
 __all__ = [
-    # 爬虫相关
+    # Scraper components
     'TwitterScraper',
     'ScraperConfig', 
     'Tweet',
-    
-    # 分析相关
+
+    # Sentiment analysis components
     'AdvancedSentimentAnalyzer',
     'SentimentMetrics',
     'SentimentPatterns',
-    
-    # 配置
+
+    # Configuration
     'Config',
-    
-    # LangChain 工具
+
+    # LangChain tools
     'get_sentiment',
     'get_sentiment_func'
 ]

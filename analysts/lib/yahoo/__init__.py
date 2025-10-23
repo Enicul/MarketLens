@@ -1,4 +1,4 @@
-"""Yahoo Finance 市场数据分析模块"""
+"""Yahoo Finance market data analysis module."""
 
 from .yahoo import YahooFinanceTool
 from .yahoo_tool import get_market, get_market_csv

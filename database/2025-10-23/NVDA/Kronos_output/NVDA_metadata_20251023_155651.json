@@ -1,0 +1,17 @@
+{
+  "symbol": "NVDA",
+  "prediction_time": "2025-10-23T15:56:52.243535",
+  "input_csv": "2025-10-23/NVDA/market_csv/NVDA_3mo_1d_20251023_155124.csv",
+  "prediction_length": 30,
+  "lookback_length": 65,
+  "prediction_summary": {
+    "min_price": 169.2415313720703,
+    "max_price": 186.52320861816406,
+    "mean_price": 177.79928588867188,
+    "std_price": 4.843148708343506
+  },
+  "output_files": {
+    "csv": "2025-10-23/NVDA/Kronos_output/NVDA_prediction_20251023_155651.csv",
+    "plot": "2025-10-23/NVDA/Kronos_output/NVDA_prediction_20251023_155651.png"
+  }
+}

@@ -3,12 +3,12 @@ from google.ai.generativelanguage_v1beta.types import FunctionResponse
 import os
 from dotenv import load_dotenv
 
-# 加载 .env 文件
+# Load .env file
 load_dotenv()
 
 google_api_key = os.getenv("GOOGLE_API_KEY")
 if not google_api_key:
-    raise RuntimeError("GOOGLE_API_KEY is not set. Please configure your Google AI Studio API key before启动代理。")
+    raise RuntimeError("GOOGLE_API_KEY is not set. Please configure your Google AI Studio API key before starting the agent.")
 
 # ------------------------------------------------------------------ #
 # Gemini tool-response compatibility patch

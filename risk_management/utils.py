@@ -201,7 +201,7 @@ def _parse_text_card(text: str, ticker: Optional[str]) -> Optional[Dict[str, Any
     decision_match = re.search(r"(BUY|SELL|HOLD)", clean, re.IGNORECASE)
     decision = decision_match.group(1).upper() if decision_match else "HOLD"
 
-    conf_match = re.search(r"(?:置信度|信心评分|confidence)[^0-9]*([\d\.]+)", clean, re.IGNORECASE)
+    conf_match = re.search(r"(?:confidence(?: score)?)[^0-9]*([\d\.]+)", clean, re.IGNORECASE)
     confidence = float(conf_match.group(1)) if conf_match else 50.0
 
     bullet_lines = [
@@ -230,10 +230,10 @@ def _parse_text_card(text: str, ticker: Optional[str]) -> Optional[Dict[str, Any
     take_price = first_number(bullet_lines[4]) if len(bullet_lines) >= 5 else None
 
     if current_price is None:
-        price_match = re.search(r"(?:当前价格|现价|current price)[^\d]*(\d+(?:\.\d+)?)", clean, re.IGNORECASE)
+        price_match = re.search(r"(?:current price|last price|spot price)[^\d]*(\d+(?:\.\d+)?)", clean, re.IGNORECASE)
         current_price = float(price_match.group(1)) if price_match else 0.0
     if position_pct is None:
-        pos_match = re.search(r"(?:建议仓位|仓位|position)(?:[^0-9]+)(\d+(?:\.\d+)?)", clean, re.IGNORECASE)
+        pos_match = re.search(r"(?:recommended position|position|allocation)(?:[^0-9]+)(\d+(?:\.\d+)?)", clean, re.IGNORECASE)
         position_pct = float(pos_match.group(1)) if pos_match else 5.0
     if min_price is None or max_price is None:
         min_price = max(0.0, (current_price or 0.0) * 0.98) if min_price is None else min_price

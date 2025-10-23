@@ -7,7 +7,7 @@ from .yahoo import YahooFinanceTool
 
 
 def _clean_data(obj):
-    """清理空值"""
+    """Remove empty or null-like values."""
     if isinstance(obj, dict):
         return {k: _clean_data(v) for k, v in obj.items() 
                 if v not in (None, "", [], {}, float("nan"))}
@@ -23,7 +23,7 @@ async def get_market(
     interval: str = "1d",
     output_dir: Optional[str] = None,
 ) -> Dict[str, Any]:
-    """获取市场数据和技术分析（直接返回数据，不写文件）"""
+    """Fetch market data and technical analysis without writing to disk."""
     tool = YahooFinanceTool(output_dir=output_dir or "output")
     
     hist_data = tool.get_historical_data(ticker, period, interval)
@@ -57,7 +57,7 @@ async def get_market_csv(
     interval: str = "1d",
     output_dir: Optional[str] = None,
 ) -> Dict[str, Any]:
-    """获取K线数据（CSV格式）"""
+    """Retrieve candlestick data (CSV format)."""
     tool = YahooFinanceTool(output_dir=output_dir or "output")
     csv_path = tool.export_kline_to_csv(ticker, period, interval)
     
@@ -72,17 +72,17 @@ async def get_market_csv(
     })
 
 
-# 直接定义为市场分析工具
+# Expose utilities as structured market data tools
 get_market = StructuredTool.from_function(
     func=get_market,
     coroutine=get_market,
     name="get_market",
-    description="获取股票市场数据和技术分析（包含价格、成交量、技术指标等）"
+    description="Fetch equity market data and technical indicators (price, volume, signals, and more)."
 )
 
 get_market_csv = StructuredTool.from_function(
     func=get_market_csv,
     coroutine=get_market_csv,
     name="get_market_csv",
-    description="获取股票K线历史数据CSV文件"
+    description="Download historical candlestick data as a CSV file."
 )

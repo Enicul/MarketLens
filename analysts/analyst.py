@@ -14,6 +14,10 @@ from .lib.news import get_news
 from .lib.yahoo import get_market, get_market_csv
 from .lib.X_search import get_sentiment  
 from config import LLM_GOOGLE_FLASH
+import logging
+
+logger = logging.getLogger(__name__)
+
 # Setup environment and path
 load_dotenv()
 sys.path.append(os.path.dirname(__file__))
@@ -95,20 +99,19 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     Always generates CSV file to database/{date}/{ticker}/market_csv/ folder.
     intents: Subset of ['news','fundamentals','market','sentiment']
     """
-    print(f"\n[ANALYST] 🚀 Starting analysis for {ticker} - {', '.join(intents)}")
-    print("-" * 50)
+    logger.info(f"[ANALYST] 🚀 Starting analysis {ticker} - {', '.join(intents)}")
     
-    # 创建database目录结构
+    # Create database directory structure
     today = datetime.now().strftime("%Y-%m-%d")
-    # 确保路径相对于项目根目录
+    # Ensure path is relative to project root
     project_root = Path(__file__).resolve().parents[1]  
     csv_output_dir = project_root / "database" / today / ticker / "market_csv"
     csv_output_dir.mkdir(parents=True, exist_ok=True)
     
-    # 直接调用get_market_csv生成CSV文件（仅在需要market数据时）
+    # Directly call get_market_csv to generate CSV file (only when market data is needed)
     csv_result = None
     if "market" in intents:
-        print(f"[CSV] 📊 Generating market data CSV for {ticker}")
+        logger.info(f"[ANALYST][CSV] 📊 Generating market data CSV: {ticker}")
         try:
             csv_result = await get_market_csv.ainvoke({
                 "ticker": ticker,
@@ -116,13 +119,13 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
                 "interval": "1d",
                 "output_dir": str(csv_output_dir)
             })
-            print(f"[CSV] ✅ {ticker} - CSV saved to: {csv_result['csv_path']}")
+            logger.info(f"[ANALYST][CSV] ✅ {ticker} - CSV saved to: {csv_result['csv_path']}")
             
         except Exception as e:
-            print(f"[CSV] ❌ {ticker} - Failed to generate CSV: {e}")
+            logger.error(f"[ANALYST][CSV] ❌ {ticker} - CSV generation failed: {e}")
             csv_result = {"error": str(e)}
     else:
-        print(f"[CSV] ⏭️ Skipping CSV generation (market not requested)")
+        logger.info(f"[ANALYST][CSV] ⏭️  Skipping CSV generation (market data not requested)")
     
     # Tool mapping for other analyses
     tools_map = {
@@ -145,22 +148,22 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
         cached = _load_from_cache(ticker, intent)
         if cached:
             cached_results[intent] = cached
-            print(f"[CACHE HIT] {ticker}/{intent} - using cached data")
+            logger.info(f"[ANALYST] 💾 Cache hit: {ticker}/{intent}")
         else:
             tool = tools_map[intent]
-            print(f"[START] {ticker}/{intent} - calling {tool.name}")
+            logger.info(f"[ANALYST] 🔄 Starting call: {ticker}/{intent} - {tool.name}")
             tasks.append(asyncio.create_task(
                 tool.ainvoke({"ticker": ticker})
             ))
             task_intents.append(intent)
-            print(f"[CACHE MISS] {ticker}/{intent} - fetching fresh data")
+            logger.info(f"[ANALYST] 📥 Cache miss: {ticker}/{intent} - Fetching new data")
     
     # Execute only necessary tasks
     fresh_results = []
     if tasks:
-        print(f"[PROCESSING] {len(tasks)} tools running...")
+        logger.info(f"[ANALYST] 🔄 Processing: {len(tasks)} tools running...")
         fresh_results = await asyncio.gather(*tasks, return_exceptions=True)
-        print(f"[COMPLETE] {len(fresh_results)} tools finished")
+        logger.info(f"[ANALYST] ✅ Complete: {len(fresh_results)} tools finished")
     
     # Assemble results
     output = {
@@ -168,10 +171,10 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
         "analyses": {}
     }
     
-    # 只有在生成了CSV时才添加到输出中
+    # Only add to output if CSV was generated
     if csv_result is not None:
         output["csv_generation"] = csv_result
-        # 提取 csv_path 到顶层便于下游使用
+        # Extract csv_path to top level for downstream use
         if "csv_path" in csv_result:
             output["csv_path"] = csv_result["csv_path"]
     
@@ -187,9 +190,9 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
     for intent, result in zip(task_intents, fresh_results):
         if isinstance(result, Exception):
             error_msg = str(result)
-            print(f"[ERROR] {ticker}/{intent} - {error_msg[:100]}...")
+            logger.error(f"[ANALYST] ❌ Error: {ticker}/{intent} - {error_msg[:100]}...")
             
-            # 提供更详细的错误信息
+            # Provide more detailed error information
             error_details = {
                 "error": error_msg,
                 "error_type": type(result).__name__,
@@ -197,13 +200,13 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
                 "cached": False
             }
             
-            # 如果是sentiment相关的HTML解析错误，提供更友好的错误信息
+            # If it's a sentiment-related HTML parsing error, provide more user-friendly error message
             if "sentiment" in intent.lower() and any(keyword in error_msg.lower() for keyword in ["html", "parsed tree", "empty"]):
-                error_details["user_friendly_error"] = "社交媒体数据暂时不可用，可能是网络或反爬虫限制"
+                error_details["user_friendly_error"] = "Social media data temporarily unavailable, may be network or anti-scraping restrictions"
             
             output["analyses"][intent] = error_details
         else:
-            print(f"[SUCCESS] {ticker}/{intent} - data collected")
+            logger.info(f"[ANALYST] ✅ Success: {ticker}/{intent} - Data collected")
             output["analyses"][intent] = {
                 "data": result,
                 "error": None,
@@ -213,10 +216,9 @@ async def analyze_for_manager(ticker: str, intents: list[str]) -> dict:
             try:
                 _save_to_cache(ticker, intent, result)
             except Exception as cache_error:
-                print(f"[WARNING] Failed to cache {ticker}/{intent}: {cache_error}")
+                logger.warning(f"[ANALYST] ⚠️  Cache save failed: {ticker}/{intent}: {cache_error}")
     
-    print(f"[ANALYST] ✅ Analysis complete for {ticker}")
-    print("=" * 50)
+    logger.info(f"[ANALYST] ✅ Analysis complete: {ticker}")
     return output
 
 # ---- Demo ----
