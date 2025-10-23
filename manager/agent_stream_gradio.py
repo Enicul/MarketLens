@@ -307,7 +307,7 @@ def _find_recent_kronos_assets(symbol: str, since: Optional[datetime] = None, to
     return None
 
 @tool(args_schema=StockAnalysisInput)
-def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
+async def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
     """Collect stock data (news, fundamentals, market data, sentiment analysis).
     
     Args:
@@ -335,7 +335,7 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
             logging.warning(f"[ANALYST] ⚠️ Skipping disabled: {', '.join(disabled_intents)}")
         
         # Execute analyst data collection
-        result = asyncio.run(analyze_for_manager(ticker.upper(), enabled_intents))
+        result = await analyze_for_manager(ticker.upper(), enabled_intents)
         
         if disabled_intents:
             result["disabled_intents"] = disabled_intents
