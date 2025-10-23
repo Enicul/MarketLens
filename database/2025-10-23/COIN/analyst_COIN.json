@@ -1,0 +1,170 @@
+{
+  "ticker": "COIN",
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-23T04:11:22+00:00",
+            "headline": "Jupiter eyes full launch of its new predictions market before 2026",
+            "evidence": [
+              "https://cointelegraph.com/news/dex-aggregator-jupiter-q4-full-launch-new-predictions-market"
+            ],
+            "summary": [
+              "Jupiter eyes full launch of its new predictions market before 2026"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-23T01:32:39+00:00",
+            "headline": "Coinbase Links AI to Crypto Payments With New Protocol for Autonomous Transactions",
+            "evidence": [
+              "https://decrypt.co/345575/coinbase-ai-crypto-payments-new-protocol-autonomous-transactions"
+            ],
+            "summary": [
+              "Coinbase Links AI to Crypto Payments With New Protocol for Autonomous Transactions"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Decrypt.co",
+            "published_at": "2025-10-22T22:06:38+00:00",
+            "headline": "Big Gaps Remain After Crypto Execs Meet With Senators on Market Structure Bill",
+            "evidence": [
+              "https://decrypt.co/345503/big-gaps-remain-crypto-execs-meet-senators-market-structure-bill"
+            ],
+            "summary": [
+              "Big Gaps Remain After Crypto Execs Meet With Senators on Market Structure Bill"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T21:41:12+00:00",
+            "headline": "Citadel CEO discloses massive stake in Solana treasury company",
+            "evidence": [
+              "https://cointelegraph.com/news/citadel-ceo-stake-solana-treasury-company"
+            ],
+            "summary": [
+              "Citadel CEO discloses massive stake in Solana treasury company"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T21:31:52+00:00",
+            "headline": "Congress moves to revamp Bank Secrecy Act's reporting thresholds after 50 years",
+            "evidence": [
+              "https://cointelegraph.com/news/us-senators-bill-bank-secrecy-act-reporting-limits"
+            ],
+            "summary": [
+              "Congress moves to revamp Bank Secrecy Act's reporting thresholds after 50 years"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T21:29:38+00:00",
+            "headline": "Bitcoin wants to go up, but Trump's tariffs aren't helping: Will the admin TACO again?",
+            "evidence": [
+              "https://cointelegraph.com/news/bitcoin-wants-to-go-up-but-trump-s-tariffs-aren-t-helping-will-the-admin-taco-again"
+            ],
+            "summary": [
+              "Bitcoin wants to go up, but Trump's tariffs aren't helping: Will the admin TACO again?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-22T20:56:00+00:00",
+            "headline": "AWS Goes AWOL: Are We Too Dependent on the Cloud?",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/22/aws-goes-awol-are-we-too-dependent-on-the-cloud/"
+            ],
+            "summary": [
+              "AWS Goes AWOL: Are We Too Dependent on the Cloud?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T20:46:23+00:00",
+            "headline": "BNB Dips as Robinhood, Coinbase List Coin Following Record Surge",
+            "evidence": [
+              "https://finnhub.io/api/news?id=1f31c4211a7d717b072aec824b5a119b9886b8e9a182c898c7ed01c92c68982f"
+            ],
+            "summary": [
+              "BNB Dips as Robinhood, Coinbase List Coin Following Record Surge"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-23T08:18:58.701552+00:00"
+      },
+      "error": null,
+      "cached": true
+    }
+  }
+}

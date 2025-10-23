@@ -139,7 +139,7 @@ class MarketLensChatbox:
         }
         """
     
-    def stream_response(
+    async def stream_response(
         self,
         agent_executor: AgentExecutor,
         user_input: str,
@@ -160,8 +160,8 @@ class MarketLensChatbox:
                 else:
                     messages.append(AIMessage(content=msg["content"]))
 
-            # Invoke the agent with full chat history
-            response = agent_executor.invoke({
+            # Invoke the agent with full chat history (using async method)
+            response = await agent_executor.ainvoke({
                 "input": user_input,
                 "messages": messages
             })
@@ -262,7 +262,7 @@ class MarketLensChatbox:
                     return f"📊 Enabled: {', '.join(enabled)}"
             
             # Primary response function (implements the agent loop)
-            def respond(user_msg: str, chat_hist: list, news, fundamentals, market, sentiment):
+            async def respond(user_msg: str, chat_hist: list, news, fundamentals, market, sentiment):
                 if not user_msg.strip():
                     return "", chat_hist, gr.update(visible=False)
 
@@ -294,7 +294,7 @@ class MarketLensChatbox:
                 assistant_message = {"role": "assistant", "content": ""}
                 chat_hist.append(assistant_message)
 
-                for partial in self.stream_response(main_agent, user_msg, chat_hist[:-1], update_status):
+                async for partial in self.stream_response(main_agent, user_msg, chat_hist[:-1], update_status):
                     assistant_message["content"] = partial
                     status_msg = current_status["value"]
                     if status_msg:
