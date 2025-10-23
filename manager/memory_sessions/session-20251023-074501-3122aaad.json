@@ -1,0 +1,390 @@
+{
+  "history": [],
+  "decisions": [],
+  "progress": [
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 1/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:46:38.725561",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 2/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:01.644255",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📊 Collecting data: NVDA - news, fundamentals, market, sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:25.514087",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🚀 Starting analysis NVDA - news, fundamentals, market, sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:25.514315",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST][CSV] 📊 Generating market data CSV: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:25.515127",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📁 Exporting CSV for NVDA — 3mo/1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:25.515672",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📈 Pulling history for NVDA — period=3mo, interval=1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:25.515723",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ History prepared for NVDA — 65 rows",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.557903",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ CSV saved: /Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/NVDA/market_csv/NVDA_3mo_1d_20251023_154726.csv (65 rows)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.561429",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST][CSV] ✅ NVDA - CSV saved to: /Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/NVDA/market_csv/NVDA_3mo_1d_20251023_154726.csv",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.561761",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: NVDA/news - get_news",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.561903",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: NVDA/news - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.561971",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: NVDA/fundamentals - get_fundamentals",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562039",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: NVDA/fundamentals - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562090",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: NVDA/market - get_market",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562135",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: NVDA/market - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562157",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: NVDA/sentiment - get_sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562184",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: NVDA/sentiment - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562201",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Processing: 4 tools running...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562215",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[NEWS] 📰 Gathering news flow: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562890",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[FUNDAMENTALS] 📊 Fetching fundamentals: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.562947",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📈 Pulling history for NVDA — period=1mo, interval=1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:26.563145",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ History prepared for NVDA — 22 rows",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:27.294832",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📊 Fetching quote snapshot: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:27.294908",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 🐦 Starting Twitter sentiment analysis for NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:27.835078",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Already logged in (headless mode)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:31.105058",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 📥 Collecting tweets for NVDA (attempt 1/2)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:31.109642",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[NEWS] ✅ News aggregation complete: NVDA — 8 stories",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:32.104770",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[FUNDAMENTALS] ❌ Failed to pull data for NVDA:",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:32.913786",
+      "level": "ERROR"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 2/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:40.775383",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Page 1 collected 36 tweets",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:43.954274",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Page 0 collected 44 tweets",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.863832",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 📊 Tweets gathered: 80",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.885212",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 🔍 Running sentiment analytics...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.941905",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] ✅ Sentiment analysis complete: NVDA — strong_bearish (score -0.302)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.944572",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Complete: 4 tools finished",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.944791",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: NVDA/news - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.944909",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ❌ Error: NVDA/fundamentals - ...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.945467",
+      "level": "ERROR"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: NVDA/market - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.945495",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: NVDA/sentiment - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.945738",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Analysis complete: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.946280",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] successful_analyses: ['news', 'market', 'sentiment']",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.947259",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ⚠️ Partial analysis failure: fundamentals (succeeded: news, market, sentiment)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:44.947286",
+      "level": "WARNING"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🔬 In-depth research: NVDA",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:51.966845",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🔬 Starting research analysis: NVDA - 3 debate rounds",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:51.966913",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 1/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:47:51.966974",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 3/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:48:15.912420",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 1/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T15:48:21.994429",
+      "level": "INFO"
+    }
+  ]
+}

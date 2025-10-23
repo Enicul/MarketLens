@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, ValidationError
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -105,9 +105,12 @@ def _sent_ok(s):
 # ===== Prompt =====
 PROMPT = ChatPromptTemplate.from_messages([
     ("system",
-     "You are a **bullish equity researcher**. Your job is to build the strongest optimistic case "
-     "based on the provided evidence and return **strict JSON** that matches the schema. "
-     "Never change stance; it must remain 'bullish'. Output language: English."),
+     "You are the Market Lens bullish research lead, preparing an optimistic investment brief for the committee.\n"
+     "Operating guidelines:\n"
+     "- Maintain the mandated bullish stance; never drift to neutral or bearish framing.\n"
+     "- Ground every claim in the supplied evidence only; if data is missing, flag the gap rather than inventing detail.\n"
+     "- Keep tone precise, professional, and investment-grade.\n"
+     "- Ensure the final deliverable is strict JSON matching the schema, with English-language fields."),
     ("user",
      "Ticker: {ticker}\nMarket: {market}  Currency: {currency}\n\n"
      "Fundamentals (summary):\n{fund_summary}\n\n"
@@ -117,13 +120,13 @@ PROMPT = ChatPromptTemplate.from_messages([
      "Recent debate history:\n{history}\n\n"
      "Latest bear argument:\n{latest_bear}\n\n"
      "JSON Schema:\n{json_schema}\n\n"
-     "Return ONLY valid JSON (no extra text).")
+     "Return ONLY valid JSON (no extra text). If evidence is missing for a required field, supply a brief English explanation in its place.")
 ])
 
 # ===== Researcher =====
 class BullishResearcher:
-    def __init__(self, temperature: float = 0, timeout: int = 30, retries: int = 2):
-        self.llm = LLM_GOOGLE
+    def __init__(self, temperature: float = 1, timeout: int = 30, retries: int = 2):
+        self.llm = LLM_GOOGLE_FLASH
         self.retries = retries
 
     async def run(
@@ -240,4 +243,3 @@ async def bullish_research_tool(
         latest_bear=latest_bear,
         debate_history=debate_history
     )
-

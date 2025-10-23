@@ -11,8 +11,8 @@ body,
 body {
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top, #1e293b 0%, #020617 60%);
-  color: #0f172a;
+  background: #f5f6fa;
+  color: #1f2933;
 }
 
 a {
@@ -32,12 +32,12 @@ button {
 
 .login-card {
   width: 380px;
-  background: #0b1220;
-  border-radius: 24px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
   padding: 32px;
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.45);
-  color: #e2e8f0;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  color: #1f2933;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -51,13 +51,13 @@ button {
 .login-subtitle {
   margin: 0;
   font-size: 15px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .error-box {
-  background: rgba(248, 113, 113, 0.15);
-  border: 1px solid rgba(248, 113, 113, 0.4);
-  color: #fecaca;
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #b91c1c;
   padding: 12px 16px;
   border-radius: 12px;
 }
@@ -76,11 +76,11 @@ button {
 }
 
 .login-form input {
-  border-radius: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
   padding: 12px;
-  background: #101a2f;
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #1f2933;
 }
 
 .login-form button,
@@ -93,35 +93,36 @@ button {
 }
 
 .login-form button {
-  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
 }
 
 .ghost-button {
   background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  color: #cbd5f5;
+  border: 1px solid #d1d5db;
+  color: #1f2933;
 }
 
 .ghost-button:hover {
-  border-color: rgba(148, 163, 184, 0.6);
+  border-color: #94a3b8;
 }
 
 .dashboard {
   height: 100%;
   display: flex;
+  background: #f5f6fa;
 }
 
 .sidebar {
-  width: 320px;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(12px);
-  color: #e2e8f0;
-  border-right: 1px solid rgba(30, 41, 59, 0.8);
+  width: 240px;
+  background: #ffffff;
+  color: #1f2933;
+  border-right: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
-  padding: 28px 24px;
-  gap: 24px;
+  padding: 24px 20px;
+  gap: 20px;
+  box-shadow: 6px 0 16px rgba(15, 23, 42, 0.05);
 }
 
 .sidebar h2 {
@@ -130,7 +131,7 @@ button {
 }
 
 .role-tag {
-  color: #94a3b8;
+  color: #64748b;
   margin: 4px 0 16px;
 }
 
@@ -152,10 +153,10 @@ button {
 }
 
 .section-header button {
-  background: rgba(148, 163, 184, 0.15);
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: #ffffff;
+  border: 1px solid #d1d5db;
   border-radius: 10px;
-  color: #cbd5f5;
+  color: #1f2933;
   padding: 4px 10px;
   font-size: 13px;
 }
@@ -164,13 +165,13 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 260px;
+  max-height: 240px;
   overflow-y: auto;
 }
 
 .session-item {
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 14px;
+  background: #f8fafc;
+  border-radius: 12px;
   border: 1px solid transparent;
   padding: 12px;
   display: flex;
@@ -180,8 +181,8 @@ button {
 }
 
 .session-item.active {
-  border-color: rgba(99, 102, 241, 0.6);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(79, 70, 229, 0.25));
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(219, 234, 254, 0.9);
 }
 
 .session-button {
@@ -201,7 +202,7 @@ button {
 
 .session-time {
   font-size: 12px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .session-actions {
@@ -211,9 +212,9 @@ button {
 }
 
 .session-actions button {
-  background: rgba(148, 163, 184, 0.15);
-  color: #cbd5f5;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #ffffff;
+  color: #1f2933;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 12px;
   padding: 4px 8px;
@@ -222,10 +223,10 @@ button {
 .rename-form input {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  border: 1px solid #d1d5db;
   padding: 6px 8px;
-  background: #111827;
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #1f2933;
 }
 
 .toggle-list {
@@ -246,7 +247,7 @@ button {
   flex-direction: column;
   padding: 24px 32px;
   gap: 24px;
-  color: #e2e8f0;
+  color: #1f2933;
 }
 
 .main-header {
@@ -257,7 +258,9 @@ button {
 
 .main-header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 .status-indicators {
@@ -269,34 +272,60 @@ button {
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 12px;
-  background: rgba(148, 163, 184, 0.2);
+  background: #e2e8f0;
+  color: #475569;
 }
 
 .pill.ok {
-  background: rgba(74, 222, 128, 0.2);
-  color: #4ade80;
+  background: rgba(187, 247, 208, 0.7);
+  color: #166534;
 }
 
 .pill.warn {
-  background: rgba(248, 113, 113, 0.2);
-  color: #fda4af;
+  background: rgba(254, 226, 226, 0.8);
+  color: #b91c1c;
 }
 
 .pill.info {
-  background: rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
+  background: rgba(191, 219, 254, 0.8);
+  color: #1d4ed8;
 }
 
 .chat-window {
   flex: 1;
-  background: rgba(15, 23, 42, 0.8);
-  border-radius: 20px;
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   min-height: 0;
+}
+
+.chat-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: "Inter", "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+.chat-header p {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: #64748b;
+  letter-spacing: 0.3px;
 }
 
 .messages {
@@ -313,54 +342,54 @@ button {
   max-width: 80%;
   line-height: 1.55;
   font-size: 15px;
-  white-space: pre-wrap;
-}
-
-.bubble pre {
-  margin: 0;
-  white-space: pre-wrap;
-  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
-  font-size: 13px;
-  color: #cbd5f5;
+  background: #f8fafc;
+  color: #1f2933;
 }
 
 .bubble-user {
   align-self: flex-end;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.85), rgba(99, 102, 241, 0.85));
-  color: white;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
 }
 
 .bubble-assistant {
   align-self: flex-start;
-  background: rgba(15, 118, 110, 0.3);
-  border: 1px solid rgba(20, 184, 166, 0.35);
+  background: #f1f5f9;
+  border: 1px solid #dbeafe;
 }
 
 .bubble-tool {
   align-self: center;
-  background: rgba(14, 116, 144, 0.2);
-  border: 1px dashed rgba(125, 211, 252, 0.45);
+  background: #eef2ff;
+  border: 1px dashed #c7d2fe;
   font-size: 14px;
 }
 
 .bubble-system {
   align-self: center;
-  background: rgba(51, 65, 85, 0.4);
+  background: #e2e8f0;
   font-size: 13px;
 }
 
 .bubble.streaming {
-  border: 1px solid rgba(56, 189, 248, 0.5);
+  border: 1px solid #60a5fa;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.bubble.streaming .markdown {
+  flex: 1;
 }
 
 .status-bar {
   min-height: 20px;
   font-size: 14px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .error-text {
-  color: #fca5a5;
+  color: #b91c1c;
 }
 
 .composer {
@@ -371,20 +400,20 @@ button {
 .composer textarea {
   flex: 1;
   border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  border: 1px solid #d1d5db;
   padding: 14px;
-  background: rgba(8, 47, 73, 0.7);
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #1f2933;
   resize: none;
 }
 
 .composer button {
-  background: linear-gradient(135deg, #22d3ee, #6366f1);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
   border: none;
-  color: white;
+  color: #ffffff;
   border-radius: 14px;
-  padding: 0 24px;
-  font-size: 16px;
+  padding: 0 20px;
+  font-size: 15px;
 }
 
 .workspace {
@@ -394,95 +423,59 @@ button {
   min-height: 0;
 }
 
-.thinking-panel {
+.side-panels {
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  flex-wrap: wrap;
-  background: rgba(17, 24, 39, 0.72);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: 18px;
-  padding: 14px 18px;
-  margin-bottom: 16px;
+  width: 240px;
+  flex-shrink: 0;
+  min-height: 0;
+  height: 100%;
 }
 
-.thinking-entry {
-  flex: 1 1 220px;
-  min-width: 200px;
-  background: rgba(22, 33, 60, 0.9);
-  border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  padding: 12px 14px;
+.side-panels .progress-panel {
+  width: 100%;
+  flex: 1 1 50%;
+  flex-shrink: 1;
+}
+
+.side-panels .progress-panel.closed {
+  flex: 0 0 auto;
+}
+
+.model-thinking-panel .progress-toggle {
+  background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+}
+
+.thinking-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.thinking-entry.active {
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
-}
-
-.thinking-entry-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  color: #93c5fd;
-  letter-spacing: 0.02em;
-}
-
-.thinking-actor {
-  font-size: 14px;
-}
-
-.thinking-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.4);
-}
-
-.thinking-status-dot.pulse {
-  background: #38bdf8;
-  animation: thinking-pulse 1.4s ease-in-out infinite;
-}
-
-.thinking-entry-body {
-  font-size: 13px;
-  color: #cbd5f5;
-  max-height: 140px;
   overflow-y: auto;
   padding-right: 4px;
 }
 
-.thinking-entry-body pre {
-  margin: 0;
-  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+.thinking-item {
+  border-color: rgba(14, 165, 233, 0.35);
+  background: rgba(191, 219, 254, 0.4);
+}
+
+.thinking-item .progress-message {
   white-space: pre-wrap;
-  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  display: block;
 }
 
-.thinking-placeholder {
-  color: #94a3b8;
-  font-style: italic;
-}
-
-.thinking-entry.idle .thinking-status-dot {
-  background: rgba(148, 163, 184, 0.35);
-}
-
-@keyframes thinking-pulse {
-  0% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 0.9; }
+.thinking-item .progress-time {
+  color: #0369a1;
 }
 
 .progress-panel {
-  width: 280px;
-  background: rgba(8, 15, 32, 0.92);
-  border-radius: 20px;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  width: 240px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -490,10 +483,11 @@ button {
   transition: width 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
   flex-shrink: 0;
   min-height: 0;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
 }
 
 .progress-panel.closed {
-  width: 68px;
+  width: 60px;
   padding: 12px;
   align-items: center;
   overflow: hidden;
@@ -501,11 +495,11 @@ button {
 
 .progress-toggle {
   width: 100%;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.6), rgba(14, 165, 233, 0.6));
-  border: 1px solid rgba(94, 234, 212, 0.2);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border: 1px solid rgba(59, 130, 246, 0.4);
   border-radius: 14px;
   padding: 10px 14px;
-  color: #e2e8f0;
+  color: #ffffff;
   font-weight: 600;
   font-size: 14px;
   display: flex;
@@ -541,45 +535,132 @@ button {
 }
 
 .progress-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
-  background: rgba(30, 41, 59, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #f8fafc;
   border-radius: 12px;
   padding: 10px 12px;
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  border: 1px solid #e2e8f0;
   font-size: 13px;
-  color: #cbd5f5;
+  color: #1f2933;
 }
 
 .progress-item.progress-start {
-  border-color: rgba(56, 189, 248, 0.35);
-  background: rgba(14, 165, 233, 0.18);
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(219, 234, 254, 0.6);
 }
 
 .progress-item.progress-done {
-  border-color: rgba(34, 197, 94, 0.4);
-  background: rgba(34, 197, 94, 0.18);
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(187, 247, 208, 0.6);
 }
 
 .progress-item.progress-error {
   border-color: rgba(248, 113, 113, 0.45);
-  background: rgba(248, 113, 113, 0.18);
+  background: rgba(254, 226, 226, 0.7);
 }
 
 .progress-time {
   font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
-  color: #60a5fa;
+  color: #2563eb;
   font-size: 12px;
+  align-self: flex-start;
 }
 
 .progress-message {
   line-height: 1.5;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: #1f2933;
+  width: 100%;
+}
+
+.progress-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #1d4ed8;
 }
 
 .empty-hint {
-  color: #64748b;
+  color: #94a3b8;
   font-size: 13px;
   text-align: center;
+}
+
+.markdown p {
+  margin: 0 0 6px;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 6px 1.25rem;
+  padding: 0;
+}
+
+.markdown li {
+  margin-bottom: 4px;
+}
+
+.markdown code {
+  background: #e2e8f0;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-family: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+  font-size: 13px;
+}
+
+.markdown blockquote {
+  margin: 0 0 8px;
+  padding: 6px 12px;
+  border-left: 3px solid #2563eb;
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+.markdown a {
+  color: #2563eb;
+}
+
+.markdown img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.cursor {
+  margin-left: 4px;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.kronos-chart {
+  margin-top: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+.chart-loading,
+.chart-error {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5f5;
+  color: #475569;
+  font-size: 14px;
+}
+
+.chart-error {
+  border-style: solid;
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.5);
 }

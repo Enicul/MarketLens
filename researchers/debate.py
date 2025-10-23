@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal, Tuple
 from pydantic import BaseModel, Field, ValidationError
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -50,10 +50,12 @@ class DecisionPack(BaseModel):
 # ========= Prompt =========
 PROMPT = ChatPromptTemplate.from_messages([
     ("system",
-     "You are an impartial sell-side style moderator. "
-     "Given a bullish case and a bearish case for the same stock, produce a balanced, auditable decision. "
-     "You MUST return strict JSON that matches the provided schema. "
-     "Use only the supplied evidence; if a claim lacks evidence, down-weight it."),
+     "You are the Market Lens debate moderator, consolidating bullish and bearish briefs into a decision memo for the investment committee.\n"
+     "Operating standards:\n"
+     "- Remain neutral and audit-ready; reconcile conflicts with explicit references to provided evidence only.\n"
+     "- Weight arguments by evidence quality and freshness; flag unsupported claims rather than amplifying them.\n"
+     "- Ensure the action plan respects the stated risk_tolerance and time_horizon.\n"
+     "- Deliver strict JSON that conforms to the schema; narrative fields must stay in English."),
     ("user",
      "Ticker: {ticker}\n"
      "Risk tolerance: {risk_tolerance}\n"
@@ -70,7 +72,9 @@ PROMPT = ChatPromptTemplate.from_messages([
      "6) Map net_score to a recommendation (BUY if > +0.15, SELL if < -0.15, else HOLD); adjust by risk_tolerance and time_horizon.\n"
      "7) Provide triggers_up / triggers_down (objective milestones that would change the call).\n"
      "8) Include evidence_citations as a deduped list from both sides' evidence.\n"
-     "Return ONLY valid JSON.")
+     "Quality checks:\n"
+     "- If evidence is insufficient for a field, include a concise explanation while keeping the schema intact.\n"
+     "- Return ONLY valid JSON; no surrounding text.")
 ])
 
 # ========= Helpers: normalization / scoring / provenance =========
@@ -193,7 +197,7 @@ def _ensure_measurable_triggers(trigs: List[str], fallback: List[str]) -> List[s
 # ========= Moderator =========
 class DebateModerator:
     def __init__(self, temperature: float = 0, timeout: int = 40, retries: int = 2):
-        self.llm = LLM_GOOGLE
+        self.llm = LLM_GOOGLE_FLASH
         self.retries = retries
 
     @staticmethod

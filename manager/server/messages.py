@@ -6,12 +6,12 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, System
 ToolDisplay = Dict[str, str]
 
 TOOL_DISPLAY_NAMES: ToolDisplay = {
-    "call_analyst": "Analyst 子代理",
-    "call_researcher": "Researcher 子代理",
-    "call_trader": "Trader 子代理",
-    "call_risk_manager": "风险管理模块",
-    "read_file": "文件读取工具",
-    "write_file": "文件写入工具",
+    "call_analyst": "Analyst Sub-Agent",
+    "call_researcher": "Researcher Sub-Agent",
+    "call_trader": "Trader Sub-Agent",
+    "call_risk_manager": "Risk Management Module",
+    "read_file": "File Read Tool",
+    "write_file": "File Write Tool",
 }
 
 
@@ -51,19 +51,19 @@ def _format_tool_section(label: str, payload: Any) -> str:
 
 def render_tool_event(event: Dict[str, Any], tool_display_names: ToolDisplay | None = None) -> str:
     """Compose markdown for a recorded tool event."""
-    tool_key = event.get("tool", "工具调用")
+    tool_key = event.get("tool", "Tool Call")
     tool_name = tool_display_names.get(tool_key, tool_key) if tool_display_names else tool_key
     parts: List[str] = [f"🔧 {tool_name}"]
 
-    input_section = _format_tool_section("输入", event.get("input"))
+    input_section = _format_tool_section("Input", event.get("input"))
     if input_section:
         parts.append(input_section)
 
-    output_section = _format_tool_section("输出", event.get("output"))
+    output_section = _format_tool_section("Output", event.get("output"))
     if output_section:
         parts.append(output_section)
 
-    log_section = _format_tool_section("日志", event.get("log"))
+    log_section = _format_tool_section("Logs", event.get("log"))
     if log_section:
         parts.append(log_section)
 
@@ -81,10 +81,9 @@ def format_chat_history(messages: List[BaseMessage], tool_display_names: ToolDis
             display_messages.append({"role": "assistant", "content": msg.content})
         elif isinstance(msg, SystemMessage):
             if "tool_event" in msg.additional_kwargs:
-                event = msg.additional_kwargs["tool_event"]
-                content = render_tool_event(event, tool_display_names)
-                display_messages.append({"role": "tool", "content": content})
-            elif msg.content:
+                # Skip rendering tool call cards in chat history; progress panel covers these details.
+                continue
+            if msg.content:
                 display_messages.append({"role": "system", "content": msg.content})
 
     return display_messages

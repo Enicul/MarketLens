@@ -3,13 +3,15 @@ import json
 import asyncio
 import sys
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, Optional
+from contextvars import ContextVar, Token
 from manager.shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-# 配置日志级别，减少HTTP请求日志
+# Configure logging level to reduce HTTP noise
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
 logging.getLogger("openai").setLevel(logging.WARNING)
@@ -19,7 +21,7 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
-# from langchain_openai import ChatOpenAI  # 如需使用 OpenAI 请取消注释
+# from langchain_openai import ChatOpenAI  # Uncomment if you prefer OpenAI
 from config import LLM_GOOGLE
 from manager.gradio_chatbox import MarketLensChatbox
 
@@ -87,39 +89,39 @@ def format_risk_readout(
         current_price = None
 
     lines = [
-        f"{ticker.upper()} 风险管理结论：{action or '维持现有仓位，紧盯关键风险信号。'}"
+        f"{ticker.upper()} Risk Management Conclusion: {action or 'Maintain current position, closely monitor key risk signals.'}"
     ]
 
     summary_parts = []
     if direction:
-        summary_parts.append(f"交易方向 {direction}")
+        summary_parts.append(f"Trade Direction: {direction}")
     if confidence is not None:
-        summary_parts.append(f"风险置信度 {confidence * 100:.1f}%")
+        summary_parts.append(f"Risk Confidence: {confidence * 100:.1f}%")
     if risk_budget:
         summary_parts.append({
-            "low": "保守预算",
-            "medium": "中性预算",
-            "high": "积极预算",
+            "low": "Conservative Budget",
+            "medium": "Neutral Budget",
+            "high": "Aggressive Budget",
         }.get(risk_budget, str(risk_budget)))
     if summary_parts:
-        lines.append("，".join(summary_parts))
+        lines.append(", ".join(summary_parts))
 
     if position_size is not None:
-        lines.append(f"建议仓位：{_format_percentage(position_size)}")
+        lines.append(f"Recommended Position: {_format_percentage(position_size)}")
     if current_price is not None:
-        lines.append(f"当前价格：{current_price:.2f}")
+        lines.append(f"Current Price: {current_price:.2f}")
     if stop_loss is not None:
-        lines.append(f"止损：{stop_loss:.2f}")
+        lines.append(f"Stop Loss: {stop_loss:.2f}")
     if take_profit is not None:
-        lines.append(f"止盈：{take_profit:.2f}")
+        lines.append(f"Take Profit: {take_profit:.2f}")
 
     if hedging:
-        lines.append("风险对冲建议：" + "；".join(hedging[:2]))
+        lines.append("Hedging Recommendations: " + "; ".join(hedging[:2]))
 
     if follow_up:
-        lines.append("跟踪要点：" + "；".join(follow_up[:3]))
+        lines.append("Key Follow-up Points: " + "; ".join(follow_up[:3]))
     elif rationale:
-        lines.append("关键理由：" + "；".join(rationale[:2]))
+        lines.append("Key Rationale: " + "; ".join(rationale[:2]))
     elif trader_text:
         lines.append(trader_text.strip())
 
@@ -144,23 +146,23 @@ def call_risk_manager(ticker: str, trader_data: str, include_raw: bool = False) 
     snippet = trader_data.strip() if isinstance(trader_data, str) else str(trader_data)
     if len(snippet) > 200:
         snippet = snippet[:200] + "..."
-    print(f"[RISK] 🔄 调用风险管理工具，ticker={ticker}, include_raw={include_raw}")
-    print(f"[RISK] 📥 trader_data 输入片段: {snippet}")
+    logging.info(f"[RISK] 🔄 Calling risk management tool, ticker={ticker}, include_raw={include_raw}")
+    logging.info(f"[RISK] 📥 trader_data input snippet: {snippet}")
     try:
         saved_path, summary = run_risk_management(
             ticker=ticker,
             trader_data=trader_data,
             include_raw=include_raw,
         )
-        print(f"[RISK] ✅ 风险报告生成成功: {saved_path}")
-        print(f"[RISK] 📊 摘要: {summary}")
+        logging.info(f"[RISK] ✅ Risk report generated successfully: {saved_path}")
+        logging.info(f"[RISK] 📊 Summary: {summary}")
         return json.dumps({"status": "success", "summary": summary}, ensure_ascii=False)
     except TraderDataError as exc:
-        print(f"[RISK] ❌ Trader 数据加载失败: {exc}")
+        logging.error(f"[RISK] ❌ Trader data loading failed: {exc}")
         return json.dumps({"status": "error", "error_type": "TraderDataError", "message": str(exc)}, ensure_ascii=False)
     except Exception as exc:
         import traceback
-        print(f"[RISK] ❌ 风险管理模块异常: {exc}")
+        logging.error(f"[RISK] ❌ Risk management module error: {exc}")
         traceback.print_exc()
         return json.dumps({"status": "error", "error_type": exc.__class__.__name__, "message": str(exc)}, ensure_ascii=False)
 
@@ -187,7 +189,7 @@ def write_file(spec: str) -> str:
         return f"[write_file error] {e}"
 
 ########################################
-#      Stock Analysis Tools (独立工具)   #
+#      Stock Analysis Tools            #
 ########################################
 
 # Global configuration for enabled analysis types
@@ -198,32 +200,139 @@ enabled_analysis_types = {
     "sentiment": True
 }
 
+_analysis_config_ctx: ContextVar[Dict[str, bool]] = ContextVar(
+    "analysis_config_ctx", default=enabled_analysis_types.copy()
+)
+
+
+def _current_analysis_config() -> Dict[str, bool]:
+    try:
+        return _analysis_config_ctx.get()
+    except LookupError:
+        return enabled_analysis_types
+
+
+def push_analysis_config(config: Optional[Dict[str, bool]]) -> Token:
+    if config is None:
+        return _analysis_config_ctx.set(enabled_analysis_types.copy())
+    return _analysis_config_ctx.set(config)
+
+
+def pop_analysis_config(token: Token) -> None:
+    _analysis_config_ctx.reset(token)
+
+
+def _find_recent_kronos_assets(symbol: str, since: Optional[datetime] = None, tolerance: timedelta = timedelta(minutes=10)) -> Optional[Dict[str, Any]]:
+    base_dir = Path("database").resolve()
+    if not base_dir.exists():
+        return None
+
+    symbol = symbol.upper()
+    pattern = f"*/{symbol}/Kronos_output/*_metadata_*.json"
+    metadata_files = sorted(base_dir.glob(pattern), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not metadata_files:
+        return None
+
+    def _resolve_asset(path_str: Optional[str], meta_dir: Path) -> Optional[Dict[str, Any]]:
+        if not path_str:
+            return None
+        raw = Path(path_str)
+        if raw.is_absolute():
+            full_path = raw
+        else:
+            raw_str = str(raw).replace("\\", "/")
+            if raw_str.startswith("database/"):
+                rel_part = raw_str[len("database/") :]
+                full_path = base_dir / rel_part
+            else:
+                full_path = (base_dir / raw).resolve()
+        if not full_path.exists():
+            return None
+        try:
+            relative = full_path.resolve().relative_to(base_dir).as_posix()
+        except ValueError:
+            return None
+        return {"full": full_path, "relative": relative}
+
+    now = datetime.utcnow()
+    window_start = since - tolerance if since else None
+
+    for meta_path in metadata_files:
+        try:
+            with meta_path.open("r", encoding="utf-8") as fh:
+                metadata = json.load(fh)
+        except Exception:
+            continue
+
+        ts_str = metadata.get("prediction_time")
+        timestamp = None
+        if ts_str:
+            try:
+                timestamp = datetime.fromisoformat(ts_str.replace("Z", "+00:00")).replace(tzinfo=None)
+            except ValueError:
+                timestamp = None
+        if timestamp is None:
+            timestamp = datetime.fromtimestamp(meta_path.stat().st_mtime)
+
+        if window_start and timestamp < window_start:
+            continue
+        if (now - timestamp).total_seconds() > tolerance.total_seconds() * 3:
+            # Skip very old predictions
+            continue
+
+        outputs = metadata.get("output_files", {})
+        plot_info = _resolve_asset(outputs.get("plot"), meta_path.parent)
+        csv_info = _resolve_asset(outputs.get("csv"), meta_path.parent)
+        input_info = _resolve_asset(metadata.get("input_csv"), meta_path.parent)
+        if not plot_info:
+            continue
+
+        meta_info = {"full": meta_path, "relative": meta_path.relative_to(base_dir).as_posix()}
+        assets = {
+            "timestamp": timestamp.isoformat(),
+            "plot_path": plot_info["relative"],
+            "plot_url": f"/assets/{plot_info['relative']}",
+            "metadata_path": meta_info["relative"],
+            "metadata_url": f"/assets/{meta_info['relative']}",
+            "prediction_summary": metadata.get("prediction_summary"),
+        }
+        if csv_info:
+            assets["csv_path"] = csv_info["relative"]
+            assets["csv_url"] = f"/assets/{csv_info['relative']}"
+        if input_info:
+            assets["input_csv_path"] = input_info["relative"]
+            assets["input_csv_url"] = f"/assets/{input_info['relative']}"
+        return assets
+
+    return None
+
 @tool(args_schema=StockAnalysisInput)
 def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
-    """收集股票数据（新闻、基本面、市场数据、情绪分析）。
+    """Collect stock data (news, fundamentals, market data, sentiment analysis).
     
     Args:
-        ticker: 股票代码
-        intents: 数据类型列表，可选: ["news", "fundamentals", "market", "sentiment"]
+        ticker: Stock ticker symbol
+        intents: List of data types, options: ["news", "fundamentals", "market", "sentiment"]
     
     Returns:
-        JSON格式的原始数据（未经分析）
+        Raw data in JSON format (not analyzed)
     """
     try:
+        config = _current_analysis_config()
         # Filter enabled analysis types
-        enabled_intents = [i for i in intents if enabled_analysis_types.get(i, False)]
-        disabled_intents = [i for i in intents if not enabled_analysis_types.get(i, False)]
-        
+        enabled_intents = [i for i in intents if config.get(i, False)]
+        disabled_intents = [i for i in intents if not config.get(i, False)]
+
         if not enabled_intents:
             return json.dumps({
-                "error": "所有请求的分析类型都已禁用",
+                "error": "All requested analysis types are disabled",
                 "ticker": ticker,
                 "disabled_intents": disabled_intents
             }, ensure_ascii=False)
         
-        logging.info(f"[ANALYST] 📊 收集数据: {ticker} - {', '.join(enabled_intents)}")
+        logging.info(f"[ANALYST] 📊 Collecting data: {ticker} - {', '.join(enabled_intents)}")
         if disabled_intents:
-            logging.warning(f"[ANALYST] ⚠️ 跳过已禁用: {', '.join(disabled_intents)}")
+            logging.warning(f"[ANALYST] ⚠️ Skipping disabled: {', '.join(disabled_intents)}")
         
         # Execute analyst data collection
         result = asyncio.run(analyze_for_manager(ticker.upper(), enabled_intents))
@@ -231,19 +340,19 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         if disabled_intents:
             result["disabled_intents"] = disabled_intents
         
-        # 检查是否有部分分析失败，但仍有成功的数据
+        # Check if some analyses failed but others succeeded
         successful_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is None]
         failed_analyses = [k for k, v in result.get("analyses", {}).items() if v.get("error") is not None]
 
-        print(f"[ANALYST] successful_analyses: {successful_analyses}")
+        logging.info(f"[ANALYST] successful_analyses: {successful_analyses}")
         
         if failed_analyses and successful_analyses:
-            print(f"[ANALYST] ⚠️ 部分分析失败: {', '.join(failed_analyses)} (成功: {', '.join(successful_analyses)})")
+            logging.warning(f"[ANALYST] ⚠️ Partial analysis failure: {', '.join(failed_analyses)} (succeeded: {', '.join(successful_analyses)})")
             result["partial_success"] = True
             result["failed_analyses"] = failed_analyses
             result["successful_analyses"] = successful_analyses
         elif failed_analyses and not successful_analyses:
-            print(f"[ANALYST] ❌ 所有分析都失败: {', '.join(failed_analyses)}")
+            logging.error(f"[ANALYST] ❌ All analyses failed: {', '.join(failed_analyses)}")
             result["complete_failure"] = True
         today = datetime.now().strftime("%Y-%m-%d")
         analyst_data_path = f"database/{today}/{ticker}/analyst_{ticker}.json"
@@ -251,19 +360,20 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
             json.dump(result, f, ensure_ascii=False, indent=2)
         return analyst_data_path
     except Exception as e:
-        return json.dumps({"error": f"数据收集失败: {str(e)}"}, ensure_ascii=False)
+        logging.error(f"[ANALYST] ❌ Data collection failed: {str(e)}")
+        return json.dumps({"error": f"Data collection failed: {str(e)}"}, ensure_ascii=False)
 
 
 @tool
 async def call_researcher(ticker: str, analyst_data_path: str) -> str:
-    """基于Analyst数据进行深度研究，生成多空辩论和投资建议。
+    """Conduct in-depth research based on Analyst data, generate bull/bear debate and investment recommendations.
     
     Args:
-        ticker: 股票代码
-        analyst_data_path: call_analyst返回的JSON数据文件路径（必须先调用call_analyst）
+        ticker: Stock ticker symbol
+        analyst_data_path: JSON data file path returned by call_analyst (must call call_analyst first)
     
     Returns:
-        JSON格式的研究报告（包含多空观点、辩论、投资建议）
+        Research report in JSON format (includes bull/bear views, debate, investment recommendations)
     """
     try:
         # Try to clean up potential formatting issues
@@ -276,10 +386,11 @@ async def call_researcher(ticker: str, analyst_data_path: str) -> str:
         data = await asyncio.to_thread(_read_json, analyst_data_path)
         
         if "error" in data:
-            return json.dumps({"error": "Analyst数据包含错误，无法进行研究", "details": data.get("error")}, ensure_ascii=False)
+            logging.error(f"[RESEARCHER] ❌ Analyst data contains errors, cannot conduct research: {data.get('error')}")
+            return json.dumps({"error": "Analyst data contains errors, cannot conduct research", "details": data.get("error")}, ensure_ascii=False)
         
-        logging.info(f"[RESEARCHER] 🔬 深度研究: {ticker}")
-        logging.debug(f"[DEBUG] Analyst data keys: {list(data.keys())}")
+        logging.info(f"[RESEARCHER] 🔬 In-depth research: {ticker}")
+        logging.debug(f"[RESEARCHER][DEBUG] Analyst data keys: {list(data.keys())}")
         
         # Execute researcher analysis
         result = await research_for_manager(ticker.upper(), data)
@@ -292,34 +403,37 @@ async def call_researcher(ticker: str, analyst_data_path: str) -> str:
                 json.dump(payload, f, ensure_ascii=False, indent=2)
 
         await asyncio.to_thread(_write_json, researcher_data_path, result)
+        logging.info(f"[RESEARCHER] 📁 Research report saved to {researcher_data_path}")
 
         return researcher_data_path
     except json.JSONDecodeError as e:
+        logging.error(f"[RESEARCHER] ❌ analyst_data format error, valid JSON required: {str(e)}")
         return json.dumps({
-            "error": "analyst_data格式错误，需要有效的JSON",
+            "error": "analyst_data format error, valid JSON required",
             "details": str(e),
             "received_type": str(type(researcher_data_path))
         }, ensure_ascii=False)
     except Exception as e:
         import traceback
+        logging.error(f"[RESEARCHER] ❌ Research analysis failed: {str(e)}")
         return json.dumps({
-            "error": f"研究分析失败: {str(e)}",
+            "error": f"Research analysis failed: {str(e)}",
             "traceback": traceback.format_exc()
         }, ensure_ascii=False)
 
 
 @tool
 def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None, user_request: str = "") -> str:
-    """基于Researcher报告生成交易决策，可选使用Kronos模型预测。
+    """Generate trading decisions based on Researcher report, optionally using Kronos model prediction.
     
     Args:
-        ticker: 股票代码
-        research_data_path: call_researcher返回的JSON数据文件路径（必须先调用call_researcher）
-        csv_file_path: 可选，CSV文件路径（用于Kronos预测，来自analyst的market数据）
-        user_request: 用户的原始请求，用于判断是否需要Kronos预测
+        ticker: Stock ticker symbol
+        research_data_path: JSON data file path returned by call_researcher (must call call_researcher first)
+        csv_file_path: Optional, CSV file path (for Kronos prediction, from analyst's market data)
+        user_request: User's original request, used to determine if Kronos prediction is needed
     
     Returns:
-        JSON格式的交易决策卡
+        Trading decision card in JSON format
     """
     try:
         research_data_path = research_data_path.strip()
@@ -327,10 +441,10 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
             data = json.load(f)
         
         if "error" in data:
-            return json.dumps({"error": "Research数据包含错误，无法生成交易决策", "details": data.get("error")}, ensure_ascii=False)
+            return json.dumps({"error": "Research data contains errors, cannot generate trading decision", "details": data.get("error")}, ensure_ascii=False)
         
-        logging.info("[TRADER] 💹 生成交易决策")
-        logging.debug(f"[DEBUG] Research data keys: {list(data.keys())}")
+        logging.info("[TRADER] 💹 Generating trading decision")
+        logging.debug(f"[TRADER][DEBUG] Research data keys: {list(data.keys())}")
         
         # Save researcher data directly (Trader will handle format conversion)
         import time
@@ -344,26 +458,27 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
         with open(temp_research_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         
-        print(f"[DEBUG] Saved research data to: {temp_research_file}")
+        logging.debug(f"[TRADER][DEBUG] Saved research data to: {temp_research_file}")
         
         try:
             # Initialize trader and generate decision
             trader = Trader()
             csv_files = [csv_file_path] if csv_file_path else None
+            request_started = datetime.utcnow()
             
-            # 构建包含用户请求的完整请求
-            trader_request = f"请基于研究结论生成交易决策卡。研究文件: {temp_research_file}"
+            # Build complete request including user request
+            trader_request = f"Please generate trading decision card based on research conclusions. Research file: {temp_research_file}"
             if user_request:
-                trader_request += f"\n用户原始请求: {user_request}"
+                trader_request += f"\nUser's original request: {user_request}"
             if csv_files:
-                trader_request += f"\nCSV文件: {', '.join(csv_files)}"
+                trader_request += f"\nCSV files: {', '.join(csv_files)}"
             
             result = trader.process_request(trader_request, temp_research_file, csv_files)
             today = datetime.now().strftime("%Y-%m-%d")
             trader_data_path = f"database/{today}/{ticker}/trader_{ticker}.json"
             with open(trader_data_path, "w", encoding="utf-8") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
-            print(f"[TRADER] 📁 交易决策已保存至 {trader_data_path}")
+            logging.info(f"[TRADER] 📁 Trading decision saved to {trader_data_path}")
 
             trader_notes = result if isinstance(result, str) else json.dumps(result, ensure_ascii=False)
 
@@ -379,23 +494,46 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
                 risk_meta = {k: v for k, v in risk_summary.items() if k != "saved_path"}
                 human_readout = format_risk_readout(risk_path, ticker, trader_text=trader_notes)
             except Exception as risk_exc:
-                print(f"[RISK] ⚠️ 自动风险管理失败: {risk_exc}")
+                logging.warning(f"[RISK] ⚠️ Automatic risk management failed: {risk_exc}")
                 risk_meta = {"risk_error": str(risk_exc)}
                 trader_excerpt = trader_notes
                 human_readout = (
-                    f"{ticker.upper()} 风险模块暂不可用，请谨慎观望。"
-                    f"交易建议概要：{trader_excerpt[:200]}..."
+                    f"{ticker.upper()} Risk module temporarily unavailable, proceed with caution. "
+                    f"Trading recommendation summary: {trader_excerpt[:200]}..."
                 )
-                risk_meta.setdefault("warning", "自动风控失败，仅供参考")
+                risk_meta.setdefault("warning", "Automatic risk control failed, for reference only")
 
             if not human_readout:
-                human_readout = f"{ticker.upper()} 交易建议概要：{trader_notes[:200]}..."
+                human_readout = f"{ticker.upper()} Trading recommendation summary: {trader_notes[:200]}..."
+
+            kronos_assets = _find_recent_kronos_assets(ticker, since=request_started)
+            if kronos_assets:
+                chart_caption = f"{ticker.upper()} Kronos Prediction"
+                metadata_url = kronos_assets.get("metadata_url")
+                history_url = kronos_assets.get("input_csv_url")
+                prediction_url = kronos_assets.get("csv_url")
+                if metadata_url or prediction_url:
+                    placeholder_parts = [
+                        f'symbol="{ticker.upper()}"'
+                    ]
+                    if metadata_url:
+                        placeholder_parts.append(f'metadata="{metadata_url}"')
+                    if history_url:
+                        placeholder_parts.append(f'history="{history_url}"')
+                    if prediction_url:
+                        placeholder_parts.append(f'prediction="{prediction_url}"')
+                    placeholder = "<kronos-chart " + " ".join(placeholder_parts) + " />"
+                    human_readout += f"\n\n{chart_caption}\n{placeholder}"
+                elif kronos_assets.get("plot_url"):
+                    human_readout += f"\n\n![{chart_caption}]({kronos_assets['plot_url']})"
 
             response_payload: Dict[str, Any] = {
                 "status": "success",
                 "trader_notes": trader_notes,
                 "human_readout": human_readout,
             }
+            if kronos_assets:
+                response_payload["kronos_assets"] = kronos_assets
             response_payload.update(risk_meta)
             return json.dumps(response_payload, ensure_ascii=False)
         finally:
@@ -403,19 +541,19 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
             try:
                 if os.path.exists(temp_research_file):
                     os.unlink(temp_research_file)
-                    print(f"[DEBUG] Cleaned up: {temp_research_file}")
+                    logging.debug(f"[TRADER][DEBUG] Cleaned up: {temp_research_file}")
             except Exception as e:
-                print(f"[DEBUG] Cleanup warning: {e}")
+                logging.debug(f"[TRADER][DEBUG] Cleanup warning: {e}")
     except json.JSONDecodeError as e:
         return json.dumps({
-            "error": "research_data格式错误，需要有效的JSON",
+            "error": "research_data format error, valid JSON required",
             "details": str(e),
             "received_type": str(type(research_data_path))
         }, ensure_ascii=False)
     except Exception as e:
         import traceback
         return json.dumps({
-            "error": f"交易决策生成失败: {str(e)}",
+            "error": f"Trading decision generation failed: {str(e)}",
             "traceback": traceback.format_exc()
         }, ensure_ascii=False)
 
@@ -424,42 +562,47 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
 ########################################
 
 def build_main_agent(config=None, memory: ToolAwareConversationMemory | None = None):
-    """创建一个带 LangChain 原生记忆的 AgentExecutor。"""
+    """Create an AgentExecutor with LangChain native memory."""
     tools = [read_file, write_file, call_analyst, call_researcher, call_trader, call_risk_manager]
     
-    # 动态配置描述
+    # Dynamic configuration description
     if config:
         enabled_types = [k for k, v in config.items() if v]
-        analysis_desc = f"当前启用：{', '.join(enabled_types)}" if enabled_types else "所有分析类型都已禁用"
+        analysis_desc = f"Currently enabled: {', '.join(enabled_types)}" if enabled_types else "All analysis types disabled"
     else:
-        analysis_desc = "所有分析类型都已启用"
+        analysis_desc = "All analysis types enabled"
     
     prompt = ChatPromptTemplate.from_messages([
-        ("system", 
-         "你是 Market Lens AI 主代理，专业的金融市场分析助手。\n\n"
-         "🎯 目标：理解用户需求，执行分析流程，交付专业洞察。\n\n"
-         "📋 可用工具：\n"
-         "1. call_analyst：收集股票原始数据（新闻 / 基本面 / 市场 / 情绪）。\n"
-         "2. call_researcher：基于数据进行深度研究（多空辩论、投资建议）。\n"
-         "3. call_trader：生成交易决策，支持user_request参数传递用户需求。\n"
-         "4. call_risk_manager：必要时单独复查风险（默认流程已自动执行）。\n"
-         "5. read_file / write_file：文件操作。\n\n"
-         "🔄 推荐工作流程：\n"
-         "- 完整流程：call_analyst → call_researcher → call_trader。\n"
-         "- 研究分析：call_analyst → call_researcher。\n"
-         "- 快速查询：call_analyst。\n\n"
-         "⚠️ 回复要求：\n"
-         "- 不得在用户回复中暴露任何文件路径或内部存储位置。\n"
-         "- 当工具返回 human_readout 字段时，优先引用其中要点作为答复核心。\n"
-         "- 输出需具体可执行：包含方向、仓位、止损 / 止盈、触发条件等关键数值。\n"
-         "- 若风控失败，需提醒谨慎并说明已知的交易要点。\n\n"
-         f"⚙️ 配置状态：{analysis_desc}\n\n"
-         "📌 关键注意事项：\n"
-         "- 传递工具返回的 JSON，不要擅自删改字段。\n"
-         "- 调用call_trader时，将用户的原始请求通过user_request参数传递。\n"
-         "- 如果用户要求预测/价格预测/未来走势/Kronos，务必在user_request中体现。\n"
-         "- 如果部分分析失败但仍有可用数据，也要继续处理并提示缺口。\n"
-         "- 全程使用中文回复用户。"),
+        ("system",
+         "You are the Market Lens AI main agent, a professional, intelligent, and autonomous financial market analysis assistant.\n\n"
+         "🎯 Core Mission: Quickly understand user intent, rationally coordinate tool chains, and generate actionable market insights and trading recommendations.\n\n"
+         "📋 Available Tools:\n"
+         "1. call_analyst: Collect stock raw data (news / fundamentals / market / sentiment).\n"
+         "2. call_researcher: Conduct in-depth research based on data (bull/bear debate, investment recommendations).\n"
+         "3. call_trader: Generate trading decisions, supports user_request parameter to pass user needs.\n"
+         "4. call_risk_manager: Review or supplement risk conclusions when necessary.\n"
+         "5. read_file / write_file: Manage and track historical files, notes, and intermediate results.\n\n"
+         "🧠 Autonomous Management:\n"
+         "- Before each response, determine if existing conversation and saved files can directly meet needs; first retrieve relevant summaries or historical results via read_file.\n"
+         "- When obtaining new conclusions, key parameters, or action items, use write_file to save concise notes for future reference; confirm before writing to avoid overwriting content that needs to be retained.\n"
+         "- Avoid repeatedly running expensive tools. Unless needs change or historical files are missing/outdated, prioritize reusing existing results and explain the basis for reuse in the response.\n"
+         "- Tool calls must align with user goals: collect data when lacking, research deeply when logic exists, execute when strategy is present, and verify when risks exist.\n\n"
+         "🔄 Recommended Workflow:\n"
+         "- Complete research: call_analyst → call_researcher → call_trader → (if necessary) call_risk_manager.\n"
+         "- In-depth research: call_analyst → call_researcher.\n"
+         "- Quick query or reuse history: read_file to retrieve notes → call relevant tools if updates needed.\n\n"
+         "⚠️ Response Requirements:\n"
+         "- Do not reveal any actual file paths or internal storage locations in user responses.\n"
+         "- When tools return human_readout, make it the core of the response and supplement with necessary context.\n"
+         "- Output must be specific: include direction, position, stop-loss/take-profit, trigger conditions and other key values; explain gaps if data is insufficient.\n"
+         "- When risk control fails, remind users to proceed with caution and provide current trading points.\n\n"
+         f"⚙️ Configuration Status: {analysis_desc}\n\n"
+         "📌 Key Notes:\n"
+         "- Keep JSON as-is for passthrough, do not arbitrarily modify fields.\n"
+         "- When calling call_trader, always write user's original request into user_request parameter.\n"
+         "- If user mentions prediction, price outlook, or Kronos, explicitly record in user_request.\n"
+         "- When partial analysis fails but usable data exists, continue and inform about missing parts and impact.\n"
+         "- Respond to users in English throughout, maintaining a professional, clear, and actionable tone."),
 MessagesPlaceholder("messages"),
         ("human", "{input}"),
         MessagesPlaceholder("agent_scratchpad")
@@ -479,7 +622,7 @@ MessagesPlaceholder("messages"),
         agent=agent,
         tools=tools,
         memory=memory,
-        verbose=False,
+        verbose=True,
         return_intermediate_steps=True,
         handle_parsing_errors=True,
     )

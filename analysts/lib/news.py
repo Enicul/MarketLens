@@ -11,11 +11,13 @@ import trafilatura
 from langchain_core.tools import tool
 from langchain.prompts import ChatPromptTemplate
 
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from dotenv import load_dotenv
 load_dotenv()
 
-# 抑制trafilatura的ERROR日志输出（这些错误不影响功能）
+logger = logging.getLogger(__name__)
+
+# Silence trafilatura ERROR logs (they are noisy but harmless)
 logging.getLogger('trafilatura').setLevel(logging.CRITICAL)
 
 
@@ -202,7 +204,7 @@ async def fetch_rss_fallback(lookback_hours: int = 24) -> List[Dict[str, Any]]:
     return results
 
 # ---------- LLM summarizer ----------
-_llm = LLM_GOOGLE
+_llm = LLM_GOOGLE_FLASH
 
 
 
@@ -266,13 +268,16 @@ async def summarize_item(item: Dict[str, Any], ticker: str) -> Dict[str, Any]:
 # ---------- Orchestrator ----------
 async def gather_and_summarize(ticker: str, top_k: int = 8, lookback_hours: int = 24) -> Dict[str, Any]:
     # Fetch all three APIs in parallel; fallback to RSS if nothing comes back
+    logger.debug(f"[NEWS] 🔄 Fetching all news sources in parallel for {ticker}")
     finnhub_coro = fetch_finnhub(ticker, lookback_hours)
     fmp_coro = fetch_fmp(ticker, lookback_hours)
     av_coro = fetch_alphavantage(ticker, lookback_hours)
 
     finnhub, fmp, av = await asyncio.gather(finnhub_coro, fmp_coro, av_coro)
+    logger.debug(f"[NEWS] 📥 Retrieved counts — Finnhub={len(finnhub)}, FMP={len(fmp)}, AlphaVantage={len(av)}")
     items = finnhub + fmp + av
     if not items:  # quotas or outages → try basic RSS
+        logger.warning(f"[NEWS] ⚠️ No API payloads available; falling back to RSS feeds")
         items = await fetch_rss_fallback(lookback_hours)
 
     # Dedupe & rank by source tier (simple heuristic)
@@ -280,8 +285,10 @@ async def gather_and_summarize(ticker: str, top_k: int = 8, lookback_hours: int 
     def _rank(it):
         return SOURCE_TIER.get((it.get("publisher") or "").strip(), 1.0)
     items = sorted(items, key=_rank, reverse=True)[:max(1, top_k)]
+    logger.debug(f"[NEWS] 🔍 After dedupe / ranking: {len(items)} stories")
 
     # Summarize in parallel
+    logger.debug(f"[NEWS] 🤖 Summarizing via LLM: {len(items)} stories")
     summaries = await asyncio.gather(*[summarize_item(it, ticker) for it in items])
 
     # Majority vote stance
@@ -308,4 +315,7 @@ async def get_news(ticker: str) -> dict:
     Returns JSON with overall_stance and per-item bullets/stance.
     """
     t = resolve_ticker(ticker)
-    return await gather_and_summarize(t)
+    logger.info(f"[NEWS] 📰 Gathering news flow: {ticker}")
+    result = await gather_and_summarize(t)
+    logger.info(f"[NEWS] ✅ News aggregation complete: {ticker} — {result.get('count', 0)} stories")
+    return result

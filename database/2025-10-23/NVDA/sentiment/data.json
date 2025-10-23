@@ -1,0 +1,390 @@
+{
+  "ticker": "NVDA",
+  "channel": "sentiment",
+  "overall_sentiment": "strong_bearish",
+  "sentiment_score": -0.3019,
+  "sentiment_breakdown": {
+    "bullish": 0.087,
+    "bearish": 0.075,
+    "neutral": 0.838
+  },
+  "metrics": {
+    "total_tweets": 80,
+    "total_influence": 7760,
+    "influence_concentration": 0.386,
+    "sentiment_volatility": 150.921,
+    "quality_score": 0.438
+  },
+  "top_tweets": [
+    {
+      "username": "Shay Boloor",
+      "content": "Jensen just said $NVDA is 100% out of China after going from 95% market share to zero.\n\nThat’s a massive statement. \n\nIt means the world’s top AI chipmaker just walked away from one of its biggest customers because of U.S. policy.",
+      "timestamp": "2025-10-18T07:50:18.000Z",
+      "influence_score": 54.7,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 2227,
+        "retweets": 291,
+        "replies": 183
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "The higher a stock's price goes, the more expensive it gets. Right?\n\nWell, not always. \n\nA year ago, when NVDA was selling at $277, its earnings per share was $0.82 and its P/E ratio was 147x\n\nToday, NVDA's share price is up +284% to $1,064.... BUT... Its earnings per share is up",
+      "timestamp": "2024-05-27T15:56:31.000Z",
+      "influence_score": 31.16,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 670,
+        "retweets": 120,
+        "replies": 61
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "It was just announced that after 25 years of being in the Dow Jones index, Intel (INTC) will be removed and replaced by Nvidia (NVDA) on 8 November\n\nOne of the reasons why the US stock market always goes up in the long run is because unprofitable/less relevant companies are",
+      "timestamp": "2024-11-03T04:48:51.000Z",
+      "influence_score": 25.92,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 497,
+        "retweets": 75,
+        "replies": 25
+      }
+    },
+    {
+      "username": "Evan",
+      "content": "Apple $AAPL is less than $100B away from passing over a $4 Trillion market cap\n\nApple would be the 3rd company to hit the $4T milestone behind just Nvidia $NVDA and Microsoft $MSFT\n\nApple - First company to hit a $1 Trillion market cap\nApple - First company to hit a $2 Trillion",
+      "timestamp": "2025-10-20T16:35:36.000Z",
+      "influence_score": 24.7,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 482,
+        "retweets": 49,
+        "replies": 30
+      }
+    },
+    {
+      "username": "Dividend Talks on YouTube",
+      "content": "Big Tech’s Q3 earnings season is about to decide everything.\n\n- $TSLA kicks it off - down nearly 30% YoY in EPS\n\n- $NVDA is up 53%\n\n- Then $GOOGL, $MSFT, $META, $AAPL, and $AMZN all report next week.\n\nThis is the moment that could reshape the entire market narrative for 2025.",
+      "timestamp": "2025-10-21T15:15:22.000Z",
+      "influence_score": 23.15,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 370,
+        "retweets": 80,
+        "replies": 6
+      }
+    },
+    {
+      "username": "Coach Mak | Know Your Money",
+      "content": "What is Gamma in Options trading? \n\nGAMMA is a crucial concept in options trading that often gets overlooked\n\nIt measures the rate of change in an option's DELTA in relation to changes in the stock’s price\n\nLet’s dive into it \n\n$NVDA\n\nA brief thread",
+      "timestamp": "2025-10-09T21:57:43.000Z",
+      "influence_score": 22.98,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 395,
+        "retweets": 54,
+        "replies": 25
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "When you buy a high quality stock that is undervalued, you will never know how long it takes for the market to recognise its true value. \n\nSometimes, it may take a few months, a year, sometimes a few years. NVDA took a few months, META/ADBE/MSFT took a year, BA took 2 years+,",
+      "timestamp": "2023-10-15T05:00:48.000Z",
+      "influence_score": 15.33,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 184,
+        "retweets": 12,
+        "replies": 27
+      }
+    },
+    {
+      "username": "Adam Khoo",
+      "content": "Yesterday, expectations of a September Interest Rate Cut by the Fed Triggered a Huge Rotation in the Stock Market. Large Cap Tech Stocks ($MSFT, $NVDA, $TSLA, $AAPL, $AMZN) sold off while previously unloved small cap stocks ($IWM) and rate sensitive sectors like Real Estate,",
+      "timestamp": "2024-07-12T08:04:54.000Z",
+      "influence_score": 12.45,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 127,
+        "retweets": 10,
+        "replies": 8
+      }
+    },
+    {
+      "username": "jack23",
+      "content": "It’s Earnings Season, the perfect time to level up your trading game! \n\nmy partners at Bitget now lets you trade US stock tokens & contracts like $AAPL, $NVDA, $TSLA and more! \n\nno borders, no fiat hassle. Just USDT.\n\n Plus:\n- 100+ stock tokens\n- Up to 25x leverage on",
+      "timestamp": "2025-10-23T02:51:13.000Z",
+      "influence_score": 11.66,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 94,
+        "retweets": 2,
+        "replies": 38
+      }
+    },
+    {
+      "username": "Brian Shannon, CMT",
+      "content": "Stock Market & Crypto Analysis for Week Ending 10/17/25\n\n$SPY $QQQ $SMH $AMD $NVDA $IWM #Bitcoin #Ethereum #Solana etc",
+      "timestamp": "2025-10-17T21:01:58.000Z",
+      "influence_score": 14.66,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 172,
+        "retweets": 18,
+        "replies": 7
+      }
+    },
+    {
+      "username": "King of the Charts - I Cracked the Bitcoin Code",
+      "content": ".\nThe S&P 500 Top is in\n\nStock Market CRASH Now Resuming!!!  \n\nA 20% to 29% SPX CRASH Now in Progress!\nStock Market CRASH Video Here\n\nhttps://\nyoutube.com/watch?v=x66rWU\nt3NMs\n…\n\n.\n$SPX $SPY #SP500 #tomlee #elliottwave $ES_F $QQQ $NDX #NASDAQ100 $NQ $NQ_F $NVDA #TrumpTariffs #Chinatariffs #Tariffs",
+      "timestamp": "2025-10-22T22:57:17.000Z",
+      "influence_score": 8.72,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 70,
+        "retweets": 3,
+        "replies": 0
+      }
+    },
+    {
+      "username": "FOREPredict Official",
+      "content": "Analysts have set the target, Will \n@nvidia\n ($NVDA) stock close at or above $200.00 on November 2, 2025? Our market shows a 40/60 split! Predict the outcome for a chance to win $FORE tokens! Participate here\nhttps://\napp.forepredict.io/categorical_ma\nrket/0xCAFcF9Cc6Be9fa22502b731DD4204c63326638A4/336\n… \n$NVDA #predict #FOREPredict #predictionmarket",
+      "timestamp": "2025-10-17T10:52:04.000Z",
+      "influence_score": 5.39,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 11,
+        "retweets": 9,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Ardith Georgevic",
+      "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #SwingTrading $META  \n #StopLossOrder $NVDA  \n #MutualFund $SQFT  \n #DarkPool $ALLO",
+      "timestamp": "2025-10-22T16:22:53.000Z",
+      "influence_score": 5.83,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Rajender Beniwal",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n#SP500 $NERV $BYND\n #Nasdaq $LLY\n #BearMarket $NVDA  \n #Dividends $BETR \n #Stock $FOFO",
+      "timestamp": "2025-10-23T07:32:36.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Aaru Mugam arumugam0",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#MarketCapitalization  $NFLX\n#Dividends  $HD\n#Stock  $NVDA\n#StockMarket  $LLY",
+      "timestamp": "2025-10-23T05:21:22.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Bittu Biswas",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#Inflation  $CVX\n#SecondaryMarket  $LYFT\n#Stock  $CVX\n#401k  $NVDA",
+      "timestamp": "2025-10-23T04:12:49.000Z",
+      "influence_score": 5.92,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Gus",
+      "content": "This is how I used Swing Breakout Sequence paired with Inversions \n\n4 + 5 = High Probability Inversion Entry \n\nIncrease odds with a killzone and macro confluences (NVDA, BTC, VIX) \n\nDo this for 100 trades and you’ll have over 60 wins with a 1.5rr average",
+      "timestamp": "2025-10-19T14:47:47.000Z",
+      "influence_score": 5.1,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 21,
+        "retweets": 2,
+        "replies": 1
+      }
+    },
+    {
+      "username": "nishantkumar",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$NVDA $AAPL #SP500\n #Diversification $PEP\n #FiscalPolicy $mdb stock \n #MarketManipulation $JXG \n #Bearishℹ $IBG",
+      "timestamp": "2025-10-22T19:51:14.000Z",
+      "influence_score": 5.1,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 5,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Satish. Chaudhary",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#Stock  $LLY\n#CME  $AAPL\n#StockMarket  $NVDA\n#BearMarket  $JPM",
+      "timestamp": "2025-10-22T22:08:14.000Z",
+      "influence_score": 5.66,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 8,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Saleem Ansari",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$NVDA $AAPL #SP500\n #DayTrading $BA\n #401k $APLM \n #Arbitrage $IBG \n#HOND STOCK $FOFO",
+      "timestamp": "2025-10-22T20:15:21.000Z",
+      "influence_score": 5.2,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 6,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Fazir Ali",
+      "content": "The streets are talking again. \n\n$NVDA Jensen Huang is pretty much calling the US government idiots for making US chip market share in China go from 85% to 0%. \n\nHe says this forced China to innovate faster than they would have and that they will likely beat the US in the AI",
+      "timestamp": "2025-10-20T00:07:34.000Z",
+      "influence_score": 4.58,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 11,
+        "retweets": 3,
+        "replies": 4
+      }
+    },
+    {
+      "username": "Iluminada Notah",
+      "content": "Thanks to \n@ChancsKelly\n! I made $53,000 in seven days by following the strategy. I'm so happy! \n$YDKG $RYOJ #StockMarket \n#Nasdaq $META \n#InsiderTrading $TGT  \n #Stock $XLV \n #Trading $NVDA",
+      "timestamp": "2025-10-21T13:47:11.000Z",
+      "influence_score": 5.29,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 5,
+        "retweets": 7,
+        "replies": 9
+      }
+    },
+    {
+      "username": "MAIN ST. TRADING",
+      "content": "$INTC: After consolidating for a month and with NVDA deal and earnings on Oct 23rd, it looks like $INTC wants to reach 50 very soon.\n\nWatch for earnings. If earnings are blockbuster, it can easily trading $50 in next month or so.",
+      "timestamp": "2025-10-21T02:29:57.000Z",
+      "influence_score": 4.69,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 5,
+        "replies": 5
+      }
+    },
+    {
+      "username": "Ravindra",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#InsiderTrading  $NVDA\n#Liquidity  $PFE\n#FederalReserve  $JPM\n#LongPosition  $CAT",
+      "timestamp": "2025-10-19T19:50:27.000Z",
+      "influence_score": 4.36,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 5,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Vikash Roy",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#OTC  $V\n#MarketManipulation  $XOM\n#LongPosition  $NVDA\n#Portfolio  $XOM",
+      "timestamp": "2025-10-20T02:40:58.000Z",
+      "influence_score": 4.36,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 5,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Naveen Joshi",
+      "content": "Thanks to @AlyaBarrys! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$NVDA $AAPL #SP500\n #MarketOrder $MRNA\n #FiscalPolicy $COST  \n #Liquidity $MCD  \n #BETR STOCK $GORV",
+      "timestamp": "2025-10-22T18:27:26.000Z",
+      "influence_score": 4.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 3,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Kimberely Kania",
+      "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $NVDA $ARMP #StockMarket #StockMarket $GM #LongPosition $PFE #401k $WFC  \n #Trading $NVDA",
+      "timestamp": "2025-10-22T16:58:33.000Z",
+      "influence_score": 4.36,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 2,
+        "retweets": 4,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Marcus Hale",
+      "content": "$NVDA CEO Jensen Huang:   \n\n“We are 100% out of China. We went from 95% market share to 0%. I can’t imagine any policymaker thinking that’s a good idea… whatever policy we implemented caused America to loose one of the largest markets in the world to 0%”",
+      "timestamp": "2025-10-18T10:47:07.000Z",
+      "influence_score": 3.74,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 12,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Dinesh Wadekar",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#TechnicalAnalysis  $NVDA\n#RSI  $LYFT\n#InsiderTrading  $TGT\n#StopLossOrder  $DIS",
+      "timestamp": "2025-10-20T00:46:09.000Z",
+      "influence_score": 3.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Stock Stacks",
+      "content": "NEW VIDEO\n\nMy take on the current state of the market.\nYou can't trade in this market. Either ride it out or get in cash. $QQQ $SPY $TSLA $BTC $NVDA",
+      "timestamp": "2025-10-16T16:46:03.000Z",
+      "influence_score": 4.36,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 13,
+        "retweets": 2,
+        "replies": 2
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 1.0,
+    "search_keywords": [
+      "$NVDA",
+      "Nvidia"
+    ],
+    "generated_at": "2025-10-23T07:47:44.944526+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}

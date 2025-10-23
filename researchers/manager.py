@@ -3,9 +3,12 @@ from .adapters import to_research_bundle
 from .bullish import bullish_research_tool
 from .bearish import bearish_research_tool
 from .debate import moderate_debate_tool
+import logging
+
+logger = logging.getLogger(__name__)
 
 def validate_analyst_data(analyst_data: Dict[str, Any]) -> Dict[str, bool]:
-    """验证analyst数据是否包含必要信息"""
+    """Validate analyst data contains necessary information"""
     analyses = analyst_data.get("analyses", {})
     validation = {}
     
@@ -17,16 +20,19 @@ def validate_analyst_data(analyst_data: Dict[str, Any]) -> Dict[str, bool]:
     return validation
 
 async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_tolerance: str = "medium", time_horizon: str = "medium", rounds: int = 3) -> Dict[str, Any]:
-    """对analyst结果进行研究分析，生成多空辩论和最终投资建议"""
-    # 验证数据完整性
+    """Conduct research analysis on analyst results, generate bull/bear debate and final investment recommendation"""
+    logger.info(f"[RESEARCHER] 🔬 Starting research analysis: {ticker} - {rounds} debate rounds")
+    # Validate data completeness
     validation = validate_analyst_data(analyst_data)
+    logger.debug(f"[RESEARCHER] 📋 Data validation complete: {validation}")
     
     try:
         bundle = to_research_bundle(analyst_data)
     except Exception as e:
-        raise ValueError(f"数据转换失败: {str(e)}") from e
+        logger.error(f"[RESEARCHER] ❌ Data conversion failed: {ticker} - {e}")
+        raise ValueError(f"Data conversion failed: {str(e)}") from e
     
-    # 多轮辩论：交替喂入上一轮要点与历史
+    # Multi-round debate: alternate feeding previous round highlights with history
     debate_history = []
     latest_bull = None
     latest_bear = None
@@ -34,7 +40,7 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
     bear = None
 
     for i in range(max(1, rounds)):
-        print(f"[Debate] Round {i+1}/{max(1, rounds)} - Bullish speaking...")
+        logger.info(f"[RESEARCHER] 💬 Debate round {i+1}/{max(1, rounds)} - Bullish turn...")
         try:
             bull = await bullish_research_tool.ainvoke({
                 "ticker": ticker,
@@ -43,7 +49,8 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
                 "debate_history": debate_history
             })
         except Exception as e:
-            raise ValueError(f"多头研究失败: {str(e)}") from e
+            logger.error(f"[RESEARCHER] ❌ Bullish research failed: {e}")
+            raise ValueError(f"Bullish research failed: {str(e)}") from e
 
         bull_thesis = (bull or {}).get("thesis") or ""
         bull_args = (bull or {}).get("arguments", [])
@@ -51,7 +58,7 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
         debate_history.append({"role": "bullish", "text": bull_text})
         latest_bull = bull_thesis or ("; ".join(bull_args[:2]) if bull_args else None)
 
-        print(f"[Debate] Round {i+1}/{max(1, rounds)} - Bearish responding...")
+        logger.info(f"[RESEARCHER] 💬 Debate round {i+1}/{max(1, rounds)} - Bearish turn...")
         try:
             bear = await bearish_research_tool.ainvoke({
                 "ticker": ticker,
@@ -60,7 +67,8 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
                 "debate_history": debate_history
             })
         except Exception as e:
-            raise ValueError(f"空头研究失败: {str(e)}") from e
+            logger.error(f"[RESEARCHER] ❌ Bearish research failed: {e}")
+            raise ValueError(f"Bearish research failed: {str(e)}") from e
 
         bear_thesis = (bear or {}).get("thesis") or ""
         bear_args = (bear or {}).get("arguments", [])
@@ -68,6 +76,7 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
         debate_history.append({"role": "bearish", "text": bear_text})
         latest_bear = bear_thesis or ("; ".join(bear_args[:2]) if bear_args else None)
     
+    logger.info(f"[RESEARCHER] 🎯 Synthesizing debate results...")
     try:
         decision = await moderate_debate_tool.ainvoke({
             "ticker": ticker,
@@ -77,9 +86,10 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
             "time_horizon": time_horizon
         })
     except Exception as e:
-        raise ValueError(f"辩论综合失败: {str(e)}") from e
+        logger.error(f"[RESEARCHER] ❌ Debate synthesis failed: {e}")
+        raise ValueError(f"Debate synthesis failed: {str(e)}") from e
     
-    # 提取 CSV 路径（如果存在）
+    # Extract CSV path (if exists)
     csv_path = analyst_data.get("csv_path")
     
     result = {
@@ -97,8 +107,9 @@ async def research_for_manager(ticker: str, analyst_data: Dict[str, Any], risk_t
         }
     }
     
-    # 如果有 CSV 路径，添加到输出中
+    # Add CSV path to output if exists
     if csv_path:
         result["csv_path"] = csv_path
     
+    logger.info(f"[RESEARCHER] ✅ Research analysis complete: {ticker}")
     return result

@@ -30,11 +30,11 @@
   <a href="https://zdoc.app/de/shiyu-coder/Kronos">Deutsch</a> | 
   <a href="https://zdoc.app/es/shiyu-coder/Kronos">Español</a> | 
   <a href="https://zdoc.app/fr/shiyu-coder/Kronos">Français</a> | 
-  <a href="https://zdoc.app/ja/shiyu-coder/Kronos">日本語</a> | 
-  <a href="https://zdoc.app/ko/shiyu-coder/Kronos">한국어</a> | 
-  <a href="https://zdoc.app/pt/shiyu-coder/Kronos">Português</a> | 
-  <a href="https://zdoc.app/ru/shiyu-coder/Kronos">Русский</a> | 
-  <a href="https://zdoc.app/zh/shiyu-coder/Kronos">中文</a>
+  <a href="https://zdoc.app/ja/shiyu-coder/Kronos">Japanese</a> | 
+  <a href="https://zdoc.app/ko/shiyu-coder/Kronos">Korean</a> | 
+  <a href="https://zdoc.app/pt/shiyu-coder/Kronos">Portuguese</a> | 
+  <a href="https://zdoc.app/ru/shiyu-coder/Kronos">Russian</a> | 
+  <a href="https://zdoc.app/zh/shiyu-coder/Kronos">Chinese</a>
 </div>
 
 <p align="center">

@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, ValidationError
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -89,8 +89,12 @@ def _summarize_market(m: Optional[Dict[str, Any]]) -> str:
 
 PROMPT = ChatPromptTemplate.from_messages([
     ("system",
-     "You are a bearish equity researcher. Produce a **strict JSON** per schema. "
-     "Never change stance; it must remain 'bearish'. Output language: English."),
+     "You are the Market Lens bearish research lead, drafting the downside briefing for the investment committee.\n"
+     "Operating guidelines:\n"
+     "- Maintain the mandated bearish stance with analytical, evidence-backed reasoning.\n"
+     "- Rely exclusively on the supplied data; highlight any gaps instead of speculating.\n"
+     "- Keep tone formal, audit-friendly, and focused on risk transmission channels.\n"
+     "- Deliver strict JSON that conforms to the schema; all narrative fields must remain in English."),
     ("user",
      "Ticker: {ticker}\nMarket: {market}  Currency: {currency}\n\n"
      "Fundamentals (summary):\n{fund_summary}\n\n"
@@ -100,7 +104,7 @@ PROMPT = ChatPromptTemplate.from_messages([
      "Recent debate history:\n{history}\n\n"
      "Latest bull argument:\n{latest_bull}\n\n"
      "JSON Schema:\n{json_schema}\n\n"
-     "Return ONLY valid JSON.")
+     "Return ONLY valid JSON. For any required field that lacks evidence, provide a concise English explanation rather than omitting it.")
 ])
 
 def _sent_ok(s):
@@ -111,8 +115,8 @@ def _sent_ok(s):
 
 
 class BearishResearcher:
-    def __init__(self, temperature=0, timeout=30):
-        self.llm = LLM_GOOGLE
+    def __init__(self, temperature=1, timeout=30):
+        self.llm = LLM_GOOGLE_FLASH
 
     async def run(
         self,

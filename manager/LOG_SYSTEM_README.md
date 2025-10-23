@@ -1,135 +1,131 @@
-# 实时日志系统使用说明
+# Real-Time Logging System Guide
 
-## 🎯 功能
+## 🎯 Purpose
 
-实时捕获并显示 Manager Agent 和所有 Sub-Agents 的执行日志，让用户不再傻等。
+Continuously capture and stream execution logs from the Manager agent and all sub-agents so users no longer wait without feedback.
 
-## 🏗️ 架构
+## 🏗️ Architecture
 
 ```
 ┌─────────────────────────────────────────┐
-│  Agent 执行                              │
-│    ↓                                     │
-│  logging.info("[ANALYST] 收集数据...")    │
-└─────────────┬───────────────────────────┘
+│  Agent execution                        │
+│    ↓                                    │
+│  logging.info("[ANALYST] Collecting…")  │
+└─────────────┬──────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
-│  LogStreamHandler (捕获日志)             │
-│    ↓ 推送到队列                          │
-│  Queue (线程安全，1000条缓冲)             │
-└─────────────┬───────────────────────────┘
+│  LogStreamHandler (custom handler)      │
+│    ↓ pushes into queue                  │
+│  Queue (thread-safe, 1000-item buffer)  │
+└─────────────┬──────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
-│  React 前端 (WebSocket)                 │
-│    - 页面实时显示日志、状态、工具事件     │
-│    - 支持流式消息、高亮日志等级           │
+│  React frontend (WebSocket)             │
+│    - Streams logs, status, tool events  │
+│    - Supports streaming replies, level  │
+│      highlighting                       │
 └─────────────────────────────────────────┘
 ```
 
-## 📝 代码修改点
+## 📝 Code Touchpoints
 
-### 1. 新增 `log_stream.py`
-- `LogStreamHandler`: 自定义日志处理器
-- `LogStreamManager`: 单例管理器，支持多会话
+### 1. `log_stream.py`
+- `LogStreamHandler`: custom logging handler.
+- `LogStreamManager`: session-aware singleton manager.
 
-### 2. 修改 `agent_stream_gradio.py`
+### 2. `agent_stream_gradio.py`
 ```python
-# 替换所有 print 为 logging
-print(f"[ANALYST] 收集数据...")
+# Replace print statements with logging
+print(f"[ANALYST] Collecting data…")
 ↓
-logging.info(f"[ANALYST] 收集数据...")
+logging.info(f"[ANALYST] Collecting data…")
 ```
 
-### 3. FastAPI WebSocket 推送
-- `manager/server/app.py` 中 `chat_websocket` 会调用 `LogStreamManager.create_session`
-- `_forward_logs` 持续从队列读取日志并推送给前端
-- React 端经由 `useChatWebSocket` 钩子接收 `type: "log"` 事件并增量渲染
+### 3. FastAPI WebSocket Push
+- `manager/server/app.py` `chat_websocket` creates sessions via `LogStreamManager`.
+- `_forward_logs` drains the queue and pushes events to the frontend.
+- React consumes `type: "log"` events through the `useChatWebSocket` hook.
 
-## 🎨 前端效果
+## 🎨 Frontend Snapshot
 
 ```
 📊 Market Lens AI
 ━━━━━━━━━━━━━━━━━━━━━━
 
-🔍 实时执行日志 [展开/折叠]
-    ✅ 10:15:30 [ANALYST] 📊 收集数据: AAPL - news, fundamentals
-    ✅ 10:15:45 [ANALYST] ✅ 成功收集: news
-    ✅ 10:16:02 [RESEARCHER] 🔬 深度研究: AAPL
-    ✅ 10:16:05 [Debate] Round 1/3 - Bullish speaking...
-    ✅ 10:16:12 [Debate] Round 1/3 - Bearish responding...
-    ✅ 10:16:35 [TRADER] 💹 生成交易决策
+🔍 Live Execution Logs [toggle]
+    ✅ 10:15:30 [ANALYST] 📊 Collecting data: AAPL - news, fundamentals
+    ✅ 10:15:45 [ANALYST] ✅ Finished collecting news
+    ✅ 10:16:02 [RESEARCHER] 🔬 Launching research: AAPL
+    ✅ 10:16:05 [Debate] Round 1/3 - Bullish stance…
+    ✅ 10:16:12 [Debate] Round 1/3 - Bearish response…
+    ✅ 10:16:35 [TRADER] 💹 Generating trading decision
 
-💬 对话界面
+💬 Conversation
 ━━━━━━━━━━━━━━━━━━━━━━
-用户: 分析 AAPL
+User: Analyze AAPL
 ...
 ```
 
-## ⚙️ 配置项
+## ⚙️ Configuration
 
-### 日志级别
+### Log Level
 ```python
-# 在 log_stream.py 中修改
+# Inside log_stream.py
 handler.setLevel(logging.INFO)  # INFO, DEBUG, WARNING, ERROR
 ```
 
-### 队列大小
+### Queue Size
 ```python
-# 防止内存溢出
+# Prevent unbounded growth
 log_queue = queue.Queue(maxsize=1000)
 ```
 
-### 显示数量
+### Display Count
 ```python
 # app_streamlit.py
-log_placeholder.markdown('\n\n'.join(log_lines[-50:]))  # 最多50条
+log_placeholder.markdown('\n\n'.join(log_lines[-50:]))  # Last 50 entries
 ```
 
-## 🐛 已知限制
+## 🐛 Known Constraints
 
-1. **非真正实时**: Streamlit 限制，只能在执行完成后显示
-   - 解决方案：使用 WebSocket + 自定义前端（太复杂，不值得）
-   
-2. **跨会话日志**: 目前按 session_id 隔离
-   - 如需全局日志，修改 `LogStreamManager.create_session()`
+1. **Not truly real-time in Streamlit** – updates land after execution finishes.  
+   Workaround: the current React + WebSocket stack removes this limitation.
+2. **Per-session isolation** – logs are separated by `session_id`.  
+   For global logs, adjust `LogStreamManager.create_session()`.
+3. **Log format discipline** – agents must emit via `logging`, not `print`.  
+   Core agents follow this; review sub-agents for stragglers.
 
-3. **日志格式**: 需要在各 Agent 中统一使用 `logging` 而非 `print`
-   - 已修改主要位置，Sub-Agent 内部可能还有残留
+## 🔥 Performance Optimizations
 
-## 🔥 性能优化
+1. Drop entries when the queue is full to avoid blocking agent execution.
+2. Limit frontend rendering to the most recent 50 entries.
+3. Clean up sessions once work completes to prevent memory leaks.
 
-1. **队列满时丢弃**: 避免阻塞 Agent 执行
-2. **限制显示数量**: 前端只显示最近 50 条
-3. **会话清理**: 执行完成后自动清理队列
+## 🚀 Extensions
 
-## 🚀 扩展建议
-
-### 添加日志搜索
+### Log Search
 ```python
-# 在前端添加搜索框
-search_term = st.text_input("搜索日志")
+search_term = st.text_input("Search logs")
 filtered_logs = [log for log in all_logs if search_term in log['message']]
 ```
 
-### 导出日志
+### Export Logs
 ```python
-# 添加下载按钮
-st.download_button("下载日志", '\n'.join(all_logs), "logs.txt")
+st.download_button("Download logs", '\n'.join(all_logs), "logs.txt")
 ```
 
-### 日志级别筛选
+### Level Filtering
 ```python
-# 添加级别选择器
-levels = st.multiselect("日志级别", ["INFO", "WARNING", "ERROR"])
+levels = st.multiselect("Log level", ["INFO", "WARNING", "ERROR"])
 filtered = [log for log in all_logs if log['level'] in levels]
 ```
 
-## 📌 维护要点
+## 📌 Maintenance Notes
 
-1. **新增 Agent 时**: 使用 `logging.info()` 而非 `print()`
-2. **日志格式**: 统一 `[MODULE] emoji message` 格式
-3. **清理机制**: 确保 `cleanup_session()` 被调用，防止内存泄漏
+1. When adding new agents, always use `logging.info()` instead of `print()`.
+2. Keep the `[MODULE] emoji message` format for consistency.
+3. Ensure `cleanup_session()` is called to release queue resources.
 
-## 🎓 总结
+## 🎓 Takeaway
 
-简洁、高效、线程安全。别整那些花里胡哨的，够用就行。
+Simple, efficient, thread-safe. Avoid unnecessary complexity—keep it reliable and maintainable.

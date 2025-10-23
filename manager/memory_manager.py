@@ -210,6 +210,29 @@ class StructuredChatMessageHistory(BaseChatMessageHistory):
 class ToolAwareConversationMemory(ConversationBufferMemory):
     """Conversation memory that also records tool call metadata as system messages."""
 
+    def load_memory_variables(self, inputs: Dict[str, Any] | None = None) -> Dict[str, Any]:
+        data = super().load_memory_variables(inputs or {})
+        return self._filter_tool_events(data)
+
+    async def aload_memory_variables(self, inputs: Dict[str, Any] | None = None) -> Dict[str, Any]:
+        data = await super().aload_memory_variables(inputs or {})
+        return self._filter_tool_events(data)
+
+    def _filter_tool_events(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        memory_key = getattr(self, "memory_key", "history")
+        messages = data.get(memory_key)
+        if isinstance(messages, list):
+            filtered = [
+                message
+                for message in messages
+                if not (
+                    isinstance(message, SystemMessage)
+                    and message.additional_kwargs.get("tool_event")
+                )
+            ]
+            data[memory_key] = filtered
+        return data
+
     def save_context(
         self, inputs: Dict[str, str], outputs: Dict[str, str], *args, **kwargs
     ) -> None:
@@ -239,12 +262,12 @@ class ToolAwareConversationMemory(ConversationBufferMemory):
             }
 
             summary_lines = [
-                f"🔧 工具调用：{record['tool']}",
-                f"➡️ 输入：{_safe_serialize(record['input'])}",
-                f"⬅️ 输出：{_safe_serialize(record['output'])}",
+                f"🔧 Tool call: {record['tool']}",
+                f"➡️ Input: {_safe_serialize(record['input'])}",
+                f"⬅️ Output: {_safe_serialize(record['output'])}",
             ]
             if record["log"]:
-                summary_lines.append(f"📝 日志：{_safe_serialize(record['log'])}")
+                summary_lines.append(f"📝 Log: {_safe_serialize(record['log'])}")
 
             record["tool_call_id"] = getattr(action, "tool_call_id", None)
             message = SystemMessage(
@@ -299,12 +322,12 @@ class ToolAwareConversationMemory(ConversationBufferMemory):
                 "timestamp": datetime.utcnow().isoformat() + "Z",
             }
             summary_lines = [
-                f"🔧 工具调用：{record['tool']}",
-                f"➡️ 输入：{_safe_serialize(record['input'])}",
-                f"⬅️ 输出：{_safe_serialize(record['output'])}",
+                f"🔧 Tool call: {record['tool']}",
+                f"➡️ Input: {_safe_serialize(record['input'])}",
+                f"⬅️ Output: {_safe_serialize(record['output'])}",
             ]
             if record["log"]:
-                summary_lines.append(f"📝 日志：{_safe_serialize(record['log'])}")
+                summary_lines.append(f"📝 Log: {_safe_serialize(record['log'])}")
 
             record["tool_call_id"] = getattr(action, "tool_call_id", None)
             message = SystemMessage(
@@ -386,7 +409,7 @@ class MemorySessionManager:
         return datetime.utcnow().strftime("session-%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:8]
 
     def _generate_default_name(self) -> str:
-        prefix = "对话 "
+        prefix = "Conversation "
         existing = {meta.name for meta in self._meta.values() if meta.name.startswith(prefix)}
         index = 1
         while f"{prefix}{index}" in existing:

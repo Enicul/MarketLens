@@ -14,6 +14,9 @@ from .optimist import OptimisticRiskEvaluator
 from .pessimist import PessimisticRiskEvaluator
 from .schema import RiskManagementReport, RiskPerspective, TraderDecisionCard
 from .utils import TraderDataError, ensure_output_directory, load_trader_decision
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -109,15 +112,15 @@ def run_risk_management(
 ) -> Tuple[str, Dict[str, str]]:
     """Convenience wrapper returning saved path and quick summary."""
     orchestrator = RiskManagementOrchestrator(use_llm=use_llm)
-    print(f"[RISK] 🛡️ 正在运行风险管理模块: {ticker.upper()}")
+    logger.info(f"[RISK] 🛡️  Running risk management: {ticker.upper()}")
     result = orchestrator.generate_report(
         ticker=ticker,
         trader_data=trader_data,
         output_root=output_root,
         include_raw=include_raw,
     )
-    print(f"[RISK] 📄 风险报告文件: {result.saved_path}")
-    print(f"[RISK] 📊 风险报告内容:\n{result.json_text}")
+    logger.info(f"[RISK] 📄 Risk report saved: {result.saved_path}")
+    logger.debug(f"[RISK] 📊 Risk report content:\n{result.json_text}")
 
     summary = {
         "ticker": ticker.upper(),

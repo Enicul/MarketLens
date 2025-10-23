@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import queue
+import re
 import secrets
 from datetime import datetime
 from typing import Any, Dict, List, Optional
@@ -17,12 +19,13 @@ from fastapi import (
     status,
 )
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from langchain.callbacks.base import AsyncCallbackHandler
 from langchain_core.outputs import LLMResult
 
-from manager.agent_stream_gradio import build_main_agent
+from manager.agent_stream_gradio import build_main_agent, pop_analysis_config, push_analysis_config
 from manager.log_stream import get_log_manager
 from manager.memory_manager import (
     MemorySessionManager,
@@ -32,6 +35,8 @@ from manager.memory_manager import (
 from manager.server.auth import AUTH_MANAGER, AuthSession, validate_credentials
 from manager.server.messages import TOOL_DISPLAY_NAMES, format_chat_history
 from manager.server.state import USER_STATE
+
+ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
 
 
 class LoginRequest(BaseModel):
@@ -77,28 +82,28 @@ class AnalysisConfigResponse(BaseModel):
 
 PROGRESS_TEMPLATES: Dict[str, Dict[str, str]] = {
     "call_analyst": {
-        "start": "[ANALYST] 正在收集多维市场数据（新闻 / 基本面 / 市场 / 情绪）…",
-        "end": "[ANALYST] 数据收集完成 ✅",
+        "start": "[ANALYST] Collecting multi-dimensional market data (news / fundamentals / market / sentiment)…",
+        "end": "[ANALYST] Data collection complete ✅",
     },
     "call_researcher": {
-        "start": "[RESEARCHER] 正在整合分析结果并撰写研报…",
-        "end": "[RESEARCHER] 研究结论准备就绪 ✅",
+        "start": "[RESEARCHER] Integrating analysis results and writing research report…",
+        "end": "[RESEARCHER] Research conclusions ready ✅",
     },
     "call_trader": {
-        "start": "[TRADER] 正在生成交易计划与风险控制策略…",
-        "end": "[TRADER] 交易建议已生成 ✅",
+        "start": "[TRADER] Generating trading plan and risk control strategy…",
+        "end": "[TRADER] Trading recommendations generated ✅",
     },
     "call_risk_manager": {
-        "start": "[RISK MANAGER] 正在复核风控参数与情景压力测试…",
-        "end": "[RISK MANAGER] 风控复核完成 ✅",
+        "start": "[RISK MANAGER] Reviewing risk control parameters and scenario stress testing…",
+        "end": "[RISK MANAGER] Risk review complete ✅",
     },
 }
 
 ANALYSIS_LABELS = {
-    "news": "新闻",
-    "fundamentals": "基本面",
-    "market": "市场",
-    "sentiment": "情绪",
+    "news": "News",
+    "fundamentals": "Fundamentals",
+    "market": "Market",
+    "sentiment": "Sentiment",
 }
 
 
@@ -122,6 +127,15 @@ def _progress_payload(
     return entry
 
 
+async def _safe_send_json(websocket: WebSocket, payload: Dict[str, Any]) -> bool:
+    """Send JSON over websocket; swallow disconnect/runtime errors."""
+    try:
+        await websocket.send_json(payload)
+        return True
+    except (WebSocketDisconnect, RuntimeError):
+        return False
+
+
 async def _push_progress(
     websocket: WebSocket,
     session_id: str,
@@ -139,7 +153,7 @@ async def _push_progress(
         level=level,
         timestamp=timestamp,
     )
-    await websocket.send_json(entry)
+    await _safe_send_json(websocket, entry)
     try:
         MEMORY_MANAGER.append_progress(session_id, entry)
     except Exception:
@@ -177,6 +191,9 @@ LOG_MANAGER = get_log_manager()
 
 app = FastAPI(title="Market Lens Realtime API")
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+DATABASE_DIR = os.path.join(BASE_DIR, "database")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -184,6 +201,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if os.path.isdir(DATABASE_DIR):
+    app.mount("/assets", StaticFiles(directory=DATABASE_DIR), name="assets")
 
 
 def get_current_session(authorization: str = Header(...)) -> AuthSession:
@@ -367,8 +387,9 @@ def get_session_progress(session_id: str, session: AuthSession = Depends(get_cur
 async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id: str) -> None:
     """Forward log entries from queue to websocket and persist them."""
     manager_actor = "manager"
-    manager_label = "Manager 主代理"
-    last_thinking_message: Optional[str] = None
+    manager_label = "Manager Lead Agent"
+    last_thinking_messages: Dict[str, str] = {}
+    last_invoked_tool: Optional[str] = None
 
     def _strip_think_blocks(text: str) -> str:
         """Remove <think>…</think> segments to avoid exposing raw chain-of-thought."""
@@ -384,37 +405,39 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
             cleaned = cleaned[:start] + cleaned[end + len("</think>") :]
         return cleaned.strip()
 
-    async def _emit_manager_thinking(message: str) -> None:
-        try:
-            await websocket.send_json(
-                {
-                    "type": "thinking_status",
-                    "actor": manager_actor,
-                    "label": manager_label,
-                    "status": "start",
-                }
-            )
-            await websocket.send_json(
-                {
-                    "type": "thinking_content",
-                    "actor": manager_actor,
-                    "label": manager_label,
-                    "content": message,
-                }
-            )
-        except WebSocketDisconnect:
+    async def _emit_manager_thinking(message: str, actor_key: str, label: str) -> None:
+        sent = await _safe_send_json(
+            websocket,
+            {
+                "type": "thinking_status",
+                "actor": actor_key,
+                "label": label,
+                "status": "start",
+            },
+        )
+        if not sent:
             return
+        await _safe_send_json(
+            websocket,
+            {
+                "type": "thinking_content",
+                "actor": actor_key,
+                "label": label,
+                "content": message,
+            },
+        )
 
         async def _auto_stop() -> None:
             try:
                 await asyncio.sleep(3.0)
-                await websocket.send_json(
+                await _safe_send_json(
+                    websocket,
                     {
                         "type": "thinking_status",
-                        "actor": manager_actor,
-                        "label": manager_label,
+                        "actor": actor_key,
+                        "label": label,
                         "status": "stop",
-                    }
+                    },
                 )
             except (WebSocketDisconnect, RuntimeError):
                 return
@@ -431,45 +454,92 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
             except queue.Empty:
                 if entries:
                     for item in entries:
-                        raw_message = item.get("message", "").strip()
+                        raw_message = item.get("message", "")
+                        if not raw_message:
+                            continue
+                        raw_message = raw_message.strip()
                         if " | " in raw_message:
                             parts = raw_message.split(" | ", 2)
                             if len(parts) == 3:
                                 raw_message = parts[2]
+                        raw_message = ANSI_ESCAPE_RE.sub("", raw_message)
+                        raw_message = raw_message.replace("\r", "").strip()
                         if not raw_message:
                             continue
-                        progress_message = raw_message
+
+                        lines = [line.strip() for line in raw_message.splitlines() if line.strip()]
+                        if not lines:
+                            continue
+
+                        invoking_line = next((line for line in lines if line.startswith("Invoking:")), None)
+                        if invoking_line:
+                            match = re.search(r"Invoking:\s*`([^`]+)`", invoking_line)
+                            last_invoked_tool = match.group(1).strip() if match else None
+
                         thinking_message: Optional[str] = None
-                        if raw_message.lower().startswith("responded:"):
-                            thinking_message = raw_message.split("responded:", 1)[1].strip()
-                            progress_message = thinking_message or ""
-                            if progress_message:
-                                progress_message = _strip_think_blocks(progress_message)
-                        if progress_message:
-                            progress_message = progress_message.strip()
+                        progress_message: Optional[str] = None
+
+                        responded_line = next(
+                            (line for line in lines if line.lower().startswith("responded:")), None
+                        )
+                        if responded_line:
+                            thinking_parts = [responded_line.split("responded:", 1)[1].strip()]
+                            try:
+                                responded_index = lines.index(responded_line)
+                            except ValueError:
+                                responded_index = -1
+                            if responded_index != -1:
+                                for extra_line in lines[responded_index + 1 :]:
+                                    if extra_line.startswith("Invoking:"):
+                                        continue
+                                    if extra_line.lower().startswith("responded:"):
+                                        break
+                                    thinking_parts.append(extra_line)
+                            thinking_message = "\n".join(part for part in thinking_parts if part)
+                            progress_message = _strip_think_blocks(thinking_message)
+                        else:
+                            non_invoking_lines = [line for line in lines if not line.startswith("Invoking:")]
+                            if not non_invoking_lines:
+                                continue
+                            progress_message = _strip_think_blocks("\n".join(non_invoking_lines))
+
+                        progress_message = progress_message.strip()
+                        if not progress_message:
+                            continue
+
+                        actor_key = last_invoked_tool or manager_actor
+                        actor_label = manager_label
+                        if actor_key != manager_actor:
+                            actor_label = TOOL_DISPLAY_NAMES.get(actor_key, actor_key)
+
                         if thinking_message:
                             clean_thinking = progress_message
-                            if clean_thinking and clean_thinking != last_thinking_message:
-                                last_thinking_message = clean_thinking
+                            previous_thinking = last_thinking_messages.get(actor_key)
+                            if clean_thinking and clean_thinking != previous_thinking:
+                                last_thinking_messages[actor_key] = clean_thinking
                                 if len(clean_thinking) > 800:
                                     clean_thinking = clean_thinking[:797] + "..."
-                                await _emit_manager_thinking(clean_thinking)
-                        message_to_store = progress_message or raw_message
+                                await _emit_manager_thinking(clean_thinking, actor_key, actor_label)
+
+                        message_to_store = progress_message
                         if len(message_to_store) > 800:
                             message_to_store = message_to_store[:797] + "..."
                         level = item.get("level")
+                        tool_key = actor_key if thinking_message else "log"
                         try:
                             await _push_progress(
                                 websocket,
                                 session_id,
                                 message=message_to_store,
-                                tool="log",
+                                tool=tool_key,
                                 stage="thinking" if thinking_message else "log",
                                 level=level,
                                 timestamp=item.get("timestamp"),
                             )
                         except WebSocketDisconnect:
                             return
+                        if thinking_message:
+                            last_invoked_tool = None
                 await asyncio.sleep(0.2)
     except asyncio.CancelledError:
         pass
@@ -488,7 +558,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
     @staticmethod
     def _actor_label(actor_key: str) -> str:
         if actor_key == "manager":
-            return "Manager 主代理"
+            return "Manager Lead Agent"
         return TOOL_DISPLAY_NAMES.get(actor_key, actor_key)
 
     def _current_actor_key(self) -> str:
@@ -510,26 +580,27 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         }
         if message:
             payload["message"] = message
-        await self.websocket.send_json(payload)
+        await _safe_send_json(self.websocket, payload)
 
     async def on_llm_start(self, *args: Any, **kwargs: Any) -> None:
         self._response_parts = []
-        await self.websocket.send_json({"type": "status", "message": "模型生成中..."})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "Model is generating..."})
         actor_key = self._current_actor_key()
         self._llm_actor_stack.append(actor_key)
         await self._send_thinking_status(actor_key, "start")
 
     async def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
         self._response_parts.append(token)
-        await self.websocket.send_json({"type": "token", "token": token})
+        await _safe_send_json(self.websocket, {"type": "token", "token": token})
 
     async def on_llm_end(self, response: LLMResult, **kwargs: Any) -> None:
-        await self.websocket.send_json({"type": "status", "message": "生成完成"})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "Generation complete"})
         actor_key = self._llm_actor_stack.pop() if self._llm_actor_stack else "manager"
         label = self._actor_label(actor_key)
         thinking_text = _extract_thinking_text(response)
         if thinking_text:
-            await self.websocket.send_json(
+            await _safe_send_json(
+                self.websocket,
                 {
                     "type": "thinking_content",
                     "actor": actor_key,
@@ -549,11 +620,11 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         )
 
     async def on_tool_start(self, serialized: Dict[str, Any], input_str: str, **kwargs: Any) -> None:
-        tool_name = serialized.get("name", "工具调用")
+        tool_name = serialized.get("name", "tool_call")
         self._tool_stack.append(tool_name)
         template = PROGRESS_TEMPLATES.get(tool_name, {})
         label = TOOL_DISPLAY_NAMES.get(tool_name, tool_name.upper())
-        message = template.get("start") or f"[{label}] 正在执行…"
+        message = template.get("start") or f"[{label}] Execution in progress…"
         await _push_progress(
             self.websocket,
             self.session_id,
@@ -565,8 +636,8 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
     async def on_tool_end(self, output: Any, **kwargs: Any) -> None:
         tool_name = self._tool_stack[-1] if self._tool_stack else None
         template = PROGRESS_TEMPLATES.get(tool_name or "", {})
-        label = TOOL_DISPLAY_NAMES.get(tool_name or "", "工具")
-        message = template.get("end") or f"[{label}] 阶段完成 ✅"
+        label = TOOL_DISPLAY_NAMES.get(tool_name or "", "Tool")
+        message = template.get("end") or f"[{label}] Stage complete ✅"
         await _push_progress(
             self.websocket,
             self.session_id,
@@ -588,7 +659,7 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         await _push_progress(
             self.websocket,
             self.session_id,
-            message=f"[{label}] 执行失败：{error}",
+            message=f"[{label}] Execution failed: {error}",
             tool=tool_name,
             stage="error",
         )
@@ -629,17 +700,18 @@ async def chat_websocket(
 
             user_input = event.get("content", "").strip()
             if not user_input:
-                await websocket.send_json({"type": "error", "message": "请输入有效的问题"})
+                if not await _safe_send_json(websocket, {"type": "error", "message": "Please enter a valid question"}):
+                    break
                 continue
 
             callback = WebSocketAgentCallback(websocket, session_id)
             analysis_config = USER_STATE.get_analysis_config(token)
             enabled_sections = [key for key, enabled in analysis_config.items() if enabled]
             if enabled_sections:
-                summary = "、".join(ANALYSIS_LABELS.get(key, key) for key in enabled_sections)
-                manager_msg = f"[MANAGER] 正在调度 Analyst 分析 {summary} 维度，并整合下游代理…"
+                summary = ", ".join(ANALYSIS_LABELS.get(key, key) for key in enabled_sections)
+                manager_msg = f"[MANAGER] Scheduling Analyst to analyze {summary} dimensions and integrate downstream agents…"
             else:
-                manager_msg = "[MANAGER] 正在调度子代理执行请求…"
+                manager_msg = "[MANAGER] Scheduling agent to execute request…"
             await _push_progress(
                 websocket,
                 session_id,
@@ -648,21 +720,31 @@ async def chat_websocket(
                 stage="start",
             )
             agent = build_main_agent(config=analysis_config, memory=memory)
+            config_token = push_analysis_config(analysis_config)
 
             try:
                 result = await agent.ainvoke({"input": user_input}, callbacks=[callback])  # type: ignore[arg-type]
             except Exception as exc:  # noqa: BLE001
-                await websocket.send_json({"type": "error", "message": f"代理执行失败：{exc}"})
+                if not await _safe_send_json(
+                    websocket, {"type": "error", "message": f"Agent execution failed: {exc}"}
+                ):
+                    break
                 continue
+            finally:
+                pop_analysis_config(config_token)
 
             response_text = callback.get_response_text() or result.get("output", "")
             history = MEMORY_MANAGER.get_messages(session_id)
             formatted_history = format_chat_history(history, TOOL_DISPLAY_NAMES)
-            await websocket.send_json({"type": "final", "content": response_text, "messages": formatted_history})
+            if not await _safe_send_json(
+                websocket,
+                {"type": "final", "content": response_text, "messages": formatted_history},
+            ):
+                break
             await _push_progress(
                 websocket,
                 session_id,
-                message="[MANAGER] 分析完成 🎯",
+                message="[MANAGER] Analysis complete 🎯",
                 tool="manager",
                 stage="complete",
             )

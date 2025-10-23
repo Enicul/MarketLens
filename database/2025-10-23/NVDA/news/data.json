@@ -1,0 +1,161 @@
+{
+  "ticker": "NVDA",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-23T03:51:44+00:00",
+      "headline": "Tesla's Q3 Earnings Divide Analysts, But Dan Ives Says 'The Worst Is In The Rearview Mirror' For The 'Most Undervalued' Name In AI - Ford Motor  ( NYSE:F ) , General Motors  ( NYSE:GM ) ",
+      "evidence": [
+        "https://www.benzinga.com/markets/earnings/25/10/48371692/teslas-q3-earnings-divide-analysts-but-dan-ives-says-the-worst-is-in-the-rearview-mirror-for-the"
+      ],
+      "summary": [
+        "Tesla's Q3 Earnings Divide Analysts, But Dan Ives Says 'The Worst Is In The Rearview Mirror' For The 'Most Undervalued' Name In AI - Ford Motor  ( NYSE:F ) , General Motors  ( NYSE:GM ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-23T02:30:00+00:00",
+      "headline": "Inside The Dow: Key Earnings Ahead For Some Of The Index's YTD Winners",
+      "evidence": [
+        "https://finnhub.io/api/news?id=37708c8b85f7b4510bb31d9ecddec667d54496a8a6cc510195757962e0c5d35e"
+      ],
+      "summary": [
+        "Inside The Dow: Key Earnings Ahead For Some Of The Index's YTD Winners"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-23T01:05:00+00:00",
+      "headline": "This Small AI Stock Has Outpaced Nvidia. 1 Reason Why It's Still Rising.",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/22/this-small-ai-stock-has-outpaced-nvidia-1-reason-w/"
+      ],
+      "summary": [
+        "This Small AI Stock Has Outpaced Nvidia. 1 Reason Why It's Still Rising."
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-23T00:59:57+00:00",
+      "headline": "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?",
+      "evidence": [
+        "https://www.fool.com/coverage/filings/2025/10/23/is-amd-a-buy-after-investment-advisor-western-financial-initiated-a-position-in-the-stock/"
+      ],
+      "summary": [
+        "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-23T00:15:00+00:00",
+      "headline": "Broadcom: Our Best Year-To-Date Performer",
+      "evidence": [
+        "https://finnhub.io/api/news?id=9b4f29f4de92f486cba93eeb3127527007390a100049ec79cdd9da2205aaf9bc"
+      ],
+      "summary": [
+        "Broadcom: Our Best Year-To-Date Performer"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-22T23:50:47+00:00",
+      "headline": "Tesla  ( TSLA )  Q3 2025 Earnings Call Transcript",
+      "evidence": [
+        "https://www.fool.com/earnings/call-transcripts/2025/10/22/tesla-tsla-q3-2025-earnings-call-transcript/"
+      ],
+      "summary": [
+        "Tesla  ( TSLA )  Q3 2025 Earnings Call Transcript"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-22T23:50:00+00:00",
+      "headline": "Are We In A Bubble?",
+      "evidence": [
+        "https://finnhub.io/api/news?id=7a9641cf8dede0883c89f598cd1f8daf847d352c132a9dd870cb6f16261edf3a"
+      ],
+      "summary": [
+        "Are We In A Bubble?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-22T23:48:42+00:00",
+      "headline": "Is Arista Networks a Buy After Investment Company Stanley-Laman Group Began a Position in the Stock?",
+      "evidence": [
+        "https://www.fool.com/coverage/filings/2025/10/22/is-arista-networks-a-buy-after-investment-company-stanley-laman-group-began-a-position-in-the-stock/"
+      ],
+      "summary": [
+        "Is Arista Networks a Buy After Investment Company Stanley-Laman Group Began a Position in the Stock?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-23T07:47:32.104696+00:00"
+}
