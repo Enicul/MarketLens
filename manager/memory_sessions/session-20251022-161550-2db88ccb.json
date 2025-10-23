@@ -1,21 +1,4 @@
 {
-  "history": [],
-  "decisions": [],
-  "progress": [
-    {
-      "type": "progress",
-      "message": "[MANAGER] 正在调度 Analyst 分析 新闻、基本面、市场、情绪 维度，并整合下游代理…",
-      "tool": "manager",
-      "stage": "start",
-      "timestamp": "2025-10-22T16:15:57.458641Z"
-    },
-    {
-      "type": "progress",
-      "message": "> Entering new AgentExecutor chain...",
-      "tool": "log",
-      "stage": "log",
-      "timestamp": "2025-10-23T00:15:57.476711",
-      "level": "INFO"
-    }
-  ]
+  "session_id": "session-20251022-161550-2db88ccb",
+  "note": "Session content removed during English localization."
 }

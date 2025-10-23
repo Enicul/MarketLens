@@ -39,18 +39,18 @@ type ThinkingLogEntry = {
 };
 
 const TOOL_DISPLAY_LABELS: Record<string, string> = {
-  call_analyst: "Analyst 子代理",
-  call_researcher: "Researcher 子代理",
-  call_trader: "Trader 子代理",
-  call_risk_manager: "风险管理模块",
-  read_file: "文件读取工具",
-  write_file: "文件写入工具"
+  call_analyst: "Analyst Sub-Agent",
+  call_researcher: "Researcher Sub-Agent",
+  call_trader: "Trader Sub-Agent",
+  call_risk_manager: "Risk Management Module",
+  read_file: "File Read Tool",
+  write_file: "File Write Tool"
 };
 
 const formatTimestamp = (iso: string) => {
   try {
     const date = new Date(iso);
-    return date.toLocaleTimeString("zh-CN", { hour12: false });
+    return date.toLocaleTimeString("en-US", { hour12: false });
   } catch {
     return iso;
   }
@@ -81,11 +81,11 @@ function LoginView({
     <div className="login-shell">
       <div className="login-card">
         <h1>Market Lens AI</h1>
-        <p className="login-subtitle">FastAPI + WebSocket 全新实时体验</p>
+        <p className="login-subtitle">FastAPI + WebSocket Real-Time Experience</p>
         {error ? <div className="error-box">{error}</div> : null}
         <form className="login-form" onSubmit={handleSubmit}>
           <label>
-            邮箱
+            Email
             <input
               type="email"
               placeholder="name@example.com"
@@ -95,21 +95,21 @@ function LoginView({
             />
           </label>
           <label>
-            密码
+            Password
             <input
               type="password"
-              placeholder="请输入密码"
+              placeholder="Enter password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               required
             />
           </label>
           <button type="submit" disabled={loading}>
-            {loading ? "登录中…" : "登录"}
+            {loading ? "Logging in…" : "Login"}
           </button>
         </form>
         <button className="ghost-button" onClick={handleGuest} disabled={loading}>
-          游客体验
+          Guest Access
         </button>
       </div>
     </div>
@@ -248,16 +248,16 @@ function Sidebar({
     <aside className="sidebar">
       <div className="sidebar-top">
         <h2>👤 {auth.displayName}</h2>
-        <p className="role-tag">{auth.role === "guest" ? "游客模式" : "正式用户"}</p>
+        <p className="role-tag">{auth.role === "guest" ? "Guest Mode" : "Registered User"}</p>
         <button className="ghost-button" onClick={onLogout}>
-          退出登录
+          Logout
         </button>
       </div>
 
       <div className="sidebar-section">
         <div className="section-header">
-          <h3>对话会话</h3>
-          <button onClick={onCreateSession}>新建</button>
+          <h3>Chat Sessions</h3>
+          <button onClick={onCreateSession}>New</button>
         </div>
         <div className="session-list">
           {sessions.map((session) => (
@@ -281,19 +281,19 @@ function Sidebar({
                 </button>
               )}
               <div className="session-actions">
-                <button onClick={() => startRename(session)}>重命名</button>
-                <button onClick={() => onDeleteSession(session.id)}>删除</button>
+                <button onClick={() => startRename(session)}>Rename</button>
+                <button onClick={() => onDeleteSession(session.id)}>Delete</button>
               </div>
             </div>
           ))}
-          {sessions.length === 0 ? <p className="empty-hint">暂无会话</p> : null}
+          {sessions.length === 0 ? <p className="empty-hint">No sessions yet</p> : null}
         </div>
       </div>
 
       <div className="sidebar-section">
         <div className="section-header">
-          <h3>分析配置</h3>
-          <button onClick={onResetConfig}>重置</button>
+          <h3>Analysis Config</h3>
+          <button onClick={onResetConfig}>Reset</button>
         </div>
         <div className="toggle-list">
           {(Object.keys(analysisConfig) as (keyof AnalysisConfig)[]).map((key) => (
@@ -342,7 +342,7 @@ function ChatComposer({ disabled, onSend }: ChatComposerProps) {
   return (
     <form className="composer" onSubmit={handleSubmit}>
       <textarea
-        placeholder="请输入问题或任务…"
+        placeholder="Enter your question or task…"
         value={value}
         onChange={(event) => setValue(event.target.value)}
         disabled={disabled}
@@ -350,7 +350,7 @@ function ChatComposer({ disabled, onSend }: ChatComposerProps) {
         onKeyDown={handleKeyDown}
       />
       <button type="submit" disabled={disabled || !value.trim()}>
-        发送
+        Send
       </button>
     </form>
   );
@@ -489,7 +489,7 @@ function Dashboard({
                       </div>
                     ))
                   ) : (
-                    <p className="empty-hint">等待模型动作…</p>
+                    <p className="empty-hint">Waiting for model actions…</p>
                   )}
                   <div ref={thinkingEndRef} />
                 </div>
@@ -499,7 +499,7 @@ function Dashboard({
             <aside className={`progress-panel ${showProgressPanel ? "open" : "closed"}`}>
               <button className="progress-toggle" type="button" onClick={onToggleProgressPanel}>
                 <span className="progress-icon">{progressArrow}</span>
-                <span>实时进度</span>
+                <span>Real-Time Progress</span>
               </button>
               {showProgressPanel ? (
                 <div className="progress-list">
@@ -522,7 +522,7 @@ function Dashboard({
                       );
                     })
                   ) : (
-                    <p className="empty-hint">等待任务执行…</p>
+                    <p className="empty-hint">Waiting for task execution…</p>
                   )}
                   <div ref={progressEndRef} />
                 </div>
@@ -554,7 +554,7 @@ function App() {
 
   const deriveThinkingLabel = useCallback((tool?: string | null) => {
     if (!tool || tool === "log" || tool === "manager") {
-      return "Manager 主代理";
+      return "Manager Main Agent";
     }
     return TOOL_DISPLAY_LABELS[tool] ?? tool;
   }, []);
@@ -744,7 +744,7 @@ function App() {
   const handleSend = useCallback(
     async (text: string) => {
       if (!auth?.token || !activeSessionId) {
-        setErrorMessage("请先选择会话");
+        setErrorMessage("Please select a session first");
         return;
       }
       try {
@@ -933,7 +933,7 @@ function ChatHeader() {
   return (
     <div className="chat-header">
       <h1>Market Lens</h1>
-      <p>实时金融洞察 · 多代理协同分析</p>
+      <p>Real-Time Financial Insights · Multi-Agent Collaborative Analysis</p>
     </div>
   );
 }

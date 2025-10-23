@@ -1,6 +1,6 @@
 """
-Trader子Agent - 基于LangChain工具调用的智能交易决策系统
-使用大模型作为决策大脑，智能选择和调用交易工具
+Trader Sub-Agent - Intelligent Trading Decision System based on LangChain Tool Calling
+Uses LLM as the decision brain, intelligently selects and calls trading tools
 """
 
 import os
@@ -14,6 +14,9 @@ from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import tool
 from config import LLM_GOOGLE
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 ########################################
@@ -21,15 +24,15 @@ from config import LLM_GOOGLE
 ########################################
 
 def _convert_researcher_to_symbol(ticker, final_decision, analyses):
-    """转换单个researcher数据为symbol格式"""
-    # 提取current_price
+    """Convert single researcher data to symbol format"""
+    # Extract current_price
     current_price = 0.0
     market_data = analyses.get("market", {}).get("data", {})
     if isinstance(market_data, dict):
         stock_info = market_data.get("stock_basic_info", {})
         current_price = stock_info.get("current_price", 0.0)
     
-    # 从scorecard提取不确定性级别
+    # Extract uncertainty level from scorecard
     scorecard = final_decision.get("scorecard", {})
     uncertainty_value = scorecard.get("uncertainty", 0.3)
     if uncertainty_value >= 0.6:
@@ -67,28 +70,28 @@ def _convert_researcher_to_symbol(ticker, final_decision, analyses):
 
 @tool
 def load_research_data(json_file_path: str) -> str:
-    """加载和解析研究团队的分析结论，支持单股票和多股票"""
+    """Load and parse research team's analysis conclusions, supports single and multiple stocks"""
     try:
         with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # 情况1: 单个researcher输出
+        # Case 1: Single researcher output
         if "final_decision" in data and "ticker" in data:
             symbol = _convert_researcher_to_symbol(
                 data.get("ticker", "UNKNOWN"),
                 data.get("final_decision", {}),
                 data.get("analyses", {})
             )
-            # 添加CSV路径（如果存在）
+            # Add CSV path (if exists)
             csv_path = data.get("csv_path")
             if csv_path:
                 symbol["csv_path"] = csv_path
-                print(f"📊 找到CSV文件: {csv_path}")
+                logger.info(f"[TRADER] 📊 CSV file found: {csv_path}")
             converted_data = {"symbols": [symbol]}
-            print(f"✅ 成功加载研究数据: 1个股票 (Researcher格式)")
+            logger.info(f"[TRADER] ✅ Successfully loaded research data: 1 stock (Researcher format)")
             return json.dumps(converted_data, ensure_ascii=False)
         
-        # 情况2: 多个researcher输出列表
+        # Case 2: Multiple researcher outputs list
         elif isinstance(data, list):
             symbols = []
             for item in data:
@@ -98,80 +101,87 @@ def load_research_data(json_file_path: str) -> str:
                         item.get("final_decision", {}),
                         item.get("analyses", {})
                     )
-                    # 添加CSV路径（如果存在）
+                    # Add CSV path (if exists)
                     csv_path = item.get("csv_path")
                     if csv_path:
                         symbol["csv_path"] = csv_path
                     symbols.append(symbol)
             converted_data = {"symbols": symbols}
-            print(f"✅ 成功加载研究数据: {len(symbols)}个股票 (Researcher列表格式)")
+            logger.info(f"[TRADER] ✅ Successfully loaded research data: {len(symbols)} stocks (Researcher list format)")
             return json.dumps(converted_data, ensure_ascii=False)
         
-        # 情况3: 原始symbols格式
+        # Case 3: Original symbols format
         else:
-            print(f"✅ 成功加载研究数据: {len(data.get('symbols', []))}个股票")
+            logger.info(f"[TRADER] ✅ Successfully loaded research data: {len(data.get('symbols', []))} stocks")
             return json.dumps(data, ensure_ascii=False)
     except Exception as e:
-        return json.dumps({"error": f"加载研究数据失败: {e}"}, ensure_ascii=False)
+        logger.error(f"[TRADER] ❌ Failed to load research data: {e}")
+        return json.dumps({"error": f"Failed to load research data: {e}"}, ensure_ascii=False)
 
 
 @tool
 def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: int = 120) -> str:
-    """使用Kronos模型进行股价预测。仅在用户明确要求或研究结论建议使用预测时调用。"""
+    """Use Kronos model for stock price prediction. Only call when user explicitly requests or research conclusions suggest using prediction."""
     try:
         import sys
         sys.path.append(os.path.join(os.path.dirname(__file__), 'Kronos'))
         from model import Kronos, KronosTokenizer, KronosPredictor
         
-        # 加载数据
+        # Load data
         df = pd.read_csv(csv_file_path)
         
-        # 列名映射（中文→英文）
+        # Normalize column names to the expected schema
         column_mapping = {
-            '日期': 'timestamp',
-            '开盘价': 'open',
-            '最高价': 'high',
-            '最低价': 'low',
-            '收盘价': 'close',
-            '成交量': 'volume'
+            'date': 'timestamp',
+            'Date': 'timestamp',
+            'open_price': 'open',
+            'Open': 'open',
+            'high_price': 'high',
+            'High': 'high',
+            'low_price': 'low',
+            'Low': 'low',
+            'close_price': 'close',
+            'Close': 'close',
+            'volume_traded': 'volume',
+            'Volume': 'volume'
         }
         df.rename(columns=column_mapping, inplace=True)
         
-        # 计算amount字段（如果不存在）
+        # Calculate amount field (if not exists)
         if 'amount' not in df.columns and 'close' in df.columns and 'volume' in df.columns:
             df['amount'] = df['close'] * df['volume']
         
-        # 验证必需列
+        # Validate required columns
         required_cols = ['open', 'high', 'low', 'close', 'volume', 'amount']
         missing_cols = [col for col in required_cols if col not in df.columns]
         if missing_cols:
-            raise ValueError(f"CSV文件缺少列: {missing_cols}")
+            raise ValueError(f"CSV file missing columns: {missing_cols}")
         
-        # 找到时间戳列
+        # Find timestamp column
         timestamp_col = next((col for col in ['timestamp', 'timestamps', 'datetime'] if col in df.columns), None)
         if not timestamp_col:
-            raise ValueError("CSV文件缺少时间戳列")
+            raise ValueError("CSV file missing timestamp column")
         
         df[timestamp_col] = pd.to_datetime(df[timestamp_col])
         
-        # 初始化Kronos模型
+        # Initialize the Kronos model stack
         tokenizer = KronosTokenizer.from_pretrained("NeoQuasar/Kronos-Tokenizer-base")
         model = Kronos.from_pretrained("NeoQuasar/Kronos-small")
         predictor = KronosPredictor(model, tokenizer, device="cpu", max_context=512)
         
-        # 准备预测数据（使用CSV文件中的完整参数）
+        # Prepare prediction input using the full CSV feature set
         lookback = min(400, len(df))
         x_df = df.tail(lookback)[required_cols].reset_index(drop=True)
         x_timestamp = df.tail(lookback)[timestamp_col].reset_index(drop=True)
         
-        # 生成未来时间戳（基于CSV文件的时间间隔）
+        # Generate future timestamps based on the observed interval
         if len(x_timestamp) > 1:
             time_delta = x_timestamp.iloc[-1] - x_timestamp.iloc[-2]
             y_timestamp = pd.date_range(start=x_timestamp.iloc[-1], periods=prediction_length+1, freq=time_delta)[1:]
         else:
             y_timestamp = pd.date_range(start=x_timestamp.iloc[-1], periods=prediction_length+1, freq='5min')[1:]
         
-        # 执行预测
+        # Run the Kronos forecast
         pred_df = predictor.predict(
             df=x_df,
             x_timestamp=x_timestamp,
@@ -183,70 +193,70 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
             verbose=False
         )
         
-        # 创建输出目录
+        # Create structured output directory
         today = datetime.now().strftime("%Y-%m-%d")
         output_dir = os.path.join("database", today, symbol, "Kronos_output")
         os.makedirs(output_dir, exist_ok=True)
         
         timestamp_str = datetime.now().strftime('%Y%m%d_%H%M%S')
         
-        # 1. 保存预测CSV（添加时间戳列）
+        # 1. Persist prediction CSV (with timestamps)
         pred_df_with_time = pred_df.copy()
         pred_df_with_time.insert(0, 'timestamp', y_timestamp)
         csv_path = os.path.join(output_dir, f"{symbol}_prediction_{timestamp_str}.csv")
         pred_df_with_time.to_csv(csv_path, index=False)
         
-        # 2. 保存专业金融预测图像
+        # 2. Produce a professional-looking forecast chart
         import matplotlib
         matplotlib.use('Agg')
         import matplotlib.pyplot as plt
         import matplotlib.dates as mdates
         from matplotlib.patches import Rectangle
         
-        # 设置专业金融图表样式
+        # Apply capital-markets styling
         plt.style.use('seaborn-v0_8-darkgrid')
         
-        # 设置英文字体
+        # Enforce English-friendly fonts
         plt.rcParams['font.family'] = 'sans-serif'
         plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica', 'sans-serif']
         plt.rcParams['axes.unicode_minus'] = False
         
         fig, ax = plt.subplots(figsize=(14, 8), facecolor='white')
         
-        # 准备时间轴数据
-        hist_length = min(60, len(df))  # 显示最近60天历史数据
+        # Prepare time-axis data
+        hist_length = min(60, len(df))  # display the most recent 60 observations
         hist_close = df['close'].tail(hist_length)
         hist_timestamps = df[timestamp_col].tail(hist_length)
         pred_close = pred_df['close']
         
-        # 转换时间戳
+        # Convert timestamps
         hist_dates = pd.to_datetime(hist_timestamps)
         pred_dates = pd.to_datetime(y_timestamp)
         
-        # 绘制历史价格（深蓝色实线）
+        # Plot historical price (solid navy line)
         ax.plot(hist_dates, hist_close, 
                 color='#1f77b4', linewidth=2.5, 
                 label=f'Historical Price ({hist_length} days)', alpha=0.9)
         
-        # 绘制预测价格（红色虚线）
+        # Plot forecast price (red dashed line)
         ax.plot(pred_dates, pred_close, 
                 color='#d62728', linewidth=2.5, linestyle='--', 
                 label=f'Kronos Prediction ({len(pred_close)} days)', alpha=0.9)
         
-        # 添加预测区间阴影
+        # Shade the predicted range
         pred_min = pred_close.min()
         pred_max = pred_close.max()
         ax.fill_between(pred_dates, pred_min, pred_max, 
                        color='#d62728', alpha=0.1, 
                        label=f'Prediction Range (${pred_min:.2f} - ${pred_max:.2f})')
         
-        # 在历史和预测之间添加分割线
+        # Mark the transition between history and forecast
         transition_date = hist_dates.iloc[-1]
         ax.axvline(x=transition_date, color='gray', linestyle=':', alpha=0.7, linewidth=1.5)
         ax.text(transition_date, ax.get_ylim()[1]*0.95, 'Prediction Start', 
                 rotation=90, ha='right', va='top', fontsize=10, color='gray')
         
-        # 设置专业的标题和标签
+        # Set an informative title and axis labels
         current_price = hist_close.iloc[-1]
         pred_mean = pred_close.mean()
         change_pct = ((pred_mean - current_price) / current_price) * 100
@@ -259,21 +269,21 @@ def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: in
         ax.set_ylabel('Stock Price (USD)', fontsize=12, fontweight='bold')
         ax.set_xlabel('Time', fontsize=12, fontweight='bold')
         
-        # 设置时间轴格式
+        # Tune time-axis formatting
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
         ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
         plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
         
-        # 设置网格
+        # Configure subtle grid styling
         ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
         ax.set_facecolor('#fafafa')
         
-        # 设置图例
+        # Style the legend
         legend = ax.legend(loc='upper left', frameon=True, fancybox=True, shadow=True)
         legend.get_frame().set_facecolor('white')
         legend.get_frame().set_alpha(0.9)
         
-        # 添加价格统计信息
+        # Annotate price statistics
         stats_text = f'''Prediction Statistics:
 Min Price: ${pred_close.min():.2f}
 Max Price: ${pred_close.max():.2f}
@@ -285,19 +295,19 @@ Forecast Days: {len(pred_close)}'''
                 verticalalignment='top', bbox=dict(boxstyle='round', 
                 facecolor='white', alpha=0.8), fontsize=10)
         
-        # 设置Y轴格式（显示美元符号）
+        # Format Y axis with USD decorations
         ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:.0f}'))
         
-        # 调整布局
+        # Final layout adjustments
         plt.tight_layout()
         
-        # 保存高质量图片
+        # Persist high-quality image
         plot_path = os.path.join(output_dir, f"{symbol}_prediction_{timestamp_str}.png")
         plt.savefig(plot_path, dpi=300, bbox_inches='tight', 
                    facecolor='white', edgecolor='none')
         plt.close()
         
-        # 3. 保存元数据
+        # 3. Store rich metadata payload
         def _relative_to_database(path_str: str) -> str:
             base = Path("database").resolve()
             path = Path(path_str).resolve()
@@ -328,7 +338,7 @@ Forecast Days: {len(pred_close)}'''
         with open(metadata_path, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=2)
         
-        # 返回结果
+        # Return the complete artifact bundle
         result = {
             "symbol": symbol,
             "output_dir": output_dir,
@@ -338,24 +348,24 @@ Forecast Days: {len(pred_close)}'''
             "prediction_summary": metadata["prediction_summary"]
         }
         
-        print(f"✅ Kronos预测完成: {symbol}")
-        print(f"   📁 输出目录: {output_dir}")
-        print(f"   📊 CSV文件: {os.path.basename(csv_path)}")
-        print(f"   📈 图表文件: {os.path.basename(plot_path)}")
-        print(f"   📝 元数据文件: {os.path.basename(metadata_path)}")
+        logger.info(f"[TRADER][KRONOS] ✅ Forecast completed: {symbol}")
+        logger.info(f"[TRADER][KRONOS] 📁 Output directory: {output_dir}")
+        logger.info(f"[TRADER][KRONOS] 📊 CSV artifact: {os.path.basename(csv_path)}")
+        logger.info(f"[TRADER][KRONOS] 📈 Chart: {os.path.basename(plot_path)}")
+        logger.info(f"[TRADER][KRONOS] 📝 Metadata: {os.path.basename(metadata_path)}")
         return json.dumps(result, ensure_ascii=False)
         
     except Exception as e:
-        print(f"❌ Kronos预测失败: {e}")
+        logger.error(f"[TRADER][KRONOS] ❌ Forecast failed for {symbol}: {e}")
         return json.dumps({"error": str(e), "symbol": symbol}, ensure_ascii=False)
 
 
 @tool
-def generate_decision_card(symbol: str, current_price: float, recommendation: str, 
+def generate_decision_card(symbol: str, current_price: float, recommendation: str,
                           confidence: float, reasoning: str, prediction_data: Optional[str] = None) -> str:
-    """生成标准化交易决策卡"""
+    """Generate a standardized trading decision card."""
     try:
-        # 解析预测数据
+        # Parse optional prediction payload
         pred_data = None
         if prediction_data:
             try:
@@ -363,7 +373,7 @@ def generate_decision_card(symbol: str, current_price: float, recommendation: st
             except:
                 pass
         
-        # 基础决策卡
+        # Base card skeleton
         card = {
             "symbol": symbol,
             "decision": recommendation.upper(),
@@ -374,41 +384,42 @@ def generate_decision_card(symbol: str, current_price: float, recommendation: st
             "timestamp": datetime.now().isoformat()
         }
         
-        # 如果有预测数据，调整决策
+        # Adjust conviction when forecast data is supplied
         if pred_data and "prediction_summary" in pred_data:
             pred_summary = pred_data["prediction_summary"]
             pred_mean = pred_summary["mean_price"]
             price_change = (pred_mean - current_price) / current_price
             
-            # 基于预测调整置信度
-            if abs(price_change) > 0.05:  # 预测变化超过5%
+            # Adjust confidence based on forecast signal
+            if abs(price_change) > 0.05:  # forecast shift above 5%
                 if (price_change > 0 and recommendation.upper() == "BUY") or (price_change < 0 and recommendation.upper() == "SELL"):
-                    confidence = min(0.9, confidence + 0.1)  # 提高置信度
+                    confidence = min(0.9, confidence + 0.1)  # nudge confidence upward
                 else:
-                    confidence = max(0.3, confidence - 0.1)  # 降低置信度
+                    confidence = max(0.3, confidence - 0.1)  # guardrail to reduce conviction
             
             card["confidence_score"] = round(confidence, 3)
-            card["prediction_insight"] = f"预测价格变化: {price_change:.2%}"
-        
-        # 计算风险参数
+            card["prediction_insight"] = f"Forecast price change: {price_change:.2%}"
+
+        # Compute risk overlay
         risk_metrics = _calculate_risk_metrics(current_price, recommendation.upper(), confidence)
         card.update(risk_metrics)
-        
-        print(f"✅ 生成决策卡: {symbol} - {recommendation}")
+
+        logger.info(f"[TRADER] ✅ Decision card generated for {symbol}: {recommendation}")
         return json.dumps(card, ensure_ascii=False)
         
     except Exception as e:
-        return json.dumps({"error": f"生成决策卡失败: {e}", "symbol": symbol}, ensure_ascii=False)
+        logger.error(f"[TRADER] ❌ Failed to generate decision card for {symbol}: {e}")
+        return json.dumps({"error": f"Failed to generate decision card: {e}", "symbol": symbol}, ensure_ascii=False)
 
 
 def _calculate_risk_metrics(current_price: float, signal: str, confidence: float) -> Dict:
-    """计算风险指标"""
-    # 仓位计算
+    """Calculate positioning and guardrails."""
+    # Position sizing
     base_position = 0.1 if signal in ['BUY', 'SELL'] else 0
     position_size = base_position * confidence
-    position_size = min(position_size, 0.2)  # 最大20%
-    
-    # 止损止盈
+    position_size = min(position_size, 0.2)  # cap at 20%
+
+    # Stop-loss / take-profit rails
     if signal == "BUY":
         stop_loss = round(current_price * 0.95, 4)
         take_profit = round(current_price * 1.15, 4)
@@ -422,20 +433,20 @@ def _calculate_risk_metrics(current_price: float, signal: str, confidence: float
     return {
         "position_size": {
             "percentage": round(position_size, 3),
-            "description": f"建议仓位{position_size*100:.1f}%"
+            "description": f"Suggested allocation {position_size*100:.1f}%"
         },
         "execution_range": {
             "min_price": round(current_price * 0.98, 4),
             "max_price": round(current_price * 1.02, 4),
-            "description": "在当前价格±2%区间内执行"
+            "description": "Execute within ±2% of current price"
         },
         "stop_loss": {
             "price": stop_loss,
-            "description": f"止损价格{stop_loss}" if stop_loss else "无止损设置"
+            "description": f"Stop-loss price {stop_loss}" if stop_loss else "No stop-loss configured"
         },
         "take_profit": {
             "price": take_profit,
-            "description": f"止盈价格{take_profit}" if take_profit else "无止盈设置"
+            "description": f"Take-profit price {take_profit}" if take_profit else "No take-profit configured"
         }
     }
 
@@ -445,35 +456,37 @@ def _calculate_risk_metrics(current_price: float, signal: str, confidence: float
 ########################################
 
 class Trader:
-    """
-    智能交易Agent - 基于LangChain工具调用的决策系统
-    """
+    """Smart trading agent orchestrated via LangChain tool calling."""
 
     def __init__(self) -> None:
-        """初始化Trader Agent"""
+        """Initialize Trader agent."""
         self.llm = LLM_GOOGLE
         self.agent_executor = self._build_agent()
-        print("✅ Trader Agent初始化成功")
+        logger.info("[TRADER] ✅ Trader agent initialized")
 
     def _build_agent(self) -> AgentExecutor:
-        """构建Trader Agent"""
+        """Construct the trader agent executor."""
         tools = [load_research_data, run_kronos_prediction, generate_decision_card]
         
         prompt = ChatPromptTemplate.from_messages([
-            ("system", 
-             "你是一个专业的量化交易Agent，负责分析研究团队的结论并生成交易决策。\n"
-             "工作流程：\n"
-             "1. load_research_data加载研究数据（自动包含csv_path字段）\n"
-             "2. 分析用户请求，判断是否需要Kronos预测\n"
-             "3. 如需Kronos预测：run_kronos_prediction(csv_file_path=symbol['csv_path'], symbol=symbol['symbol'])\n"
-             "4. generate_decision_card生成决策卡（可选传入prediction_data）\n"
-             "Kronos调用决策：\n"
-             "- 用户明确要求预测/价格预测/未来走势/Kronos时，必须调用Kronos\n"
-             "- 用户要求完整分析/全面分析时，建议调用Kronos\n"
-             "- uncertainty_level为high/very_high时，建议调用Kronos\n"
-             "- 只要csv_path存在且用户有预测需求，就应该调用Kronos\n"
-             "- 综合研究结论和预测结果做出最终决策\n"
-             "请按照工作流程完成任务。"),
+            ("system",
+             "You are the Market Lens trading officer. Translate research outputs into actionable execution plans.\n"
+             "Duties:\n"
+             "- Fully digest the research JSON, align with user intent, and craft a coherent strategy.\n"
+             "- Maintain a professional, auditable tone; never fabricate missing data—state assumptions explicitly.\n"
+             "Available tools:\n"
+             "1) load_research_data – load research outputs (including csv_path fields).\n"
+             "2) run_kronos_prediction – invoke Kronos when additional forecasting is warranted.\n"
+             "3) generate_decision_card – produce a structured trading decision card.\n"
+             "Operating guidelines:\n"
+             "a. Call load_research_data first and inspect the symbols list.\n"
+             "b. Based on user requests, research uncertainty, and csv_path availability, decide whether to run Kronos per symbol; when used, capture prediction_data in the decision card.\n"
+             "c. Use generate_decision_card to synthesize research takeaways, risk controls, and sizing, incorporating Kronos insights when provided.\n"
+             "Kronos rules of engagement:\n"
+             "- Mandatory when the user explicitly asks for forecasts / price outlook / Kronos.\n"
+             "- Recommended for “comprehensive analysis” requests or when uncertainty is high / very_high.\n"
+             "- When csv_path is available and the user signals interest, run Kronos and reference the key outputs.\n"
+             "The final answer must reconcile research, live predictions, and risk controls with clear sourcing."),
             MessagesPlaceholder("chat_history"),
             ("user", "{input}"),
             MessagesPlaceholder("agent_scratchpad"),
@@ -489,29 +502,29 @@ class Trader:
         )
     
     def analyze_and_decide(self, research_json: str, csv_files: List[str] = None, use_kronos: bool = None) -> str:
-        """主Agent调用接口 - 分析并生成交易决策"""
+        """Primary agent entrypoint to analyze and generate trading decisions."""
         if use_kronos is False:
-            request = f"请基于研究结论生成交易决策卡，不要使用Kronos预测。研究文件: {research_json}"
+            request = f"Generate a trading decision card based on the research conclusions without using Kronos. Research file: {research_json}"
         elif use_kronos is True:
-            csv_info = f"，CSV文件: {', '.join(csv_files)}" if csv_files else ""
-            request = f"请基于研究结论生成交易决策卡，必须使用Kronos预测。研究文件: {research_json}{csv_info}"
+            csv_info = f", CSV files: {', '.join(csv_files)}" if csv_files else ""
+            request = f"Generate a trading decision card based on the research conclusions. Kronos forecasting is required. Research file: {research_json}{csv_info}"
         else:
-            csv_info = f"，CSV文件: {', '.join(csv_files)}" if csv_files else ""
-            request = f"请基于研究结论生成交易决策卡，根据研究建议决定是否使用Kronos预测。研究文件: {research_json}{csv_info}"
+            csv_info = f", CSV files: {', '.join(csv_files)}" if csv_files else ""
+            request = f"Generate a trading decision card based on the research conclusions and decide whether Kronos is needed. Research file: {research_json}{csv_info}"
         
         try:
             result = self.agent_executor.invoke({"input": request, "chat_history": []})
             return result["output"]
         except Exception as e:
-            return f"❌ 分析失败: {str(e)}"
+            return f"❌ Analysis failed: {str(e)}"
     
     def process_request(self, user_request: str, research_json: str = None, csv_files: List[str] = None) -> str:
-        """处理自然语言请求"""
+        """Handle natural-language user requests."""
         context = ""
         if research_json:
-            context += f"研究结论文件: {research_json}。"
+            context += f"Research file: {research_json}."
         if csv_files:
-            context += f"可用数据文件: {', '.join(csv_files)}。"
+            context += f"Available data files: {', '.join(csv_files)}."
         
         full_request = f"{user_request}。{context}"
         
@@ -519,8 +532,8 @@ class Trader:
             result = self.agent_executor.invoke({"input": full_request, "chat_history": []})
             return result["output"]
         except Exception as e:
-            return f"❌ 处理失败: {str(e)}"
+            return f"❌ Request handling failed: {str(e)}"
     
     def get_available_tools(self) -> List[str]:
-        """获取可用工具列表"""
+        """Return the registered tool list."""
         return [tool.name for tool in self.agent_executor.tools]

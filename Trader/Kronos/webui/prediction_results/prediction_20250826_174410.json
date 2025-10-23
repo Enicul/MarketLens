@@ -1,7 +1,7 @@
 {
   "timestamp": "2025-08-26T17:44:10.054830",
   "file_path": "/Users/charles/Kronos/data/BTC_USDT_USDT-5m-futures.feather",
-  "prediction_type": "Kronos模型预测 (选择的窗口内：前400个数据点预测，后120个数据点对比，时间跨度: 1 days 19:15:00)",
+  "prediction_type": "Kronos model prediction (window: previous 400 data points for training, next 120 for comparison, span: 1 days 19:15:00)",
   "prediction_params": {
     "lookback": 400,
     "pred_len": 120,

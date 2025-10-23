@@ -262,12 +262,12 @@ class ToolAwareConversationMemory(ConversationBufferMemory):
             }
 
             summary_lines = [
-                f"🔧 工具调用：{record['tool']}",
-                f"➡️ 输入：{_safe_serialize(record['input'])}",
-                f"⬅️ 输出：{_safe_serialize(record['output'])}",
+                f"🔧 Tool call: {record['tool']}",
+                f"➡️ Input: {_safe_serialize(record['input'])}",
+                f"⬅️ Output: {_safe_serialize(record['output'])}",
             ]
             if record["log"]:
-                summary_lines.append(f"📝 日志：{_safe_serialize(record['log'])}")
+                summary_lines.append(f"📝 Log: {_safe_serialize(record['log'])}")
 
             record["tool_call_id"] = getattr(action, "tool_call_id", None)
             message = SystemMessage(
@@ -322,12 +322,12 @@ class ToolAwareConversationMemory(ConversationBufferMemory):
                 "timestamp": datetime.utcnow().isoformat() + "Z",
             }
             summary_lines = [
-                f"🔧 工具调用：{record['tool']}",
-                f"➡️ 输入：{_safe_serialize(record['input'])}",
-                f"⬅️ 输出：{_safe_serialize(record['output'])}",
+                f"🔧 Tool call: {record['tool']}",
+                f"➡️ Input: {_safe_serialize(record['input'])}",
+                f"⬅️ Output: {_safe_serialize(record['output'])}",
             ]
             if record["log"]:
-                summary_lines.append(f"📝 日志：{_safe_serialize(record['log'])}")
+                summary_lines.append(f"📝 Log: {_safe_serialize(record['log'])}")
 
             record["tool_call_id"] = getattr(action, "tool_call_id", None)
             message = SystemMessage(
@@ -409,7 +409,7 @@ class MemorySessionManager:
         return datetime.utcnow().strftime("session-%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:8]
 
     def _generate_default_name(self) -> str:
-        prefix = "对话 "
+        prefix = "Conversation "
         existing = {meta.name for meta in self._meta.values() if meta.name.startswith(prefix)}
         index = 1
         while f"{prefix}{index}" in existing:

@@ -45,7 +45,7 @@ interface MetadataShape {
 const fetchCsvSeries = async (url: string, maxPoints: number = 500): Promise<ParsedPoint[]> => {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`无法获取数据: ${url}`);
+    throw new Error(`Failed to fetch data: ${url}`);
   }
   const text = await response.text();
   const parsed = Papa.parse<Record<string, string>>(text, {
@@ -53,11 +53,11 @@ const fetchCsvSeries = async (url: string, maxPoints: number = 500): Promise<Par
     skipEmptyLines: true
   });
   if (parsed.errors.length) {
-    console.warn("CSV 解析警告:", parsed.errors[0].message);
+    console.warn("CSV parsing warning:", parsed.errors[0].message);
   }
   const rows = parsed.data.filter(Boolean);
   
-  // 解析数据点
+  // Parse data points
   const points = rows
     .map((row) => {
       const keyFor = (candidates: string[], fallback?: string) => {
@@ -71,8 +71,8 @@ const fetchCsvSeries = async (url: string, maxPoints: number = 500): Promise<Par
         return undefined;
       };
 
-      const ts = keyFor(["timestamp", "Timestamp", "时间", "日期"], "timestamp");
-      const close = keyFor(["close", "Close", "收盘价"], "close");
+      const ts = keyFor(["timestamp", "Timestamp", "time", "date"], "timestamp");
+      const close = keyFor(["close", "Close", "closing_price"], "close");
       if (!ts || !close) return null;
       const time = new Date(ts).getTime();
       if (Number.isNaN(time)) return null;
@@ -86,15 +86,15 @@ const fetchCsvSeries = async (url: string, maxPoints: number = 500): Promise<Par
     })
     .filter((point): point is ParsedPoint => Boolean(point));
   
-  // 如果数据点过多，进行降采样（保留首尾和重要点）
+  // If too many data points, downsample (keep first, last and key points)
   if (points.length > maxPoints) {
-    console.log(`降采样: ${points.length} → ${maxPoints} 点`);
+    console.log(`Downsampling: ${points.length} → ${maxPoints} points`);
     const step = Math.floor(points.length / maxPoints);
     const sampled: ParsedPoint[] = [];
     for (let i = 0; i < points.length; i += step) {
       sampled.push(points[i]);
     }
-    // 确保包含最后一个点
+    // Ensure last point is included
     if (sampled[sampled.length - 1].time !== points[points.length - 1].time) {
       sampled.push(points[points.length - 1]);
     }
@@ -125,7 +125,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
         const predictionSource = resolveUrl(predictionUrl ?? meta?.output_files?.csv);
 
         if (!predictionSource) {
-          throw new Error("缺少Kronos预测数据");
+          throw new Error("Missing Kronos prediction data");
         }
 
         const [historySeries, predictionSeries] = await Promise.all([
@@ -158,7 +158,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
     const maxValue = Math.max(...allPoints.map((p) => p.value));
     const predictionStart = historyData.length ? historyData[historyData.length - 1].time : predictionData[0].time;
 
-    // 计算统计信息
+    // Compute prediction summary statistics
     const predMean = predictionData.reduce((sum, p) => sum + p.value, 0) / predictionData.length;
     const predMin = Math.min(...predictionData.map(p => p.value));
     const predMax = Math.max(...predictionData.map(p => p.value));
@@ -168,7 +168,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
       animationDuration: 300,
       backgroundColor: "#ffffff",
       title: {
-        text: `${symbol.toUpperCase()} Kronos 预测走势`,
+        text: `${symbol.toUpperCase()} Kronos Prediction Trend`,
         left: "center",
         textStyle: { fontSize: 16, fontWeight: "bold", color: "#111827" }
       },
@@ -182,7 +182,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
         },
         formatter: (params: any) => {
           if (!Array.isArray(params) || params.length === 0) return "";
-          const time = new Date(params[0].value[0]).toLocaleString("zh-CN");
+          const time = new Date(params[0].value[0]).toLocaleString("en-US");
           let content = `<div style="font-size:12px;font-weight:bold;margin-bottom:4px;">${time}</div>`;
           params.forEach((param: any) => {
             const value = param.value[1];
@@ -196,7 +196,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
         }
       },
       legend: {
-        data: historyData.length ? ["历史价格", "Kronos预测"] : ["Kronos预测"],
+        data: historyData.length ? ["Historical Price", "Kronos Prediction"] : ["Kronos Prediction"],
         top: 30,
         textStyle: { color: "#4b5563" }
       },
@@ -215,7 +215,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
       } as any,
       yAxis: {
         type: "value",
-        name: "价格 (USD)",
+        name: "Price (USD)",
         nameTextStyle: { color: "#64748b", fontSize: 12 },
         axisLabel: {
           formatter: (value: number) => `$${value.toFixed(0)}`,
@@ -229,7 +229,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
       series: [
         historyData.length > 0
           ? {
-              name: "历史价格",
+              name: "Historical Price",
               type: "line",
               smooth: false,
               sampling: "lttb",
@@ -257,7 +257,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
                 symbol: "none",
                 lineStyle: { color: "#94a3b8", width: 1.5, type: "dotted" },
                 label: {
-                  formatter: "预测起点",
+                  formatter: "Prediction Start",
                   color: "#64748b",
                   fontSize: 11,
                   position: "insideEndTop"
@@ -267,7 +267,7 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
             }
           : null,
         {
-          name: "Kronos预测",
+          name: "Kronos Prediction",
           type: "line",
           smooth: false,
           sampling: "lttb",
@@ -296,9 +296,9 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
             lineStyle: { color: "#22c55e", width: 1, type: "dashed", opacity: 0.6 },
             label: { show: false },
             data: [
-              { yAxis: predMean, label: { show: true, formatter: `均值 $${predMean.toFixed(2)}`, position: "insideEndTop", color: "#16a34a" } },
-              { yAxis: predMin, label: { show: true, formatter: `最低 $${predMin.toFixed(2)}`, position: "insideEndBottom", color: "#dc2626" } },
-              { yAxis: predMax, label: { show: true, formatter: `最高 $${predMax.toFixed(2)}`, position: "insideEndTop", color: "#0891b2" } }
+              { yAxis: predMean, label: { show: true, formatter: `Mean $${predMean.toFixed(2)}`, position: "insideEndTop", color: "#16a34a" } },
+              { yAxis: predMin, label: { show: true, formatter: `Min $${predMin.toFixed(2)}`, position: "insideEndBottom", color: "#dc2626" } },
+              { yAxis: predMax, label: { show: true, formatter: `Max $${predMax.toFixed(2)}`, position: "insideEndTop", color: "#0891b2" } }
             ]
           }
         }
@@ -307,10 +307,10 @@ export function KronosChart({ symbol, metadataUrl, historyUrl, predictionUrl }: 
   }, [history, prediction, symbol]);
 
   if (error) {
-    return <div className="chart-error">无法加载Kronos预测图：{error}</div>;
+    return <div className="chart-error">Failed to load Kronos prediction chart: {error}</div>;
   }
   if (!option) {
-    return <div className="chart-loading">正在加载Kronos预测数据…</div>;
+    return <div className="chart-loading">Loading Kronos prediction data…</div>;
   }
 
   return (

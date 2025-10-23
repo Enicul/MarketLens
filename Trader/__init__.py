@@ -1,4 +1,4 @@
-# Trader子模块 - 简洁版本
+# Trader submodule entry point
 from .trader import Trader
 
 __all__ = ['Trader']

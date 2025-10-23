@@ -1,91 +1,91 @@
-# Trader 子Agent - 基于LangChain的智能交易系统
+# Trader Sub-Agent - LangChain-based Intelligent Trading System
 
-## 🚀 核心特性
+## 🚀 Core Features
 
-- **LangChain架构**: 使用LangChain工具装饰器，与主Agent保持一致
-- **智能决策**: GPT-4o-mini作为决策大脑，自动选择合适的工具
-- **模块化设计**: 每个功能都是独立的@tool装饰器函数
-- **主Agent接口**: 提供标准化接口供主Agent调用
+- **LangChain Architecture**: Uses LangChain tool decorators, consistent with main agent
+- **Intelligent Decision Making**: GPT-4o-mini as decision brain, automatically selects appropriate tools
+- **Modular Design**: Each function is an independent @tool decorator function
+- **Main Agent Interface**: Provides standardized interface for main agent calls
 
-## 快速开始
+## Quick Start
 
-### 1. 安装依赖
+### 1. Install Dependencies
 
 ```bash
 pip install pandas numpy langchain langchain-openai langchain-core matplotlib
 ```
 
-### 2. 基本使用
+### 2. Basic Usage
 
 ```python
 from trader import Trader
 
-# 初始化Trader Agent
+# Initialize Trader Agent
 trader = Trader()
 
-# 方式1: 主Agent调用接口
+# Method 1: Main agent call interface
 result = trader.analyze_and_decide(
     research_json="research_conclusion.json",
     csv_files=["AAPL_data.csv", "TSLA_data.csv"]
 )
 
-# 方式2: 自然语言请求
+# Method 2: Natural language request
 result = trader.process_request(
-    "请分析研究结论，如果不确定性高就用Kronos预测，生成决策卡",
+    "Please analyze research conclusions, use Kronos prediction if uncertainty is high, generate decision card",
     research_json="research_conclusion.json",
     csv_files=["AAPL_data.csv"]
 )
 
-# 查看结果（LangChain返回字符串结果）
-print("交易决策结果:", result)
+# View result (LangChain returns string result)
+print("Trading decision result:", result)
 
-# 查看可用工具
-print("可用工具:", trader.get_available_tools())
+# View available tools
+print("Available tools:", trader.get_available_tools())
 ```
 
-### 3. 运行示例
+### 3. Run Example
 
 ```bash
 python example.py
 ```
 
-## 输入格式
+## Input Format
 
-### 研究团队结论JSON格式
+### Research Team Conclusion JSON Format
 
 ```json
 {
   "date": "2024-01-01",
-  "analyst_team": "MarketLens研究团队",
+  "analyst_team": "MarketLens Research Team",
   "market_outlook": "BULLISH",
   "uncertainty_level": "high",
   "use_kronos_prediction": true,
-  "key_themes": ["科技股反弹", "AI概念热潮"],
+  "key_themes": ["Tech stock rebound", "AI concept surge"],
   "symbols": [
     {
       "symbol": "AAPL",
       "current_price": 175.50,
       "recommendation": "BUY",
       "confidence": 0.75,
-      "reasoning": "iPhone销售超预期",
+      "reasoning": "iPhone sales exceed expectations",
       "risk_level": "MEDIUM",
-      "time_horizon": "3-6个月"
+      "time_horizon": "3-6 months"
     }
   ]
 }
 ```
 
-### CSV数据文件（可选，用于Kronos预测）
-- 必需列: `open`, `high`, `low`, `close`
-- 可选列: `volume`, `amount`, `timestamp`
+### CSV Data File (Optional, for Kronos prediction)
+- Required columns: `open`, `high`, `low`, `close`
+- Optional columns: `volume`, `amount`, `timestamp`
 
-## 输出格式 - 标准化决策卡
+## Output Format - Standardized Decision Card
 
 ```json
 {
   "timestamp": "2024-01-01T12:00:00",
   "research_summary": {
-    "analyst_team": "MarketLens研究团队",
+    "analyst_team": "MarketLens Research Team",
     "market_outlook": "BULLISH",
     "uncertainty_level": "high",
     "use_kronos_prediction": true
@@ -98,91 +98,91 @@ python example.py
       "current_price": 175.50,
       "position_sizing": {
         "percentage": 0.075,
-        "description": "建议仓位7.5%"
+        "description": "Recommended position 7.5%"
       },
       "execution_range": {
         "min_price": 171.99,
         "max_price": 179.01,
-        "description": "在当前价格±2%区间内执行"
+        "description": "Execute within current price ±2% range"
       },
       "stop_loss": {
         "price": 166.73,
         "percentage": 0.05,
-        "description": "止损价格166.73（5%止损）"
+        "description": "Stop loss price 166.73 (5% stop loss)"
       },
       "take_profit": {
         "price": 201.83,
         "percentage": 0.15,
-        "description": "止盈价格201.83（15%止盈）"
+        "description": "Take profit price 201.83 (15% take profit)"
       },
       "risk_level": "MEDIUM",
-      "time_horizon": "3-6个月",
+      "time_horizon": "3-6 months",
       "has_prediction": true
     }
   },
   "prediction_data": {
     "AAPL": {
-      "predictions": "Kronos预测数据",
+      "predictions": "Kronos prediction data",
       "type": "kronos"
     }
   }
 }
 ```
 
-## 🛠️ LangChain工具
+## 🛠️ LangChain Tools
 
-使用`@tool`装饰器定义的工具函数：
+Tool functions defined with `@tool` decorator:
 
 ```python
 @tool
 def load_research_data(json_file_path: str) -> str:
-    """加载和解析研究团队的分析结论"""
+    """Load and parse research team's analysis conclusions"""
 
 @tool  
 def run_kronos_prediction(csv_file_path: str, symbol: str, prediction_length: int = 120) -> str:
-    """使用Kronos模型进行股价预测，返回预测图和预测数据"""
+    """Use Kronos model for stock price prediction, returns prediction chart and data"""
 
 @tool
 def generate_decision_card(symbol: str, current_price: float, recommendation: str, 
                           confidence: float, reasoning: str, prediction_data: str = None) -> str:
-    """生成标准化交易决策卡"""
+    """Generate standardized trading decision card"""
 ```
 
-## 🧠 LangChain Agent流程
+## 🧠 LangChain Agent Flow
 
-1. **Agent分析**: 使用`create_tool_calling_agent`创建智能Agent
-2. **工具选择**: Agent自动选择需要调用的工具
-3. **执行器**: `AgentExecutor`负责工具的执行和结果处理
-4. **结果返回**: 返回自然语言格式的分析结果
+1. **Agent Analysis**: Create intelligent agent using `create_tool_calling_agent`
+2. **Tool Selection**: Agent automatically selects tools to call
+3. **Executor**: `AgentExecutor` responsible for tool execution and result handling
+4. **Result Return**: Returns analysis result in natural language format
 
-## 🔗 主Agent集成
+## 🔗 Main Agent Integration
 
 ```python
-# 与主Agent相同的架构模式
+# Same architectural pattern as main agent
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain_core.tools import tool
 
-# 工具定义
+# Tool definition
 @tool
 def your_tool(param: str) -> str:
-    """工具描述"""
-    return "工具结果"
+    """Tool description"""
+    return "Tool result"
 
-# Agent构建
+# Agent construction
 agent = create_tool_calling_agent(llm, tools, prompt)
 executor = AgentExecutor(agent=agent, tools=tools)
 ```
 
-## 🎯 Kronos预测工具
+## 🎯 Kronos Prediction Tool
 
-Kronos预测功能直接集成在trader.py中，具备以下特性：
+Kronos prediction functionality is directly integrated in trader.py with the following features:
 
-- **简洁集成**: 直接在@tool装饰器中实现，无需额外文件
-- **图表生成**: 自动生成专业的股价预测图表
-- **中文支持**: 解决字体问题，支持中文显示
-- **数据返回**: 提供详细的预测数据摘要
+- **Concise Integration**: Implemented directly in @tool decorator, no additional files needed
+- **Chart Generation**: Automatically generates professional stock price prediction charts
+- **Chinese Support**: Solves font issues, supports Chinese display
+- **Data Return**: Provides detailed prediction data summary
 
-### Kronos工具输出
+### Kronos Tool Output
 
 ```json
 {
@@ -198,4 +198,3 @@ Kronos预测功能直接集成在trader.py中，具备以下特性：
   "success": true
 }
 ```
-

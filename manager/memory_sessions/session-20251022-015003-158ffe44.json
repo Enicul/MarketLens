@@ -1,22 +1,4 @@
 {
-  "history": [
-    {
-      "role": "human",
-      "content": "你好 ",
-      "timestamp": "2025-10-22T01:50:08.844848Z"
-    },
-    {
-      "role": "ai",
-      "content": "你好！有什么我可以帮助你的吗？无论是股票分析、市场研究还是投资建议，请随时告诉我。",
-      "timestamp": "2025-10-22T01:50:08.845104Z"
-    }
-  ],
-  "decisions": [
-    {
-      "input": "你好 ",
-      "output": null,
-      "tools": [],
-      "timestamp": "2025-10-22T01:50:08.845349Z"
-    }
-  ]
+  "session_id": "session-20251022-015003-158ffe44",
+  "note": "Session content removed during English localization."
 }
