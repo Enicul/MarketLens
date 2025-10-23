@@ -1,0 +1,161 @@
+{
+  "ticker": "OECL",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T17:00:41+00:00",
+      "headline": "For workers in young, hot world of AI careers, the dream payday is as often ending as layoff nightmare",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/big-tech-ai-acquisition-layoffs-workers.html"
+      ],
+      "summary": [
+        "For workers in young, hot world of AI careers, the dream payday is as often ending as layoff nightmare"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:57:01+00:00",
+      "headline": "Trump White House East Wing ballroom project got $22M boost from YouTube legal settlement",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/trump-white-house-ballroom-east-wing-demolition-youtube.html"
+      ],
+      "summary": [
+        "Trump White House East Wing ballroom project got $22M boost from YouTube legal settlement"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:55:21+00:00",
+      "headline": "Meta lays off 600 employees within AI unit",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/meta-layoffs-ai.html"
+      ],
+      "summary": [
+        "Meta lays off 600 employees within AI unit"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:48:58+00:00",
+      "headline": "GE Vernova CEO says he's talking with OpenAI's Sam Altman as power remains critical for AI growth",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/ge-vernova-ceo-says-hes-talking-with-openais-sam-altman-.html"
+      ],
+      "summary": [
+        "GE Vernova CEO says he's talking with OpenAI's Sam Altman as power remains critical for AI growth"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:42:44+00:00",
+      "headline": "NFL approves sale of minority stake in New York Giants to Julia Koch at a $10.3B valuation",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/nfl-sale-minority-stake-giants-koch.html"
+      ],
+      "summary": [
+        "NFL approves sale of minority stake in New York Giants to Julia Koch at a $10.3B valuation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:40:57+00:00",
+      "headline": "The biggest crypto wipeout was led not by bitcoin, but much smaller tokens. Here's what happened",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/the-biggest-crypto-wipeout-was-led-not-by-bitcoin-but-much-smaller-tokens-heres-what-happened.html"
+      ],
+      "summary": [
+        "The biggest crypto wipeout was led not by bitcoin, but much smaller tokens. Here's what happened"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:36:01+00:00",
+      "headline": "Beyond Meat shares slash gains, briefly dipping into the red as meme rally falters",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/beyond-meat-shares-surge-for-a-third-day-in-a-row-as-meme-traders-jump-on-board.html"
+      ],
+      "summary": [
+        "Beyond Meat shares slash gains, briefly dipping into the red as meme rally falters"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "OECL"
+      ],
+      "publisher": "US Top News and Analysis",
+      "published_at": "2025-10-22T16:30:47+00:00",
+      "headline": "Walmart pauses H-1B visas for job candidates as Trump hikes fees",
+      "evidence": [
+        "https://www.cnbc.com/2025/10/22/walmart-h-1b-visa-job-offers-trump-fee.html"
+      ],
+      "summary": [
+        "Walmart pauses H-1B visas for job candidates as Trump hikes fees"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-22T17:03:09.302386+00:00"
+}

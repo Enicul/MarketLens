@@ -13,13 +13,13 @@ from .lib.fundamentals import get_fundamentals
 from .lib.news import get_news
 from .lib.yahoo import get_market, get_market_csv
 from .lib.X_search import get_sentiment  
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 # Setup environment and path
 load_dotenv()
 sys.path.append(os.path.dirname(__file__))
 
 
-llm = LLM_GOOGLE
+llm = LLM_GOOGLE_FLASH
 
 # --- Prompt: called by a Main Manager; return JSON-only ---
 prompt = ChatPromptTemplate.from_messages(

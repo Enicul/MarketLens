@@ -57,3 +57,12 @@ LLM_GOOGLE = ChatGoogleGenerativeAI(
     verbose=True,
     streaming=True,
 )
+
+LLM_GOOGLE_FLASH = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    temperature=1,
+    google_api_key=google_api_key,
+    convert_system_message_to_human=False,
+    verbose=True,
+    streaming=True,
+)

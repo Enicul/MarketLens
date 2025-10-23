@@ -8,6 +8,7 @@ import json
 import pandas as pd
 from typing import Dict, List, Optional
 from datetime import datetime
+from pathlib import Path
 
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -297,10 +298,18 @@ Forecast Days: {len(pred_close)}'''
         plt.close()
         
         # 3. 保存元数据
+        def _relative_to_database(path_str: str) -> str:
+            base = Path("database").resolve()
+            path = Path(path_str).resolve()
+            try:
+                return path.relative_to(base).as_posix()
+            except ValueError:
+                return path.as_posix()
+
         metadata = {
             "symbol": symbol,
             "prediction_time": datetime.now().isoformat(),
-            "input_csv": csv_file_path,
+            "input_csv": _relative_to_database(csv_file_path),
             "prediction_length": prediction_length,
             "lookback_length": lookback,
             "prediction_summary": {
@@ -310,11 +319,11 @@ Forecast Days: {len(pred_close)}'''
                 "std_price": float(pred_df['close'].std())
             },
             "output_files": {
-                "csv": csv_path,
-                "plot": plot_path
+                "csv": _relative_to_database(csv_path),
+                "plot": _relative_to_database(plot_path)
             }
         }
-        
+
         metadata_path = os.path.join(output_dir, f"{symbol}_metadata_{timestamp_str}.json")
         with open(metadata_path, 'w', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=2)

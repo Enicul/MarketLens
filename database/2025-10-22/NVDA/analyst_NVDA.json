@@ -164,7 +164,7 @@
         "generated_at": "2025-10-22T11:42:30.223404+00:00"
       },
       "error": null,
-      "cached": false
+      "cached": true
     },
     "fundamentals": {
       "data": {
@@ -235,7 +235,7 @@
         "retrieved_at": "2025-10-22T11:42:36.076702"
       },
       "error": null,
-      "cached": false
+      "cached": true
     },
     "market": {
       "data": {
@@ -306,7 +306,7 @@
         }
       },
       "error": null,
-      "cached": false
+      "cached": true
     },
     "sentiment": {
       "data": {
@@ -340,17 +340,17 @@
         }
       },
       "error": null,
-      "cached": false
+      "cached": true
     }
   },
   "csv_generation": {
     "ticker": "NVDA",
     "period": "3mo",
     "interval": "1d",
-    "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-22/NVDA/market_csv/NVDA_3mo_1d_20251022_194227.csv",
-    "filename": "NVDA_3mo_1d_20251022_194227.csv",
+    "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-22/NVDA/market_csv/NVDA_3mo_1d_20251022_204937.csv",
+    "filename": "NVDA_3mo_1d_20251022_204937.csv",
     "size_bytes": 22919,
-    "retrieved_at": "2025-10-22T11:42:27.530514"
+    "retrieved_at": "2025-10-22T12:49:37.033541"
   },
-  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-22/NVDA/market_csv/NVDA_3mo_1d_20251022_194227.csv"
+  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-22/NVDA/market_csv/NVDA_3mo_1d_20251022_204937.csv"
 }

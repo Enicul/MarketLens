@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 import queue
 import re
 import secrets
@@ -18,12 +19,13 @@ from fastapi import (
     status,
 )
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from langchain.callbacks.base import AsyncCallbackHandler
 from langchain_core.outputs import LLMResult
 
-from manager.agent_stream_gradio import build_main_agent
+from manager.agent_stream_gradio import build_main_agent, pop_analysis_config, push_analysis_config
 from manager.log_stream import get_log_manager
 from manager.memory_manager import (
     MemorySessionManager,
@@ -125,6 +127,15 @@ def _progress_payload(
     return entry
 
 
+async def _safe_send_json(websocket: WebSocket, payload: Dict[str, Any]) -> bool:
+    """Send JSON over websocket; swallow disconnect/runtime errors."""
+    try:
+        await websocket.send_json(payload)
+        return True
+    except (WebSocketDisconnect, RuntimeError):
+        return False
+
+
 async def _push_progress(
     websocket: WebSocket,
     session_id: str,
@@ -142,7 +153,7 @@ async def _push_progress(
         level=level,
         timestamp=timestamp,
     )
-    await websocket.send_json(entry)
+    await _safe_send_json(websocket, entry)
     try:
         MEMORY_MANAGER.append_progress(session_id, entry)
     except Exception:
@@ -180,6 +191,9 @@ LOG_MANAGER = get_log_manager()
 
 app = FastAPI(title="Market Lens Realtime API")
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+DATABASE_DIR = os.path.join(BASE_DIR, "database")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -187,6 +201,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if os.path.isdir(DATABASE_DIR):
+    app.mount("/assets", StaticFiles(directory=DATABASE_DIR), name="assets")
 
 
 def get_current_session(authorization: str = Header(...)) -> AuthSession:
@@ -389,36 +406,38 @@ async def _forward_logs(websocket: WebSocket, log_queue: queue.Queue, session_id
         return cleaned.strip()
 
     async def _emit_manager_thinking(message: str, actor_key: str, label: str) -> None:
-        try:
-            await websocket.send_json(
-                {
-                    "type": "thinking_status",
-                    "actor": actor_key,
-                    "label": label,
-                    "status": "start",
-                }
-            )
-            await websocket.send_json(
-                {
-                    "type": "thinking_content",
-                    "actor": actor_key,
-                    "label": label,
-                    "content": message,
-                }
-            )
-        except WebSocketDisconnect:
+        sent = await _safe_send_json(
+            websocket,
+            {
+                "type": "thinking_status",
+                "actor": actor_key,
+                "label": label,
+                "status": "start",
+            },
+        )
+        if not sent:
             return
+        await _safe_send_json(
+            websocket,
+            {
+                "type": "thinking_content",
+                "actor": actor_key,
+                "label": label,
+                "content": message,
+            },
+        )
 
         async def _auto_stop() -> None:
             try:
                 await asyncio.sleep(3.0)
-                await websocket.send_json(
+                await _safe_send_json(
+                    websocket,
                     {
                         "type": "thinking_status",
                         "actor": actor_key,
                         "label": label,
                         "status": "stop",
-                    }
+                    },
                 )
             except (WebSocketDisconnect, RuntimeError):
                 return
@@ -561,26 +580,27 @@ class WebSocketAgentCallback(AsyncCallbackHandler):
         }
         if message:
             payload["message"] = message
-        await self.websocket.send_json(payload)
+        await _safe_send_json(self.websocket, payload)
 
     async def on_llm_start(self, *args: Any, **kwargs: Any) -> None:
         self._response_parts = []
-        await self.websocket.send_json({"type": "status", "message": "模型生成中..."})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "模型生成中..."})
         actor_key = self._current_actor_key()
         self._llm_actor_stack.append(actor_key)
         await self._send_thinking_status(actor_key, "start")
 
     async def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
         self._response_parts.append(token)
-        await self.websocket.send_json({"type": "token", "token": token})
+        await _safe_send_json(self.websocket, {"type": "token", "token": token})
 
     async def on_llm_end(self, response: LLMResult, **kwargs: Any) -> None:
-        await self.websocket.send_json({"type": "status", "message": "生成完成"})
+        await _safe_send_json(self.websocket, {"type": "status", "message": "生成完成"})
         actor_key = self._llm_actor_stack.pop() if self._llm_actor_stack else "manager"
         label = self._actor_label(actor_key)
         thinking_text = _extract_thinking_text(response)
         if thinking_text:
-            await self.websocket.send_json(
+            await _safe_send_json(
+                self.websocket,
                 {
                     "type": "thinking_content",
                     "actor": actor_key,
@@ -680,7 +700,8 @@ async def chat_websocket(
 
             user_input = event.get("content", "").strip()
             if not user_input:
-                await websocket.send_json({"type": "error", "message": "请输入有效的问题"})
+                if not await _safe_send_json(websocket, {"type": "error", "message": "请输入有效的问题"}):
+                    break
                 continue
 
             callback = WebSocketAgentCallback(websocket, session_id)
@@ -699,17 +720,27 @@ async def chat_websocket(
                 stage="start",
             )
             agent = build_main_agent(config=analysis_config, memory=memory)
+            config_token = push_analysis_config(analysis_config)
 
             try:
                 result = await agent.ainvoke({"input": user_input}, callbacks=[callback])  # type: ignore[arg-type]
             except Exception as exc:  # noqa: BLE001
-                await websocket.send_json({"type": "error", "message": f"代理执行失败：{exc}"})
+                if not await _safe_send_json(
+                    websocket, {"type": "error", "message": f"代理执行失败：{exc}"}
+                ):
+                    break
                 continue
+            finally:
+                pop_analysis_config(config_token)
 
             response_text = callback.get_response_text() or result.get("output", "")
             history = MEMORY_MANAGER.get_messages(session_id)
             formatted_history = format_chat_history(history, TOOL_DISPLAY_NAMES)
-            await websocket.send_json({"type": "final", "content": response_text, "messages": formatted_history})
+            if not await _safe_send_json(
+                websocket,
+                {"type": "final", "content": response_text, "messages": formatted_history},
+            ):
+                break
             await _push_progress(
                 websocket,
                 session_id,
