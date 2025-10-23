@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal, Tuple
 from pydantic import BaseModel, Field, ValidationError
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -193,7 +193,7 @@ def _ensure_measurable_triggers(trigs: List[str], fallback: List[str]) -> List[s
 # ========= Moderator =========
 class DebateModerator:
     def __init__(self, temperature: float = 0, timeout: int = 40, retries: int = 2):
-        self.llm = LLM_GOOGLE
+        self.llm = LLM_GOOGLE_FLASH
         self.retries = retries
 
     @staticmethod

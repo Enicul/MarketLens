@@ -3,8 +3,10 @@ import json
 import asyncio
 import sys
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Dict, Optional
+from contextvars import ContextVar, Token
 from manager.shcema import StockAnalysisInput
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -198,6 +200,112 @@ enabled_analysis_types = {
     "sentiment": True
 }
 
+_analysis_config_ctx: ContextVar[Dict[str, bool]] = ContextVar(
+    "analysis_config_ctx", default=enabled_analysis_types.copy()
+)
+
+
+def _current_analysis_config() -> Dict[str, bool]:
+    try:
+        return _analysis_config_ctx.get()
+    except LookupError:
+        return enabled_analysis_types
+
+
+def push_analysis_config(config: Optional[Dict[str, bool]]) -> Token:
+    if config is None:
+        return _analysis_config_ctx.set(enabled_analysis_types.copy())
+    return _analysis_config_ctx.set(config)
+
+
+def pop_analysis_config(token: Token) -> None:
+    _analysis_config_ctx.reset(token)
+
+
+def _find_recent_kronos_assets(symbol: str, since: Optional[datetime] = None, tolerance: timedelta = timedelta(minutes=10)) -> Optional[Dict[str, Any]]:
+    base_dir = Path("database").resolve()
+    if not base_dir.exists():
+        return None
+
+    symbol = symbol.upper()
+    pattern = f"*/{symbol}/Kronos_output/*_metadata_*.json"
+    metadata_files = sorted(base_dir.glob(pattern), key=lambda p: p.stat().st_mtime, reverse=True)
+    if not metadata_files:
+        return None
+
+    def _resolve_asset(path_str: Optional[str], meta_dir: Path) -> Optional[Dict[str, Any]]:
+        if not path_str:
+            return None
+        raw = Path(path_str)
+        if raw.is_absolute():
+            full_path = raw
+        else:
+            raw_str = str(raw).replace("\\", "/")
+            if raw_str.startswith("database/"):
+                rel_part = raw_str[len("database/") :]
+                full_path = base_dir / rel_part
+            else:
+                full_path = (base_dir / raw).resolve()
+        if not full_path.exists():
+            return None
+        try:
+            relative = full_path.resolve().relative_to(base_dir).as_posix()
+        except ValueError:
+            return None
+        return {"full": full_path, "relative": relative}
+
+    now = datetime.utcnow()
+    window_start = since - tolerance if since else None
+
+    for meta_path in metadata_files:
+        try:
+            with meta_path.open("r", encoding="utf-8") as fh:
+                metadata = json.load(fh)
+        except Exception:
+            continue
+
+        ts_str = metadata.get("prediction_time")
+        timestamp = None
+        if ts_str:
+            try:
+                timestamp = datetime.fromisoformat(ts_str.replace("Z", "+00:00")).replace(tzinfo=None)
+            except ValueError:
+                timestamp = None
+        if timestamp is None:
+            timestamp = datetime.fromtimestamp(meta_path.stat().st_mtime)
+
+        if window_start and timestamp < window_start:
+            continue
+        if (now - timestamp).total_seconds() > tolerance.total_seconds() * 3:
+            # Skip very old predictions
+            continue
+
+        outputs = metadata.get("output_files", {})
+        plot_info = _resolve_asset(outputs.get("plot"), meta_path.parent)
+        csv_info = _resolve_asset(outputs.get("csv"), meta_path.parent)
+        input_info = _resolve_asset(metadata.get("input_csv"), meta_path.parent)
+        if not plot_info:
+            continue
+
+        meta_info = {"full": meta_path, "relative": meta_path.relative_to(base_dir).as_posix()}
+        assets = {
+            "timestamp": timestamp.isoformat(),
+            "plot_path": plot_info["relative"],
+            "plot_url": f"/assets/{plot_info['relative']}",
+            "metadata_path": meta_info["relative"],
+            "metadata_url": f"/assets/{meta_info['relative']}",
+            "prediction_summary": metadata.get("prediction_summary"),
+        }
+        if csv_info:
+            assets["csv_path"] = csv_info["relative"]
+            assets["csv_url"] = f"/assets/{csv_info['relative']}"
+        if input_info:
+            assets["input_csv_path"] = input_info["relative"]
+            assets["input_csv_url"] = f"/assets/{input_info['relative']}"
+        return assets
+
+    return None
+
 @tool(args_schema=StockAnalysisInput)
 def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
     """收集股票数据（新闻、基本面、市场数据、情绪分析）。
@@ -210,10 +318,11 @@ def call_analyst(ticker: str, intents: list[str] = ["news"]) -> str:
         JSON格式的原始数据（未经分析）
     """
     try:
+        config = _current_analysis_config()
         # Filter enabled analysis types
-        enabled_intents = [i for i in intents if enabled_analysis_types.get(i, False)]
-        disabled_intents = [i for i in intents if not enabled_analysis_types.get(i, False)]
-        
+        enabled_intents = [i for i in intents if config.get(i, False)]
+        disabled_intents = [i for i in intents if not config.get(i, False)]
+
         if not enabled_intents:
             return json.dumps({
                 "error": "所有请求的分析类型都已禁用",
@@ -350,6 +459,7 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
             # Initialize trader and generate decision
             trader = Trader()
             csv_files = [csv_file_path] if csv_file_path else None
+            request_started = datetime.utcnow()
             
             # 构建包含用户请求的完整请求
             trader_request = f"请基于研究结论生成交易决策卡。研究文件: {temp_research_file}"
@@ -391,11 +501,34 @@ def call_trader(ticker: str, research_data_path: str, csv_file_path: str = None,
             if not human_readout:
                 human_readout = f"{ticker.upper()} 交易建议概要：{trader_notes[:200]}..."
 
+            kronos_assets = _find_recent_kronos_assets(ticker, since=request_started)
+            if kronos_assets:
+                chart_caption = f"{ticker.upper()} Kronos预测"  # 保留描述
+                metadata_url = kronos_assets.get("metadata_url")
+                history_url = kronos_assets.get("input_csv_url")
+                prediction_url = kronos_assets.get("csv_url")
+                if metadata_url or prediction_url:
+                    placeholder_parts = [
+                        f'symbol="{ticker.upper()}"'
+                    ]
+                    if metadata_url:
+                        placeholder_parts.append(f'metadata="{metadata_url}"')
+                    if history_url:
+                        placeholder_parts.append(f'history="{history_url}"')
+                    if prediction_url:
+                        placeholder_parts.append(f'prediction="{prediction_url}"')
+                    placeholder = "<kronos-chart " + " ".join(placeholder_parts) + " />"
+                    human_readout += f"\n\n{chart_caption}\n{placeholder}"
+                elif kronos_assets.get("plot_url"):
+                    human_readout += f"\n\n![{chart_caption}]({kronos_assets['plot_url']})"
+
             response_payload: Dict[str, Any] = {
                 "status": "success",
                 "trader_notes": trader_notes,
                 "human_readout": human_readout,
             }
+            if kronos_assets:
+                response_payload["kronos_assets"] = kronos_assets
             response_payload.update(risk_meta)
             return json.dumps(response_payload, ensure_ascii=False)
         finally:

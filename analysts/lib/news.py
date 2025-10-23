@@ -11,7 +11,7 @@ import trafilatura
 from langchain_core.tools import tool
 from langchain.prompts import ChatPromptTemplate
 
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -202,7 +202,7 @@ async def fetch_rss_fallback(lookback_hours: int = 24) -> List[Dict[str, Any]]:
     return results
 
 # ---------- LLM summarizer ----------
-_llm = LLM_GOOGLE
+_llm = LLM_GOOGLE_FLASH
 
 
 

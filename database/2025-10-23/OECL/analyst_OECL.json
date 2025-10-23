@@ -1,0 +1,327 @@
+{
+  "ticker": "OECL",
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "OECL",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T17:00:41+00:00",
+            "headline": "For workers in young, hot world of AI careers, the dream payday is as often ending as layoff nightmare",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/big-tech-ai-acquisition-layoffs-workers.html"
+            ],
+            "summary": [
+              "For workers in young, hot world of AI careers, the dream payday is as often ending as layoff nightmare"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:57:01+00:00",
+            "headline": "Trump White House East Wing ballroom project got $22M boost from YouTube legal settlement",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/trump-white-house-ballroom-east-wing-demolition-youtube.html"
+            ],
+            "summary": [
+              "Trump White House East Wing ballroom project got $22M boost from YouTube legal settlement"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:55:21+00:00",
+            "headline": "Meta lays off 600 employees within AI unit",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/meta-layoffs-ai.html"
+            ],
+            "summary": [
+              "Meta lays off 600 employees within AI unit"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:48:58+00:00",
+            "headline": "GE Vernova CEO says he's talking with OpenAI's Sam Altman as power remains critical for AI growth",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/ge-vernova-ceo-says-hes-talking-with-openais-sam-altman-.html"
+            ],
+            "summary": [
+              "GE Vernova CEO says he's talking with OpenAI's Sam Altman as power remains critical for AI growth"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:42:44+00:00",
+            "headline": "NFL approves sale of minority stake in New York Giants to Julia Koch at a $10.3B valuation",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/nfl-sale-minority-stake-giants-koch.html"
+            ],
+            "summary": [
+              "NFL approves sale of minority stake in New York Giants to Julia Koch at a $10.3B valuation"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:40:57+00:00",
+            "headline": "The biggest crypto wipeout was led not by bitcoin, but much smaller tokens. Here's what happened",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/the-biggest-crypto-wipeout-was-led-not-by-bitcoin-but-much-smaller-tokens-heres-what-happened.html"
+            ],
+            "summary": [
+              "The biggest crypto wipeout was led not by bitcoin, but much smaller tokens. Here's what happened"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:36:01+00:00",
+            "headline": "Beyond Meat shares slash gains, briefly dipping into the red as meme rally falters",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/beyond-meat-shares-surge-for-a-third-day-in-a-row-as-meme-traders-jump-on-board.html"
+            ],
+            "summary": [
+              "Beyond Meat shares slash gains, briefly dipping into the red as meme rally falters"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "OECL"
+            ],
+            "publisher": "US Top News and Analysis",
+            "published_at": "2025-10-22T16:30:47+00:00",
+            "headline": "Walmart pauses H-1B visas for job candidates as Trump hikes fees",
+            "evidence": [
+              "https://www.cnbc.com/2025/10/22/walmart-h-1b-visa-job-offers-trump-fee.html"
+            ],
+            "summary": [
+              "Walmart pauses H-1B visas for job candidates as Trump hikes fees"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-22T17:03:09.302386+00:00"
+      },
+      "error": null,
+      "cached": false
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "OECL",
+        "company": {},
+        "metrics": {},
+        "retrieved_at": "2025-10-22T17:03:10.985354"
+      },
+      "error": null,
+      "cached": false
+    },
+    "market": {
+      "error": "无历史数据: OECL",
+      "error_type": "ValueError",
+      "data": null,
+      "cached": false
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "OECL",
+        "channel": "sentiment",
+        "overall_sentiment": "neutral",
+        "sentiment_score": 0.0,
+        "sentiment_breakdown": {
+          "bullish": 0.0,
+          "bearish": 0.0,
+          "neutral": 1.0
+        },
+        "metrics": {
+          "total_tweets": 8,
+          "total_influence": 1,
+          "influence_concentration": 0.5,
+          "sentiment_volatility": 0.0,
+          "quality_score": 0.0
+        },
+        "top_tweets": [
+          {
+            "username": "OECL",
+            "content": "Unwrap the world of fast transit and experience digital logistics solutions. OECL serves customers with unique solutions catering to the demands of the market\n\n#frieghtforward #shipping #ship #oecllogistics #oecl #maritime #logistics #cargo #delivery #shippingworldwide #freight",
+            "timestamp": "2020-12-07T14:24:56.000Z",
+            "influence_score": 1.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 1,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "OECL",
+            "content": "Manage your entire supply chain with tailor made solutions as per market needs. \n #logistics #supplychain #ecommerce #retail #customerservice #export #shipping #email #transportation #airfreight #cargo #freightforwarding #freight #customs #warehousing #warehousesolutions",
+            "timestamp": "2021-10-06T02:19:22.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "OECL",
+            "content": "Make the most of our Direct weekly LCL services from Port Klang to ICD Delhi. Assured weekly sailings and digital solutions at competitive rates catering to the market demand will offer you world class customer service.\n\n#shipping #shippingworldwide #logistics",
+            "timestamp": "2021-09-29T04:38:46.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Sleepopolis",
+            "content": "Discover the secret to a perfect night's sleep with a fresh twist! Join the duvet cover revolution as #TikTok Creator Bibixonioa shares their genuine, couple-approved hack. \n\nSay goodbye to duvet struggles! \n\nhttps://\nl8r.it/OEcl\n-\n #BeddingHacks #SleepWell",
+            "timestamp": "2023-10-29T19:30:36.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "L J",
+            "content": "\"SUSE Edge has given us the opportunity to bring our edge solution to the market at very low R&D effort and cost.\"\n\nRead how Danelec are meeting and exceeding their customers' needs with SUSE. \nhttps://\ninfl.tv/oECL",
+            "timestamp": "2024-10-12T11:16:00.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "recaptrader english version",
+            "content": "Tuesday's Market Recap Daily email briefing has been sent out and in our members' mailbox.\n\n\nhttps://\nrecaptrader.substack.com\n\n#SPX #ECB #Fed $TSLA #FastNed $FAST #AI $OECL $AMD $AAPL $PSTG $NTAP $AD $ADS $BYND $DEME",
+            "timestamp": "2023-06-13T06:18:48.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Frankie",
+            "content": "NoGutsNoGlory: It's called the market folks! People buy for \nhttp://\ninvestorshub.advfn.com/boards/read_ms\ng.aspx?message_id=127641950&oeCL\n…",
+            "timestamp": "2017-01-22T16:40:00.000Z",
+            "influence_score": 0.0,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "MotorWorld Magazine",
+            "content": "Russia's car market decline 'speeds up': Russia's depressed car market took a turn for the worst in October as... \nhttp://\nbit.ly/1ShZAhI",
+            "timestamp": "2015-11-11T09:43:27.000Z",
+            "influence_score": 0.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 0
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 0.16,
+          "search_keywords": [
+            "$OECL"
+          ],
+          "generated_at": "2025-10-22T17:03:20.921678+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": false
+    }
+  },
+  "csv_generation": {
+    "error": "无历史数据: OECL"
+  },
+  "partial_success": true,
+  "failed_analyses": [
+    "market"
+  ],
+  "successful_analyses": [
+    "news",
+    "fundamentals",
+    "sentiment"
+  ]
+}

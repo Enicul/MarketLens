@@ -21,6 +21,8 @@ import type {
   ProgressEntry,
   SessionMeta
 } from "./types";
+import { renderMarkdown } from "./utils/markdown";
+import KronosChart from "./components/KronosChart";
 
 const DEFAULT_CONFIG: AnalysisConfig = {
   news: true,
@@ -114,6 +116,59 @@ function LoginView({
   );
 }
 
+type ContentSegment =
+  | { type: "markdown"; content: string }
+  | {
+      type: "chart";
+      props: {
+        symbol: string;
+        metadataUrl?: string;
+        historyUrl?: string;
+        predictionUrl?: string;
+      };
+    };
+
+const parseContentSegments = (input: string): ContentSegment[] => {
+  const pattern = /<kronos-chart\b[^>]*\/>/gi;
+  const segments: ContentSegment[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(input))) {
+    const start = match.index;
+    if (start > cursor) {
+      segments.push({ type: "markdown", content: input.slice(cursor, start) });
+    }
+    const attrsRaw = match[0];
+    const attrPattern = /(\w+)="([^"]*)"/g;
+    const props: Record<string, string> = {};
+    let attrMatch: RegExpExecArray | null;
+    while ((attrMatch = attrPattern.exec(attrsRaw))) {
+      props[attrMatch[1]] = attrMatch[2];
+    }
+    if (props.symbol) {
+      segments.push({
+        type: "chart",
+        props: {
+          symbol: props.symbol,
+          metadataUrl: props.metadata,
+          historyUrl: props.history,
+          predictionUrl: props.prediction
+        }
+      });
+    }
+    cursor = pattern.lastIndex;
+  }
+
+  if (cursor < input.length) {
+    segments.push({ type: "markdown", content: input.slice(cursor) });
+  }
+
+  return segments.filter((segment) => {
+    return segment.type === "chart" || segment.content.trim().length;
+  });
+};
+
 function MessageBubble({ message }: { message: ChatMessage }) {
   const className = useMemo(() => {
     switch (message.role) {
@@ -128,23 +183,22 @@ function MessageBubble({ message }: { message: ChatMessage }) {
     }
   }, [message.role]);
 
-  if (message.role === "tool" || message.role === "system") {
-    return (
-      <div className={className}>
-        <pre>{message.content}</pre>
-      </div>
-    );
-  }
+  const segments = useMemo(() => parseContentSegments(message.content), [message.content]);
 
-  const lines = message.content.split(/\n/);
   return (
     <div className={className}>
-      {lines.map((line, index) => (
-        <span key={index}>
-          {line}
-          {index < lines.length - 1 ? <br /> : null}
-        </span>
-      ))}
+      {segments.map((segment, index) => {
+        if (segment.type === "markdown") {
+          return (
+            <div
+              key={`${message.role}-md-${index}`}
+              className="markdown"
+              dangerouslySetInnerHTML={{ __html: renderMarkdown(segment.content) }}
+            />
+          );
+        }
+        return <KronosChart key={`${message.role}-chart-${index}`} {...segment.props} />;
+      })}
     </div>
   );
 }
@@ -266,12 +320,23 @@ interface ChatComposerProps {
 function ChatComposer({ disabled, onSend }: ChatComposerProps) {
   const [value, setValue] = useState("");
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const submitMessage = useCallback(async () => {
     const trimmed = value.trim();
     if (!trimmed) return;
     await onSend(trimmed);
     setValue("");
+  }, [onSend, value]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    await submitMessage();
+  };
+
+  const handleKeyDown = async (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      await submitMessage();
+    }
   };
 
   return (
@@ -282,6 +347,7 @@ function ChatComposer({ disabled, onSend }: ChatComposerProps) {
         onChange={(event) => setValue(event.target.value)}
         disabled={disabled}
         rows={3}
+        onKeyDown={handleKeyDown}
       />
       <button type="submit" disabled={disabled || !value.trim()}>
         发送
@@ -373,28 +439,21 @@ function Dashboard({
         onLogout={onLogout}
       />
       <main className="main">
-        <header className="main-header">
-          <div>
-            <h1>Market Lens Realtime Console</h1>
-            <p>FastAPI + WebSocket + React · 全新的实时流式体验</p>
-          </div>
-          <div className="status-indicators">
-            <span className={`pill ${connected ? "ok" : "warn"}`}>
-              {connected ? "WebSocket 已连接" : "等待连接"}
-            </span>
-            <span className={`pill ${streaming ? "info" : ""}`}>
-              {streaming ? "生成中…" : "待命"}
-            </span>
-          </div>
-        </header>
         <div className="workspace">
           <section className="chat-window">
+            <ChatHeader />
             <div className="messages">
               {messages.map((message, index) => (
                 <MessageBubble key={`${index}-${message.role}`} message={message} />
               ))}
               {streamingReply ? (
-                <div className="bubble bubble-assistant streaming">{streamingReply}▌</div>
+                <div className="bubble bubble-assistant streaming">
+                  <div
+                    className="markdown"
+                    dangerouslySetInnerHTML={{ __html: renderMarkdown(streamingReply) }}
+                  />
+                  <span className="cursor">▌</span>
+                </div>
               ) : null}
             </div>
             <div className="status-bar">
@@ -420,10 +479,13 @@ function Dashboard({
                         title={entry.label}
                       >
                         <span className="progress-time">{formatTimestamp(entry.timestamp)}</span>
-                        <span className="progress-message">
-                          {entry.label ? `[${entry.label}] ` : ""}
-                          {entry.content}
-                        </span>
+                        <div className="progress-message">
+                          {entry.label ? <strong className="progress-label">[{entry.label}] </strong> : null}
+                          <div
+                            className="markdown"
+                            dangerouslySetInnerHTML={{ __html: renderMarkdown(entry.content) }}
+                          />
+                        </div>
                       </div>
                     ))
                   ) : (
@@ -452,7 +514,10 @@ function Dashboard({
                           title={item.level ? `${item.level}` : undefined}
                         >
                           <span className="progress-time">{formatTimestamp(item.timestamp)}</span>
-                          <span className="progress-message">{item.message}</span>
+                          <div
+                            className="progress-message markdown"
+                            dangerouslySetInnerHTML={{ __html: renderMarkdown(item.message) }}
+                          />
                         </div>
                       );
                     })
@@ -863,3 +928,12 @@ function App() {
 }
 
 export default App;
+
+function ChatHeader() {
+  return (
+    <div className="chat-header">
+      <h1>Market Lens</h1>
+      <p>实时金融洞察 · 多代理协同分析</p>
+    </div>
+  );
+}

@@ -123,7 +123,7 @@ class TwitterScraper:
             self._context = await self._browser.new_context(**context_kwargs)
             
             # 检查上下文是否创建成功
-            if not self._context or self._context.is_closed():
+            if not self._context:
                 raise RuntimeError("Failed to create browser context")
                 
         except Exception as e:
@@ -311,8 +311,8 @@ class TwitterScraper:
         """Check if browser and context are still valid"""
         if not self._browser or not self._browser.is_connected():
             raise RuntimeError("Browser is not connected")
-        if not self._context or self._context.is_closed():
-            raise RuntimeError("Browser context is closed")
+        if not self._context:
+            raise RuntimeError("Browser context is not available")
 
     async def scrape_stock_tweets(self, symbol: str) -> List[Tweet]:
         # Check browser state before starting
@@ -561,7 +561,7 @@ class TwitterScraper:
         """Clean up resources"""
         # close context and browser, then stop playwright
         try:
-            if self._context and not self._context.is_closed():
+            if self._context:
                 await self._context.close()
         except Exception as e:
             logger.debug(f"Context cleanup error: {e}")

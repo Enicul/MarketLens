@@ -1,0 +1,161 @@
+{
+  "ticker": "COIN",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-22T14:50:22+00:00",
+      "headline": "Dogecoin Down 20%, But Poised For A 'Quiet, Calm, Determined' Recovery",
+      "evidence": [
+        "https://www.benzinga.com/crypto/cryptocurrency/25/10/48355756/dogecoin-down-20-but-poised-for-a-quiet-calm-determined-recovery"
+      ],
+      "summary": [
+        "Dogecoin Down 20%, But Poised For A 'Quiet, Calm, Determined' Recovery"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T14:13:33+00:00",
+      "headline": "Gold's worst dip in years wipes $2.5T: How does Bitcoin match up?",
+      "evidence": [
+        "https://cointelegraph.com/news/gold-worst-day-decade-wipes-2-5-trillion-bitcoin-dips"
+      ],
+      "summary": [
+        "Gold's worst dip in years wipes $2.5T: How does Bitcoin match up?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-22T13:52:37+00:00",
+      "headline": "Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?",
+      "evidence": [
+        "https://www.benzinga.com/crypto/cryptocurrency/25/10/48353161/bitcoin-ethereum-whales-bet-on-upside-what-do-they-know"
+      ],
+      "summary": [
+        "Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T13:17:21+00:00",
+      "headline": "Bitcoin risks drop toward $100K as 'insider' whale moves BTC to exchanges",
+      "evidence": [
+        "https://cointelegraph.com/news/bitcoin-risks-drop-100k-insider-whale-moves-btc-exchanges"
+      ],
+      "summary": [
+        "Bitcoin risks drop toward $100K as 'insider' whale moves BTC to exchanges"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-22T10:46:47+00:00",
+      "headline": "Coinbase: Distribution An Advantage As Tokenization Grows",
+      "evidence": [
+        "https://finnhub.io/api/news?id=43d4b171ba0a22666b4093568106e374af1d849e3eabc7678abf847eb9601256"
+      ],
+      "summary": [
+        "Coinbase: Distribution An Advantage As Tokenization Grows"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T06:12:01+00:00",
+      "headline": "OpenAI launches browser with a brain powered by agentic AI",
+      "evidence": [
+        "https://cointelegraph.com/news/openai-announces-browser-with-brain-powered-agentic-ai"
+      ],
+      "summary": [
+        "OpenAI launches browser with a brain powered by agentic AI"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T03:51:55+00:00",
+      "headline": "Coinbase CEO reveals 'private transactions' are coming to Base",
+      "evidence": [
+        "https://cointelegraph.com/news/private-transactions-coming-base-coinbase-ceo"
+      ],
+      "summary": [
+        "Coinbase CEO reveals 'private transactions' are coming to Base"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-22T02:41:22+00:00",
+      "headline": "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'",
+      "evidence": [
+        "https://cointelegraph.com/news/stablecoins-yield-banks-interest-kraken-ceo-dave-ripley"
+      ],
+      "summary": [
+        "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-22T16:04:04.920775+00:00"
+}

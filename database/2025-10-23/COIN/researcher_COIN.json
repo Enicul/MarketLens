@@ -1,0 +1,1201 @@
+{
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-22T14:50:22+00:00",
+            "headline": "Dogecoin Down 20%, But Poised For A 'Quiet, Calm, Determined' Recovery",
+            "evidence": [
+              "https://www.benzinga.com/crypto/cryptocurrency/25/10/48355756/dogecoin-down-20-but-poised-for-a-quiet-calm-determined-recovery"
+            ],
+            "summary": [
+              "Dogecoin Down 20%, But Poised For A 'Quiet, Calm, Determined' Recovery"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T14:13:33+00:00",
+            "headline": "Gold's worst dip in years wipes $2.5T: How does Bitcoin match up?",
+            "evidence": [
+              "https://cointelegraph.com/news/gold-worst-day-decade-wipes-2-5-trillion-bitcoin-dips"
+            ],
+            "summary": [
+              "Gold's worst dip in years wipes $2.5T: How does Bitcoin match up?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-22T13:52:37+00:00",
+            "headline": "Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?",
+            "evidence": [
+              "https://www.benzinga.com/crypto/cryptocurrency/25/10/48353161/bitcoin-ethereum-whales-bet-on-upside-what-do-they-know"
+            ],
+            "summary": [
+              "Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T13:17:21+00:00",
+            "headline": "Bitcoin risks drop toward $100K as 'insider' whale moves BTC to exchanges",
+            "evidence": [
+              "https://cointelegraph.com/news/bitcoin-risks-drop-100k-insider-whale-moves-btc-exchanges"
+            ],
+            "summary": [
+              "Bitcoin risks drop toward $100K as 'insider' whale moves BTC to exchanges"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "SeekingAlpha",
+            "published_at": "2025-10-22T10:46:47+00:00",
+            "headline": "Coinbase: Distribution An Advantage As Tokenization Grows",
+            "evidence": [
+              "https://finnhub.io/api/news?id=43d4b171ba0a22666b4093568106e374af1d849e3eabc7678abf847eb9601256"
+            ],
+            "summary": [
+              "Coinbase: Distribution An Advantage As Tokenization Grows"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T06:12:01+00:00",
+            "headline": "OpenAI launches browser with a brain powered by agentic AI",
+            "evidence": [
+              "https://cointelegraph.com/news/openai-announces-browser-with-brain-powered-agentic-ai"
+            ],
+            "summary": [
+              "OpenAI launches browser with a brain powered by agentic AI"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T03:51:55+00:00",
+            "headline": "Coinbase CEO reveals 'private transactions' are coming to Base",
+            "evidence": [
+              "https://cointelegraph.com/news/private-transactions-coming-base-coinbase-ceo"
+            ],
+            "summary": [
+              "Coinbase CEO reveals 'private transactions' are coming to Base"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "COIN"
+            ],
+            "publisher": "Cointelegraph",
+            "published_at": "2025-10-22T02:41:22+00:00",
+            "headline": "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'",
+            "evidence": [
+              "https://cointelegraph.com/news/stablecoins-yield-banks-interest-kraken-ceo-dave-ripley"
+            ],
+            "summary": [
+              "Kraken CEO hits back as banker calls stablecoin yields a 'detriment'"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-22T16:04:04.920775+00:00"
+      },
+      "error": null,
+      "cached": true
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "COIN",
+        "company": {
+          "name": "Coinbase Global Inc",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 87004360000.0,
+          "revenue_per_share_ttm": 25.1273
+        },
+        "insiders": [
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 345.42,
+            "change_shares": -1742,
+            "post_shares": 3484,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 345.42,
+            "change_shares": -2250,
+            "post_shares": 84820,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "HAAS ALESIA J",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 343.36,
+            "change_shares": -2150,
+            "post_shares": 87070,
+            "filing_id": "0001679788-25-000201",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "C",
+            "date": "2025-10-13",
+            "price": 0,
+            "change_shares": -25000,
+            "post_shares": 22731225,
+            "filing_id": "0001679788-25-000200",
+            "source": "sec"
+          },
+          {
+            "person": "Armstrong Brian",
+            "code": "S",
+            "date": "2025-10-13",
+            "price": 364.1688,
+            "change_shares": -161,
+            "post_shares": 526,
+            "filing_id": "0001679788-25-000200",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-22T17:12:37.947239"
+      },
+      "error": null,
+      "cached": true
+    },
+    "market": {
+      "data": {
+        "ticker": "COIN",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-22T17:12:33.071214",
+        "stock_basic_info": {
+          "ticker": "COIN",
+          "current_price": 315.83,
+          "change": -22.79,
+          "change_percent": -6.73,
+          "volume": 8092298,
+          "market_cap": 80525697024,
+          "pe_ratio": 30.368269,
+          "pb_ratio": 6.6961365,
+          "beta": 3.684,
+          "high_52w": 444.65,
+          "low_52w": 142.58,
+          "timestamp": "2025-10-23T01:12:33.068261"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 349.0744964599609,
+            "price_vs_ma_20": 90.47638534902006
+          },
+          "oscillators": {
+            "rsi": 29.058675430735818,
+            "stochastic_k": 4.4451230181276005,
+            "stochastic_d": 19.991012778041053
+          },
+          "bollinger_bands": {
+            "upper_band": 399.4958634493811,
+            "lower_band": 298.65312947054076,
+            "price_vs_upper_band": 79.05713562220238
+          },
+          "volume_indicators": {
+            "volume_ma20": 9404020.3,
+            "volume_vs_ma20": 86.05049480805566
+          },
+          "volatility_indicators": {
+            "atr": 19.549715314592635,
+            "atr_percent": 6.189949069360908
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 402.1600036621094,
+            "low_1mo": 303.3999938964844,
+            "avg_close": 345.8817364236583,
+            "volatility": 24.974151799265588
+          },
+          "trend_analysis": {
+            "trend_20_days": 2.98020282960009
+          },
+          "key_levels": [
+            402.1600036621094,
+            303.3999938964844
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 23,
+          "data_period": "1mo",
+          "start_date": "2025-09-22",
+          "end_date": "2025-10-22",
+          "last_updated": "2025-10-23T01:12:33.071201"
+        }
+      },
+      "error": null,
+      "cached": true
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "COIN",
+        "channel": "sentiment",
+        "overall_sentiment": "strong_bullish",
+        "sentiment_score": 0.9219,
+        "sentiment_breakdown": {
+          "bullish": 0.175,
+          "bearish": 0.05,
+          "neutral": 0.775
+        },
+        "metrics": {
+          "total_tweets": 80,
+          "total_influence": 52889,
+          "influence_concentration": 0.562,
+          "sentiment_volatility": 353.912,
+          "quality_score": 0.4
+        },
+        "top_tweets": [
+          {
+            "username": "CZ  BNB",
+            "content": "Was in a no-phone meeting for 2hrs. At least, there is progress.\n\nLuna blockchain resumed, no more minting.\n\nAnd deposits, withdrawals and trading resumed. Trading is important for existing holders.\n\nPlease do NOT buy a coin just because trading is on. DYOR! EXTREME caution!",
+            "timestamp": "2022-05-13T15:50:20.000Z",
+            "influence_score": 172.47,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 19906,
+              "retweets": 4894,
+              "replies": 51
+            }
+          },
+          {
+            "username": "CZ  BNB",
+            "content": "Some exchanges resist listing #bnb as they think it may help \n@binance\n. Their loss. They miss out on the 3rd market cap coin and ecosystem.\n\nWe evaluate/list peer exchange coins same as any other coin. If they have users, we list. Win win.\n\nOpen mindset.",
+            "timestamp": "2021-04-14T05:52:02.000Z",
+            "influence_score": 92.22,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 5988,
+              "retweets": 723,
+              "replies": 1071
+            }
+          },
+          {
+            "username": "CZ  BNB",
+            "content": "A few exchanges asked me whether they should support/list #BSC/#BNB or not. If they don't, they miss out on the 3rd market cap coin, and the largest #DeFi ecosystem. If they do, they kinda \"help\" \n@Binance\n.\n\nMy advice always: be inclusive, not exclusive.",
+            "timestamp": "2021-03-19T03:41:39.000Z",
+            "influence_score": 58.51,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 2364,
+              "retweets": 322,
+              "replies": 415
+            }
+          },
+          {
+            "username": "CZ  BNB",
+            "content": "#BUSD is now a $2.3 billion market cap stable coin now. \n\n#BUSD is NOT issued by #Binance. It is issued by NYDFS regulated entity \n@PaxosGlobal\n. We just lend branding support.",
+            "timestamp": "2021-02-27T03:12:10.000Z",
+            "influence_score": 51.9,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 2153,
+              "retweets": 265,
+              "replies": 11
+            }
+          },
+          {
+            "username": "CZ  BNB",
+            "content": "» Binance Coin Surpasses 1 Billion Trading Volume After #BNB Network Upgrade",
+            "timestamp": "2022-09-10T16:35:50.000Z",
+            "influence_score": 53.2,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 1810,
+              "retweets": 337,
+              "replies": 346
+            }
+          },
+          {
+            "username": "H.E. Justin Sun",
+            "content": "$SUN Genesis Mining has officially launched!\nStart mining now  \n\n$SUN\nst #TRON meme coin\nst TRON mining coin\npre-mining\nteam reservation\n% community governed\n \nGO TO \nhttp://\nSUN.IO or \nhttp://\nSUN.Market",
+            "timestamp": "2020-09-02T13:01:24.000Z",
+            "influence_score": 28.55,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 382,
+              "retweets": 198,
+              "replies": 37
+            }
+          },
+          {
+            "username": "Playnance",
+            "content": "The G Coin Quest Is Live on \n@DappRadar\n \n\nBacked by PlayBlock, powered by Playnance, and secured by CertiK.  \nG Coin is redefining on-chain gaming.\n\nLive Data:\n• 11.0 B G Coin sold\n• 27 K holders globally \n• $10.7 M market cap\n• +5 ,456 % growth\n\n351 × potential from current",
+            "timestamp": "2025-10-22T05:45:27.000Z",
+            "influence_score": 22.98,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 102,
+              "retweets": 205,
+              "replies": 16
+            }
+          },
+          {
+            "username": "Binance Gems 100X",
+            "content": "IT’S OFFICIAL \n\nCristiano Ronaldo’s team has launched the presale for his coin $#CR7\n\n Official Presale: \nhttps://\ncr7officialsol.com\nTelegram: \nhttps://\nt.me/+AjWgnkt7hNUxN\nzky\n…\n\nSources say it could hit $50B+ market cap, and early investors could get rich.\n\nStill not following me?",
+            "timestamp": "2025-10-22T04:34:53.000Z",
+            "influence_score": 21.56,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 108,
+              "retweets": 115,
+              "replies": 127
+            }
+          },
+          {
+            "username": "jesse.base.eth",
+            "content": "every few weeks CT re-remembers that every single post I make is a content coin that is valued in the free, open market",
+            "timestamp": "2025-10-22T04:07:49.000Z",
+            "influence_score": 30.1,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 504,
+              "retweets": 63,
+              "replies": 276
+            }
+          },
+          {
+            "username": "CoinMarketCap",
+            "content": "No competition. The best community goes to ________",
+            "timestamp": "2025-10-22T15:00:43.000Z",
+            "influence_score": 36.03,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 489,
+              "retweets": 94,
+              "replies": 621
+            }
+          },
+          {
+            "username": "Playnance",
+            "content": "G COIN — THE POWER BEHIND THE PLAYBLOCK ECONOMY\n\nThe numbers keep climbing.\n$10.7 M market cap. 10.9 B sold. 26,800+ holders.\n5,456% on-chain growth, fueled by one thing: real usage.\n\nFrom $0.00055 → $0.195 — the path to listing sits at x351 potential.\nEvery transaction. Every",
+            "timestamp": "2025-10-20T14:55:00.000Z",
+            "influence_score": 18.06,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 80,
+              "retweets": 117,
+              "replies": 12
+            }
+          },
+          {
+            "username": "CoinDesk",
+            "content": "@rails_xyz\n Co-Founder Satraj Bambra offers simple advice after the market meltdown:\n\n\"It's a great time to take a break\" because there is \"absolutely no rush to take a position in the market when it's this uncertain.\"\n\nThanks \n@OwlTing\n   for being a sponsor of CoinDesk Media",
+            "timestamp": "2025-10-19T13:07:21.000Z",
+            "influence_score": 12.45,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 81,
+              "retweets": 19,
+              "replies": 36
+            }
+          },
+          {
+            "username": "ELON GROK COIN",
+            "content": "$EGC will Change your life to 10000x \n$EGC will shake the market OCTOBER 25th \n\nTrust me, just buy $EGC and fasten your seat belt. Shit is about to go fuckin insane\n\nPresale is live!! Join Now : \nhttp://\nElonGrokCoin.webby.fun\n\nSEND $SOL to;",
+            "timestamp": "2025-10-22T14:46:32.000Z",
+            "influence_score": 10.25,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 32,
+              "retweets": 20,
+              "replies": 33
+            }
+          },
+          {
+            "username": "Norris Digital Assets",
+            "content": "This is not the coin I was referring to earlier BUT\n\nManaged to grab another good chunk of tokens at .001896\n\nFigured it would go to bottom of range simply for the fact the market has been weak\n\nUpon reversal, however, it'd be some super strong gains \n\n@BozoBenk",
+            "timestamp": "2025-10-18T19:10:57.000Z",
+            "influence_score": 9.54,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 50,
+              "retweets": 16,
+              "replies": 9
+            }
+          },
+          {
+            "username": "FameEX GLOBAL",
+            "content": "New Listing: $COIN (\n@Coin_Swap_\n)\n\n@FameEXGlobal\n will list $COIN with the following timeline:\n\n Deposit: October 18\n Spot Trading: October 18, 12:18 (UTC)\n Withdraw: October 19, 10:00 (UTC)\n\n More info:\n\nhttps://\nfameex.com/en-US/announce\nment/crypto-spot-trading-pairs-listing20251018\n…\n\n#COIN",
+            "timestamp": "2025-10-17T06:07:38.000Z",
+            "influence_score": 8.31,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 20,
+              "retweets": 16,
+              "replies": 17
+            }
+          },
+          {
+            "username": "U-topia | $U",
+            "content": "the best bullish indicator out right now in the market",
+            "timestamp": "2025-10-17T07:52:19.000Z",
+            "influence_score": 13.93,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 48,
+              "retweets": 68,
+              "replies": 10
+            }
+          },
+          {
+            "username": "WeenerCoin",
+            "content": "Hold your buns. The market’s heating up!\nJoin the $WEENER community today!\n\nhttps://\nweenercoin.com\n#memecoin #memecoins #CryptoCommunity #MemeCoinMadness #Crypto",
+            "timestamp": "2025-10-17T18:32:46.000Z",
+            "influence_score": 9.75,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 37,
+              "retweets": 17,
+              "replies": 24
+            }
+          },
+          {
+            "username": "Bryant",
+            "content": "$COIN still holding the bull market support band.\n\nThis is good.\n\nThe last time $COIN held this, it moved 118%. \nAnother move like this puts $COIN at $700+.",
+            "timestamp": "2025-10-21T21:39:36.000Z",
+            "influence_score": 8.94,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 60,
+              "retweets": 7,
+              "replies": 6
+            }
+          },
+          {
+            "username": "Hold Coin CVenture",
+            "content": "On-chain analysis week 42/2025: #Bitcoin and marginal connection\n\nThe market suffered a ~$19 billion derivatives deleverage – one of the largest in history. The shock broke through the $117k–$114k cost-basis cluster, putting some recent peak buyers into losses, exposing",
+            "timestamp": "2025-10-22T15:45:39.000Z",
+            "influence_score": 7.07,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 23,
+              "retweets": 13,
+              "replies": 1
+            }
+          },
+          {
+            "username": "$DROP",
+            "content": "1,000 $DROP today = $100K when our market cap hits $100M.\n\nDon’t underestimate the little blue raindrop",
+            "timestamp": "2025-10-15T17:59:17.000Z",
+            "influence_score": 9.11,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 51,
+              "retweets": 14,
+              "replies": 4
+            }
+          },
+          {
+            "username": "PBInvesting",
+            "content": "Study this trading strategy \n\n- $COIN was the weakest stock (down the most % wise)\n- Wait for a 5 minute close under pre market low\n- VWAP goes under pml so watch for a VWAP Retest\n- Enter on VWAP Retest \n- Exit once closes 5 min candle over 8 EMA \n- 200% in 1 hour if traded",
+            "timestamp": "2025-10-22T16:39:04.000Z",
+            "influence_score": 6.08,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 29,
+              "retweets": 0,
+              "replies": 8
+            }
+          },
+          {
+            "username": "67",
+            "content": "\"what coin should I buy while the market's down?\"\n\nme:",
+            "timestamp": "2025-10-16T23:23:51.000Z",
+            "influence_score": 9.85,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 45,
+              "retweets": 20,
+              "replies": 12
+            }
+          },
+          {
+            "username": "DEFI Fundamentals",
+            "content": "CHEELEE: Real Platform Integration\n\n$CHEEL isn't another speculative coin riding market trends. It's the operational backbone of the Cheelee platform, powering critical functions that millions of users depend on daily.\n\n Real Integration, Real Use Cases\n• Platform advertising",
+            "timestamp": "2025-10-22T16:49:58.000Z",
+            "influence_score": 5.74,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 22,
+              "retweets": 4,
+              "replies": 3
+            }
+          },
+          {
+            "username": "Quantify Trading",
+            "content": "Introducing: Quantify Paper Trading\n\nSimulate real on-chain trading with no risk\n\n- Practice entries/exits on live Solana markets\n- Full TradingView charts with real-time data\n- Real-time execution & tracking\n- Track portfolio performance & trade history\n- Perfect for meme coin",
+            "timestamp": "2025-10-22T16:22:38.000Z",
+            "influence_score": 5.39,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 12,
+              "retweets": 7,
+              "replies": 3
+            }
+          },
+          {
+            "username": "Magic Carpet",
+            "content": "Magic Carpet is at 14k market cap.\nDon’t just watch from the sidelines, this is where believers position themselves before the story turns legendary.\nWe fall, we rise, but we never stay down.\n\nBuy now: \nhttps://\npump.fun/coin/4R7qtvgPr\n9YvUYRZHum42R9FLaMYuKkCUf8WfPR3pump\n…\n\n#MagicCarpet  #Solana #DeFi #EarlyBelievers",
+            "timestamp": "2025-10-22T16:23:23.000Z",
+            "influence_score": 4.36,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 1,
+              "replies": 8
+            }
+          },
+          {
+            "username": "simon (callmaster3000)",
+            "content": "watching $NDLS as well, waiting for the bundles to get out\n\nonce they did and dex is paid, this has a good chance to run as well\n\nstock is getting pumped as well and the coin is sitting at only 24k, but it's a giga gamble for now \n\n73cArfB6E4zGv4C5SsDSmYLdMUzEAZoi9upXvkgKpump",
+            "timestamp": "2025-10-22T15:07:17.000Z",
+            "influence_score": 4.58,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 13,
+              "retweets": 2,
+              "replies": 4
+            }
+          },
+          {
+            "username": "Saint",
+            "content": "When retail wakes up and sees a meme coin called $AURA, they’re not touching an animal coin like $SHIB. The vibes choose themselves $AURA just sounds like it wins. That’s why I believe $AURA will hit a $40B+ market cap.\n\nToday’s Date: October 22, 2025 I’ll get back to this.",
+            "timestamp": "2025-10-22T16:45:07.000Z",
+            "influence_score": 4.58,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 6,
+              "replies": 1
+            }
+          },
+          {
+            "username": "Penguin",
+            "content": "1 coin can change your life\n\nchain solana, market cap $8.42M\n\nif you know you know",
+            "timestamp": "2025-10-22T16:35:58.000Z",
+            "influence_score": 6.4,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 23,
+              "retweets": 3,
+              "replies": 12
+            }
+          },
+          {
+            "username": "Press Trust of India",
+            "content": "VIDEO | Madhya Pradesh: Union Minister Shivraj Singh Chouhan (\n@ChouhanShivraj\n) buys silver coin on Dhanteras with his wife at Bhopal's Roshanpura market.\n\n#Dhanteras\n\n(Full video available on PTI Videos - \nhttp://\nptivideos.com)",
+            "timestamp": "2025-10-18T16:15:39.000Z",
+            "influence_score": 4.12,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 7,
+              "retweets": 5,
+              "replies": 0
+            }
+          },
+          {
+            "username": "【ＮΛＴΞ】",
+            "content": "$ZORBYAI GIVEAWAY \n\nLet’s make ZORBY [34] the top video coin by market cap! \n\nHOLD ZORBY [34] on $ZORA for your shot to win $100! \n\n Trade and HOLD ZORBY [34]\n\n Repost + tag a friend who loves $ZORA\n\n Comment - I  $ZORA on #Base\n\n Prize: $200 in $ZORA or $ETH",
+            "timestamp": "2025-10-22T16:26:19.000Z",
+            "influence_score": 3.61,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 4,
+              "replies": 2
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 1.0,
+          "search_keywords": [
+            "$COIN"
+          ],
+          "generated_at": "2025-10-22T17:01:10.086852+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": true
+    }
+  },
+  "bullish_research": {
+    "stance": "bullish",
+    "thesis": "Coinbase (COIN) is poised for significant growth and a strong rebound, underpinned by its strategic leadership in the expanding tokenization market, robust financial positioning (zero debt), and overwhelmingly bullish market sentiment, all supported by an oversold technical setup indicating an imminent price reversal.",
+    "arguments": [
+      "Coinbase is strategically positioned to leverage its established distribution network as tokenization grows, opening new, diversified revenue streams beyond traditional crypto trading, signaling strong long-term growth.",
+      "Overall market sentiment for COIN is overwhelmingly strong bullish (score 0.9219), reflecting high confidence from influential market participants. Specific technical analysis within social sentiment points to potential 100%+ gains if historical support levels hold, reinforcing a positive outlook.",
+      "Despite recent price dips, COIN's Relative Strength Index (RSI) of 29.1 indicates deeply oversold conditions, historically preceding strong rebounds. Furthermore, the company's reported 'Debt=None' signals exceptional financial health and operational flexibility."
+    ],
+    "counters": [
+      {
+        "claim_id": "1",
+        "rebuttal": "While EPS is currently not reported, Coinbase demonstrates robust revenue per share (25.1273), indicating a strong underlying business model. Crucially, the absence of reported debt signifies exceptional financial health and stability, providing a solid foundation for future profitability and growth as its strategic initiatives in tokenization mature.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "Rev/Share=25.1273",
+            "note": "Demonstrates robust revenue generation despite EPS not being reported."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Debt=None",
+            "note": "Indicates strong financial health and minimal leverage, countering concerns about long-term viability."
+          }
+        ]
+      },
+      {
+        "claim_id": "2",
+        "rebuttal": "Coinbase is actively diversifying its revenue streams by expanding into the burgeoning tokenization market, leveraging its strong distribution network. This strategic move reduces its singular reliance on volatile trading fees, providing a more stable and growing revenue base. Additionally, reports of Bitcoin and Ethereum whales betting on upside suggest informed confidence in the broader crypto market, which benefits a leading exchange like Coinbase.",
+        "evidence": [
+          {
+            "source": "news",
+            "pointer": "[4] neutral: Coinbase: Distribution An Advantage As Tokenization Grows",
+            "note": "Highlights strategic diversification and a long-term growth driver, mitigating reliance on volatile trading fees."
+          },
+          {
+            "source": "news",
+            "pointer": "[2] neutral: Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?",
+            "note": "Suggests underlying informed confidence in the broader crypto market, benefiting major platforms like Coinbase."
+          }
+        ]
+      },
+      {
+        "claim_id": "3",
+        "rebuttal": "The current technical setup, particularly an RSI of 29.1, strongly indicates deeply oversold conditions, which historically signals a high probability of an imminent rebound rather than persistent downward pressure. This is further supported by influential social sentiment noting COIN is holding critical bull market support, which has previously led to substantial gains exceeding 100%, positioning current dips as a significant buying opportunity.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI: 29.1",
+            "note": "Indicates deeply oversold conditions, typically preceding a strong rebound."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets=[{'username': 'Bryant', 'content': '$COIN still holding the bull market support band... Another move like this puts $COIN at $700+.', 'timestamp': '2025-10-21T21:39:36.000Z', 'influence_score': 8.94, 'sentiment': 'mixed', 'raw_metrics': {'likes': 60, 'retweets': 7, 'replies': 6}}]",
+            "note": "Highlights the stock holding critical technical support, historically leading to significant gains and indicating potential for an imminent rebound."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "The actual timeline and magnitude of revenue generation from Coinbase's tokenization initiatives remain to be fully realized.",
+      "Despite strong sentiment and oversold technical indicators, broader cryptocurrency market volatility could still impact COIN's short-term performance.",
+      "The absence of reported EPS requires investors to focus on growth potential and market position rather than traditional profitability metrics, which can introduce some valuation uncertainty."
+    ],
+    "evidence_map": [
+      {
+        "source": "news",
+        "pointer": "[4] neutral: Coinbase: Distribution An Advantage As Tokenization Grows",
+        "note": "Highlights strategic diversification and a long-term growth driver, mitigating reliance on volatile trading fees."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.9219",
+        "note": "Reflects high confidence from influential market participants."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets=[{'username': 'Bryant', 'content': '$COIN still holding the bull market support band... Another move like this puts $COIN at $700+.', 'timestamp': '2025-10-21T21:39:36.000Z', 'influence_score': 8.94, 'sentiment': 'mixed', 'raw_metrics': {'likes': 60, 'retweets': 7, 'replies': 6}}]",
+        "note": "Specific technical analysis within social sentiment pointing to potential massive upside."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI: 29.1",
+        "note": "Indicates deeply oversold conditions, typically preceding a strong rebound."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Rev/Share=25.1273",
+        "note": "Demonstrates robust revenue generation despite EPS not being reported."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt=None",
+        "note": "Signifies exceptional financial health and operational flexibility, countering profitability concerns."
+      },
+      {
+        "source": "news",
+        "pointer": "[2] neutral: Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?",
+        "note": "Suggests underlying informed confidence in the broader crypto market, benefiting major platforms like Coinbase."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.9219",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "COIN",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-22T17:12:37.947239",
+      "news_ref": "2025-10-22T16:04:04.920775+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "bearish_research": {
+    "stance": "bearish",
+    "thesis": "Coinbase (COIN) faces significant downside risk due to its fundamental lack of profitability, high exposure to the volatile and speculative cryptocurrency market, and a deteriorating technical outlook, making it a speculative investment despite optimistic future growth claims and potentially misattributed bullish sentiment.",
+    "arguments": [
+      "Coinbase's fundamental unprofitability is a major concern, as the absence of reported EPS despite a substantial market capitalization indicates that its valuation is highly speculative and not supported by current earnings, raising questions about long-term financial viability.",
+      "The company's core business remains heavily exposed to the extreme volatility of the cryptocurrency market. Recent news highlights significant downside risks for major digital assets, including Bitcoin's potential drop toward $100K and a massive market deleveraging event, directly threatening Coinbase's trading volumes and fee-based revenue streams.",
+      "COIN exhibits a deteriorating technical outlook with its price trading significantly below the 20-day moving average and experiencing a sharp daily decline. While the RSI indicates oversold conditions, this often signifies a strong downtrend that can persist, rather than guaranteeing an immediate rebound, pointing to continued downward pressure."
+    ],
+    "counters": [
+      {
+        "claim_id": "C1",
+        "rebuttal": "While tokenization presents a long-term opportunity, its immediate material revenue impact for Coinbase is highly uncertain and speculative. The neutral news regarding tokenization does not provide concrete evidence of significant near-term revenue generation to offset current market headwinds, especially for a company currently showing no EPS.",
+        "evidence": [
+          {
+            "source": "news",
+            "pointer": "[4]",
+            "note": "News states Coinbase has a distribution advantage as tokenization grows, but this is a neutral stance, not confirming immediate or material revenue."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "A lack of EPS indicates current business model unprofitability, making future speculative revenue streams critical but uncertain."
+          }
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "rebuttal": "While having no debt is a positive aspect of Coinbase's financial health, it does not negate the core issue of fundamental unprofitability (no EPS) for a company with an $87 billion market cap. Financial health in terms of debt is one aspect, but a persistent lack of earnings power raises serious questions about valuation sustainability and the true 'robustness' of its positioning.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "Debt=None",
+            "note": "Acknowledges the absence of debt, but this is juxtaposed with unprofitability."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "Highlights the counterpoint of fundamental unprofitability despite the absence of debt."
+          }
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "rebuttal": "The claim of \"overwhelmingly bullish market sentiment\" for Coinbase (COIN) stock is misleading. While an overall sentiment of \"strong_bullish\" is reported, the detailed breakdown shows a majority of tweets are neutral (77.5%), with only a small fraction explicitly bullish (17.5%) or bearish (5%). Crucially, examination of the top influential tweets reveals that many discuss other distinct crypto tokens or general market conditions, rather than Coinbase Global Inc.'s equity. The few relevant tweets about $COIN stock include bearish observations, suggesting actual sentiment for the stock is far more mixed or less overwhelmingly bullish than stated.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "overall_sentiment=strong_bullish",
+            "note": "The overall sentiment is reported as strong_bullish for the ticker, but the underlying data reveals inconsistencies for COIN equity."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "sentiment_breakdown",
+            "note": "Detailed breakdown shows 77.5% neutral and only 17.5% bullish, not 'overwhelmingly bullish' for the equity."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets.[0-13]",
+            "note": "Numerous top tweets reference other crypto tokens (e.g., BNB, SUN, G Coin, CR7, ELON GROK COIN), or general market conditions, not Coinbase Global Inc. equity, severely diluting the reported 'strong_bullish' sentiment for COIN stock."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets.[14].content",
+            "note": "Tweet explicitly refers to '$COIN (@Coin_Swap_)', not Coinbase Global Inc."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets.[20].content",
+            "note": "Tweet explicitly calls '$COIN was the weakest stock', indicating a bearish observation for the equity."
+          }
+        ]
+      },
+      {
+        "claim_id": "C4",
+        "rebuttal": "While an RSI of 29.1 indicates oversold conditions, this is not a guarantee of an imminent price reversal. In strong downtrends, oversold conditions can persist or deepen, reflecting continued selling pressure. Coupled with the price trading significantly below its 20-day moving average and a recent sharp daily decline, the technicals suggest ongoing bearish momentum rather than an immediate rebound.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI",
+            "note": "RSI of 29.1 indicates oversold conditions, but in a strong downtrend, this can persist rather than guarantee an immediate reversal."
+          },
+          {
+            "source": "market",
+            "pointer": "Current",
+            "note": "Current price shows a significant daily decline of -6.73%, reflecting bearish momentum."
+          },
+          {
+            "source": "market",
+            "pointer": "MA",
+            "note": "Price is significantly below its 20-day moving average (90.48% of MA_20), indicating a strong downtrend."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "The long-term impact and adoption rate of tokenization could eventually materialize into significant revenue for Coinbase, altering its fundamental outlook.",
+      "A sustained bull run in the broader cryptocurrency market could significantly boost Coinbase's trading volumes and fee revenue, temporarily overcoming current headwinds.",
+      "Regulatory developments favorable to cryptocurrency exchanges could improve Coinbase's operational environment and investor confidence."
+    ],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "EPS=None",
+        "note": "Indicates lack of profitability despite high market cap."
+      },
+      {
+        "source": "news",
+        "pointer": "[3]",
+        "note": "Bitcoin risks drop toward $100K, highlighting broader crypto market instability that directly impacts COIN."
+      },
+      {
+        "source": "market",
+        "pointer": "Current",
+        "note": "Current price shows a significant daily decline of -6.73%, reflecting bearish momentum."
+      },
+      {
+        "source": "market",
+        "pointer": "MA",
+        "note": "Price is significantly below its 20-day moving average (90.48% of MA_20), indicating a strong downtrend."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI",
+        "note": "RSI of 29.1 indicates oversold conditions, but in a strong downtrend, this can persist rather than guarantee an immediate reversal."
+      },
+      {
+        "source": "news",
+        "pointer": "[4]",
+        "note": "News states Coinbase has a distribution advantage as tokenization grows, but this is a neutral stance, not confirming immediate or material revenue."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt=None",
+        "note": "Acknowledges the absence of debt, but questions persist regarding profitability."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish",
+        "note": "The overall sentiment is reported as strong_bullish for the ticker, but the underlying data reveals inconsistencies for COIN equity."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_breakdown",
+        "note": "Sentiment breakdown shows a majority neutral (77.5%) and only 17.5% bullish, contradicting the 'strong_bullish' overall label for COIN equity."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[0-13]",
+        "note": "Numerous top tweets reference other crypto tokens (e.g., Dogecoin, Bitcoin, Ethereum, BNB, BUSD, SUN, G Coin, CR7, ELON GROK COIN) or general market conditions, not Coinbase Global Inc. equity, severely diluting the reported 'strong_bullish' sentiment for COIN stock."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[14].content",
+        "note": "Tweet from FameEX GLOBAL explicitly refers to '$COIN (@Coin_Swap_)', not Coinbase Global Inc."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[20].content",
+        "note": "Tweet from PBInvesting explicitly calls '$COIN was the weakest stock', indicating a bearish observation for the equity."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.9219",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "COIN",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-22T17:12:37.947239",
+      "news_ref": "2025-10-22T16:04:04.920775+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "final_decision": {
+    "ticker": "COIN",
+    "stance_summary": {
+      "bullish_thesis": "Coinbase (COIN) is poised for significant growth and a strong rebound, underpinned by its strategic leadership in the expanding tokenization market, robust financial positioning (zero debt), and overwhelmingly bullish market sentiment, all supported by an oversold technical setup indicating an imminent price reversal.",
+      "bearish_thesis": "Coinbase (COIN) faces significant downside risk due to its fundamental lack of profitability, high exposure to the volatile and speculative cryptocurrency market, and a deteriorating technical outlook, making it a speculative investment despite optimistic future growth claims and potentially misattributed bullish sentiment."
+    },
+    "consensus": [
+      "Coinbase (COIN) currently reports no EPS, indicating a lack of traditional profitability.",
+      "The company has no reported debt ('Debt=None'), signifying a strong balance sheet from a leverage perspective.",
+      "COIN's business is fundamentally exposed to the volatility of the broader cryptocurrency market.",
+      "Coinbase is exploring or positioned in the tokenization market as a potential future growth driver.",
+      "The Relative Strength Index (RSI) for COIN is 29.1, indicating deeply oversold conditions."
+    ],
+    "disagreements": [
+      {
+        "topic": "Fundamental Profitability & Valuation",
+        "bull_view": "Despite no reported EPS, robust revenue per share (25.1273) and zero debt signify exceptional financial health and a solid foundation for future profitability, justifying valuation based on growth potential.",
+        "bear_view": "The absence of reported EPS indicates fundamental unprofitability, making Coinbase's valuation highly speculative and unsupported by current earnings, raising serious questions about long-term financial viability despite the lack of debt."
+      },
+      {
+        "topic": "Impact of Tokenization on Revenue",
+        "bull_view": "Strategic positioning in the growing tokenization market opens new, diversified revenue streams beyond trading, signaling strong long-term growth and reducing reliance on volatile fees.",
+        "bear_view": "The immediate material revenue impact from tokenization is highly uncertain and speculative; neutral news on this topic does not provide concrete evidence of significant near-term revenue generation to offset current market headwinds."
+      },
+      {
+        "topic": "Interpretation of RSI (29.1)",
+        "bull_view": "Deeply oversold conditions (RSI 29.1) historically precede strong rebounds, signaling a high probability of an imminent price reversal and a significant buying opportunity.",
+        "bear_view": "While oversold, an RSI of 29.1 does not guarantee an immediate price reversal; in strong downtrends, oversold conditions can persist or deepen, reflecting continued selling pressure and ongoing bearish momentum."
+      },
+      {
+        "topic": "Overall Market Sentiment for COIN Stock",
+        "bull_view": "Overall market sentiment is overwhelmingly strong bullish (score 0.9219), reflecting high confidence from influential market participants and technical analysis pointing to potential significant gains.",
+        "bear_view": "The claim of 'overwhelmingly bullish market sentiment' is misleading; the detailed breakdown shows mostly neutral tweets (77.5%), many top tweets refer to other crypto tokens or general market conditions, not COIN equity, and some explicitly note bearish observations for the stock."
+      },
+      {
+        "topic": "Broader Cryptocurrency Market Impact",
+        "bull_view": "Bitcoin and Ethereum whales betting on upside suggests informed confidence in the broader crypto market, which benefits a leading exchange like Coinbase.",
+        "bear_view": "The company's core business is heavily exposed to extreme crypto volatility; recent news highlights significant downside risks for major digital assets, directly threatening Coinbase's trading volumes and fee-based revenue streams."
+      }
+    ],
+    "key_upside": [
+      "Strategic leadership and established distribution network positioning Coinbase to capitalize on the growing tokenization market, offering diversified revenue streams for long-term growth.",
+      "Exceptional financial health with zero reported debt provides operational flexibility and a strong foundation for future initiatives and market navigation.",
+      "Deeply oversold technical conditions (RSI 29.1) could precede a strong rebound, offering a potential entry point for patient investors."
+    ],
+    "key_risks": [
+      "Fundamental unprofitability, indicated by a lack of reported EPS, makes Coinbase's significant market capitalization highly speculative and unsustainable without a clear path to earnings.",
+      "High exposure to the extreme volatility of the cryptocurrency market, with potential for significant downside in major digital assets, directly threatens Coinbase's core trading volumes and fee revenue.",
+      "Deteriorating technical outlook, including the price trading significantly below its 20-day moving average and experiencing sharp daily declines, suggests persistent bearish momentum despite oversold RSI readings."
+    ],
+    "scorecard": {
+      "bull_strength": 0.5,
+      "bear_strength": 0.8,
+      "uncertainty": 0.7,
+      "net_score": -1.0
+    },
+    "action": {
+      "recommendation": "SELL",
+      "confidence": 0.6,
+      "time_horizon": "medium",
+      "triggers_up": [
+        "Coinbase consistently reports positive Earnings Per Share (EPS) over multiple quarters.",
+        "Concrete evidence of significant, sustained revenue contribution from tokenization initiatives.",
+        "A sustained bullish trend in major cryptocurrencies (e.g., Bitcoin, Ethereum) leading to increased trading volumes and fee revenue."
+      ],
+      "triggers_down": [
+        "Continued lack of profitability (no EPS) over extended periods, exacerbating valuation concerns.",
+        "A prolonged 'crypto winter' characterized by significant declines in major cryptocurrencies and sustained low trading volumes.",
+        "Negative regulatory developments that directly impact Coinbase's business model or increase operational costs."
+      ]
+    },
+    "rationale": "Coinbase (COIN) presents a challenging investment case for a medium-term horizon. While the company boasts a strong balance sheet with zero debt and is strategically positioned in the nascent tokenization market, these positives are largely overshadowed by significant fundamental and market-related risks. The primary concern is Coinbase's fundamental unprofitability, evidenced by the consistent absence of reported EPS despite a substantial market capitalization, rendering its valuation highly speculative. Furthermore, its core business remains heavily exposed to the extreme volatility of the cryptocurrency market, with recent news highlighting potential downside risks for major digital assets that could severely impact trading volumes and fee-based revenues.\n\nTechnically, despite an oversold RSI of 29.1, the stock exhibits a deteriorating outlook, trading significantly below its 20-day moving average and experiencing sharp daily declines, suggesting that oversold conditions may persist rather than guaranteeing an immediate rebound. The bullish claim of 'overwhelmingly strong bullish sentiment' is largely debunked by a closer examination of social media data, which reveals a majority of neutral sentiment and many tweets referencing other crypto assets, not COIN equity. Given the lack of fundamental profitability, high exposure to an inherently volatile and speculative market, and negative short-term technicals, the risks currently outweigh the potential upside, particularly for a medium-term outlook. Therefore, a SELL recommendation is warranted, albeit with moderate confidence reflecting the high overall uncertainty inherent in the cryptocurrency sector.",
+    "evidence_citations": [
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.revenue_per_share_ttm",
+        "note": "Demonstrates robust revenue generation despite EPS not being reported."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt",
+        "note": "Signifies exceptional financial health and operational flexibility, countering profitability concerns."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.eps_ttm",
+        "note": "Indicates lack of profitability despite high market cap, a major concern for valuation."
+      },
+      {
+        "source": "news",
+        "pointer": "[4] neutral: Coinbase: Distribution An Advantage As Tokenization Grows",
+        "note": "Highlights strategic diversification and a long-term growth driver, but is a neutral stance."
+      },
+      {
+        "source": "news",
+        "pointer": "[2] neutral: Bitcoin, Ethereum Whales Bet On Upside: What Do They Know?",
+        "note": "Suggests underlying informed confidence in the broader crypto market."
+      },
+      {
+        "source": "news",
+        "pointer": "[3]",
+        "note": "Bitcoin risks drop toward $100K, highlighting broader crypto market instability that directly impacts COIN."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI: 29.1",
+        "note": "Indicates deeply oversold conditions, a technical signal."
+      },
+      {
+        "source": "market",
+        "pointer": "Current",
+        "note": "Current price shows a significant daily decline of -6.73%, reflecting bearish momentum."
+      },
+      {
+        "source": "market",
+        "pointer": "MA",
+        "note": "Price is significantly below its 20-day moving average (90.48% of MA_20), indicating a strong downtrend."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Aggregated social sentiment, but underlying data for COIN equity is debated."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets",
+        "note": "Highlights the stock holding critical technical support, suggesting potential for rebound."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_breakdown",
+        "note": "Detailed breakdown shows 77.5% neutral and only 17.5% bullish, not 'overwhelmingly bullish' for the equity."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[0-13]",
+        "note": "Numerous top tweets reference other crypto tokens or general market conditions, not Coinbase Global Inc. equity."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[14].content",
+        "note": "Tweet explicitly refers to '$COIN (@Coin_Swap_)', not Coinbase Global Inc."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets.[20].content",
+        "note": "Tweet explicitly calls '$COIN was the weakest stock', indicating a bearish observation for the equity."
+      }
+    ],
+    "meta": {
+      "risk_tolerance": "medium",
+      "default_horizon": "medium",
+      "language": "en",
+      "currency": "USD",
+      "market": "NASDAQ NMS",
+      "input_refs": {
+        "fundamentals_ref": "2025-10-22T17:12:37.947239",
+        "news_ref": "2025-10-22T16:04:04.920775+00:00"
+      },
+      "model": "gemini-2.5-pro",
+      "time_horizon": "medium"
+    }
+  },
+  "debate_history": [
+    {
+      "role": "bullish",
+      "text": "Coinbase (COIN) is poised for significant upside, driven by its strategic advantage in the burgeoning tokenization market, robust technical support at critical levels, and overwhelmingly strong bullish sentiment from influential market participants, positioning it for substantial gains despite recent market volatility.\n- Coinbase is strategically positioned to capitalize on the growth of tokenization, leveraging its established distribution network as a key competitive advantage, signaling diversified future revenue streams.\n- Overall market sentiment towards COIN is overwhelmingly strong bullish, with a high sentiment score and a significant proportion of positive discussions from influential voices, reflecting high confidence in its future performance.\n- Despite recent price dips, COIN is demonstrating resilience by holding critical bull market support levels. Historically, such support has preceded substantial upward movements, with the potential for over 100% gains, and an oversold RSI further signals an impending rebound."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase (COIN) presents significant downside risk due to increasing cryptocurrency market volatility, persistent negative technical indicators signaling further declines, and fundamental vulnerabilities stemming from its reliance on speculative assets, overshadowing any speculative future opportunities in tokenization or temporary bullish sentiment.\n- COIN's current valuation remains susceptible to the inherent volatility of the cryptocurrency market, with recent news indicating significant downside risks for major digital assets like Bitcoin.\n- Technical indicators for COIN are strongly bearish, with the stock trading significantly below its short-term moving average and an oversold RSI, suggesting continued downward pressure rather than a guaranteed rebound.\n- Despite optimistic discussions around 'tokenization,' the immediate and material revenue impact of such initiatives is uncertain and unlikely to counteract the headwinds from fluctuating trading volumes and general crypto market uncertainty."
+    },
+    {
+      "role": "bullish",
+      "text": "Coinbase (COIN) is exceptionally positioned for substantial upside, driven by its strategic dominance in the expanding tokenization market, robust technical resilience at key support levels indicating an imminent rebound, and overwhelmingly strong bullish sentiment from influential market participants, all pointing towards significant future growth despite short-term market fluctuations.\n- Coinbase holds a strategic distribution advantage in the burgeoning tokenization market, positioning it for diversified and robust long-term revenue growth beyond traditional cryptocurrency trading.\n- Overall market sentiment for COIN is overwhelmingly strong bullish, with a high sentiment score of 0.9219 and a significant proportion of positive discussions, reflecting strong confidence in its future performance among influential voices.\n- Despite recent price fluctuations, COIN exhibits strong technical resilience, holding critical bull market support levels. This, coupled with an oversold Relative Strength Index (RSI) of 29.1, historically precedes substantial upward movements and signals a strong potential for an imminent rebound."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase (COIN) faces significant downside risk due to its fundamental unprofitability, high exposure to the inherent volatility of the cryptocurrency market, and a deteriorating technical outlook, making it a speculative and risky investment despite claims of future growth and perceived bullish sentiment.\n- Coinbase's fundamental unprofitability is a major concern, as the absence of reported EPS despite a substantial market capitalization indicates that its valuation is highly speculative and not supported by current earnings, raising questions about long-term financial viability.\n- The company's core business remains heavily exposed to the extreme volatility of the cryptocurrency market. Recent news highlights significant downside risks for major digital assets, including Bitcoin's potential drop toward $100K and a massive market deleveraging event, directly threatening Coinbase's trading volumes and fee-based revenue streams.\n- COIN exhibits a deteriorating technical outlook with its price trading significantly below the 20-day moving average and experiencing a sharp daily decline. While the RSI indicates oversold conditions, this often signifies a strong downtrend that can persist, rather than guaranteeing an immediate rebound, pointing to continued downward pressure."
+    },
+    {
+      "role": "bullish",
+      "text": "Coinbase (COIN) is poised for significant growth and a strong rebound, underpinned by its strategic leadership in the expanding tokenization market, robust financial positioning (zero debt), and overwhelmingly bullish market sentiment, all supported by an oversold technical setup indicating an imminent price reversal.\n- Coinbase is strategically positioned to leverage its established distribution network as tokenization grows, opening new, diversified revenue streams beyond traditional crypto trading, signaling strong long-term growth.\n- Overall market sentiment for COIN is overwhelmingly strong bullish (score 0.9219), reflecting high confidence from influential market participants. Specific technical analysis within social sentiment points to potential 100%+ gains if historical support levels hold, reinforcing a positive outlook.\n- Despite recent price dips, COIN's Relative Strength Index (RSI) of 29.1 indicates deeply oversold conditions, historically preceding strong rebounds. Furthermore, the company's reported 'Debt=None' signals exceptional financial health and operational flexibility."
+    },
+    {
+      "role": "bearish",
+      "text": "Coinbase (COIN) faces significant downside risk due to its fundamental lack of profitability, high exposure to the volatile and speculative cryptocurrency market, and a deteriorating technical outlook, making it a speculative investment despite optimistic future growth claims and potentially misattributed bullish sentiment.\n- Coinbase's fundamental unprofitability is a major concern, as the absence of reported EPS despite a substantial market capitalization indicates that its valuation is highly speculative and not supported by current earnings, raising questions about long-term financial viability.\n- The company's core business remains heavily exposed to the extreme volatility of the cryptocurrency market. Recent news highlights significant downside risks for major digital assets, including Bitcoin's potential drop toward $100K and a massive market deleveraging event, directly threatening Coinbase's trading volumes and fee-based revenue streams.\n- COIN exhibits a deteriorating technical outlook with its price trading significantly below the 20-day moving average and experiencing a sharp daily decline. While the RSI indicates oversold conditions, this often signifies a strong downtrend that can persist, rather than guaranteeing an immediate rebound, pointing to continued downward pressure."
+    }
+  ],
+  "rounds": 3,
+  "ticker": "COIN",
+  "data_validation": {
+    "news_available": true,
+    "fundamentals_available": true,
+    "sentiment_available": true,
+    "market_available": true
+  },
+  "meta": {
+    "risk_tolerance": "medium",
+    "time_horizon": "medium"
+  },
+  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/COIN/market_csv/COIN_3mo_1d_20251023_115922.csv"
+}

@@ -12,18 +12,13 @@ if str(PROJECT_ROOT) not in sys.path:
 
 async def run_sentiment(ticker: str, max_tweets=None, headless=None) -> dict:
     """调用 X/Twitter 舆情工具，返回统一 JSON 结构。"""
-    from analysts.sentiment import get_sentiment as x_get_sentiment
+    from analysts.lib.X_search.tool import get_sentiment as x_get_sentiment
 
-    # 直接调用工具的异步接口；返回为 JSON 字符串
-    data_json_str = await x_get_sentiment.coroutine(
-        ticker=ticker, max_tweets=max_tweets, headless=headless
-    )
-    try:
-        data = json.loads(data_json_str)
-    except Exception:
-        data = {"raw": data_json_str}
-
-    summary = f"{ticker} tweets: {data.get('count', 0)}" if isinstance(data, dict) else ""
+    # 直接调用工具的异步接口；返回为字典
+    data = await x_get_sentiment.coroutine(ticker=ticker)
+    
+    # get_sentiment 已经返回标准化的字典结构
+    summary = f"{ticker} tweets: {data.get('metrics', {}).get('total_tweets', 0)}" if isinstance(data, dict) else ""
     return {
         "ticker": ticker,
         "channel": "sentiment",

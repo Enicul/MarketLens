@@ -1,0 +1,213 @@
+{
+  "history": [],
+  "decisions": [],
+  "progress": [
+    {
+      "type": "progress",
+      "message": "[MANAGER] 正在调度 Analyst 分析 情绪 维度，并整合下游代理…",
+      "tool": "manager",
+      "stage": "start",
+      "timestamp": "2025-10-22T16:14:09.756714Z"
+    },
+    {
+      "type": "progress",
+      "message": "> Entering new AgentExecutor chain...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:09.762639",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "好的，我猜您想了解的是 Coinbase (COIN)，这就为您分析。\n我将执行标准分析流程：数据收集 -> 深度研究 -> 交易决策。\n首先，我需要为您收集关于 COIN 的基础数据...",
+      "tool": "call_analyst",
+      "stage": "thinking",
+      "timestamp": "2025-10-23T00:14:17.700647",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📊 收集数据: COIN - sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.701700",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ⚠️ 跳过已禁用: news, fundamentals, market",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.701752",
+      "level": "WARNING"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🚀 Starting analysis for COIN - sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.701956",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "--------------------------------------------------",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.701970",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[CSV] ⏭️ Skipping CSV generation (market not requested)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702205",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[START] COIN/sentiment - calling get_sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702261",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[CACHE MISS] COIN/sentiment - fetching fresh data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702281",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[PROCESSING] 1 tools running...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702292",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 🐦 Starting Twitter sentiment analysis for COIN",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702684",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "----------------------------------------",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:17.702695",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] ⚠️ Attempt 1 failed: Browser initialization failed: 'BrowserContext' ob...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:19.572844",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] ⚠️ Attempt 2 failed: Browser initialization failed: 'BrowserContext' ob...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.356368",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] ❌ Error for COIN: Browser initialization failed: 'BrowserContext' ob...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.356384",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[COMPLETE] 1 tools finished",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.356944",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SUCCESS] COIN/sentiment - data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.356953",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Analysis complete for COIN",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.357226",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "==================================================",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.357233",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] successful_analyses: ['sentiment']",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.357561",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "database/2025-10-23/COIN/analyst_COIN.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:22.357992",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "好的，我将对 Coinbase (COIN) 进行深入分析。\n首先，我需要收集并研究该公司的基本面、市场数据和最新新闻。这个过程可能需要一些时间，请稍候。\n第一步：数据分析...",
+      "tool": "call_researcher",
+      "stage": "thinking",
+      "timestamp": "2025-10-23T00:14:28.909060",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🔬 深度研究: COIN",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:28.909688",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[Debate] Round 1/3 - Bullish speaking...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:28.909716",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[Debate] Round 1/3 - Bearish responding...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T00:14:52.675892",
+      "level": "INFO"
+    }
+  ]
+}

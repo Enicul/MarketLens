@@ -3,7 +3,7 @@ from __future__ import annotations
 import json, asyncio
 from typing import Any, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, ValidationError
-from config import LLM_GOOGLE
+from config import LLM_GOOGLE_FLASH
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.tools import tool
 
@@ -111,8 +111,8 @@ def _sent_ok(s):
 
 
 class BearishResearcher:
-    def __init__(self, temperature=0, timeout=30):
-        self.llm = LLM_GOOGLE
+    def __init__(self, temperature=1, timeout=30):
+        self.llm = LLM_GOOGLE_FLASH
 
     async def run(
         self,

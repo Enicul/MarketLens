@@ -1,0 +1,17 @@
+{
+  "symbol": "COIN",
+  "prediction_time": "2025-10-23T10:55:37.970527",
+  "input_csv": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/COIN/market_csv/COIN_3mo_1d_20251023_105146.csv",
+  "prediction_length": 120,
+  "lookback_length": 65,
+  "prediction_summary": {
+    "min_price": 275.0490417480469,
+    "max_price": 388.144775390625,
+    "mean_price": 328.2252197265625,
+    "std_price": 26.677560806274414
+  },
+  "output_files": {
+    "csv": "database/2025-10-23/COIN/Kronos_output/COIN_prediction_20251023_105537.csv",
+    "plot": "database/2025-10-23/COIN/Kronos_output/COIN_prediction_20251023_105537.png"
+  }
+}
