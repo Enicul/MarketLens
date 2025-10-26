@@ -9,7 +9,7 @@ MarketLens is our end-to-end research console that fuses analyst, researcher, tr
 
 ### 📺 Promotional Video
 
-**[▶️ Watch Promotional Video](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4)**
+**[🎥 Watch on YouTube](https://www.youtube.com/watch?v=vwrfRTDYhqI)** 
 
 *2-minute promotional clip summarizing MarketLens business value proposition*
 
@@ -42,10 +42,14 @@ Our team had an incredible experience bringing this project to life, successfull
 
 The `Video/` folder in this repository contains the two deliverables expected by ISS:
 
-**[▶️ System Video - Full Walkthrough](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_SystemVideo.mp4)**  
+### 🎬 System Video - Full Walkthrough
+**[🎥 Watch on YouTube](https://www.youtube.com/watch?v=IC-x1Xe9hO4)** 
+
 Complete walkthrough covering agent orchestration, UI flows, and a full EUR/USD-equity demo session.
 
-**[▶️ Promotional Video](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4)**  
+### 🎬 Promotional Video
+**[🎥 Watch on YouTube](https://www.youtube.com/watch?v=vwrfRTDYhqI)** 
+
 Promotional clip summarizing the business value proposition for sponsors.
 
 ---
