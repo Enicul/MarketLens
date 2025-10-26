@@ -9,10 +9,9 @@ MarketLens is our end-to-end research console that fuses analyst, researcher, tr
 
 ### 📺 Promotional Video
 
-<video width="100%" controls>
-  <source src="Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4" type="video/mp4">
-  Your browser does not support the video tag. Please <a href="Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4">download the video here</a>.
-</video>
+**[▶️ Watch Promotional Video](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4)**
+
+*2-minute promotional clip summarizing MarketLens business value proposition*
 
 ---
 
@@ -43,13 +42,11 @@ Our team had an incredible experience bringing this project to life, successfull
 
 The `Video/` folder in this repository contains the two deliverables expected by ISS:
 
-- `Video/IRS-PM-2025-08-10-GRP-1-MarketLens_SystemVideo.mp4` – walkthrough covering agent orchestration, UI flows, and a full EUR/USD-equity demo session.
-- `Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4` – promotional clip summarizing the business value proposition for sponsors.
+**[▶️ System Video - Full Walkthrough](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_SystemVideo.mp4)**  
+Complete walkthrough covering agent orchestration, UI flows, and a full EUR/USD-equity demo session.
 
-<video width="100%" controls>
-  <source src="Video/IRS-PM-2025-08-10-GRP-1-MarketLens_SystemVideo.mp4" type="video/mp4">
-  Your browser does not support the video tag. Please <a href="Video/IRS-PM-2025-08-10-GRP-1-MarketLens_SystemVideo.mp4">download the video here</a>.
-</video>
+**[▶️ Promotional Video](Video/IRS-PM-2025-08-10-GRP-1-MarketLens_PromoteVideo.mp4)**  
+Promotional clip summarizing the business value proposition for sponsors.
 
 ---
 
