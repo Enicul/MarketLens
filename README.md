@@ -11,18 +11,18 @@
 4. [Repository Layout](#repository-layout)
 5. [Prerequisites](#prerequisites)
 6. [Environment Variables](#environment-variables)
-7. [Quick Start](#quick-start)
-8. [Operating the Console](#operating-the-console)
-9. [Agent & Tooling Pipeline](#agent--tooling-pipeline)
-10. [Frontend Experience](#frontend-experience)
-11. [API Surface](#api-surface)
-12. [Data, Storage & Assets](#data-storage--assets)
-13. [Observability & Logs](#observability--logs)
-14. [Testing & Tooling](#testing--tooling)
-15. [Troubleshooting](#troubleshooting)
-16. [Contribution & Roadmap](#contribution--roadmap)
-17. [Chinese Quick Guide](#中文快速指引)
-18. [License](#license)
+7. [Installation & Server Setup](#Installation-&-Server-Setup)
+8. [Quick Start — Login & Usage Guide](#Quick-Start)
+9. [Operating the Console](#operating-the-console)
+10. [Agent & Tooling Pipeline](#agent--tooling-pipeline)
+11. [Frontend Experience](#frontend-experience)
+12. [API Surface](#api-surface)
+13. [Data, Storage & Assets](#data-storage--assets)
+14. [Observability & Logs](#observability--logs)
+15. [Testing & Tooling](#testing--tooling)
+16. [Troubleshooting](#troubleshooting)
+17. [Contribution & Roadmap](#contribution--roadmap)
+19. [License](#license)
 
 ---
 
@@ -145,7 +145,7 @@ Frontend `.env` (inside `frontend/`):
 
 ---
 
-## Quick Start
+## Installation & Server Setup
 
 1. **Install backend dependencies**
    ```bash
@@ -161,6 +161,7 @@ Frontend `.env` (inside `frontend/`):
    export GOOGLE_API_KEY=your_key   # plus other vars or use .env
    uvicorn manager.server.app:app --reload --port 8000
    ```
+⚠️ Open a new terminal for the next step — keep this backend running while you start the frontend.
 
 3. **Install & run frontend**
    ```bash
@@ -168,7 +169,49 @@ Frontend `.env` (inside `frontend/`):
    npm install
    npm run dev     # http://localhost:5173 (proxying API/WebSocket)
    ```
-
+   ---
+      
+      **Troubleshooting (Frontend / Vite)**
+      If you see this error when running `npm run dev`:
+      `Error [ERR_MODULE_NOT_FOUND]: Cannot find module '.../vite/dist/node/cli.js'`
+      
+      This usually means your **Node + npm dependencies are out of sync**, caused by:
+      
+      * Using a newer Node version (e.g., Node 24 instead of Node 20 LTS)
+      * An interrupted or partial `npm install`
+      * A stale or mismatched `package-lock.json`
+      
+      **Quick Fix**
+      From the `frontend` directory:
+      
+      ```bash
+      rm -rf node_modules package-lock.json
+      npm install
+      npm run dev
+      ```
+      
+      If it still fails:
+      
+      ```bash
+      npm cache clean --force
+      npm install
+      npm run dev
+      ```
+      
+      ⚙️ **Recommended Node Version**
+      Use **Node 20 LTS** (stable and verified with Vite 5).
+      If you use `nvm`:
+      
+      ```bash
+      nvm use 20 || nvm install 20
+      ```
+      
+      **Why This Happens**
+      `npm install` can sometimes create an inconsistent dependency tree, especially after upgrading Node.
+      Removing `node_modules` and `package-lock.json` forces npm to rebuild a clean, compatible setup.
+      
+      ---
+ 
 4. **(Optional) Legacy Gradio interface**
    ```bash
    python manager/agent_stream_gradio.py
@@ -176,8 +219,47 @@ Frontend `.env` (inside `frontend/`):
 
 The React client proxies API calls to `http://localhost:8000` and automatically streams chat from `ws://localhost:8000/ws/chat/<session_id>?token=…`.
 
----
+## Quick Start
 
+After launching **both the backend and frontend servers**, open your browser and visit:  
+👉 **[http://localhost:5173](http://localhost:5173)**
+
+
+### Login Options
+
+You can explore **Market Lens** in two simple ways:
+
+#### Guest Login  
+Use this option for **quick access** — no account needed.  
+Perfect for exploring the main system features and trying out demo queries.
+
+#### Admin Demo Account  
+Use this if you want to view **saved histories and past analyses**.  
+```
+Email: nus@u.nus.edu
+Password: 123
+```
+
+### Requesting In-Depth Analysis
+
+To unlock Market Lens’s full analytical capability, simply chat with the agent using a natural prompt such as:  
+> “I want an in-depth analysis of Nvidia.”
+
+The **Kronos model** delivers **future price predictions** and **quantitative signals** to enhance your decision-making.  
+Because it is computationally intensive, Kronos runs **only on demand** — that is, when you explicitly mention it in your request.
+
+**Example:**  
+> “Give me a detailed analysis of Tesla using **Kronos**.”
+
+
+### Report Generation Time
+
+After submitting a request, the system may take a few minutes to generate your final report.  
+You can **track real-time progress** on the **right sidebar**, which updates as the agents complete data retrieval and reasoning.  
+
+Please keep the page open until your report is ready.
+
+--- 
 ## Operating the Console
 
 1. **Login / Guest Mode**
