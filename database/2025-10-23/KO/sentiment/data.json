@@ -1,0 +1,389 @@
+{
+  "ticker": "KO",
+  "channel": "sentiment",
+  "overall_sentiment": "strong_bullish",
+  "sentiment_score": 0.7866,
+  "sentiment_breakdown": {
+    "bullish": 0.087,
+    "bearish": 0.013,
+    "neutral": 0.9
+  },
+  "metrics": {
+    "total_tweets": 80,
+    "total_influence": 664,
+    "influence_concentration": 0.129,
+    "sentiment_volatility": 12.875,
+    "quality_score": 0.275
+  },
+  "top_tweets": [
+    {
+      "username": "NOVA REAL INVEST",
+      "content": "Earnings Bonanza: GM Leads Market Surge as Corporate Giants Deliver Strong Q3 Results\n\n•$GM General Motors soared 10.5% after smashing estimates (EPS $2.80 vs. $2.31, revenue $48.6B vs. $45.3B) and raising full-year EPS guidance to $9.75–$10.50.\n•$KO Coca-Cola beat expectations",
+      "timestamp": "2025-10-21T12:53:41.000Z",
+      "influence_score": 9.27,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 54,
+        "retweets": 15,
+        "replies": 2
+      }
+    },
+    {
+      "username": "Alysha Lutao",
+      "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #BuyAndHold $DIS \n #MonetaryPolicy $NFLX \n #FiscalPolicy $KO \n #Sector  $HOND",
+      "timestamp": "2025-10-22T17:40:05.000Z",
+      "influence_score": 5.92,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Nazia Wajid",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $ARMP #STOCK\n #BuyAndHold $KO\n #ROE $GS  \n #GDP $TGT  \n #UnemploymentRate $QURE",
+      "timestamp": "2025-10-22T22:21:57.000Z",
+      "influence_score": 6.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Deangelo Bangert",
+      "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #SecondaryMarket $KO \n #PreferredStock $LYFT \n #MarketOrder $OPEN \n #Sector  $INTC",
+      "timestamp": "2025-10-22T17:56:18.000Z",
+      "influence_score": 5.66,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 8,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Hari kishan",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#InsiderTrading  $AAPL\n#PreferredStock  $INTC\n#DarkPool  $KO\n#Stock  $CAT",
+      "timestamp": "2025-10-23T08:33:25.000Z",
+      "influence_score": 6.08,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 10,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Kamal",
+      "content": "Thanks to @xhybaniqued, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#UnemploymentRate  $PFE\n#Inflation  $NKE\n#PERatio  $PFE\n#Stock  $KO",
+      "timestamp": "2025-10-23T03:04:04.000Z",
+      "influence_score": 6.08,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 10,
+        "retweets": 9,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Dougie Kass",
+      "content": "Early morning trading short rentals (see \n@thestreetpro\n for complete activity and transparency):\nPremarket Trading (4:02AM- kind) - Building up Short Exposure\nShorted:\n* SPY $672.26\n* QQQ $611.58 \n\nAlso, sold $KO long  (+4% yesterday) midday on the earnings beat.  Now out of all",
+      "timestamp": "2025-10-22T08:12:19.000Z",
+      "influence_score": 5.2,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 18,
+        "retweets": 3,
+        "replies": 3
+      }
+    },
+    {
+      "username": "Ratan jadhav",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#StopLossOrder  $IBM\n#BuyAndHold  $V\n#Beta  $MSFT\n#Stock  $KO",
+      "timestamp": "2025-10-22T22:47:16.000Z",
+      "influence_score": 5.74,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 8,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Shreya Adhikari",
+      "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#DayTrading  $LYFT\n#Dividends  $SBUX\n#Stock  $PG\n#MutualFund  $KO",
+      "timestamp": "2025-10-22T22:05:42.000Z",
+      "influence_score": 5.57,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 8,
+        "replies": 9
+      }
+    },
+    {
+      "username": "DividendLearning",
+      "content": "Coca Cola $KO earnings: \n\nEPS $0.82 vs Est $0.78 \nRev $12.5B vs Est $12.44B \n\nDouble beat as market share increases, but also aided by increased prices. \n\nDividend hike should be expected during the next earnings call.",
+      "timestamp": "2025-10-21T12:05:51.000Z",
+      "influence_score": 5.29,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 19,
+        "retweets": 1,
+        "replies": 7
+      }
+    },
+    {
+      "username": "ASHU KUMAR",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $YYAI #STOCK\n #SecondaryMarket $KO\n #SwingTrading $INTC  \n #PBRatio $NKE  \n #OTC $BETR",
+      "timestamp": "2025-10-22T13:50:31.000Z",
+      "influence_score": 4.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 3,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Schwab Network",
+      "content": "Here's a look at what's on \n@sam_vadas\n and \n@MarleyKayden\n's radar for tomorrow:\n\n• Coca-Cola, $KO, is set to release its third-quarter earnings before the market opens, with analysts expecting earnings of $0.78 per share on $12.4 billion in revenue \n\n• Streaming video giant",
+      "timestamp": "2025-10-20T20:40:50.000Z",
+      "influence_score": 3.74,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 2,
+        "replies": 1
+      }
+    },
+    {
+      "username": "S V. RÀJA",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#MarketCapitalization  $V\n#Dividends  $WFC\n#StockSplit  $KO\n#Trade  $TGT",
+      "timestamp": "2025-10-19T19:01:01.000Z",
+      "influence_score": 3.87,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 3,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Manisha",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#PennyStock  $MRK\n#LongPosition  $IBM\n#Arbitrage  $KO\n#SharePrice  $MA",
+      "timestamp": "2025-10-19T23:06:50.000Z",
+      "influence_score": 3.87,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 3,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Juliet Spearin",
+      "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $NVDA $ARMP #StockMarket #DayTrading $KO #UnemploymentRate $UBER #RiskManagement $WFC  \n #Trading $LUXE",
+      "timestamp": "2025-10-22T17:39:48.000Z",
+      "influence_score": 3.87,
+      "sentiment": "mixed",
+      "raw_metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "KK.Raju",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#NYSE  $JNJ\n#BlueChipStocks  $AMZN\n#InsiderTrading  $KO\n#MarketManipulation  $IBM",
+      "timestamp": "2025-10-20T04:09:06.000Z",
+      "influence_score": 3.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Damji Murji",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#CommonStock  $MSFT\n#SharePrice  $GM\n#RSI  $KO\n#RoboAdvisor  $PFE",
+      "timestamp": "2025-10-20T00:32:18.000Z",
+      "influence_score": 3.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Natubhai Prabhudas",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#PBRatio  $KO\n#StockSplit  $MRK\n#IRA  $ADBE\n#CapitalGains  $NKE",
+      "timestamp": "2025-10-19T22:14:29.000Z",
+      "influence_score": 3.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Babu Doi",
+      "content": "Thanks to \n@xhybaniqued\n, even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#SharePrice  $GS\n#NYSE  $WBD\n#PreferredStock  $MCD\n#OTC  $KO",
+      "timestamp": "2025-10-19T17:50:27.000Z",
+      "influence_score": 3.61,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 2,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Simpler Trading",
+      "content": "Earnings season is in full swing  \n\nHuge reports to watch this week: \n\n $NFLX\n $TSLA\n $KO\n $INTC",
+      "timestamp": "2025-10-20T13:35:42.000Z",
+      "influence_score": 4.69,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 7,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Anwarul Islam",
+      "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$NVDA $AAPL #SP500\n #LongPosition $KO\n #MarketManipulation $UBER \n #MarginCall $ADBE  \n #METSERA Stock $MCD",
+      "timestamp": "2025-10-22T13:02:15.000Z",
+      "influence_score": 3.32,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 1,
+        "replies": 9
+      }
+    },
+    {
+      "username": "The Growth Vector",
+      "content": "We have a ton of earnings reports coming up over the next few days, including $NFLX $KO $TSLA $INTC $PG among others.\n\nHow do we think the market will react for the rest of the year after the Q3 reports? Traditionally Q4 is a bull run, but will this time be different?",
+      "timestamp": "2025-10-19T17:36:40.000Z",
+      "influence_score": 3.16,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 3
+      }
+    },
+    {
+      "username": "10xTrading",
+      "content": "EARNINGS \n$KO $MMM $NFLX $ISRG $TXN $T $TSLA $IBM $SAP $AAL $INTC $F $PG",
+      "timestamp": "2025-10-19T15:37:03.000Z",
+      "influence_score": 4.47,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 16,
+        "retweets": 2,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Aiime",
+      "content": "$KO Q3 Earnings Drop at 6:55 AM ET \n\nEstimates: \n-Revenue: $12.42B\n-EPS: $0.78\n\nKO has delivered 4 straight EPS beats, averaging +4-8% surprises. The stock is trading at $68.47, off recent highs, and has shown a recovery trend into earnings. Watch for commentary on pricing",
+      "timestamp": "2025-10-21T10:45:00.000Z",
+      "influence_score": 2.83,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "amansachdev",
+      "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#Dividends  $MS\n#StockSplit  $GOOGL\n#MutualFund  $CRM\n#MovingAverage  $KO",
+      "timestamp": "2025-10-20T04:41:01.000Z",
+      "influence_score": 3.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 9
+      }
+    },
+    {
+      "username": "Pinegap (AI platform for Equity Research)",
+      "content": "$KO Coca-Cola Company Q3'25 Earnings Report is out! The stock is up 0.8% Pre Market Hours. Let's see how the market reacts to this quarter's strong results. Here's the Earnings Report summary within minutes of release with the help of \nhttp://\nPineGap.AI's Earnings Tracker",
+      "timestamp": "2025-10-21T11:20:41.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 2,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Doc Holliday",
+      "content": "JesseCohenInv: Happy Sunday!\n\nHere Are My #Top5ThingsToKnowThisWeek:\n\n1. Trump Tariff Deadline\n2. Government Shutdown Talks\n3. U.S. CPI Data\n4. $TSLA $NFLX $INTC $IBM Earnings\n5. $KO $GM $GE $T $F $AAL $LUV Earnings\n\nMay The Trading Gods Be With You \n\n…",
+      "timestamp": "2025-10-19T12:13:28.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 4
+      }
+    },
+    {
+      "username": "Young Ko",
+      "content": "When you truly realize how many opportunities the market presents in a week/month/quarter/year, the easier it is to set and trust your stops. \n\nLet it trade and if you get stopped, on to the next one! Don’t get fixated on a stock.",
+      "timestamp": "2025-10-08T19:35:43.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "AlphaSense",
+      "content": "$KO Earnings:\n\n- Revenues: Net revenues grew 5% to $12.5 billion, and organic revenues (non-GAAP) grew 6%. Revenue performance included 6% growth in price/mix, while concentrate sales were even. Concentrate sales were 1 point behind unit case volume due to the timing of",
+      "timestamp": "2025-10-21T11:33:54.000Z",
+      "influence_score": 2.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Manoj Sharma",
+      "content": "Absolutely agree, Satish bhaiya \n\nBoth concentrated and diversified portfolios can create wealth — there’s no single right way. The real challenge and edge lie in understanding which system works best for you.\n\nStock market mein sabse bada kaam strategy banana nahi, khud ko",
+      "timestamp": "2025-10-12T16:42:39.000Z",
+      "influence_score": 2.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 0
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 1.0,
+    "search_keywords": [
+      "$KO"
+    ],
+    "generated_at": "2025-10-23T08:50:49.514379+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}

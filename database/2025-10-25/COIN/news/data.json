@@ -1,0 +1,161 @@
+{
+  "ticker": "COIN",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-25T02:44:00+00:00",
+      "headline": "Trump's $300 Million White House Ballroom Could Soon Bear A Very Familiar Name",
+      "evidence": [
+        "https://www.benzinga.com/news/politics/25/10/48421230/trumps-300-million-white-house-ballroom-could-soon-bear-a-very-familiar-name"
+      ],
+      "summary": [
+        "Trump's $300 Million White House Ballroom Could Soon Bear A Very Familiar Name"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-24T21:41:06+00:00",
+      "headline": "Bitcoin price compression will spark expansion: Will BTC explode toward $120K?",
+      "evidence": [
+        "https://cointelegraph.com/news/bitcoin-price-compression-will-spark-expansion-will-btc-explode-to-120k"
+      ],
+      "summary": [
+        "Bitcoin price compression will spark expansion: Will BTC explode toward $120K?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-24T21:22:45+00:00",
+      "headline": "Coinbase stock surges after JPMorgan upgrade on Base, USDC potential",
+      "evidence": [
+        "https://cointelegraph.com/news/jpmorgan-upgrades-coinbase-base-usdc-potential"
+      ],
+      "summary": [
+        "Coinbase stock surges after JPMorgan upgrade on Base, USDC potential"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-24T20:17:32+00:00",
+      "headline": "Sygnum Bank bets on Bitcoin lending with multisign custody model",
+      "evidence": [
+        "https://cointelegraph.com/news/sygnum-bank-debifi-bitcoin-multisig-loan"
+      ],
+      "summary": [
+        "Sygnum Bank bets on Bitcoin lending with multisign custody model"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-24T20:09:50+00:00",
+      "headline": "Bitcoin, Ethereum, Dogecoin Remain Flat As XRP Rises On Cooler Inflation",
+      "evidence": [
+        "https://www.benzinga.com/crypto/cryptocurrency/25/10/48417639/bitcoin-ethereum-dogecoin-remain-flat-as-xrp-rises-on-cooler-inflation"
+      ],
+      "summary": [
+        "Bitcoin, Ethereum, Dogecoin Remain Flat As XRP Rises On Cooler Inflation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-24T19:15:36+00:00",
+      "headline": "DeLeion Capital Highlights the BNB Opportunity for Smart Investors -As US Pardons Binance Founder \"CZ\"",
+      "evidence": [
+        "https://www.benzinga.com/pressreleases/25/10/g48415885/deleion-capital-highlights-the-bnb-opportunity-for-smart-investors-as-us-pardons-binance-founder-c"
+      ],
+      "summary": [
+        "DeLeion Capital Highlights the BNB Opportunity for Smart Investors -As US Pardons Binance Founder \"CZ\""
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Decrypt.co",
+      "published_at": "2025-10-24T19:06:55+00:00",
+      "headline": "Spooky Szn? Bitcoin Options Worth Record $31 Billion Set to Expire on Halloween",
+      "evidence": [
+        "https://decrypt.co/345888/bitcoin-options-record-31-billion-set-expire-halloween"
+      ],
+      "summary": [
+        "Spooky Szn? Bitcoin Options Worth Record $31 Billion Set to Expire on Halloween"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "COIN"
+      ],
+      "publisher": "Cointelegraph",
+      "published_at": "2025-10-24T17:56:52+00:00",
+      "headline": "Crypto.com pushes for federal footing with US trust bank charter application",
+      "evidence": [
+        "https://cointelegraph.com/news/crypto-com-federal-us-trust-bank-charter-application"
+      ],
+      "summary": [
+        "Crypto.com pushes for federal footing with US trust bank charter application"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-25T08:04:54.674050+00:00"
+}

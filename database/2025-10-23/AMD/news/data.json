@@ -1,0 +1,161 @@
+{
+  "ticker": "AMD",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-23T01:12:39+00:00",
+      "headline": "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) ",
+      "evidence": [
+        "https://www.benzinga.com/etfs/broad-u-s-equity-etfs/25/10/48370867/cathie-wood-bets-21-million-on-robinhood-snaps-up-netflix-sells-these-two-hot-ai-stock"
+      ],
+      "summary": [
+        "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-23T00:59:57+00:00",
+      "headline": "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?",
+      "evidence": [
+        "https://www.fool.com/coverage/filings/2025/10/23/is-amd-a-buy-after-investment-advisor-western-financial-initiated-a-position-in-the-stock/"
+      ],
+      "summary": [
+        "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "SeekingAlpha",
+      "published_at": "2025-10-22T23:50:00+00:00",
+      "headline": "Are We In A Bubble?",
+      "evidence": [
+        "https://finnhub.io/api/news?id=7a9641cf8dede0883c89f598cd1f8daf847d352c132a9dd870cb6f16261edf3a"
+      ],
+      "summary": [
+        "Are We In A Bubble?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-10-22T21:45:03+00:00",
+      "headline": "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2774593/advanced-micro-devices-amd-falls-more-steeply-than-broader-market-what-investors-need-to-know"
+      ],
+      "summary": [
+        "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-22T21:08:27+00:00",
+      "headline": "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/22/unfortunate-news-for-nvidia-stock-amd-stock-micros/"
+      ],
+      "summary": [
+        "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-22T20:13:35+00:00",
+      "headline": "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) ",
+      "evidence": [
+        "https://www.benzinga.com/trading-ideas/previews/25/10/48366571/intel-q3-preview-nvidia-us-government-stakes-dont-change-narrative-do-not-believe-valuatio"
+      ],
+      "summary": [
+        "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-22T19:37:00+00:00",
+      "headline": "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes",
+      "evidence": [
+        "https://finnhub.io/api/news?id=c703c0877e7447f4c8eeda5586c3bd191b66dda13649bf357fcca9bea73c8804"
+      ],
+      "summary": [
+        "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "AMD"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-22T19:20:46+00:00",
+      "headline": "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today",
+      "evidence": [
+        "https://finnhub.io/api/news?id=e77bddae1baede262768dd4688bfad7952612e444db01d70b0a5bf2ed1acba33"
+      ],
+      "summary": [
+        "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-23T08:38:13.126289+00:00"
+}

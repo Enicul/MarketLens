@@ -1,0 +1,708 @@
+{
+  "history": [
+    {
+      "role": "human",
+      "content": "我想了解amd公司全部信息",
+      "timestamp": "2025-10-23T08:45:21.333573Z"
+    },
+    {
+      "role": "ai",
+      "content": "AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\nRecommended Position: 0.0%\nCurrent Price: 30.00\nStop Loss: 31.50\nTake Profit: 26.40\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\n\nAMD Kronos Prediction<kronos-chart symbol=\"AMD\" metadata=\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\" history=\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\" prediction=\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\" />",
+      "timestamp": "2025-10-23T08:45:21.337567Z"
+    },
+    {
+      "role": "system",
+      "content": "🔧 Tool call: call_analyst\n➡️ Input: {\"ticker\": \"AMD\", \"intents\": [\"news\", \"fundamentals\", \"market\", \"sentiment\"]}\n⬅️ Output: \"database/2025-10-23/AMD/analyst_AMD.json\"\n📝 Log: \"\\nInvoking: `call_analyst` with `{'ticker': 'AMD', 'intents': ['news', 'fundamentals', 'market', 'sentiment']}`\\n\\n\\n\"",
+      "timestamp": "2025-10-23T08:45:21.339872Z",
+      "additional_kwargs": {
+        "tool_event": {
+          "tool": "call_analyst",
+          "input": {
+            "ticker": "AMD",
+            "intents": [
+              "news",
+              "fundamentals",
+              "market",
+              "sentiment"
+            ]
+          },
+          "log": "\nInvoking: `call_analyst` with `{'ticker': 'AMD', 'intents': ['news', 'fundamentals', 'market', 'sentiment']}`\n\n\n",
+          "output": "database/2025-10-23/AMD/analyst_AMD.json",
+          "timestamp": "2025-10-23T08:45:21.339827Z",
+          "tool_call_id": "1d32eb3d-ec82-4650-8802-64c3710ef8bb"
+        }
+      }
+    },
+    {
+      "role": "system",
+      "content": "🔧 Tool call: call_researcher\n➡️ Input: {\"analyst_data_path\": \"database/2025-10-23/AMD/analyst_AMD.json\", \"ticker\": \"AMD\"}\n⬅️ Output: \"database/2025-10-23/AMD/researcher_AMD.json\"\n📝 Log: \"\\nInvoking: `call_researcher` with `{'analyst_data_path': 'database/2025-10-23/AMD/analyst_AMD.json', 'ticker': 'AMD'}`\\n\\n\\n\"",
+      "timestamp": "2025-10-23T08:45:21.340489Z",
+      "additional_kwargs": {
+        "tool_event": {
+          "tool": "call_researcher",
+          "input": {
+            "analyst_data_path": "database/2025-10-23/AMD/analyst_AMD.json",
+            "ticker": "AMD"
+          },
+          "log": "\nInvoking: `call_researcher` with `{'analyst_data_path': 'database/2025-10-23/AMD/analyst_AMD.json', 'ticker': 'AMD'}`\n\n\n",
+          "output": "database/2025-10-23/AMD/researcher_AMD.json",
+          "timestamp": "2025-10-23T08:45:21.340462Z",
+          "tool_call_id": "fa43cd81-b96e-4355-91ce-f020ccd63b80"
+        }
+      }
+    },
+    {
+      "role": "system",
+      "content": "🔧 Tool call: call_trader\n➡️ Input: {\"ticker\": \"AMD\", \"research_data_path\": \"database/2025-10-23/AMD/researcher_AMD.json\", \"user_request\": \"我想了解amd公司全部信息\"}\n⬅️ Output: \"{\\\"status\\\": \\\"success\\\", \\\"trader_notes\\\": \\\"Trading Decision Card: AMD\\\\n\\\\n**Recommendation:** SELL\\\\n**Confidence:** High (0.9/1.0)\\\\n**Symbol:** AMD\\\\n**Current Price:** $230.23\\\\n\\\\n**Reasoning:**\\\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\\\n\\\\n**Prediction Data:**\\\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\\\n\\\\n**Risk Controls:**\\\\n- **Take-Profit:** $195.70\\\\n- **Stop-Loss:** $241.74\\\\n- **Position Sizing:** Suggested allocation of 9.0%\\\\n- **Execution Range:** $225.63 - $234.83\\\\n\\\\nThis decision card is based on the research file provided and has been supplemented with a Kronos m...\n📝 Log: \"\\nInvoking: `call_trader` with `{'ticker': 'AMD', 'research_data_path': 'database/2025-10-23/AMD/researcher_AMD.json', 'user_request': '我想了解amd公司全部信息'}`\\n\\n\\n\"",
+      "timestamp": "2025-10-23T08:45:21.341622Z",
+      "additional_kwargs": {
+        "tool_event": {
+          "tool": "call_trader",
+          "input": {
+            "ticker": "AMD",
+            "research_data_path": "database/2025-10-23/AMD/researcher_AMD.json",
+            "user_request": "我想了解amd公司全部信息"
+          },
+          "log": "\nInvoking: `call_trader` with `{'ticker': 'AMD', 'research_data_path': 'database/2025-10-23/AMD/researcher_AMD.json', 'user_request': '我想了解amd公司全部信息'}`\n\n\n",
+          "output": "{\"status\": \"success\", \"trader_notes\": \"Trading Decision Card: AMD\\n\\n**Recommendation:** SELL\\n**Confidence:** High (0.9/1.0)\\n**Symbol:** AMD\\n**Current Price:** $230.23\\n\\n**Reasoning:**\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\n\\n**Prediction Data:**\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\n\\n**Risk Controls:**\\n- **Take-Profit:** $195.70\\n- **Stop-Loss:** $241.74\\n- **Position Sizing:** Suggested allocation of 9.0%\\n- **Execution Range:** $225.63 - $234.83\\n\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the 'very_high' uncertainty level identified in the research.\", \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\nRecommended Position: 0.0%\\nCurrent Price: 30.00\\nStop Loss: 31.50\\nTake Profit: 26.40\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\n\\nAMD Kronos Prediction\\n<kronos-chart symbol=\\\"AMD\\\" metadata=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\" history=\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\" prediction=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\" />\", \"kronos_assets\": {\"timestamp\": \"2025-10-23T16:44:03.534965\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"prediction_summary\": {\"min_price\": 172.27972412109375, \"max_price\": 222.57989501953125, \"mean_price\": 197.7260284423828, \"std_price\": 14.375381469726562}, \"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\"}, \"ticker\": \"AMD\", \"risk_budget\": \"low\", \"confidence\": \"0.47\", \"position_size\": \"0.000\"}",
+          "timestamp": "2025-10-23T08:45:21.341585Z",
+          "tool_call_id": "c63c4a97-55dc-4e55-89d8-8704b6a8119c"
+        }
+      }
+    },
+    {
+      "role": "system",
+      "content": "🔧 Tool call: call_risk_manager\n➡️ Input: {\"ticker\": \"AMD\", \"trader_data\": \"{\\\"confidence\\\": 0.47, \\\"human_readout\\\": \\\"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\\\nRecommended Position: 0.0%\\\\nCurrent Price: 30.00\\\\nStop Loss: 31.50\\\\nTake Profit: 26.40\\\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\\\\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\\\n\\\\nAMD Kronos Prediction\\\\n<kronos-chart symbol=\\\\\\\"AMD\\\\\\\" metadata=\\\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\\\\\" history=\\\\\\\"/assets/2025-10-23/AMD/market_csv/AM...\n⬅️ Output: \"{\\\"status\\\": \\\"error\\\", \\\"error_type\\\": \\\"TraderDataError\\\", \\\"message\\\": \\\"trader decision card failed validation: 1 validation error for TraderDecisionCard\\\\ndecision\\\\n  Field required [type=missing, input_value={'confidence': 0.47, 'hum...fied in the research.\\\\\\\"}}, input_type=dict]\\\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\\\"}\"\n📝 Log: \"\\nInvoking: `call_risk_manager` with `{'ticker': 'AMD', 'trader_data': '{\\\"confidence\\\": 0.47, \\\"human_readout\\\": \\\"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\\\\\\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\\\\\\\nRecommended Position: 0.0%\\\\\\\\nCurrent Price: 30.00\\\\\\\\nStop Loss: 31.50\\\\\\\\nTake Profit: 26.40\\\\\\\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the \\\\'very_high\\\\' uncertainty cited.\\\\\\\\nKey Follow-up Points: Alert: Trader decision is \\\\'SELL\\\\', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites \\\\'very_high\\\\' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\\\\\\\n\\\\\\\\nAMD Kronos Prediction\\\\\\\\n<kronos-chart symbol=\\\\\\\\\\\"AMD\\\\\\\\\\\" metadata=\\\\\\\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metad...",
+      "timestamp": "2025-10-23T08:45:21.342836Z",
+      "additional_kwargs": {
+        "tool_event": {
+          "tool": "call_risk_manager",
+          "input": {
+            "ticker": "AMD",
+            "trader_data": "{\"confidence\": 0.47, \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\nRecommended Position: 0.0%\\nCurrent Price: 30.00\\nStop Loss: 31.50\\nTake Profit: 26.40\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\n\\nAMD Kronos Prediction\\n<kronos-chart symbol=\\\"AMD\\\" metadata=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\" history=\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\" prediction=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\" />\", \"kronos_assets\": {\"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"prediction_summary\": {\"max_price\": 222.579895019531, \"mean_price\": 197.726028442383, \"min_price\": 172.279724121094, \"std_price\": 14.3753814697266}, \"timestamp\": \"2025-10-23T16:44:03.534965\"}, \"position_size\": 0.0, \"risk_budget\": \"low\", \"status\": \"success\", \"ticker\": \"AMD\", \"trader_notes\": \"Trading Decision Card: AMD\\n\\n**Recommendation:** SELL\\n**Confidence:** High (0.9/1.0)\\n**Symbol:** AMD\\n**Current Price:** $230.23\\n\\n**Reasoning:**\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\n\\n**Prediction Data:**\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\n\\n**Risk Controls:**\\n- **Take-Profit:** $195.70\\n- **Stop-Loss:** $241.74\\n- **Position Sizing:** Suggested allocation of 9.0%\\n- **Execution Range:** $225.63 - $234.83\\n\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the 'very_high' uncertainty level identified in the research.\"}"
+          },
+          "log": "\nInvoking: `call_risk_manager` with `{'ticker': 'AMD', 'trader_data': '{\"confidence\": 0.47, \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\\\nRecommended Position: 0.0%\\\\nCurrent Price: 30.00\\\\nStop Loss: 31.50\\\\nTake Profit: 26.40\\\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the \\'very_high\\' uncertainty cited.\\\\nKey Follow-up Points: Alert: Trader decision is \\'SELL\\', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites \\'very_high\\' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\\\n\\\\nAMD Kronos Prediction\\\\n<kronos-chart symbol=\\\\\"AMD\\\\\" metadata=\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\\\" history=\\\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\\\" prediction=\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\\\" />\", \"kronos_assets\": {\"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"prediction_summary\": {\"max_price\": 222.579895019531, \"mean_price\": 197.726028442383, \"min_price\": 172.279724121094, \"std_price\": 14.3753814697266}, \"timestamp\": \"2025-10-23T16:44:03.534965\"}, \"position_size\": 0.0, \"risk_budget\": \"low\", \"status\": \"success\", \"ticker\": \"AMD\", \"trader_notes\": \"Trading Decision Card: AMD\\\\n\\\\n**Recommendation:** SELL\\\\n**Confidence:** High (0.9/1.0)\\\\n**Symbol:** AMD\\\\n**Current Price:** $230.23\\\\n\\\\n**Reasoning:**\\\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\\\n\\\\n**Prediction Data:**\\\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\\\n\\\\n**Risk Controls:**\\\\n- **Take-Profit:** $195.70\\\\n- **Stop-Loss:** $241.74\\\\n- **Position Sizing:** Suggested allocation of 9.0%\\\\n- **Execution Range:** $225.63 - $234.83\\\\n\\\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the \\'very_high\\' uncertainty level identified in the research.\"}'}`\n\n\n",
+          "output": "{\"status\": \"error\", \"error_type\": \"TraderDataError\", \"message\": \"trader decision card failed validation: 1 validation error for TraderDecisionCard\\ndecision\\n  Field required [type=missing, input_value={'confidence': 0.47, 'hum...fied in the research.\\\"}}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\"}",
+          "timestamp": "2025-10-23T08:45:21.342708Z",
+          "tool_call_id": "11c70fc8-d6de-4321-90ea-7887fec237eb"
+        }
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "input": "我想了解amd公司全部信息",
+      "output": null,
+      "tools": [
+        {
+          "tool": "call_analyst",
+          "input": {
+            "ticker": "AMD",
+            "intents": [
+              "news",
+              "fundamentals",
+              "market",
+              "sentiment"
+            ]
+          },
+          "output": "database/2025-10-23/AMD/analyst_AMD.json",
+          "log": "\nInvoking: `call_analyst` with `{'ticker': 'AMD', 'intents': ['news', 'fundamentals', 'market', 'sentiment']}`\n\n\n",
+          "tool_call_id": "1d32eb3d-ec82-4650-8802-64c3710ef8bb"
+        },
+        {
+          "tool": "call_researcher",
+          "input": {
+            "analyst_data_path": "database/2025-10-23/AMD/analyst_AMD.json",
+            "ticker": "AMD"
+          },
+          "output": "database/2025-10-23/AMD/researcher_AMD.json",
+          "log": "\nInvoking: `call_researcher` with `{'analyst_data_path': 'database/2025-10-23/AMD/analyst_AMD.json', 'ticker': 'AMD'}`\n\n\n",
+          "tool_call_id": "fa43cd81-b96e-4355-91ce-f020ccd63b80"
+        },
+        {
+          "tool": "call_trader",
+          "input": {
+            "ticker": "AMD",
+            "research_data_path": "database/2025-10-23/AMD/researcher_AMD.json",
+            "user_request": "我想了解amd公司全部信息"
+          },
+          "output": "{\"status\": \"success\", \"trader_notes\": \"Trading Decision Card: AMD\\n\\n**Recommendation:** SELL\\n**Confidence:** High (0.9/1.0)\\n**Symbol:** AMD\\n**Current Price:** $230.23\\n\\n**Reasoning:**\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\n\\n**Prediction Data:**\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\n\\n**Risk Controls:**\\n- **Take-Profit:** $195.70\\n- **Stop-Loss:** $241.74\\n- **Position Sizing:** Suggested allocation of 9.0%\\n- **Execution Range:** $225.63 - $234.83\\n\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the 'very_high' uncertainty level identified in the research.\", \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\nRecommended Position: 0.0%\\nCurrent Price: 30.00\\nStop Loss: 31.50\\nTake Profit: 26.40\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\n\\nAMD Kronos Prediction\\n<kronos-chart symbol=\\\"AMD\\\" metadata=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\" history=\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\" prediction=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\" />\", \"kronos_assets\": {\"timestamp\": \"2025-10-23T16:44:03.534965\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"prediction_summary\": {\"min_price\": 172.27972412109375, \"max_price\": 222.57989501953125, \"mean_price\": 197.7260284423828, \"std_price\": 14.375381469726562}, \"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\"}, \"ticker\": \"AMD\", \"risk_budget\": \"low\", \"confidence\": \"0.47\", \"position_size\": \"0.000\"}",
+          "log": "\nInvoking: `call_trader` with `{'ticker': 'AMD', 'research_data_path': 'database/2025-10-23/AMD/researcher_AMD.json', 'user_request': '我想了解amd公司全部信息'}`\n\n\n",
+          "tool_call_id": "c63c4a97-55dc-4e55-89d8-8704b6a8119c"
+        },
+        {
+          "tool": "call_risk_manager",
+          "input": {
+            "ticker": "AMD",
+            "trader_data": "{\"confidence\": 0.47, \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\nRecommended Position: 0.0%\\nCurrent Price: 30.00\\nStop Loss: 31.50\\nTake Profit: 26.40\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited.\\nKey Follow-up Points: Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\n\\nAMD Kronos Prediction\\n<kronos-chart symbol=\\\"AMD\\\" metadata=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\" history=\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\" prediction=\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\" />\", \"kronos_assets\": {\"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"prediction_summary\": {\"max_price\": 222.579895019531, \"mean_price\": 197.726028442383, \"min_price\": 172.279724121094, \"std_price\": 14.3753814697266}, \"timestamp\": \"2025-10-23T16:44:03.534965\"}, \"position_size\": 0.0, \"risk_budget\": \"low\", \"status\": \"success\", \"ticker\": \"AMD\", \"trader_notes\": \"Trading Decision Card: AMD\\n\\n**Recommendation:** SELL\\n**Confidence:** High (0.9/1.0)\\n**Symbol:** AMD\\n**Current Price:** $230.23\\n\\n**Reasoning:**\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\n\\n**Prediction Data:**\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\n\\n**Risk Controls:**\\n- **Take-Profit:** $195.70\\n- **Stop-Loss:** $241.74\\n- **Position Sizing:** Suggested allocation of 9.0%\\n- **Execution Range:** $225.63 - $234.83\\n\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the 'very_high' uncertainty level identified in the research.\"}"
+          },
+          "output": "{\"status\": \"error\", \"error_type\": \"TraderDataError\", \"message\": \"trader decision card failed validation: 1 validation error for TraderDecisionCard\\ndecision\\n  Field required [type=missing, input_value={'confidence': 0.47, 'hum...fied in the research.\\\"}}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\"}",
+          "log": "\nInvoking: `call_risk_manager` with `{'ticker': 'AMD', 'trader_data': '{\"confidence\": 0.47, \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\\\nRecommended Position: 0.0%\\\\nCurrent Price: 30.00\\\\nStop Loss: 31.50\\\\nTake Profit: 26.40\\\\nHedging Recommendations: Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.; Use options (e.g., buying puts for a long, calls for a short) to define risk given the \\'very_high\\' uncertainty cited.\\\\nKey Follow-up Points: Alert: Trader decision is \\'SELL\\', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.; Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.; Alert: The reasoning cites \\'very_high\\' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.\\\\n\\\\nAMD Kronos Prediction\\\\n<kronos-chart symbol=\\\\\"AMD\\\\\" metadata=\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\\\\\" history=\\\\\"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\\\\\" prediction=\\\\\"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\\\\\" />\", \"kronos_assets\": {\"csv_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"csv_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv\", \"input_csv_path\": \"2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"input_csv_url\": \"/assets/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv\", \"metadata_path\": \"2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"metadata_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_metadata_20251023_164403.json\", \"plot_path\": \"2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"plot_url\": \"/assets/2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png\", \"prediction_summary\": {\"max_price\": 222.579895019531, \"mean_price\": 197.726028442383, \"min_price\": 172.279724121094, \"std_price\": 14.3753814697266}, \"timestamp\": \"2025-10-23T16:44:03.534965\"}, \"position_size\": 0.0, \"risk_budget\": \"low\", \"status\": \"success\", \"ticker\": \"AMD\", \"trader_notes\": \"Trading Decision Card: AMD\\\\n\\\\n**Recommendation:** SELL\\\\n**Confidence:** High (0.9/1.0)\\\\n**Symbol:** AMD\\\\n**Current Price:** $230.23\\\\n\\\\n**Reasoning:**\\\\nThe research concludes a SELL recommendation with high confidence due to extreme technical overextension (RSI 71.1), a significant premium to its 20-day moving average, and a critical lack of fundamental data (EPS, debt) for a robust valuation. This bearish stance is further supported by the Kronos 30-day forecast, which predicts a mean price of $197.73, well below the current price. The maximum predicted price of $222.58 also suggests limited upside and reinforces the view that the stock is overvalued at its current level, indicating a high probability of a near-term correction.\\\\n\\\\n**Prediction Data:**\\\\n- Kronos 30-day forecast: Mean price of $197.73, with a predicted range of $172.28 to $222.58.\\\\n\\\\n**Risk Controls:**\\\\n- **Take-Profit:** $195.70\\\\n- **Stop-Loss:** $241.74\\\\n- **Position Sizing:** Suggested allocation of 9.0%\\\\n- **Execution Range:** $225.63 - $234.83\\\\n\\\\nThis decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the \\'very_high\\' uncertainty level identified in the research.\"}'}`\n\n\n",
+          "tool_call_id": "11c70fc8-d6de-4321-90ea-7887fec237eb"
+        }
+      ],
+      "timestamp": "2025-10-23T08:45:21.344136Z"
+    }
+  ],
+  "progress": [
+    {
+      "type": "progress",
+      "message": "[MANAGER] Scheduling Analyst to analyze News, Fundamentals, Market, Sentiment dimensions and integrate downstream agents…",
+      "tool": "manager",
+      "stage": "start",
+      "timestamp": "2025-10-23T08:37:54.660929Z"
+    },
+    {
+      "type": "progress",
+      "message": "> Entering new AgentExecutor chain...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:37:54.680492",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📊 Collecting data: AMD - news, fundamentals, market, sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:00.940582",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🚀 Starting analysis AMD - news, fundamentals, market, sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:00.940644",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST][CSV] 📊 Generating market data CSV: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:00.940917",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📁 Exporting CSV for AMD — 3mo/1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:00.941384",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📈 Pulling history for AMD — period=3mo, interval=1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:00.941454",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ History prepared for AMD — 65 rows",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.198425",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ CSV saved: /Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv (65 rows)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201238",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST][CSV] ✅ AMD - CSV saved to: /Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201344",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: AMD/news - get_news",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201382",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: AMD/news - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201406",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: AMD/fundamentals - get_fundamentals",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201433",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: AMD/fundamentals - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201448",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: AMD/market - get_market",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201466",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: AMD/market - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201478",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Starting call: AMD/sentiment - get_sentiment",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201495",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 📥 Cache miss: AMD/sentiment - Fetching new data",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201506",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] 🔄 Processing: 4 tools running...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.201517",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[NEWS] 📰 Gathering news flow: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.204089",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[FUNDAMENTALS] 📊 Fetching fundamentals: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.204375",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📈 Pulling history for AMD — period=1mo, interval=1d",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.204455",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] ✅ History prepared for AMD — 22 rows",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.981374",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[YAHOO] 📊 Fetching quote snapshot: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:03.981568",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 🐦 Starting Twitter sentiment analysis for AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:04.492218",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Already logged in (headless mode)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:06.858034",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 📥 Collecting tweets for AMD (attempt 1/2)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:06.861194",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[FUNDAMENTALS] ✅ Fundamentals normalized: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:07.642267",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[NEWS] ✅ News aggregation complete: AMD — 8 stories",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:13.126360",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Page 0 collected 38 tweets",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:18.515362",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "Page 1 collected 42 tweets",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.795708",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 📊 Tweets gathered: 80",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.811558",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] 🔍 Running sentiment analytics...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.852371",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[SENTIMENT] ✅ Sentiment analysis complete: AMD — strong_bullish (score 0.512)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.854889",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Complete: 4 tools finished",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.855022",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: AMD/news - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.855045",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: AMD/fundamentals - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.855487",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: AMD/market - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.855685",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Success: AMD/sentiment - Data collected",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.855854",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] ✅ Analysis complete: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.856412",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[ANALYST] successful_analyses: ['news', 'fundamentals', 'market', 'sentiment']",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.856442",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "database/2025-10-23/AMD/analyst_AMD.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:19.857321",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🔬 In-depth research: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:28.193685",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🔬 Starting research analysis: AMD - 3 debate rounds",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:28.193715",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 1/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:38:28.193739",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 1/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:39:20.658588",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 2/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:40:05.663587",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 2/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:40:38.471171",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 3/3 - Bullish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:41:18.522439",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 💬 Debate round 3/3 - Bearish turn...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:42:13.692767",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 🎯 Synthesizing debate results...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:42:55.585083",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] ✅ Research analysis complete: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:39.054832",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RESEARCHER] 📁 Research report saved to database/2025-10-23/AMD/researcher_AMD.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:39.058293",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] 💹 Generating trading decision",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:42.341341",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] ✅ Trader agent initialized",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:42.352896",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] 📊 CSV file found: /Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:50.436187",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] ✅ Successfully loaded research data: 1 stock (Researcher format)",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:43:50.436211",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER][KRONOS] ✅ Forecast completed: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:03.535491",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER][KRONOS] 📁 Output directory: database/2025-10-23/AMD/Kronos_output",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:03.535521",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER][KRONOS] 📊 CSV artifact: AMD_prediction_20251023_164403.csv",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:03.535540",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER][KRONOS] 📈 Chart: AMD_prediction_20251023_164403.png",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:03.535556",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER][KRONOS] 📝 Metadata: AMD_metadata_20251023_164403.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:03.535571",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] ✅ Decision card generated for AMD: SELL",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:12.877474",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[TRADER] 📁 Trading decision saved to database/2025-10-23/AMD/trader_AMD.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:26.492973",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] 🛡️  Running risk management: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:26.493009",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] 📄 Risk report saved: database/2025-10-23/AMD/risk_AMD.json",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:44:54.148131",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] 🔄 Calling risk management tool, ticker=AMD, include_raw=False",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:45:09.391933",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] 📥 trader_data input snippet: {\"confidence\": 0.47, \"human_readout\": \"AMD Risk Management Conclusion: Maintain the short bias while monitoring catalysts.\\nTrade Direction: SELL, Risk Confidence: 46.7%, Conservative Budget\\nRecommen...",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:45:09.392007",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] 🛡️  Running risk management: AMD",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:45:09.392068",
+      "level": "INFO"
+    },
+    {
+      "type": "progress",
+      "message": "[RISK] ❌ Trader data loading failed: trader decision card failed validation: 1 validation error for TraderDecisionCard\ndecision\nField required [type=missing, input_value={'confidence': 0.47, 'hum...fied in the research.\"}}, input_type=dict]\nFor further information visit https://errors.pydantic.dev/2.11/v/missing",
+      "tool": "log",
+      "stage": "log",
+      "timestamp": "2025-10-23T16:45:09.393068",
+      "level": "ERROR"
+    }
+  ]
+}

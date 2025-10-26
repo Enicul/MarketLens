@@ -1,0 +1,389 @@
+{
+  "ticker": "COIN",
+  "channel": "sentiment",
+  "overall_sentiment": "strong_bullish",
+  "sentiment_score": 0.4399,
+  "sentiment_breakdown": {
+    "bullish": 0.125,
+    "bearish": 0.075,
+    "neutral": 0.8
+  },
+  "metrics": {
+    "total_tweets": 80,
+    "total_influence": 1537,
+    "influence_concentration": 0.395,
+    "sentiment_volatility": 40.09,
+    "quality_score": 0.225
+  },
+  "top_tweets": [
+    {
+      "username": "Blockster",
+      "content": "$COIN is up 15% as \n@coinbase\n goes green — rolling out tokenized carbon credits, ESG-linked assets & publishing carbon data.\n\nWith the $30T ESG (Environmental, Social & Governance) market booming, investors are betting on a cleaner #crypto future.",
+      "timestamp": "2025-10-06T14:02:47.000Z",
+      "influence_score": 24.66,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 167,
+        "retweets": 143,
+        "replies": 155
+      }
+    },
+    {
+      "username": "chad.",
+      "content": "If $COIN closes the week with a bullish hammer candle off the strong 0.886 log Fib + Bull Market Support Band confluence, it would be a bullish setup going into earnings.",
+      "timestamp": "2025-10-24T18:07:00.000Z",
+      "influence_score": 13.53,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 149,
+        "retweets": 11,
+        "replies": 12
+      }
+    },
+    {
+      "username": "XRP Avengers",
+      "content": "#XRP EXPERT SHARES INSIGHT ON HOW XRP COULD HIT $100,000 PER COIN VIA THE XRP LEDGER!!\n\nTHE TOP MEMECOIN TOKEN ON XRPL, #XBONK TOKEN, PARTNERS WITH BITRUE, FIRSTLEDGER, MEXC, GATEIO AND BINANCE!! WITH A CIRCULATING SUPPLY OF 500 MILLION AND A MARKET CAP OF JUST $20 BILLION,",
+      "timestamp": "2025-10-08T11:43:59.000Z",
+      "influence_score": 9.27,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 57,
+        "retweets": 14,
+        "replies": 1
+      }
+    },
+    {
+      "username": "Brooks Trading",
+      "content": "$COIN Everyone’s Scared — I’m Buying.\n\n20% flush into the 50/100DMA and full reversal confirmed.\n\nThis is the next higher low before 420.\n\nEntry 347 – Target 420 – Stop 328\n\nBuying $360C (Nov 7) ahead of Oct 30 earnings.",
+      "timestamp": "2025-10-20T14:30:00.000Z",
+      "influence_score": 8.37,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 51,
+        "retweets": 7,
+        "replies": 5
+      }
+    },
+    {
+      "username": "CRAZEE",
+      "content": "Meme Stock = Meme Coin\n\nIt’s been fascinating to observe how closely the stock and the Solana token are starting to move in sync reflecting a shared market psychology between traditional and on-chain investors.\n\nThat said, the trenches deserve a win, let’s send the meat.\n\n$BYND",
+      "timestamp": "2025-10-24T16:05:41.000Z",
+      "influence_score": 6.48,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 26,
+        "retweets": 7,
+        "replies": 2
+      }
+    },
+    {
+      "username": "Bryant",
+      "content": "Everything is lining up for $COIN.\n\n1. Backtested bull market support band.\n2. Up almost 9% on the day.\n3. Earnings next week.\n\nIt smells like something big is about to happen.",
+      "timestamp": "2025-10-24T18:49:05.000Z",
+      "influence_score": 7.81,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 49,
+        "retweets": 4,
+        "replies": 4
+      }
+    },
+    {
+      "username": "I Lost $1M in the Stock Market",
+      "content": "What a WILD 5 days…\n- LOST $1.28M all-time, watching my last $1K vanish in \n@realDonaldTrump\n’s market. I am BROKE now.\n\n- Was told to launch a meme coin on \n@pumpdotfun\n…currently 24/7 streaming. Build community and earn creator fees to cover rent and food. I’ll try anything at",
+      "timestamp": "2025-10-20T21:54:21.000Z",
+      "influence_score": 6.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 16,
+        "retweets": 2,
+        "replies": 19
+      }
+    },
+    {
+      "username": "Crypto Seth",
+      "content": "$COIN retested weekly cloud and bounce. \n\nGood RR entry here before stock and crypto market makes new ATH. \n\n#StockMarket",
+      "timestamp": "2025-10-24T13:47:28.000Z",
+      "influence_score": 7.48,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 40,
+        "retweets": 4,
+        "replies": 8
+      }
+    },
+    {
+      "username": "BikeChaseCoin",
+      "content": "Hi friends, \n\nJoin the movement: \nhttp://\nt.me/bikechasecoin\n\nI wanna invite you to come and join the new \nBike Chase Coin presale right now\n\n$BCC pre-sale is live!\n\nPresale: \n- Low market cap\n- Low share holders\n- Early bird gets the worm\n\n#bikechase #cryptonews #memecoin",
+      "timestamp": "2025-10-19T08:45:34.000Z",
+      "influence_score": 4.9,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 5,
+        "replies": 5
+      }
+    },
+    {
+      "username": "Coin Bureau Trading",
+      "content": "DON’T GET LIQUIDATED — AGAIN!\n\nOn Oct 10, the crypto market crashed — $16.7B in liquidations, and most traders didn’t lose from bad trades… but from one hidden exchange setting.\n\nAaron shares strategies how to avoid getting liquidated again.\n\n\nhttps://\nyoutube.com/watch?v=yGw58a\naPB8o\n…",
+      "timestamp": "2025-10-21T06:08:30.000Z",
+      "influence_score": 4.69,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 16,
+        "retweets": 3,
+        "replies": 0
+      }
+    },
+    {
+      "username": "#otcset Guy",
+      "content": "The other day some guy was giving me shit because I was calling $EATR (OTC stock, not the meme coin) a buy at these levels, when it is more or less just an empty shell already valued at $3+ million market cap atm. He has a very valid point, how or why could I be so bullish on",
+      "timestamp": "2025-10-22T22:25:49.000Z",
+      "influence_score": 4.58,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 14,
+        "retweets": 2,
+        "replies": 3
+      }
+    },
+    {
+      "username": "Time Traveler Carlssin Trades",
+      "content": "$CRCL MASSIVE BULLISH \n\nCHECK REDDIT SCORE CLOSE TO 100% THAT IS RARE OF RARE. \n\nI THINK THEY WILL PASS THE BILL NOW THAT HAS STABLE COIN SECURITY.",
+      "timestamp": "2025-10-14T19:29:14.000Z",
+      "influence_score": 5.83,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 22,
+        "retweets": 1,
+        "replies": 10
+      }
+    },
+    {
+      "username": "MINERDEGEN",
+      "content": "$MARA stock price hasn’t been sleeping. \n\nIt’s been charging \n\n$MSTR $COIN $AMD $IREN $CIFR $IBIT \n#Bitcoin $ETH $XRP $DOGE $SOL",
+      "timestamp": "2025-10-24T22:06:22.000Z",
+      "influence_score": 6.08,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 26,
+        "retweets": 4,
+        "replies": 3
+      }
+    },
+    {
+      "username": "BikeChaseCoin",
+      "content": "Join Telegram: \nhttps://\nt.me/bikechasecoin\n\nBIKE CHASE COIN IS NOW LIVE!!! \n\nPresale:\n- Low market cap\n- Low share holders\n- Early bird gets the worm\n\nCA: \n2ka3GDxCfiK49MKWiUhBCkFfYPP3eT3NgL3GWtNejtMr\n\n#bikechase #crypto #trending #viral",
+      "timestamp": "2025-10-20T06:09:06.000Z",
+      "influence_score": 4.69,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 9,
+        "retweets": 5,
+        "replies": 3
+      }
+    },
+    {
+      "username": "paul johnson",
+      "content": "There is a underestimation as to where the \n@CoinsiliumGroup\n #COIN $CINGF share price may go, just as at 3p in May 2025 when it accelerated to 89p by June 2025",
+      "timestamp": "2025-10-19T20:05:29.000Z",
+      "influence_score": 5.29,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 14,
+        "retweets": 6,
+        "replies": 2
+      }
+    },
+    {
+      "username": "BikeChaseCoin",
+      "content": "Hey friends on X, \n\nJoin the movement: \nhttp://\nt.me/bikechasecoin\nI wanna to invite you to come and join the Bike Chase Coin presale \n\n$BCC pre-sale is live!\n\nPresale: \n- Low market cap\n- Low share holders\n- Early bird gets the worm\n\n#bcc #crypto #memecoin #news",
+      "timestamp": "2025-10-19T07:57:37.000Z",
+      "influence_score": 4.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 5,
+        "replies": 0
+      }
+    },
+    {
+      "username": "PHARM.Dabbler",
+      "content": "$COIN\nJPMorgan $JPM Upgrades Coinbase to overweight from neutral and raised its price target on the stock to $404 from $342.",
+      "timestamp": "2025-10-24T14:45:00.000Z",
+      "influence_score": 4.9,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 16,
+        "retweets": 3,
+        "replies": 2
+      }
+    },
+    {
+      "username": "Homeless",
+      "content": "$Homeless, launched on #PumpFun, is more than a meme coin. We use creator rewards to help the less fortunate. Every like, share, and trade supports the cause! \n\nThe market crash hit us hard , but we will continue to build and rebuild.",
+      "timestamp": "2025-10-17T22:09:35.000Z",
+      "influence_score": 3.74,
+      "sentiment": "bearish",
+      "raw_metrics": {
+        "likes": 8,
+        "retweets": 2,
+        "replies": 2
+      }
+    },
+    {
+      "username": "MAIN ST. TRADING",
+      "content": "$COIN: Trading at 355, up 10% and earnings coming next week, $COIN will likely beat earnings due to higher trading revenue with BTC volatility and poised to go higher.\n\nWatch $COIN gap up Monday around 360 and if earnings, are positive, 375, 382 can come next.",
+      "timestamp": "2025-10-24T19:35:22.000Z",
+      "influence_score": 3.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 2,
+        "replies": 2
+      }
+    },
+    {
+      "username": "Erick Pinos",
+      "content": "I don't like \"Every piece of content a coin\"\n\n\"Every piece of content a market\" makes more sense if you really want to have people rewarded for being early to a post\n\nShares of “YES” rise as the post gains traction\n\nMarkets reusing the same collateral pool (e.g., USDC) and",
+      "timestamp": "2025-10-24T17:32:21.000Z",
+      "influence_score": 2.83,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 2
+      }
+    },
+    {
+      "username": "The Investor",
+      "content": "Fannie Mae $FNMA is probably my best stock market investment of all time, but my best overall investment in terms of sheer percentage return is likely to remain Binance coin. Simply outstanding performance",
+      "timestamp": "2025-10-24T18:39:58.000Z",
+      "influence_score": 3.0,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 1,
+        "replies": 1
+      }
+    },
+    {
+      "username": "VoskCoin",
+      "content": "Canon's stock experienced an 18% surge following a record 50,000 unit order. Despite historically lackluster stock performance, this surge is notable, especially given the recent record high market cap of Bitcoin mining stocks. #BitcoinMining #StockMarket",
+      "timestamp": "2025-10-22T18:42:30.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 3
+      }
+    },
+    {
+      "username": "TechConversations",
+      "content": "INSANE\n\nNext week's earnings will make or break the stock market:\n\n• Monday: $NXP, $WM\n• Tuesday: $SOFI, $UNH, $PYPL, $V\n• Wednesday: $META, $MSFT, $GOOGL, $NOW, $MELI\n• Thursday: $AMZN, $AAPL, $COIN, $NET \n\nWhich onea are you most looking forward to?",
+      "timestamp": "2025-10-24T18:54:38.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 1
+      }
+    },
+    {
+      "username": "Charlie",
+      "content": "I don’t post about it often but trust me, I have been dca’ing heavy and daily. \n\nHaven’t missed a day in close to 5 months now; some days more, some less. Any amount counts. \n\nFlipping the stock market, one teeny tiny coin at a time #SPX6900",
+      "timestamp": "2025-10-23T01:04:30.000Z",
+      "influence_score": 2.65,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 1
+      }
+    },
+    {
+      "username": "Crypto Bitlord",
+      "content": "Value is created through scarcity. In my\nopinion this mentality is what’s making pump fun lose market share. \n\nLogically thinking if the creator of base makes a coin and its sitting at a lousy 50k market cap we haven’t really progressed \n\nIf vitalik launched one it would be at",
+      "timestamp": "2025-10-24T14:11:41.000Z",
+      "influence_score": 2.45,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 1
+      }
+    },
+    {
+      "username": "megagoodwin",
+      "content": "did you know that \n@idOS_network\n is not only a KYC app for de-fi?\n\nwhat it aims to target next is the stable coin and regulated finance market share (projected $2 trillion market cap in the next couple of years, by the US Treasury btw)\n\nthis means that the big players in",
+      "timestamp": "2025-10-24T20:12:26.000Z",
+      "influence_score": 2.45,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "Sean Daniels",
+      "content": "$DVLT Intraday Recap\n\nTold my team to watch volume — 152M shares came through, confirming breakout over $2.61. Price rocketed +42%. Beautiful momentum toward $4.74.\n\nMeanwhile, $BYND, $TSLA, $AAPL, $COIN, and $BMNR all showing healthy relative strength.",
+      "timestamp": "2025-10-24T19:13:26.000Z",
+      "influence_score": 2.45,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 0
+      }
+    },
+    {
+      "username": "VoskCoin",
+      "content": "A gigawatt co-location deal is causing ripples. Shares are pricing in a record scale on CAPEX, exceeding $1 billion. A price target of $24, higher than before but 50% below current share value, leads to an expected surge. #colocation #CAPEX",
+      "timestamp": "2025-10-22T11:18:19.000Z",
+      "influence_score": 2.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 0
+      }
+    },
+    {
+      "username": "CoinShares",
+      "content": "Even for tea-leaf readers, the market’s been hard to read lately.\n\nHow should investors analyse today’s conditions?\n\nGet insights from CoinShares’ Research team, led by \n@JButterfill\n, live on X at 6:00pm CET!",
+      "timestamp": "2025-10-23T15:52:00.000Z",
+      "influence_score": 2.24,
+      "sentiment": "neutral",
+      "raw_metrics": {
+        "likes": 3,
+        "retweets": 1,
+        "replies": 0
+      }
+    },
+    {
+      "username": "jeff",
+      "content": "Buddy, no one wants to buy the shares, that’s the liquidity problem. Why would there be more demand for a coin with no dividends or ownership in the underlying business? Also companies go into the expert market for failing to provide minimum info requirements lol",
+      "timestamp": "2025-10-24T23:09:41.000Z",
+      "influence_score": 2.0,
+      "sentiment": "bullish",
+      "raw_metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 1
+      }
+    }
+  ],
+  "analysis_metadata": {
+    "algorithm_version": "3.0-professional",
+    "confidence_level": 1.0,
+    "search_keywords": [
+      "$COIN"
+    ],
+    "generated_at": "2025-10-25T08:04:59.690940+00:00",
+    "processing_note": "Professional sentiment analysis with integrated architecture"
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "ticker": "AMD",
+  "as_of": "2025-10-23T08:44:54.146820",
+  "trader_decision": {
+    "symbol": "AMD",
+    "decision": "SELL",
+    "confidence_score": 0.9,
+    "current_price": 30.0,
+    "reasoning": "This decision card is based on the research file provided and has been supplemented with a Kronos model forecast due to the 'very_high' uncertainty level identified in the research.",
+    "has_prediction": null,
+    "timestamp": null,
+    "prediction_insight": null,
+    "position_size": {
+      "percentage": 0.019569999999999997,
+      "description": null
+    },
+    "execution_range": {
+      "min_price": 241.74,
+      "max_price": 30.6,
+      "description": "Parsed from textual trader output."
+    },
+    "stop_loss": {
+      "price": 9.0,
+      "description": "Parsed stop loss from textual trader output."
+    },
+    "take_profit": {
+      "price": 225.63,
+      "description": "Parsed take profit from textual trader output."
+    },
+    "raw": {}
+  },
+  "perspectives": [
+    {
+      "view_name": "optimistic",
+      "risk_summary": "The trader's high confidence suggests a strong underlying conviction in this short thesis. However, this is severely undermined by critical data inconsistencies in the trade parameters, including an inverted stop-loss/take-profit and an invalid execution range. The primary risk is operational; the trade as stated is not viable. We recommend seeking immediate clarification to capitalize on the potential opportunity.",
+      "adjustments": {
+        "position_size": 0.0,
+        "stop_loss": null,
+        "take_profit": null,
+        "hedging_ideas": [
+          "Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.",
+          "Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited."
+        ],
+        "notes": [
+          "Recommend halting execution pending immediate clarification of all trade parameters from the trader.",
+          "The underlying signal may be strong, but the parameters must be validated before committing capital.",
+          "If the intent was a long position, the stop-loss at 9.0 represents a >70% drawdown risk and should be tightened significantly."
+        ]
+      },
+      "scenarios": [
+        {
+          "name": "bull",
+          "trigger": "Trader confirms a valid short thesis with corrected parameters, and AMD price action confirms bearish momentum.",
+          "response_plan": "Execute the corrected short trade, potentially scaling into the position as the thesis is confirmed by price action.",
+          "probability": 0.6
+        },
+        {
+          "name": "base",
+          "trigger": "Trader provides corrected and logically consistent parameters for the trade (either long or short).",
+          "response_plan": "Re-evaluate the trade based on the corrected parameters. If the risk/reward remains favorable, proceed with a cautious initial position size.",
+          "probability": 0.3
+        },
+        {
+          "name": "bear",
+          "trigger": "The data errors are indicative of a flawed analysis, or the position is entered with incorrect parameters.",
+          "response_plan": "Immediately halt and cancel the order. Conduct a post-mortem on the trade generation process to prevent recurrence of data integrity failures.",
+          "probability": 0.1
+        }
+      ],
+      "alerts": [
+        "Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.",
+        "Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.",
+        "Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification."
+      ],
+      "confidence": 0.4
+    },
+    {
+      "view_name": "neutral",
+      "risk_summary": "The control plan cannot be executed as submitted due to multiple critical data inconsistencies. The take-profit (225.63) and stop-loss (9.0) levels are illogical for a SELL decision initiated at a current price of 30.0. Furthermore, the execution range minimum (241.74) is significantly higher than the maximum (30.6), making it invalid. The stated high confidence (0.9) also contradicts the reasoning which cites 'very_high' uncertainty. Execution must be halted until these parameters are clarified and corrected.",
+      "adjustments": {
+        "position_size": null,
+        "stop_loss": null,
+        "take_profit": null,
+        "hedging_ideas": [],
+        "notes": [
+          "Trader's stop loss (9.0) is invalid for a SELL position; a valid stop would be placed above the entry price.",
+          "Trader's take profit (225.63) is invalid for a SELL position; a valid target would be placed below the entry price.",
+          "Position sizing is deferred pending correction of invalid trade parameters."
+        ]
+      },
+      "scenarios": [
+        {
+          "name": "base",
+          "trigger": "Trade parameters remain uncorrected prior to execution.",
+          "response_plan": "Halt execution. Return decision card to the trader for immediate correction of stop-loss, take-profit, and execution range.",
+          "probability": null
+        },
+        {
+          "name": "bull",
+          "trigger": "Price rises above 30.6 post-execution.",
+          "response_plan": "The position moves into a loss. The provided stop-loss is invalid and will not trigger. Manual intervention is required to manage the loss.",
+          "probability": null
+        },
+        {
+          "name": "bear",
+          "trigger": "Price falls below 29.0 post-execution.",
+          "response_plan": "The position moves into a profit. The provided take-profit is invalid and will not trigger. A valid profit target must be established to secure gains.",
+          "probability": null
+        }
+      ],
+      "alerts": [
+        "Critical Error: Take-profit price (225.63) is above current price (30.0) for a SELL decision.",
+        "Critical Error: Stop-loss price (9.0) is below current price (30.0) for a SELL decision.",
+        "Critical Error: Execution range is invalid (min_price 241.74 > max_price 30.6).",
+        "Data Conflict: Stated confidence (0.9) is inconsistent with reasoning citing 'very_high' uncertainty."
+      ],
+      "confidence": 0.9
+    },
+    {
+      "view_name": "pessimistic",
+      "risk_summary": "The trader's decision card contains critical data integrity failures and logical inconsistencies that present unacceptable risk. The take-profit level is invalid for a short position, the execution range is nonsensical, and the stop-loss permits a catastrophic 70% drawdown. The high confidence score directly contradicts the stated 'very_high' uncertainty, indicating a flawed assessment. The trade must be rejected pending a full review of the data source and risk parameters.",
+      "adjustments": {
+        "position_size": 0.0,
+        "stop_loss": null,
+        "take_profit": null,
+        "hedging_ideas": [],
+        "notes": [
+          "Reject trade execution. The position size is set to zero due to fundamental errors in the trade thesis.",
+          "The provided stop-loss (9.0) and take-profit (225.63) are invalid relative to the current price (30.0) for a SELL decision.",
+          "A mandatory review of the data source and the Kronos model inputs is required before this ticker can be reconsidered."
+        ]
+      },
+      "scenarios": [
+        {
+          "name": "bull",
+          "trigger": "Price rallies above 35.0, invalidating the short thesis.",
+          "response_plan": "The proposed stop-loss at 9.0 would result in a catastrophic loss. The position must be closed immediately upon thesis invalidation to enforce disciplined drawdown control and preserve capital.",
+          "probability": 0.4
+        },
+        {
+          "name": "base",
+          "trigger": "Internal review confirms data errors in the decision card.",
+          "response_plan": "The trade is formally cancelled. Capital is preserved. A post-mortem is conducted on the data pipeline and decision-making process.",
+          "probability": 0.5
+        },
+        {
+          "name": "bear",
+          "trigger": "The price declines as predicted, but the flawed execution parameters (e.g., min_price of 241.74) cause a missed entry.",
+          "response_plan": "The opportunity is missed due to operational failure. This represents an opportunity cost but prevents realizing a position with flawed risk controls.",
+          "probability": 0.1
+        }
+      ],
+      "alerts": [
+        "Data Integrity Failure: `take_profit` price (225.63) is above `current_price` (30.0) for a SELL decision.",
+        "Data Integrity Failure: `execution_range` is invalid; `min_price` (241.74) is greater than `max_price` (30.6).",
+        "Risk Management Failure: Stop-loss at 9.0 from a 30.0 entry implies a 70% drawdown, violating capital preservation principles.",
+        "Logical Contradiction: Stated 'very_high' uncertainty in reasoning is inconsistent with the 0.9 confidence score."
+      ],
+      "confidence": 0.1
+    }
+  ],
+  "synthesis": {
+    "summary": "Risk desk synthesis for AMD aligns with trader direction (SELL) while unifying optimistic, neutral, and pessimistic safeguards.",
+    "confidence": 0.4666666666666667,
+    "risk_budget": "low",
+    "execution": {
+      "action": "Maintain the short bias while monitoring catalysts.",
+      "position_size": 0.0,
+      "stop_loss": 31.5,
+      "take_profit": 26.4,
+      "hedging_ideas": [
+        "Once the trade direction is confirmed, consider a pairs trade against a competitor (e.g., NVDA, INTC) to hedge sector-wide risk.",
+        "Use options (e.g., buying puts for a long, calls for a short) to define risk given the 'very_high' uncertainty cited."
+      ],
+      "notes": [
+        "Recommend halting execution pending immediate clarification of all trade parameters from the trader.",
+        "The underlying signal may be strong, but the parameters must be validated before committing capital.",
+        "If the intent was a long position, the stop-loss at 9.0 represents a >70% drawdown risk and should be tightened significantly.",
+        "Trader's stop loss (9.0) is invalid for a SELL position; a valid stop would be placed above the entry price.",
+        "Trader's take profit (225.63) is invalid for a SELL position; a valid target would be placed below the entry price.",
+        "Position sizing is deferred pending correction of invalid trade parameters."
+      ]
+    },
+    "rationale": [
+      "The trader's high confidence suggests a strong underlying conviction in this short thesis. However, this is severely undermined by critical data inconsistencies in the trade parameters, including an inverted stop-loss/take-profit and an invalid execution range. The primary risk is operational; the trade as stated is not viable. We recommend seeking immediate clarification to capitalize on the potential opportunity.",
+      "The control plan cannot be executed as submitted due to multiple critical data inconsistencies. The take-profit (225.63) and stop-loss (9.0) levels are illogical for a SELL decision initiated at a current price of 30.0. Furthermore, the execution range minimum (241.74) is significantly higher than the maximum (30.6), making it invalid. The stated high confidence (0.9) also contradicts the reasoning which cites 'very_high' uncertainty. Execution must be halted until these parameters are clarified and corrected.",
+      "The trader's decision card contains critical data integrity failures and logical inconsistencies that present unacceptable risk. The take-profit level is invalid for a short position, the execution range is nonsensical, and the stop-loss permits a catastrophic 70% drawdown. The high confidence score directly contradicts the stated 'very_high' uncertainty, indicating a flawed assessment. The trade must be rejected pending a full review of the data source and risk parameters."
+    ],
+    "follow_up": [
+      "Alert: Trader decision is 'SELL', but the stop-loss (9.0) and take-profit (225.63) are inverted and invalid for an entry price of 30.0.",
+      "Alert: The execution range minimum (241.74) is significantly above the maximum (30.6), making it invalid.",
+      "Alert: The reasoning cites 'very_high' uncertainty, which contradicts the high confidence score of 0.9. This requires clarification.",
+      "Critical Error: Take-profit price (225.63) is above current price (30.0) for a SELL decision.",
+      "Critical Error: Stop-loss price (9.0) is below current price (30.0) for a SELL decision.",
+      "Critical Error: Execution range is invalid (min_price 241.74 > max_price 30.6)."
+    ]
+  },
+  "consistency_checks": [
+    {
+      "check": "Position aligns with trader direction",
+      "passed": true,
+      "severity": "info",
+      "details": "target size 0.000 vs baseline 0.020"
+    },
+    {
+      "check": "Stop-loss present",
+      "passed": true,
+      "severity": "info",
+      "details": "Stop-loss at 31.5"
+    },
+    {
+      "check": "Take-profit defined",
+      "passed": true,
+      "severity": "info",
+      "details": "Take-profit at 26.4"
+    },
+    {
+      "check": "Risk budget rationale",
+      "passed": true,
+      "severity": "info",
+      "details": "Low risk budget consistent with light sizing."
+    }
+  ],
+  "meta": {
+    "aggregated_at": "2025-10-23T08:44:54.146811",
+    "baseline_position": 0.02,
+    "include_raw": false,
+    "trader_source": "database/2025-10-23/AMD/trader_AMD.json",
+    "available_symbols": [
+      "AMD"
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "ticker": "AMD",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-23T08:38:04.492092",
+  "stock_basic_info": {
+    "ticker": "AMD",
+    "current_price": 230.23,
+    "change": -7.8,
+    "change_percent": -3.28,
+    "volume": 57075407,
+    "market_cap": 373627289600,
+    "pe_ratio": 137.04167,
+    "pb_ratio": 6.258801,
+    "beta": 1.894,
+    "high_52w": 242.88,
+    "low_52w": 76.48,
+    "timestamp": "2025-10-23T16:38:04.491523"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 204.5214988708496,
+      "price_vs_ma_20": 112.57007062759878
+    },
+    "oscillators": {
+      "rsi": 71.05959128035292,
+      "stochastic_k": 84.13593142232992,
+      "stochastic_d": 91.7459240648274
+    },
+    "bollinger_bands": {
+      "upper_band": 269.80261154632313,
+      "lower_band": 139.24038619537606,
+      "price_vs_upper_band": 85.33275286255346
+    },
+    "volume_indicators": {
+      "volume_ma20": 77153725.0,
+      "volume_vs_ma20": 76.01136562103774
+    },
+    "volatility_indicators": {
+      "atr": 16.48357173374721,
+      "atr_percent": 7.159610841175687
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 242.8800048828125,
+      "low_1mo": 154.77999877929688,
+      "avg_close": 200.55499891801313,
+      "volatility": 33.59705163876174
+    },
+    "trend_analysis": {
+      "trend_20_days": 42.760581402709114
+    },
+    "key_levels": [
+      242.8800048828125
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-23",
+    "end_date": "2025-10-22",
+    "last_updated": "2025-10-23T16:38:04.492089"
+  }
+}

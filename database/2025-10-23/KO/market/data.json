@@ -1,0 +1,69 @@
+{
+  "ticker": "KO",
+  "period": "1mo",
+  "interval": "1d",
+  "retrieved_at": "2025-10-23T08:50:27.134555",
+  "stock_basic_info": {
+    "ticker": "KO",
+    "current_price": 70.81,
+    "change": -0.41,
+    "change_percent": -0.58,
+    "volume": 18115516,
+    "market_cap": 304624631808,
+    "pe_ratio": 23.44702,
+    "pb_ratio": 9.749414,
+    "dividend_yield": 2.88,
+    "beta": 0.424,
+    "high_52w": 74.38,
+    "low_52w": 60.62,
+    "timestamp": "2025-10-23T16:50:27.133438"
+  },
+  "technical_indicators": {
+    "moving_averages": {
+      "ma_20": 67.1925006866455,
+      "price_vs_ma_20": 105.38378068233918
+    },
+    "oscillators": {
+      "rsi": 75.29536229770028,
+      "stochastic_k": 85.986084950178,
+      "stochastic_d": 91.92677206560326
+    },
+    "bollinger_bands": {
+      "upper_band": 70.22170469674975,
+      "lower_band": 64.16329667654125,
+      "price_vs_upper_band": 100.83776499642742
+    },
+    "volume_indicators": {
+      "volume_ma20": 15669685.0,
+      "volume_vs_ma20": 116.68773175721145
+    },
+    "volatility_indicators": {
+      "atr": 1.0750007629394531,
+      "atr_percent": 1.5181482841457707
+    }
+  },
+  "price_analysis": {
+    "price_range": {
+      "high_1mo": 71.62000274658203,
+      "low_1mo": 65.3499984741211,
+      "avg_close": 67.13681862571023,
+      "volatility": 1.4524572646130598
+    },
+    "trend_analysis": {
+      "trend_20_days": 7.3203909607752236
+    },
+    "key_levels": [
+      71.62000274658203,
+      71.38999938964844,
+      68.63999938964844,
+      65.3499984741211
+    ]
+  },
+  "data_summary": {
+    "historical_data_points": 22,
+    "data_period": "1mo",
+    "start_date": "2025-09-23",
+    "end_date": "2025-10-22",
+    "last_updated": "2025-10-23T16:50:27.134550"
+  }
+}
