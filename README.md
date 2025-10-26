@@ -31,7 +31,7 @@ Our team had an incredible experience bringing this project to life, successfull
 
 | Official Full Name  | Student ID (MTech Applicable)  | Work Items (Who Did What) | Email (Optional) |
 | :------------ |:---------------:| :-----| :-----|
-| _Jin YanYu_ | _A0326918U_ | Team Leader & System Integrator Frontend development, system integration, video production, and report writing. | _e1538749@u.nus.edu_ |
+| _Jin YanYu_ | _A0326918U_ | Team Leader & System Integrator Frontend development, Risk management module design and development, system integration, video production, and report writing. | _e1538749@u.nus.edu_ |
 | _Chen ZiHao_ | _A0329043J_ | Model & Trading Agent Developer Trader module development, overall code refactoring, debugging, and report writing. | _e1553370@u.nus.edu_ |
 | _Fu HaoXiang_ | _A0328896E_ | System Architect & Module Developer Analyst and Researcher module design and development, and report writing. | _e1553223@u.nus.edu_ |
 | _Li Lin_ | _A0327882R_ | Backend Developer Analyst and Researcher module development, promotional video, and report writing. | _e1546637@u.nus.edu_ |
