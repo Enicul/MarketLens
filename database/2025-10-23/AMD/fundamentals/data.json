@@ -1,0 +1,66 @@
+{
+  "ticker": "AMD",
+  "company": {
+    "name": "Advanced Micro Devices Inc",
+    "exchange": "NASDAQ NMS",
+    "country": "US",
+    "currency": "USD"
+  },
+  "metrics": {
+    "market_cap_usd": 372622780000.0,
+    "revenue_per_share_ttm": 18.1595
+  },
+  "insiders": [
+    {
+      "person": "Papermaster Mark D",
+      "code": "M",
+      "date": "2025-10-15",
+      "price": 0,
+      "change_shares": -16800,
+      "post_shares": 17108,
+      "filing_id": "0000002488-25-000159",
+      "source": "sec"
+    },
+    {
+      "person": "Papermaster Mark D",
+      "code": "S",
+      "date": "2025-10-15",
+      "price": 226.17,
+      "change_shares": -200,
+      "post_shares": 1714505,
+      "filing_id": "0000002488-25-000159",
+      "source": "sec"
+    },
+    {
+      "person": "Papermaster Mark D",
+      "code": "S",
+      "date": "2025-10-15",
+      "price": 225.59,
+      "change_shares": -5516,
+      "post_shares": 1714705,
+      "filing_id": "0000002488-25-000159",
+      "source": "sec"
+    },
+    {
+      "person": "Papermaster Mark D",
+      "code": "S",
+      "date": "2025-10-15",
+      "price": 224.51,
+      "change_shares": -5695,
+      "post_shares": 1720221,
+      "filing_id": "0000002488-25-000159",
+      "source": "sec"
+    },
+    {
+      "person": "Papermaster Mark D",
+      "code": "S",
+      "date": "2025-10-15",
+      "price": 223.4,
+      "change_shares": -1700,
+      "post_shares": 1725916,
+      "filing_id": "0000002488-25-000159",
+      "source": "sec"
+    }
+  ],
+  "retrieved_at": "2025-10-23T08:38:07.642118"
+}

@@ -1,0 +1,161 @@
+{
+  "ticker": "NVDA",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Economic Times",
+      "published_at": "2025-10-25T03:58:50+00:00",
+      "headline": "Intel returns to profit after six straight quarterly losses; CFO David Zinser tells what its to have the US government as Intel's biggest shareholder",
+      "evidence": [
+        "https://cfo.economictimes.indiatimes.com/news/strategy-operations/intel-returns-to-profit-after-six-straight-quarterly-losses-cfo-david-zinser-tells-what-its-to-have-the-us-government-as-intels-biggest-shareholder/124798703"
+      ],
+      "summary": [
+        "Intel returns to profit after six straight quarterly losses; CFO David Zinser tells what its to have the US government as Intel's biggest shareholder"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-25T00:55:57+00:00",
+      "headline": "Why Alphabet Stock Popped Today",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/24/why-alphabet-stock-popped-today/"
+      ],
+      "summary": [
+        "Why Alphabet Stock Popped Today"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "South China Morning Post",
+      "published_at": "2025-10-25T00:00:21+00:00",
+      "headline": "Start-up Deep Robotics scrambles for top talent amid China's quest for dominance",
+      "evidence": [
+        "https://www.scmp.com/business/china-business/article/3330263/little-dragon-deep-robotics-scrambles-top-talent-amid-chinas-quest-dominance"
+      ],
+      "summary": [
+        "Start-up Deep Robotics scrambles for top talent amid China's quest for dominance"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-24T23:30:00+00:00",
+      "headline": "Undervalued and Profitable: This Magnificent Artificial Intelligence  ( AI )  Stock Can Soar Higher After Skyrocketing 140% in 2025",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/24/undervalued-and-profitable-this-magnificent-artifi/"
+      ],
+      "summary": [
+        "Undervalued and Profitable: This Magnificent Artificial Intelligence  ( AI )  Stock Can Soar Higher After Skyrocketing 140% in 2025"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-24T23:00:00+00:00",
+      "headline": "Could This Under-the-Radar AI Company Become the Next Nvidia?",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/24/could-this-under-the-radar-ai-company-become-the-n/"
+      ],
+      "summary": [
+        "Could This Under-the-Radar AI Company Become the Next Nvidia?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-24T20:01:29+00:00",
+      "headline": "Check Out What Whales Are Doing With TSM - Taiwan Semiconductor  ( NYSE:TSM ) ",
+      "evidence": [
+        "https://www.benzinga.com/insights/options/25/10/48417219/check-out-what-whales-are-doing-with-tsm"
+      ],
+      "summary": [
+        "Check Out What Whales Are Doing With TSM - Taiwan Semiconductor  ( NYSE:TSM ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-10-24T19:05:00+00:00",
+      "headline": "Intel's Strong Q3 Earnings Fuel Turnaround Hopes: Time to Buy?",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2776761/intels-strong-q3-earnings-fuel-turnaround-hopes-time-to-buy"
+      ],
+      "summary": [
+        "Intel's Strong Q3 Earnings Fuel Turnaround Hopes: Time to Buy?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "NVDA"
+      ],
+      "publisher": "Zacks Commentary",
+      "published_at": "2025-10-24T18:48:00+00:00",
+      "headline": "Palantir Expands AI Alliance With Lumen for Enterprise Innovation",
+      "evidence": [
+        "https://www.zacks.com/stock/news/2776755/palantir-expands-ai-alliance-with-lumen-for-enterprise-innovation"
+      ],
+      "summary": [
+        "Palantir Expands AI Alliance With Lumen for Enterprise Innovation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-25T08:01:25.012271+00:00"
+}

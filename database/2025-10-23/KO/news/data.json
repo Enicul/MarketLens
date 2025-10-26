@@ -1,0 +1,161 @@
+{
+  "ticker": "KO",
+  "channel": "news",
+  "overall_stance": "neutral",
+  "count": 8,
+  "items": [
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Fintel",
+      "published_at": "2025-10-23T00:07:33+00:00",
+      "headline": "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation",
+      "evidence": [
+        "https://finnhub.io/api/news?id=400b020d5876a18f03905b596164a2e4c5bf32a44c54b6113f823bf58d46aa78"
+      ],
+      "summary": [
+        "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Motley Fool",
+      "published_at": "2025-10-23T00:05:00+00:00",
+      "headline": "A Simple Buffett-Inspired Portfolio You Can Build With Just $1,000",
+      "evidence": [
+        "https://www.fool.com/investing/2025/10/22/a-simple-buffett-inspired-portfolio-you-can-build/"
+      ],
+      "summary": [
+        "A Simple Buffett-Inspired Portfolio You Can Build With Just $1,000"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Fintel",
+      "published_at": "2025-10-23T00:04:02+00:00",
+      "headline": "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation",
+      "evidence": [
+        "https://finnhub.io/api/news?id=3d8c7972e7f965c1118b408dad2d1b06f86892e2f1a218a473c1c387992bd494"
+      ],
+      "summary": [
+        "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Fintel",
+      "published_at": "2025-10-23T00:03:39+00:00",
+      "headline": "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation",
+      "evidence": [
+        "https://finnhub.io/api/news?id=365554697bd2e9c4db11b05a4902986ee569013b1c2c11508d286a73afbd4229"
+      ],
+      "summary": [
+        "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-22T20:35:08+00:00",
+      "headline": "Earnings live: Tesla stock falls after earnings miss, IBM sinks",
+      "evidence": [
+        "https://finnhub.io/api/news?id=dfaa6cf3bc8a7f8e4c6cf44e24367dafdecec51dd5d3c93cb7ab543ec79b815f"
+      ],
+      "summary": [
+        "Earnings live: Tesla stock falls after earnings miss, IBM sinks"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Benzinga",
+      "published_at": "2025-10-22T19:06:03+00:00",
+      "headline": "Coca-Cola's 'Best In Class' Strategy Spurs Margin Optimism: Analyst - Coca-Cola  ( NYSE:KO ) ",
+      "evidence": [
+        "https://www.benzinga.com/analyst-stock-ratings/analyst-color/25/10/48364195/coca-colas-best-in-class-strategy-spurs-margin-optimism-analyst"
+      ],
+      "summary": [
+        "Coca-Cola's 'Best In Class' Strategy Spurs Margin Optimism: Analyst - Coca-Cola  ( NYSE:KO ) "
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-22T18:28:19+00:00",
+      "headline": "This or That: Should you bet on gold or silver?",
+      "evidence": [
+        "https://finnhub.io/api/news?id=01adee7fecc5716ece3d8adcef6fc52a095b7a4dac02812198d7bb5b9859fb65"
+      ],
+      "summary": [
+        "This or That: Should you bet on gold or silver?"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    },
+    {
+      "type": "news_item",
+      "ticker": [
+        "KO"
+      ],
+      "publisher": "Yahoo",
+      "published_at": "2025-10-22T17:50:40+00:00",
+      "headline": "C3.ai, Upstart, UiPath, Zeta Global, and SoundHound AI Stocks Trade Down, What You Need To Know",
+      "evidence": [
+        "https://finnhub.io/api/news?id=d86c4f5fea5585e1bbaba57f9ab7c0501e691284d5b1677c52a0d19c492a6109"
+      ],
+      "summary": [
+        "C3.ai, Upstart, UiPath, Zeta Global, and SoundHound AI Stocks Trade Down, What You Need To Know"
+      ],
+      "stance": "neutral",
+      "stance_confidence": 0.5,
+      "signals": [],
+      "finbert": null
+    }
+  ],
+  "generated_at": "2025-10-23T08:50:34.247613+00:00"
+}

@@ -1,0 +1,1350 @@
+{
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "KO",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Fintel",
+            "published_at": "2025-10-23T00:07:33+00:00",
+            "headline": "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation",
+            "evidence": [
+              "https://finnhub.io/api/news?id=400b020d5876a18f03905b596164a2e4c5bf32a44c54b6113f823bf58d46aa78"
+            ],
+            "summary": [
+              "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-23T00:05:00+00:00",
+            "headline": "A Simple Buffett-Inspired Portfolio You Can Build With Just $1,000",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/22/a-simple-buffett-inspired-portfolio-you-can-build/"
+            ],
+            "summary": [
+              "A Simple Buffett-Inspired Portfolio You Can Build With Just $1,000"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Fintel",
+            "published_at": "2025-10-23T00:04:02+00:00",
+            "headline": "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation",
+            "evidence": [
+              "https://finnhub.io/api/news?id=3d8c7972e7f965c1118b408dad2d1b06f86892e2f1a218a473c1c387992bd494"
+            ],
+            "summary": [
+              "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Fintel",
+            "published_at": "2025-10-23T00:03:39+00:00",
+            "headline": "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation",
+            "evidence": [
+              "https://finnhub.io/api/news?id=365554697bd2e9c4db11b05a4902986ee569013b1c2c11508d286a73afbd4229"
+            ],
+            "summary": [
+              "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T20:35:08+00:00",
+            "headline": "Earnings live: Tesla stock falls after earnings miss, IBM sinks",
+            "evidence": [
+              "https://finnhub.io/api/news?id=dfaa6cf3bc8a7f8e4c6cf44e24367dafdecec51dd5d3c93cb7ab543ec79b815f"
+            ],
+            "summary": [
+              "Earnings live: Tesla stock falls after earnings miss, IBM sinks"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-22T19:06:03+00:00",
+            "headline": "Coca-Cola's 'Best In Class' Strategy Spurs Margin Optimism: Analyst - Coca-Cola  ( NYSE:KO ) ",
+            "evidence": [
+              "https://www.benzinga.com/analyst-stock-ratings/analyst-color/25/10/48364195/coca-colas-best-in-class-strategy-spurs-margin-optimism-analyst"
+            ],
+            "summary": [
+              "Coca-Cola's 'Best In Class' Strategy Spurs Margin Optimism: Analyst - Coca-Cola  ( NYSE:KO ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T18:28:19+00:00",
+            "headline": "This or That: Should you bet on gold or silver?",
+            "evidence": [
+              "https://finnhub.io/api/news?id=01adee7fecc5716ece3d8adcef6fc52a095b7a4dac02812198d7bb5b9859fb65"
+            ],
+            "summary": [
+              "This or That: Should you bet on gold or silver?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "KO"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T17:50:40+00:00",
+            "headline": "C3.ai, Upstart, UiPath, Zeta Global, and SoundHound AI Stocks Trade Down, What You Need To Know",
+            "evidence": [
+              "https://finnhub.io/api/news?id=d86c4f5fea5585e1bbaba57f9ab7c0501e691284d5b1677c52a0d19c492a6109"
+            ],
+            "summary": [
+              "C3.ai, Upstart, UiPath, Zeta Global, and SoundHound AI Stocks Trade Down, What You Need To Know"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-23T08:50:34.247613+00:00"
+      },
+      "error": null,
+      "cached": false
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "KO",
+        "company": {
+          "name": "Coca-Cola Co",
+          "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 305022440000.0,
+          "revenue_per_share_ttm": 10.9066,
+          "dividend_per_share_ttm": 1.964
+        },
+        "insiders": [
+          {
+            "person": "Levchin Max R",
+            "code": "A",
+            "date": "2025-10-16",
+            "price": 71.55,
+            "change_shares": 1118,
+            "post_shares": 1118,
+            "filing_id": "0000021344-25-000073",
+            "source": "sec"
+          },
+          {
+            "person": "KOUMETTIS NIKOLAOS",
+            "code": "S",
+            "date": "2025-08-05",
+            "price": 69.1011,
+            "change_shares": -37396,
+            "post_shares": 209513,
+            "filing_id": "0000021344-25-000065",
+            "source": "sec"
+          },
+          {
+            "person": "Perez Beatriz R",
+            "code": "G",
+            "date": "2025-08-04",
+            "price": 0,
+            "change_shares": -43847,
+            "post_shares": 143869,
+            "filing_id": "0000021344-25-000063",
+            "source": "sec"
+          },
+          {
+            "person": "Quincey James",
+            "code": "M",
+            "date": "2025-05-30",
+            "price": 0,
+            "change_shares": -66601,
+            "post_shares": 0,
+            "filing_id": "0001127602-25-016337",
+            "source": "sec"
+          },
+          {
+            "person": "Quincey James",
+            "code": "M",
+            "date": "2025-05-30",
+            "price": 0,
+            "change_shares": -66601,
+            "post_shares": 66601,
+            "filing_id": "0001127602-25-016337",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-23T08:50:31.662555"
+      },
+      "error": null,
+      "cached": false
+    },
+    "market": {
+      "data": {
+        "ticker": "KO",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-23T08:50:27.134555",
+        "stock_basic_info": {
+          "ticker": "KO",
+          "current_price": 70.81,
+          "change": -0.41,
+          "change_percent": -0.58,
+          "volume": 18115516,
+          "market_cap": 304624631808,
+          "pe_ratio": 23.44702,
+          "pb_ratio": 9.749414,
+          "dividend_yield": 2.88,
+          "beta": 0.424,
+          "high_52w": 74.38,
+          "low_52w": 60.62,
+          "timestamp": "2025-10-23T16:50:27.133438"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 67.1925006866455,
+            "price_vs_ma_20": 105.38378068233918
+          },
+          "oscillators": {
+            "rsi": 75.29536229770028,
+            "stochastic_k": 85.986084950178,
+            "stochastic_d": 91.92677206560326
+          },
+          "bollinger_bands": {
+            "upper_band": 70.22170469674975,
+            "lower_band": 64.16329667654125,
+            "price_vs_upper_band": 100.83776499642742
+          },
+          "volume_indicators": {
+            "volume_ma20": 15669685.0,
+            "volume_vs_ma20": 116.68773175721145
+          },
+          "volatility_indicators": {
+            "atr": 1.0750007629394531,
+            "atr_percent": 1.5181482841457707
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 71.62000274658203,
+            "low_1mo": 65.3499984741211,
+            "avg_close": 67.13681862571023,
+            "volatility": 1.4524572646130598
+          },
+          "trend_analysis": {
+            "trend_20_days": 7.3203909607752236
+          },
+          "key_levels": [
+            71.62000274658203,
+            71.38999938964844,
+            68.63999938964844,
+            65.3499984741211
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 22,
+          "data_period": "1mo",
+          "start_date": "2025-09-23",
+          "end_date": "2025-10-22",
+          "last_updated": "2025-10-23T16:50:27.134550"
+        }
+      },
+      "error": null,
+      "cached": false
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "KO",
+        "channel": "sentiment",
+        "overall_sentiment": "strong_bullish",
+        "sentiment_score": 0.7866,
+        "sentiment_breakdown": {
+          "bullish": 0.087,
+          "bearish": 0.013,
+          "neutral": 0.9
+        },
+        "metrics": {
+          "total_tweets": 80,
+          "total_influence": 664,
+          "influence_concentration": 0.129,
+          "sentiment_volatility": 12.875,
+          "quality_score": 0.275
+        },
+        "top_tweets": [
+          {
+            "username": "NOVA REAL INVEST",
+            "content": "Earnings Bonanza: GM Leads Market Surge as Corporate Giants Deliver Strong Q3 Results\n\n•$GM General Motors soared 10.5% after smashing estimates (EPS $2.80 vs. $2.31, revenue $48.6B vs. $45.3B) and raising full-year EPS guidance to $9.75–$10.50.\n•$KO Coca-Cola beat expectations",
+            "timestamp": "2025-10-21T12:53:41.000Z",
+            "influence_score": 9.27,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 54,
+              "retweets": 15,
+              "replies": 2
+            }
+          },
+          {
+            "username": "Alysha Lutao",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #BuyAndHold $DIS \n #MonetaryPolicy $NFLX \n #FiscalPolicy $KO \n #Sector  $HOND",
+            "timestamp": "2025-10-22T17:40:05.000Z",
+            "influence_score": 5.92,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Nazia Wajid",
+            "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $ARMP #STOCK\n #BuyAndHold $KO\n #ROE $GS  \n #GDP $TGT  \n #UnemploymentRate $QURE",
+            "timestamp": "2025-10-22T22:21:57.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Deangelo Bangert",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #SecondaryMarket $KO \n #PreferredStock $LYFT \n #MarketOrder $OPEN \n #Sector  $INTC",
+            "timestamp": "2025-10-22T17:56:18.000Z",
+            "influence_score": 5.66,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 7,
+              "retweets": 8,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Hari kishan",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#InsiderTrading  $AAPL\n#PreferredStock  $INTC\n#DarkPool  $KO\n#Stock  $CAT",
+            "timestamp": "2025-10-23T08:33:25.000Z",
+            "influence_score": 6.08,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 10,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Kamal",
+            "content": "Thanks to @xhybaniqued, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#UnemploymentRate  $PFE\n#Inflation  $NKE\n#PERatio  $PFE\n#Stock  $KO",
+            "timestamp": "2025-10-23T03:04:04.000Z",
+            "influence_score": 6.08,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 10,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Dougie Kass",
+            "content": "Early morning trading short rentals (see \n@thestreetpro\n for complete activity and transparency):\nPremarket Trading (4:02AM- kind) - Building up Short Exposure\nShorted:\n* SPY $672.26\n* QQQ $611.58 \n\nAlso, sold $KO long  (+4% yesterday) midday on the earnings beat.  Now out of all",
+            "timestamp": "2025-10-22T08:12:19.000Z",
+            "influence_score": 5.2,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 18,
+              "retweets": 3,
+              "replies": 3
+            }
+          },
+          {
+            "username": "Ratan jadhav",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#StopLossOrder  $IBM\n#BuyAndHold  $V\n#Beta  $MSFT\n#Stock  $KO",
+            "timestamp": "2025-10-22T22:47:16.000Z",
+            "influence_score": 5.74,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 8,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Shreya Adhikari",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#DayTrading  $LYFT\n#Dividends  $SBUX\n#Stock  $PG\n#MutualFund  $KO",
+            "timestamp": "2025-10-22T22:05:42.000Z",
+            "influence_score": 5.57,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 8,
+              "replies": 9
+            }
+          },
+          {
+            "username": "DividendLearning",
+            "content": "Coca Cola $KO earnings: \n\nEPS $0.82 vs Est $0.78 \nRev $12.5B vs Est $12.44B \n\nDouble beat as market share increases, but also aided by increased prices. \n\nDividend hike should be expected during the next earnings call.",
+            "timestamp": "2025-10-21T12:05:51.000Z",
+            "influence_score": 5.29,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 19,
+              "retweets": 1,
+              "replies": 7
+            }
+          },
+          {
+            "username": "ASHU KUMAR",
+            "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $YYAI #STOCK\n #SecondaryMarket $KO\n #SwingTrading $INTC  \n #PBRatio $NKE  \n #OTC $BETR",
+            "timestamp": "2025-10-22T13:50:31.000Z",
+            "influence_score": 4.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 3,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Schwab Network",
+            "content": "Here's a look at what's on \n@sam_vadas\n and \n@MarleyKayden\n's radar for tomorrow:\n\n• Coca-Cola, $KO, is set to release its third-quarter earnings before the market opens, with analysts expecting earnings of $0.78 per share on $12.4 billion in revenue \n\n• Streaming video giant",
+            "timestamp": "2025-10-20T20:40:50.000Z",
+            "influence_score": 3.74,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 2,
+              "replies": 1
+            }
+          },
+          {
+            "username": "S V. RÀJA",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#MarketCapitalization  $V\n#Dividends  $WFC\n#StockSplit  $KO\n#Trade  $TGT",
+            "timestamp": "2025-10-19T19:01:01.000Z",
+            "influence_score": 3.87,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 3,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Manisha",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#PennyStock  $MRK\n#LongPosition  $IBM\n#Arbitrage  $KO\n#SharePrice  $MA",
+            "timestamp": "2025-10-19T23:06:50.000Z",
+            "influence_score": 3.87,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 3,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Juliet Spearin",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $NVDA $ARMP #StockMarket #DayTrading $KO #UnemploymentRate $UBER #RiskManagement $WFC  \n #Trading $LUXE",
+            "timestamp": "2025-10-22T17:39:48.000Z",
+            "influence_score": 3.87,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 2,
+              "retweets": 2,
+              "replies": 9
+            }
+          },
+          {
+            "username": "KK.Raju",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#NYSE  $JNJ\n#BlueChipStocks  $AMZN\n#InsiderTrading  $KO\n#MarketManipulation  $IBM",
+            "timestamp": "2025-10-20T04:09:06.000Z",
+            "influence_score": 3.61,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 2,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Damji Murji",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#CommonStock  $MSFT\n#SharePrice  $GM\n#RSI  $KO\n#RoboAdvisor  $PFE",
+            "timestamp": "2025-10-20T00:32:18.000Z",
+            "influence_score": 3.61,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 2,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Natubhai Prabhudas",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#PBRatio  $KO\n#StockSplit  $MRK\n#IRA  $ADBE\n#CapitalGains  $NKE",
+            "timestamp": "2025-10-19T22:14:29.000Z",
+            "influence_score": 3.61,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 2,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Babu Doi",
+            "content": "Thanks to \n@xhybaniqued\n, even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#SharePrice  $GS\n#NYSE  $WBD\n#PreferredStock  $MCD\n#OTC  $KO",
+            "timestamp": "2025-10-19T17:50:27.000Z",
+            "influence_score": 3.61,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 2,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Simpler Trading",
+            "content": "Earnings season is in full swing  \n\nHuge reports to watch this week: \n\n $NFLX\n $TSLA\n $KO\n $INTC",
+            "timestamp": "2025-10-20T13:35:42.000Z",
+            "influence_score": 4.69,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 7,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Anwarul Islam",
+            "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$NVDA $AAPL #SP500\n #LongPosition $KO\n #MarketManipulation $UBER \n #MarginCall $ADBE  \n #METSERA Stock $MCD",
+            "timestamp": "2025-10-22T13:02:15.000Z",
+            "influence_score": 3.32,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "The Growth Vector",
+            "content": "We have a ton of earnings reports coming up over the next few days, including $NFLX $KO $TSLA $INTC $PG among others.\n\nHow do we think the market will react for the rest of the year after the Q3 reports? Traditionally Q4 is a bull run, but will this time be different?",
+            "timestamp": "2025-10-19T17:36:40.000Z",
+            "influence_score": 3.16,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 7,
+              "retweets": 0,
+              "replies": 3
+            }
+          },
+          {
+            "username": "10xTrading",
+            "content": "EARNINGS \n$KO $MMM $NFLX $ISRG $TXN $T $TSLA $IBM $SAP $AAL $INTC $F $PG",
+            "timestamp": "2025-10-19T15:37:03.000Z",
+            "influence_score": 4.47,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 16,
+              "retweets": 2,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Aiime",
+            "content": "$KO Q3 Earnings Drop at 6:55 AM ET \n\nEstimates: \n-Revenue: $12.42B\n-EPS: $0.78\n\nKO has delivered 4 straight EPS beats, averaging +4-8% surprises. The stock is trading at $68.47, off recent highs, and has shown a recovery trend into earnings. Watch for commentary on pricing",
+            "timestamp": "2025-10-21T10:45:00.000Z",
+            "influence_score": 2.83,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 1,
+              "replies": 0
+            }
+          },
+          {
+            "username": "amansachdev",
+            "content": "Thanks to \n@ta60330173\n , even in this dead market, $RANI $VIVK stock saved my month. I pulled $16,800 profit while everyone else was bleeding\n#Stock $BYND #Trading\n#Dividends  $MS\n#StockSplit  $GOOGL\n#MutualFund  $CRM\n#MovingAverage  $KO",
+            "timestamp": "2025-10-20T04:41:01.000Z",
+            "influence_score": 3.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Pinegap (AI platform for Equity Research)",
+            "content": "$KO Coca-Cola Company Q3'25 Earnings Report is out! The stock is up 0.8% Pre Market Hours. Let's see how the market reacts to this quarter's strong results. Here's the Earnings Report summary within minutes of release with the help of \nhttp://\nPineGap.AI's Earnings Tracker",
+            "timestamp": "2025-10-21T11:20:41.000Z",
+            "influence_score": 2.65,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 2,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Doc Holliday",
+            "content": "JesseCohenInv: Happy Sunday!\n\nHere Are My #Top5ThingsToKnowThisWeek:\n\n1. Trump Tariff Deadline\n2. Government Shutdown Talks\n3. U.S. CPI Data\n4. $TSLA $NFLX $INTC $IBM Earnings\n5. $KO $GM $GE $T $F $AAL $LUV Earnings\n\nMay The Trading Gods Be With You \n\n…",
+            "timestamp": "2025-10-19T12:13:28.000Z",
+            "influence_score": 2.65,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 0,
+              "replies": 4
+            }
+          },
+          {
+            "username": "Young Ko",
+            "content": "When you truly realize how many opportunities the market presents in a week/month/quarter/year, the easier it is to set and trust your stops. \n\nLet it trade and if you get stopped, on to the next one! Don’t get fixated on a stock.",
+            "timestamp": "2025-10-08T19:35:43.000Z",
+            "influence_score": 2.65,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 7,
+              "retweets": 0,
+              "replies": 0
+            }
+          },
+          {
+            "username": "AlphaSense",
+            "content": "$KO Earnings:\n\n- Revenues: Net revenues grew 5% to $12.5 billion, and organic revenues (non-GAAP) grew 6%. Revenue performance included 6% growth in price/mix, while concentrate sales were even. Concentrate sales were 1 point behind unit case volume due to the timing of",
+            "timestamp": "2025-10-21T11:33:54.000Z",
+            "influence_score": 2.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 1,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Manoj Sharma",
+            "content": "Absolutely agree, Satish bhaiya \n\nBoth concentrated and diversified portfolios can create wealth — there’s no single right way. The real challenge and edge lie in understanding which system works best for you.\n\nStock market mein sabse bada kaam strategy banana nahi, khud ko",
+            "timestamp": "2025-10-12T16:42:39.000Z",
+            "influence_score": 2.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 4,
+              "retweets": 0,
+              "replies": 0
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 1.0,
+          "search_keywords": [
+            "$KO"
+          ],
+          "generated_at": "2025-10-23T08:50:49.514379+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": false
+    }
+  },
+  "bullish_research": {
+    "stance": "bullish",
+    "thesis": "Coca-Cola (KO) presents a robust bullish investment opportunity, driven by superior financial performance evidenced by recent earnings beats, consistent analyst confidence, strong underlying market sentiment, and favorable technical indicators.",
+    "arguments": [
+      "Coca-Cola has demonstrated robust financial performance by consistently outperforming earnings expectations, highlighted by its recent Q3 EPS of $0.82 against an estimated $0.78 and revenue of $12.5 billion exceeding estimates of $12.44 billion. This performance is supported by increased market share and effective pricing strategies, with the company boasting a track record of four consecutive EPS beats.",
+      "Leading financial institutions, including Wells Fargo, TD Cowen, and Piper Sandler, consistently maintain Overweight or Buy recommendations for Coca-Cola, underscoring professional confidence in the company's strategic direction and future outlook.",
+      "Social media sentiment indicates a strong bullish outlook for KO, with an overall sentiment score of 0.7866, significantly outweighing bearish views (8.7% bullish vs. 1.3% bearish), reflecting positive investor perception and momentum.",
+      "The stock exhibits a favorable technical setup, with its current price trading above the 20-day moving average (price_vs_ma_20=105.38), signaling positive short-term momentum.",
+      "The company offers a competitive annual dividend of $1.964, appealing to income-focused investors and indicating financial stability."
+    ],
+    "counters": [
+      {
+        "claim_id": "Technical Overextension (RSI=75.3)",
+        "rebuttal": "The elevated Relative Strength Index (RSI) of 75.3, while indicating an 'overbought' condition, also reflects robust buying pressure and strong positive momentum. This strong momentum is fundamentally driven by Coca-Cola's recent earnings beat, consistent outperformance, and positive analyst outlook, which suggests significant investor confidence and can sustain an upward trend beyond typical overbought signals.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI",
+            "note": "RSI of 75.3 indicates strong buying pressure."
+          },
+          {
+            "source": "market",
+            "pointer": "MA: ma_20=67.19, price_vs_ma_20=105.38",
+            "note": "Current price significantly above 20-day MA indicates upward momentum."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[0].content",
+            "note": "News of Coca-Cola beating expectations drove positive market reaction."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[9].content",
+            "note": "Detailed earnings beat (EPS $0.82 vs Est $0.78, Rev $12.5B vs Est $12.44B) as a driver of confidence."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[23].content",
+            "note": "Record of 4 straight EPS beats underscores sustained positive performance."
+          }
+        ]
+      },
+      {
+        "claim_id": "Fundamental Data Deficiencies (EPS, Debt \"None\")",
+        "rebuttal": "While certain summary fundamental metrics like EPS and total Debt are not explicitly provided in the initial overview, recent reports confirm KO's strong financial health. The company recently reported an EPS of $0.82, exceeding estimates, and has delivered four consecutive EPS beats. Revenue also surpassed expectations, with net revenues growing 5% to $12.5 billion and organic revenues growing 6%. The consistent dividend payout of $1.964 further signals a financially stable and mature company.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "EPS",
+            "note": "EPS is listed as 'None' in the fundamental summary, but recent news confirms reported EPS."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Debt",
+            "note": "Debt is listed as 'None' in the fundamental summary."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Dividend",
+            "note": "Consistent dividend payments (1.964) indicate financial stability."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[9].content",
+            "note": "Specific Q3 EPS ($0.82) and Revenue ($12.5B) figures provided."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[23].content",
+            "note": "Confirms a track record of 4 straight EPS beats."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[28].content",
+            "note": "Details net revenue growth of 5% and organic revenue growth of 6%."
+          }
+        ]
+      },
+      {
+        "claim_id": "Ambiguous Social Sentiment (90% neutral, low quality/influence concentration)",
+        "rebuttal": "Despite a notable proportion of neutral tweets, the overall sentiment for KO is unequivocally classified as 'strong_bullish' with a robust score of 0.7866. The critical factor is the overwhelming positive-to-negative ratio, where bullish sentiment (8.7%) significantly outpaces bearish sentiment (1.3%) by approximately seven-to-one. Many neutral posts convey factual earnings information without explicit emotional bias, and do not negate the clear directional positive conviction from genuinely bullish discussions. The primary signal remains the strong positive sentiment outweighing negative perceptions.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "overall_sentiment",
+            "note": "Overall sentiment is 'strong_bullish'."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "sentiment_score",
+            "note": "High sentiment score of 0.7866 supports strong bullish stance."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "sentiment_breakdown",
+            "note": "Bullish (8.7%) significantly outweighs bearish (1.3%) sentiment, despite 90% neutral content."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "quality_score",
+            "note": "Acknowledges quality score, with bullish sentiment still dominating."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "influence_concentration",
+            "note": "Acknowledges influence concentration, with bullish sentiment still dominating."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "The fundamental summary explicitly lists EPS and total Debt as 'None', which limits a comprehensive historical and comparative valuation analysis from that specific data source, though recent earnings reports provide current EPS data.",
+      "The 'neutral' stance of the overall news summary suggests a lack of overtly bullish news items beyond analyst recommendations and earnings details, which some investors might interpret as a lack of new positive catalysts for the stock."
+    ],
+    "evidence_map": [
+      {
+        "source": "fundamentals",
+        "pointer": "MarketCap",
+        "note": "Company market capitalization."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "EPS",
+        "note": "Earnings Per Share is not provided in the summary, but recent news offers current EPS."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Rev/Share",
+        "note": "Revenue per Share metric."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt",
+        "note": "Debt information is not provided in the summary."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Dividend",
+        "note": "Annual dividend payout."
+      },
+      {
+        "source": "news",
+        "pointer": "[0].content",
+        "note": "Wells Fargo maintains Overweight recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[2].content",
+        "note": "TD Cowen maintains Buy recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[3].content",
+        "note": "Piper Sandler maintains Overweight recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[5].content",
+        "note": "Analyst optimism regarding margins due to 'Best In Class' strategy."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Overall social media sentiment for KO."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_score",
+        "note": "Quantitative score for overall sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_breakdown",
+        "note": "Breakdown of bullish, bearish, and neutral sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "quality_score",
+        "note": "Quality score of sentiment data."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "influence_concentration",
+        "note": "Concentration of influence in sentiment data."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[0].content",
+        "note": "Tweet confirming KO beat expectations on earnings."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[9].content",
+        "note": "Detailed Q3 earnings beat (EPS and Revenue), market share increase, pricing strategies, and expected dividend hike."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[23].content",
+        "note": "Tweet confirming 4 straight EPS beats and stock recovery trend."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[28].content",
+        "note": "Details Q3 net and organic revenue growth and price/mix contribution."
+      },
+      {
+        "source": "market",
+        "pointer": "Current",
+        "note": "Current stock price and daily change."
+      },
+      {
+        "source": "market",
+        "pointer": "52w",
+        "note": "52-week trading range."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: ma_20",
+        "note": "20-day Moving Average."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: price_vs_ma_20",
+        "note": "Percentage difference of current price vs. 20-day Moving Average."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI",
+        "note": "Relative Strength Index, indicating momentum."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.7866",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NEW YORK STOCK EXCHANGE, INC.",
+    "ticker": "KO",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-23T08:50:31.662555",
+      "news_ref": "2025-10-23T08:50:34.247613+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "bearish_research": {
+    "stance": "bearish",
+    "thesis": "The Coca-Cola Co. (KO) exhibits a heightened risk profile marked by technical overextension, significant deficiencies in fundamental financial data, and a social media sentiment that is predominantly neutral despite an algorithmic 'strong_bullish' label, collectively suggesting an elevated potential for near-term price correction and an inability to fully ascertain intrinsic value.",
+    "arguments": [
+      "Technical indicators point to an overbought condition, specifically a high Relative Strength Index (RSI), significantly increasing the probability of a near-term price correction and acting as a primary channel for risk transmission via market volatility.",
+      "Critical gaps in fundamental financial data, specifically the absence of reported Earnings Per Share (EPS) and total Debt, severely impede a comprehensive valuation assessment and introduce material uncertainty regarding the company's true financial health and solvency risk.",
+      "The aggregated social media sentiment, while algorithmically labeled 'strong_bullish', is fundamentally undermined by an overwhelming proportion of neutral posts (90%) and low data quality metrics, indicating a lack of robust, widespread investor conviction and a potential for misinterpretation of market mood, which could lead to sentiment-driven price corrections."
+    ],
+    "counters": [
+      {
+        "claim_id": "financial_performance",
+        "rebuttal": "While recent earnings reports indicate beats on EPS and revenue, the absence of a reported Earnings Per Share (EPS) metric in the supplied fundamental data limits a comprehensive assessment of ongoing financial performance and intrinsic valuation. Furthermore, reported revenue growth has been noted as partly aided by increased prices, which may face sustainability challenges in a price-sensitive consumer market if volume growth stagnates.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "Absence of reported EPS prevents comprehensive performance and valuation assessment."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[9].content",
+            "note": "Earnings beat aided by increased prices, potentially impacting sustainability without strong volume growth."
+          }
+        ]
+      },
+      {
+        "claim_id": "analyst_confidence",
+        "rebuttal": "Analyst 'Overweight' or 'Buy' recommendations, while present, do not negate the underlying technical overextension and critical fundamental data gaps. Analyst sentiment, particularly from a limited set of sources, may not fully capture emerging market risks or provide a complete picture without comprehensive financial transparency. Such recommendations can also lag market dynamics.",
+        "evidence": [
+          {
+            "source": "news",
+            "pointer": "news[0].content",
+            "note": "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation."
+          },
+          {
+            "source": "news",
+            "pointer": "news[2].content",
+            "note": "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation."
+          },
+          {
+            "source": "news",
+            "pointer": "news[3].content",
+            "note": "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None, Debt=None",
+            "note": "Analyst recommendations do not address fundamental data deficiencies."
+          },
+          {
+            "source": "market",
+            "pointer": "RSI: 75.3",
+            "note": "Analyst recommendations do not negate technical overextension."
+          }
+        ]
+      },
+      {
+        "claim_id": "market_sentiment",
+        "rebuttal": "The algorithmic 'strong_bullish' designation for social media sentiment is demonstrably contradicted by the granular breakdown, which reveals 90% neutral posts and only 8.7% bullish sentiment. This, combined with a low quality score of 0.275 and low influence concentration (0.129), indicates a lack of genuine, widespread positive conviction, making the overall sentiment potentially misleading and a significant risk factor for sentiment-driven reversals rather than a source of sustained support.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "sentiment_breakdown={'bullish': 0.087, 'bearish': 0.013, 'neutral': 0.9}",
+            "note": "90% neutral posts undermine the 'strong_bullish' aggregate sentiment."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "metrics={'quality_score': 0.275, 'influence_concentration': 0.129}",
+            "note": "Low quality score and influence concentration suggest weak conviction and potential for misinterpretation."
+          }
+        ]
+      },
+      {
+        "claim_id": "technical_indicators",
+        "rebuttal": "Contrary to claims of favorable technical indicators, the Relative Strength Index (RSI) for KO stands at 75.3. This unequivocally signals an overbought condition, which typically presages a potential for price correction or a deceleration of upward momentum. This constitutes a significant technical risk, indicating current price levels may be unsustainable and vulnerable to a near-term pullback.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI: 75.3",
+            "note": "RSI above 70 indicates an overbought condition, signaling potential for a price correction."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "The absence of critical fundamental metrics, specifically Earnings Per Share (EPS) and total Debt, in the provided data creates significant uncertainty regarding the company's long-term financial stability, solvency, and intrinsic valuation, making a definitive assessment of its underlying health impossible.",
+      "The discrepancy between the algorithmic 'strong_bullish' sentiment and its underlying neutral composition introduces substantial uncertainty in accurately gauging genuine market conviction, posing a risk of abrupt sentiment shifts and rapid price adjustments if market perceptions realign with the lack of decisive bullish engagement."
+    ],
+    "evidence_map": [
+      {
+        "source": "market",
+        "pointer": "RSI: 75.3",
+        "note": "RSI indicates an overbought condition."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "EPS=None",
+        "note": "Critical fundamental data point is missing."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt=None",
+        "note": "Critical fundamental data point is missing."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.7866",
+        "note": "Algorithmic overall sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_breakdown={'bullish': 0.087, 'bearish': 0.013, 'neutral': 0.9}",
+        "note": "Detailed sentiment composition showing high neutrality."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "metrics={'quality_score': 0.275, 'influence_concentration': 0.129}",
+        "note": "Low sentiment data quality and concentration metrics."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[9].content",
+        "note": "Reference to earnings beat aided by increased prices."
+      },
+      {
+        "source": "news",
+        "pointer": "news[0].content",
+        "note": "Wells Fargo Maintains Coca-Cola (KO) Overweight Recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "news[2].content",
+        "note": "TD Cowen Maintains Coca-Cola (KO) Buy Recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "news[3].content",
+        "note": "Piper Sandler Maintains Coca-Cola (KO) Overweight Recommendation."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.7866",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NEW YORK STOCK EXCHANGE, INC.",
+    "ticker": "KO",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-23T08:50:31.662555",
+      "news_ref": "2025-10-23T08:50:34.247613+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "final_decision": {
+    "ticker": "KO",
+    "stance_summary": {
+      "bullish_thesis": "Coca-Cola (KO) presents a robust investment opportunity, driven by superior financial performance (consistent earnings beats, market share, pricing), strong analyst confidence, positive market sentiment, and favorable short-term technical indicators like the price trading above its 20-day moving average, alongside an attractive dividend.",
+      "bearish_thesis": "The Coca-Cola Co. (KO) exhibits a heightened risk profile due to technical overextension (high RSI), critical deficiencies in comprehensive fundamental data (missing EPS and Debt in summary), and a social media sentiment that is predominantly neutral despite an algorithmic 'strong_bullish' label, suggesting potential for near-term price correction and difficulty in intrinsic valuation."
+    },
+    "consensus": [
+      "Coca-Cola reported Q3 EPS of $0.82 (vs estimated $0.78) and revenue of $12.5 billion (exceeding estimates of $12.44 billion).",
+      "The company has a track record of four consecutive EPS beats.",
+      "Leading financial institutions (Wells Fargo, TD Cowen, Piper Sandler) maintain Overweight or Buy recommendations.",
+      "The Relative Strength Index (RSI) for KO is 75.3.",
+      "The overall social media sentiment for KO is algorithmically labeled 'strong_bullish' with a score of 0.7866.",
+      "Social media sentiment breakdown shows 8.7% bullish, 1.3% bearish, and 90% neutral posts.",
+      "The fundamental summary explicitly lists Earnings Per Share (EPS) and total Debt as 'None'.",
+      "Coca-Cola offers an annual dividend of $1.964."
+    ],
+    "disagreements": [
+      {
+        "topic": "Technical Outlook (RSI=75.3)",
+        "bull_view": "The elevated RSI indicates robust buying pressure and strong positive momentum, fundamentally driven by recent earnings and analyst outlook, suggesting sustained upward trend beyond typical overbought signals.",
+        "bear_view": "The high RSI unequivocally signals an overbought condition, significantly increasing the probability of a near-term price correction and indicating current price levels may be unsustainable."
+      },
+      {
+        "topic": "Significance of Missing Fundamental Data (EPS, Debt in summary)",
+        "bull_view": "Recent earnings reports confirm strong financial health with current EPS ($0.82) and consistent dividend, effectively mitigating concerns about 'None' listed in the summary data, showing the company is financially stable.",
+        "bear_view": "Critical gaps in the fundamental data summary (absence of EPS and total Debt) severely impede a comprehensive valuation assessment and introduce material uncertainty regarding the company's true financial health and solvency risk."
+      },
+      {
+        "topic": "Interpretation of Social Media Sentiment",
+        "bull_view": "Despite a high proportion of neutral posts, the overall sentiment is 'strong_bullish' with a score of 0.7866 and a 7:1 bullish-to-bearish ratio, indicating clear directional positive conviction outweighing negative perceptions.",
+        "bear_view": "The algorithmic 'strong_bullish' designation is undermined by 90% neutral posts, low quality (0.275) and influence concentration (0.129), suggesting a lack of genuine, widespread positive conviction and potential for misinterpretation or reversal."
+      },
+      {
+        "topic": "Short-term Momentum",
+        "bull_view": "The stock's current price trading above the 20-day moving average (price_vs_ma_20=105.38) signals positive short-term momentum.",
+        "bear_view": "The bearish argument does not explicitly address the 20-day MA, but its emphasis on the overbought RSI implicitly suggests caution regarding current momentum sustainability."
+      }
+    ],
+    "key_upside": [
+      "Consistent and strong financial performance, evidenced by 4 consecutive EPS beats and recent Q3 earnings/revenue outperformance driven by market share gains and effective pricing strategies.",
+      "High confidence from leading financial institutions, with consistent 'Overweight' or 'Buy' recommendations.",
+      "Attractive and reliable annual dividend of $1.964, appealing to income-focused investors and indicating financial stability."
+    ],
+    "key_risks": [
+      "Technical overextension with an RSI of 75.3 signals an overbought condition, increasing the probability of a near-term price correction.",
+      "The ambiguity of comprehensive fundamental financial data in the provided summary (EPS and Debt listed as 'None') poses challenges for a complete intrinsic valuation and assessment of long-term financial health.",
+      "Social media sentiment is predominantly neutral (90%) despite an algorithmic 'strong_bullish' label, coupled with low quality and influence scores, suggesting a lack of robust widespread conviction and a risk of sentiment-driven reversals.",
+      "Revenue growth has been partly aided by increased prices, which may face sustainability challenges in a price-sensitive consumer market if underlying volume growth stagnates."
+    ],
+    "scorecard": {
+      "bull_strength": 0.75,
+      "bear_strength": 0.65,
+      "uncertainty": 0.3,
+      "net_score": -0.2
+    },
+    "action": {
+      "recommendation": "HOLD",
+      "confidence": 0.6,
+      "time_horizon": "medium",
+      "triggers_up": [
+        "RSI drops below 70, indicating a less overbought condition or the conclusion of a technical correction without fundamental damage.",
+        "Sustained organic volume growth is reported, consistently exceeding revenue growth attributed primarily to pricing strategies.",
+        "Clear and comprehensive reporting of fundamental data, particularly debt metrics, showing favorable trends and enhancing transparency."
+      ],
+      "triggers_down": [
+        "Failure to maintain EPS and revenue growth momentum in subsequent earnings reports, indicating a slowdown in business performance.",
+        "A sustained price correction that breaks key long-term support levels (e.g., 200-day moving average), signaling a more significant downtr...",
+        "Analyst downgrades or a notable reduction in average price targets across major institutions."
+      ]
+    },
+    "rationale": "Coca-Cola (KO) demonstrates strong underlying fundamentals for a medium-term horizon, characterized by consistent earnings outperformance, robust analyst confidence, and a stable dividend. These factors, particularly the recent Q3 earnings beat and track record of consecutive EPS beats, suggest a healthy operational environment for a consumer staple giant. However, the stock currently faces notable headwinds, primarily a technically overbought condition (RSI 75.3) which suggests a near-term price correction is probable. Furthermore, the overall market sentiment, while algorithmically 'strong_bullish', is tempered by an overwhelming 90% neutral social media content and low engagement quality, indicating a lack of widespread, strong conviction. While some fundamental data (EPS, Debt) is listed as 'None' in the summary, recent reports clarify current earnings performance. Given the medium risk tolerance and time horizon, the fundamental strength argues against a 'SELL' despite the formulaic net score of -0.2 (which would typically imply a SELL). The current technical overextension and sentiment ambiguities are likely to cause short-term volatility. Therefore, a 'HOLD' recommendation is appropriate, allowing investors to maintain their position and await a potential technical normalization or clearer directional market sentiment without liquidating a fundamentally sound asset.",
+    "evidence_citations": [
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.market_cap_usd",
+        "note": "Company market capitalization."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.eps_ttm",
+        "note": "Earnings Per Share is not provided in the summary, but recent news offers current EPS."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.revenue_per_share_ttm",
+        "note": "Revenue per Share metric."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt",
+        "note": "Debt information is not provided in the summary."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.dividend_per_share_ttm",
+        "note": "Annual dividend payout."
+      },
+      {
+        "source": "news",
+        "pointer": "[0].content",
+        "note": "Wells Fargo maintains Overweight recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[2].content",
+        "note": "TD Cowen maintains Buy recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[3].content",
+        "note": "Piper Sandler maintains Overweight recommendation."
+      },
+      {
+        "source": "news",
+        "pointer": "[5].content",
+        "note": "Analyst optimism regarding margins due to 'Best In Class' strategy."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Overall social media sentiment for KO."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_score",
+        "note": "Quantitative score for overall sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "sentiment_breakdown",
+        "note": "Breakdown of bullish, bearish, and neutral sentiment."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "quality_score",
+        "note": "Quality score of sentiment data."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "influence_concentration",
+        "note": "Concentration of influence in sentiment data."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[0].content",
+        "note": "Tweet confirming KO beat expectations on earnings."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[9].content",
+        "note": "Detailed Q3 earnings beat (EPS and Revenue), market share increase, pricing strategies, and expected dividend hike."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[23].content",
+        "note": "Tweet confirming 4 straight EPS beats and stock recovery trend."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[28].content",
+        "note": "Details Q3 net and organic revenue growth and price/mix contribution."
+      },
+      {
+        "source": "market",
+        "pointer": "Current",
+        "note": "Current stock price and daily change."
+      },
+      {
+        "source": "market",
+        "pointer": "52w",
+        "note": "52-week trading range."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: ma_20",
+        "note": "20-day Moving Average."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: price_vs_ma_20",
+        "note": "Percentage difference of current price vs. 20-day Moving Average."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI",
+        "note": "Relative Strength Index, indicating momentum."
+      }
+    ],
+    "meta": {
+      "input_refs": {
+        "fundamentals_ref": "2025-10-23T08:50:31.662555",
+        "news_ref": "2025-10-23T08:50:34.247613+00:00"
+      },
+      "model": "gemini-2.5-pro",
+      "risk_tolerance": "medium",
+      "time_horizon": "medium"
+    }
+  },
+  "debate_history": [
+    {
+      "role": "bullish",
+      "text": "Coca-Cola (KO) presents a compelling bullish investment opportunity, driven by robust financial performance, overwhelmingly positive market sentiment, sustained analyst confidence, and strong technical indicators following a recent earnings beat.\n- Coca-Cola recently reported an earnings beat with EPS of $0.82 against an estimated $0.78 and revenue of $12.5 billion exceeding estimates of $12.44 billion. This performance was supported by increased market share and effective pricing strategies, leading to analyst optimism regarding future margins. The company has also delivered four consecutive EPS beats.\n- Social media sentiment for KO is strongly bullish, with an overall sentiment score of 0.7866. Despite a significant neutral component, bullish sentiment overwhelmingly outweighs bearish sentiment (8.7% bullish vs. 1.3% bearish), indicating positive investor perception and momentum.\n- Leading financial institutions, including Wells Fargo, TD Cowen, and Piper Sandler, consistently maintain Overweight or Buy recommendations for Coca-Cola, reinforcing professional confidence in the company's outlook."
+    },
+    {
+      "role": "bearish",
+      "text": "The Coca-Cola Co. (KO) exhibits several indicators suggesting a heightened risk profile, including technical overextension with an overbought Relative Strength Index (RSI), a potentially misleading 'strong_bullish' social media sentiment influenced by a high proportion of neutral posts and low data quality, and critical gaps in reported fundamental data (EPS, Debt) that impede a thorough valuation assessment.\n- Technical Overextension: The Relative Strength Index (RSI) for KO stands at 75.3, indicating that the stock is currently in an overbought condition. This typically suggests a potential for price correction or a deceleration of upward momentum, increasing the risk of a near-term pullback.\n- Ambiguous Social Sentiment: Despite an algorithmic designation of \"strong_bullish\" with a score of 0.7866, the underlying sentiment breakdown reveals only 8.7% bullish tweets against a predominant 90% neutral sentiment. This indicates a lack of decisive positive conviction among social media users, rather than widespread endorsement. Furthermore, a low quality score (0.275) and influence concentration (0.129) suggest the aggregate sentiment may not be robust or reflective of genuine investor conviction.\n- Fundamental Data Deficiencies: Critical financial metrics such as Earnings Per Share (EPS) and total Debt are explicitly listed as \"None\" in the provided fundamentals summary. The absence of these key figures severely constrains a comprehensive fundamental analysis and valuation assessment, introducing opacity and making it difficult to ascertain the true financial health and intrinsic value of the company."
+    },
+    {
+      "role": "bullish",
+      "text": "Coca-Cola (KO) represents a compelling bullish investment opportunity, underpinned by robust recent financial performance, strong analyst conviction, positive market sentiment, and supportive technical indicators, affirming its position for continued growth.\n- Coca-Cola demonstrated robust financial performance by exceeding Q3 earnings estimates, reporting an EPS of $0.82 against an estimated $0.78 and revenue of $12.5 billion, surpassing the $12.44 billion estimate.\n- The company's strategic success is highlighted by an increase in market share and effective pricing strategies, contributing to margin optimism from analysts.\n- Coca-Cola has a consistent track record of delivering positive surprises, with four consecutive EPS beats."
+    },
+    {
+      "role": "bearish",
+      "text": "Coca-Cola Co. (KO) presents a heightened risk profile for investors, marked by clear technical overextension, significant opacity in fundamental financial data, and a social media sentiment that, despite an algorithmic 'strong_bullish' tag, largely reflects neutrality rather than decisive positive conviction. These factors suggest an elevated potential for price correction and an inability to fully assess intrinsic value.\n- Technical indicators signal an overbought condition, significantly increasing the probability of a near-term price correction.\n- Critical gaps in reported fundamental data for Earnings Per Share (EPS) and total Debt impede a thorough financial analysis and valuation assessment, introducing material uncertainty regarding the company's financial health.\n- The overall 'strong_bullish' social media sentiment is undermined by an overwhelming proportion of neutral posts (90%) and low data quality metrics, indicating a lack of robust, widespread investor conviction and a potential for misinterpretation of market mood."
+    },
+    {
+      "role": "bullish",
+      "text": "Coca-Cola (KO) presents a robust bullish investment opportunity, driven by superior financial performance evidenced by recent earnings beats, consistent analyst confidence, strong underlying market sentiment, and favorable technical indicators.\n- Coca-Cola has demonstrated robust financial performance by consistently outperforming earnings expectations, highlighted by its recent Q3 EPS of $0.82 against an estimated $0.78 and revenue of $12.5 billion exceeding estimates of $12.44 billion. This performance is supported by increased market share and effective pricing strategies, with the company boasting a track record of four consecutive EPS beats.\n- Leading financial institutions, including Wells Fargo, TD Cowen, and Piper Sandler, consistently maintain Overweight or Buy recommendations for Coca-Cola, underscoring professional confidence in the company's strategic direction and future outlook.\n- Social media sentiment indicates a strong bullish outlook for KO, with an overall sentiment score of 0.7866, significantly outweighing bearish views (8.7% bullish vs. 1.3% bearish), reflecting positive investor perception and momentum."
+    },
+    {
+      "role": "bearish",
+      "text": "The Coca-Cola Co. (KO) exhibits a heightened risk profile marked by technical overextension, significant deficiencies in fundamental financial data, and a social media sentiment that is predominantly neutral despite an algorithmic 'strong_bullish' label, collectively suggesting an elevated potential for near-term price correction and an inability to fully ascertain intrinsic value.\n- Technical indicators point to an overbought condition, specifically a high Relative Strength Index (RSI), significantly increasing the probability of a near-term price correction and acting as a primary channel for risk transmission via market volatility.\n- Critical gaps in fundamental financial data, specifically the absence of reported Earnings Per Share (EPS) and total Debt, severely impede a comprehensive valuation assessment and introduce material uncertainty regarding the company's true financial health and solvency risk.\n- The aggregated social media sentiment, while algorithmically labeled 'strong_bullish', is fundamentally undermined by an overwhelming proportion of neutral posts (90%) and low data quality metrics, indicating a lack of robust, widespread investor conviction and a potential for misinterpretation of market mood, which could lead to sentiment-driven price corrections."
+    }
+  ],
+  "rounds": 3,
+  "ticker": "KO",
+  "data_validation": {
+    "news_available": true,
+    "fundamentals_available": true,
+    "sentiment_available": true,
+    "market_available": true
+  },
+  "meta": {
+    "risk_tolerance": "medium",
+    "time_horizon": "medium"
+  },
+  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/KO/market_csv/KO_3mo_1d_20251023_165025.csv"
+}

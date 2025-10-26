@@ -1,0 +1,17 @@
+{
+  "symbol": "AMD",
+  "prediction_time": "2025-10-23T16:44:03.534965",
+  "input_csv": "2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv",
+  "prediction_length": 30,
+  "lookback_length": 65,
+  "prediction_summary": {
+    "min_price": 172.27972412109375,
+    "max_price": 222.57989501953125,
+    "mean_price": 197.7260284423828,
+    "std_price": 14.375381469726562
+  },
+  "output_files": {
+    "csv": "2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.csv",
+    "plot": "2025-10-23/AMD/Kronos_output/AMD_prediction_20251023_164403.png"
+  }
+}

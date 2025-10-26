@@ -264,7 +264,8 @@ class MarketLensChatbox:
             # Primary response function (implements the agent loop)
             async def respond(user_msg: str, chat_hist: list, news, fundamentals, market, sentiment):
                 if not user_msg.strip():
-                    return "", chat_hist, gr.update(visible=False)
+                    yield "", chat_hist, gr.update(visible=False)
+                    return
 
                 # Update configuration flags
                 current_config = {

@@ -1,0 +1,17 @@
+{
+  "symbol": "KO",
+  "prediction_time": "2025-10-23T16:57:16.769153",
+  "input_csv": "2025-10-23/KO/market_csv/KO_3mo_1d_20251023_165025.csv",
+  "prediction_length": 30,
+  "lookback_length": 65,
+  "prediction_summary": {
+    "min_price": 65.87335205078125,
+    "max_price": 70.73014068603516,
+    "mean_price": 67.94950866699219,
+    "std_price": 1.449102520942688
+  },
+  "output_files": {
+    "csv": "2025-10-23/KO/Kronos_output/KO_prediction_20251023_165716.csv",
+    "plot": "2025-10-23/KO/Kronos_output/KO_prediction_20251023_165716.png"
+  }
+}
