@@ -6,10 +6,10 @@ __pycache__/
 *.pyd
 .Python
 
-# 环境变量 - 重要！
-.env
-.env.local
-.env.*.local
+# # 环境变量 - 重要！
+# .env
+# .env.local
+# .env.*.local
 
 # IDE
 .vscode/
