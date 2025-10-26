@@ -1,0 +1,67 @@
+{
+  "ticker": "KO",
+  "company": {
+    "name": "Coca-Cola Co",
+    "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+    "country": "US",
+    "currency": "USD"
+  },
+  "metrics": {
+    "market_cap_usd": 305022440000.0,
+    "revenue_per_share_ttm": 10.9066,
+    "dividend_per_share_ttm": 1.964
+  },
+  "insiders": [
+    {
+      "person": "Levchin Max R",
+      "code": "A",
+      "date": "2025-10-16",
+      "price": 71.55,
+      "change_shares": 1118,
+      "post_shares": 1118,
+      "filing_id": "0000021344-25-000073",
+      "source": "sec"
+    },
+    {
+      "person": "KOUMETTIS NIKOLAOS",
+      "code": "S",
+      "date": "2025-08-05",
+      "price": 69.1011,
+      "change_shares": -37396,
+      "post_shares": 209513,
+      "filing_id": "0000021344-25-000065",
+      "source": "sec"
+    },
+    {
+      "person": "Perez Beatriz R",
+      "code": "G",
+      "date": "2025-08-04",
+      "price": 0,
+      "change_shares": -43847,
+      "post_shares": 143869,
+      "filing_id": "0000021344-25-000063",
+      "source": "sec"
+    },
+    {
+      "person": "Quincey James",
+      "code": "M",
+      "date": "2025-05-30",
+      "price": 0,
+      "change_shares": -66601,
+      "post_shares": 0,
+      "filing_id": "0001127602-25-016337",
+      "source": "sec"
+    },
+    {
+      "person": "Quincey James",
+      "code": "M",
+      "date": "2025-05-30",
+      "price": 0,
+      "change_shares": -66601,
+      "post_shares": 66601,
+      "filing_id": "0001127602-25-016337",
+      "source": "sec"
+    }
+  ],
+  "retrieved_at": "2025-10-23T08:50:31.662555"
+}

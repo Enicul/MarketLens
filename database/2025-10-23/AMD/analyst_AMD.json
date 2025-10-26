@@ -1,0 +1,712 @@
+{
+  "ticker": "AMD",
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "AMD",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-23T01:12:39+00:00",
+            "headline": "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) ",
+            "evidence": [
+              "https://www.benzinga.com/etfs/broad-u-s-equity-etfs/25/10/48370867/cathie-wood-bets-21-million-on-robinhood-snaps-up-netflix-sells-these-two-hot-ai-stock"
+            ],
+            "summary": [
+              "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-23T00:59:57+00:00",
+            "headline": "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?",
+            "evidence": [
+              "https://www.fool.com/coverage/filings/2025/10/23/is-amd-a-buy-after-investment-advisor-western-financial-initiated-a-position-in-the-stock/"
+            ],
+            "summary": [
+              "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "SeekingAlpha",
+            "published_at": "2025-10-22T23:50:00+00:00",
+            "headline": "Are We In A Bubble?",
+            "evidence": [
+              "https://finnhub.io/api/news?id=7a9641cf8dede0883c89f598cd1f8daf847d352c132a9dd870cb6f16261edf3a"
+            ],
+            "summary": [
+              "Are We In A Bubble?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Zacks Commentary",
+            "published_at": "2025-10-22T21:45:03+00:00",
+            "headline": "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know",
+            "evidence": [
+              "https://www.zacks.com/stock/news/2774593/advanced-micro-devices-amd-falls-more-steeply-than-broader-market-what-investors-need-to-know"
+            ],
+            "summary": [
+              "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-22T21:08:27+00:00",
+            "headline": "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/22/unfortunate-news-for-nvidia-stock-amd-stock-micros/"
+            ],
+            "summary": [
+              "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-22T20:13:35+00:00",
+            "headline": "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) ",
+            "evidence": [
+              "https://www.benzinga.com/trading-ideas/previews/25/10/48366571/intel-q3-preview-nvidia-us-government-stakes-dont-change-narrative-do-not-believe-valuatio"
+            ],
+            "summary": [
+              "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T19:37:00+00:00",
+            "headline": "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes",
+            "evidence": [
+              "https://finnhub.io/api/news?id=c703c0877e7447f4c8eeda5586c3bd191b66dda13649bf357fcca9bea73c8804"
+            ],
+            "summary": [
+              "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T19:20:46+00:00",
+            "headline": "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today",
+            "evidence": [
+              "https://finnhub.io/api/news?id=e77bddae1baede262768dd4688bfad7952612e444db01d70b0a5bf2ed1acba33"
+            ],
+            "summary": [
+              "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-23T08:38:13.126289+00:00"
+      },
+      "error": null,
+      "cached": false
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "AMD",
+        "company": {
+          "name": "Advanced Micro Devices Inc",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 372622780000.0,
+          "revenue_per_share_ttm": 18.1595
+        },
+        "insiders": [
+          {
+            "person": "Papermaster Mark D",
+            "code": "M",
+            "date": "2025-10-15",
+            "price": 0,
+            "change_shares": -16800,
+            "post_shares": 17108,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 226.17,
+            "change_shares": -200,
+            "post_shares": 1714505,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 225.59,
+            "change_shares": -5516,
+            "post_shares": 1714705,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 224.51,
+            "change_shares": -5695,
+            "post_shares": 1720221,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 223.4,
+            "change_shares": -1700,
+            "post_shares": 1725916,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-23T08:38:07.642118"
+      },
+      "error": null,
+      "cached": false
+    },
+    "market": {
+      "data": {
+        "ticker": "AMD",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-23T08:38:04.492092",
+        "stock_basic_info": {
+          "ticker": "AMD",
+          "current_price": 230.23,
+          "change": -7.8,
+          "change_percent": -3.28,
+          "volume": 57075407,
+          "market_cap": 373627289600,
+          "pe_ratio": 137.04167,
+          "pb_ratio": 6.258801,
+          "beta": 1.894,
+          "high_52w": 242.88,
+          "low_52w": 76.48,
+          "timestamp": "2025-10-23T16:38:04.491523"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 204.5214988708496,
+            "price_vs_ma_20": 112.57007062759878
+          },
+          "oscillators": {
+            "rsi": 71.05959128035292,
+            "stochastic_k": 84.13593142232992,
+            "stochastic_d": 91.7459240648274
+          },
+          "bollinger_bands": {
+            "upper_band": 269.80261154632313,
+            "lower_band": 139.24038619537606,
+            "price_vs_upper_band": 85.33275286255346
+          },
+          "volume_indicators": {
+            "volume_ma20": 77153725.0,
+            "volume_vs_ma20": 76.01136562103774
+          },
+          "volatility_indicators": {
+            "atr": 16.48357173374721,
+            "atr_percent": 7.159610841175687
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 242.8800048828125,
+            "low_1mo": 154.77999877929688,
+            "avg_close": 200.55499891801313,
+            "volatility": 33.59705163876174
+          },
+          "trend_analysis": {
+            "trend_20_days": 42.760581402709114
+          },
+          "key_levels": [
+            242.8800048828125
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 22,
+          "data_period": "1mo",
+          "start_date": "2025-09-23",
+          "end_date": "2025-10-22",
+          "last_updated": "2025-10-23T16:38:04.492089"
+        }
+      },
+      "error": null,
+      "cached": false
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "AMD",
+        "channel": "sentiment",
+        "overall_sentiment": "strong_bullish",
+        "sentiment_score": 0.5124,
+        "sentiment_breakdown": {
+          "bullish": 0.075,
+          "bearish": 0.025,
+          "neutral": 0.9
+        },
+        "metrics": {
+          "total_tweets": 80,
+          "total_influence": 2575,
+          "influence_concentration": 0.422,
+          "sentiment_volatility": 40.11,
+          "quality_score": 0.325
+        },
+        "top_tweets": [
+          {
+            "username": "Daniel Romero",
+            "content": "$AMD reports Q3 earnings on November 4\n\nThis is what the market is expecting:\n\n Revenue growth: +28% YoY\n EBITDA growth: +39.5% YoY\n EPS growth: +27.2% YoY",
+            "timestamp": "2025-10-19T13:39:32.000Z",
+            "influence_score": 32.98,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 913,
+              "retweets": 72,
+              "replies": 31
+            }
+          },
+          {
+            "username": "Mike",
+            "content": "$AMD $AMZN partnership will  in 2026 Part 2\n\n$INTC to lose more market share to \n@AMD\n EPYC in 2026 \n\nTLDR: Not many are covering AMD 2026 EPYC Venice, so I will, to support my case for FY2026 to have $70B-$100B revenue. I won't be able to give u a price target since, 3 digits",
+            "timestamp": "2025-10-20T18:25:40.000Z",
+            "influence_score": 14.11,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 165,
+              "retweets": 16,
+              "replies": 2
+            }
+          },
+          {
+            "username": "Adam Khoo",
+            "content": "This bull market reminds me of the one that started in March 2020 amd caught Hitler off guard, losing his life savings \n\nThumbs up if you want me to create a 2023 updated version of this video and share an ideas you want to include in the dialogue",
+            "timestamp": "2023-07-01T04:18:41.000Z",
+            "influence_score": 11.22,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 112,
+              "retweets": 5,
+              "replies": 4
+            }
+          },
+          {
+            "username": "Brian Shannon, CMT",
+            "content": "Stock Market & Crypto Analysis for Week Ending 10/17/25\n\n$SPY $QQQ $SMH $AMD $NVDA $IWM #Bitcoin #Ethereum #Solana etc",
+            "timestamp": "2025-10-17T21:01:58.000Z",
+            "influence_score": 14.66,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 172,
+              "retweets": 18,
+              "replies": 7
+            }
+          },
+          {
+            "username": "StockOnHighAlert",
+            "content": "$CBDL Dubai Chocolate Bar is a game-changing product for CBD Life Sciences Inc. — $CBDL! This is going to shake up the market, mark my words!” \nhttps://\nfinance.yahoo.com/news/cbd-life-\nsciences-inc-cbdl-110000945.html\n… \n@CrusaderStocks\n \n\n@hedgestreetcap\n\n\n@TenAssocLLC\n $GME $GWAV $AMC $IPW $BURU $AAPL $META $NFLX $AMD $QQQ $TSLA $SLV",
+            "timestamp": "2025-10-22T17:49:28.000Z",
+            "influence_score": 9.17,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 38,
+              "retweets": 23,
+              "replies": 0
+            }
+          },
+          {
+            "username": "TheTradingChamp",
+            "content": "$AMD stock should be much higher\n\nhigher very very soon.",
+            "timestamp": "2025-10-08T21:04:21.000Z",
+            "influence_score": 14.56,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 164,
+              "retweets": 7,
+              "replies": 34
+            }
+          },
+          {
+            "username": "TrendSpider",
+            "content": "$AMD  $SMCI 98% correlation.\n\nSidekick measures volatility, range, & sector profile to rank every stock in the market by similarity.\n\nFind what trades like your favorite ticker.\n \nhttp://\ntrendspider.cc/sidekickscanni\nng\n…",
+            "timestamp": "2025-10-23T04:30:00.000Z",
+            "influence_score": 9.43,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 72,
+              "retweets": 7,
+              "replies": 3
+            }
+          },
+          {
+            "username": "TslaGroupie",
+            "content": "Most people panic sell when the stock market drops \n\nI panic sell when a stock a runs up 40%+ in 2 days $AMD \n\nNot regretting this decision (yet)",
+            "timestamp": "2025-10-11T14:02:18.000Z",
+            "influence_score": 7.94,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 46,
+              "retweets": 0,
+              "replies": 17
+            }
+          },
+          {
+            "username": "Dannie Talas",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #Securities $AMD \n #Portfolio $JNJ  \n #CandlestickChart $JXG \n #Volatility $CPOP",
+            "timestamp": "2025-10-22T18:38:06.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Ehtesham",
+            "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $ARMP #STOCK\n #BearMarket $AMD\n #Equity $ADBE  \n #DividendYield $GS  \n #InsiderTrading $CPOP",
+            "timestamp": "2025-10-22T22:59:51.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "q7vrabokozras",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #Dividends $LYFT \n #MarginTrading $AMD \n #MovingAverage $XLV \n #Stock $HIT",
+            "timestamp": "2025-10-22T19:57:02.000Z",
+            "influence_score": 5.92,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Biggr",
+            "content": "7. $AMD\n\n- It's catching up with $NVDA in GPU design.\n- Just signed $70 billion deal with OpenAI.\n- Its chips are better suited for inference workloads.\n\nThe math is simple: If it can just take 10% market share from $NVDA in data center GPUs, the revenue will grow 5x.",
+            "timestamp": "2025-10-13T20:50:40.000Z",
+            "influence_score": 5.29,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 22,
+              "retweets": 2,
+              "replies": 2
+            }
+          },
+          {
+            "username": "MINTU DAS",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#CapitalGains  $PYPL\n#Arbitrage  $AMD\n#Stock  $PFE\n#HedgeFund  $TGT",
+            "timestamp": "2025-10-23T08:18:45.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Md Asaduzzaman Jony",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#Portfolio  $PG\n#HedgeFund  $PG\n#Stock  $AMD\n#CommonStock  $LYFT",
+            "timestamp": "2025-10-23T07:21:26.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Fanesh Kumar",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#PERatio  $NKE\n#InsiderTrading  $DIS\n#Stock  $NVDA\n#Stock  $AMD",
+            "timestamp": "2025-10-23T08:05:09.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "StockOnHighAlert",
+            "content": "$ADHC now has: A favorable FDA review Up to $5 million in non-toxic funding No convertible debt A tiny $4.2M market cap And serious biotech momentum \n\nhttps://\nyoutube.com/watch?v=wrEcw4\nX0XNE\n…\n $GME $GWAV $AMC $IPW $BURU $AAPL $META $NFLX $AMD $QQQ $TSLA $SLV $CTNT $SPY $HOLO $FSRN $NVDA",
+            "timestamp": "2025-10-22T17:38:36.000Z",
+            "influence_score": 4.9,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 10,
+              "retweets": 7,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Nouman",
+            "content": "$AMD I $AMD today is a prime example of a Balanced session. \n\nWhen a stock fails to break above or below its opening range for the session, it reveals a great deal about the intent of both buyers and sellers\n\nHere's the current price action breakdown for $AMD and what today's",
+            "timestamp": "2025-10-14T15:07:45.000Z",
+            "influence_score": 4.69,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 14,
+              "retweets": 4,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Israel Marczak",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #Portfolio $AMD #ROE $PYPL #RoboAdvisor $F \n #Trading $BGM",
+            "timestamp": "2025-10-22T22:07:30.000Z",
+            "influence_score": 3.87,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 3,
+              "replies": 9
+            }
+          },
+          {
+            "username": "InvestingDiary",
+            "content": "$AMD is a huge player and is here to stay. People are really underestimating it based of stock price movements, not the business itself.",
+            "timestamp": "2025-10-20T12:26:46.000Z",
+            "influence_score": 4.12,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 0,
+              "replies": 11
+            }
+          },
+          {
+            "username": "Howie9x_pi  π",
+            "content": "Its a scam thanks to founders of Project like $KDA $OVPP $DIONE i lost 200k usd which should make me 5-10x if i just throw them in stock market like Nvdia amd meta etc. Fuck crypto This is my last cycle",
+            "timestamp": "2025-10-23T01:08:02.000Z",
+            "influence_score": 3.46,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 2,
+              "replies": 5
+            }
+          },
+          {
+            "username": "Bilaal- BD investing",
+            "content": "$ASML great earnings. I bought more today. \n\nWhile the market obsesses over $NVDA, $AMD, and $TSM, ASML quietly controls the entire semiconductor supply chain.\nOnly they make the machines that make the chips.",
+            "timestamp": "2025-10-15T14:51:12.000Z",
+            "influence_score": 3.32,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 0,
+              "replies": 2
+            }
+          },
+          {
+            "username": "Reiko Aredondo",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #StockMarket $SQ #DividendYield $AMZN  #MarketManipulation $JPM  \n #Trading $HD",
+            "timestamp": "2025-10-22T21:09:54.000Z",
+            "influence_score": 3.32,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "MarketWatch",
+            "content": "Can AMD’s stock live up to the hype? Depends on how you look at it.",
+            "timestamp": "2025-10-20T15:24:30.000Z",
+            "influence_score": 4.58,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 3,
+              "replies": 6
+            }
+          },
+          {
+            "username": "Rachel Haymer",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #Nasdaq $MRNA #MarginTrading $CRM #ROE $MRK \n #Trading $NVDA",
+            "timestamp": "2025-10-22T20:21:03.000Z",
+            "influence_score": 3.32,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Ally",
+            "content": "$100K in $AMD\n\nThe stock price will outperform $NVDA in % going forward from now",
+            "timestamp": "2025-10-12T19:12:37.000Z",
+            "influence_score": 4.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 16,
+              "retweets": 0,
+              "replies": 2
+            }
+          },
+          {
+            "username": "TradeVision",
+            "content": "The deal structure shows AMD's expected future value. \n\nAMD gave OpenAI special rights to buy 160 million AMD shares when the stock price hits $600 per share.\n\nAMD stock costs about $200 now, suggesting a potential tripling.",
+            "timestamp": "2025-10-14T11:00:40.000Z",
+            "influence_score": 3.0,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 1,
+              "replies": 1
+            }
+          },
+          {
+            "username": "Glennis Loveridge",
+            "content": "Gold medal-class analyst \n@aklnqqi\n delivers stock recommendations daily via Whatsapp.$NVDA $OPEN #STOCK #NYSE $AMD #CME $GM #Brokerage $PFE \n #Trading $WMT",
+            "timestamp": "2025-10-22T14:27:56.000Z",
+            "influence_score": 3.32,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Kandra Farney",
+            "content": "Stock prices are moving wildly every day. \n@azvdsbc\n gives you accurate buy/sell signals before the bell. $NVDA $META #STOCK  #Beta $WBD #ROE $AMD  #Stock $GS  \n #Trading $MS",
+            "timestamp": "2025-10-22T21:20:54.000Z",
+            "influence_score": 3.0,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 9
+            }
+          },
+          {
+            "username": "SAMSOFT",
+            "content": "Their market share of GPU is 90% and their next biggest competitor AMD is around 8%,crazy.\nBig tech companies keep on buying thousands and thousands of NVIDIA’s GPUs for their data centers.\n\nHere is what it will take to beat NVIDIA,(Check thread below)\n#TheNewRich",
+            "timestamp": "2025-10-23T06:35:59.000Z",
+            "influence_score": 2.45,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 1,
+              "replies": 1
+            }
+          },
+          {
+            "username": "JKR Investing",
+            "content": "All in todays video!\n\n- Draft Kings double their TAM overnight by entering the predictions market with an acquisition $DKNG\n\n- Zotefoams continues to have a fantastic year $ZTF.L\n\n- AMD has another surge in the share price after analysts increase their target prices $AMD\n\n-",
+            "timestamp": "2025-10-22T19:47:06.000Z",
+            "influence_score": 2.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 5,
+              "retweets": 0,
+              "replies": 0
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 1.0,
+          "search_keywords": [
+            "$AMD"
+          ],
+          "generated_at": "2025-10-23T08:38:19.854826+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": false
+    }
+  },
+  "csv_generation": {
+    "ticker": "AMD",
+    "period": "3mo",
+    "interval": "1d",
+    "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv",
+    "filename": "AMD_3mo_1d_20251023_163803.csv",
+    "size_bytes": 22729,
+    "retrieved_at": "2025-10-23T08:38:03.201265"
+  },
+  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv"
+}

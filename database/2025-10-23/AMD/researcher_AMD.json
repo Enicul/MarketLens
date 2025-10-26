@@ -1,0 +1,1245 @@
+{
+  "analyses": {
+    "news": {
+      "data": {
+        "ticker": "AMD",
+        "channel": "news",
+        "overall_stance": "neutral",
+        "count": 8,
+        "items": [
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-23T01:12:39+00:00",
+            "headline": "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) ",
+            "evidence": [
+              "https://www.benzinga.com/etfs/broad-u-s-equity-etfs/25/10/48370867/cathie-wood-bets-21-million-on-robinhood-snaps-up-netflix-sells-these-two-hot-ai-stock"
+            ],
+            "summary": [
+              "Cathie Wood Bets $21 Million On Robinhood, Snaps Up Netflix, Sells These Two Hot AI Stocks - Robinhood Markets  ( NASDAQ:HOOD ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-23T00:59:57+00:00",
+            "headline": "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?",
+            "evidence": [
+              "https://www.fool.com/coverage/filings/2025/10/23/is-amd-a-buy-after-investment-advisor-western-financial-initiated-a-position-in-the-stock/"
+            ],
+            "summary": [
+              "Is AMD a Buy After Investment Advisor Western Financial Initiated a Position in the Stock?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "SeekingAlpha",
+            "published_at": "2025-10-22T23:50:00+00:00",
+            "headline": "Are We In A Bubble?",
+            "evidence": [
+              "https://finnhub.io/api/news?id=7a9641cf8dede0883c89f598cd1f8daf847d352c132a9dd870cb6f16261edf3a"
+            ],
+            "summary": [
+              "Are We In A Bubble?"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Zacks Commentary",
+            "published_at": "2025-10-22T21:45:03+00:00",
+            "headline": "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know",
+            "evidence": [
+              "https://www.zacks.com/stock/news/2774593/advanced-micro-devices-amd-falls-more-steeply-than-broader-market-what-investors-need-to-know"
+            ],
+            "summary": [
+              "Advanced Micro Devices  ( AMD )  Falls More Steeply Than Broader Market: What Investors Need to Know"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Motley Fool",
+            "published_at": "2025-10-22T21:08:27+00:00",
+            "headline": "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!",
+            "evidence": [
+              "https://www.fool.com/investing/2025/10/22/unfortunate-news-for-nvidia-stock-amd-stock-micros/"
+            ],
+            "summary": [
+              "Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors!"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Benzinga",
+            "published_at": "2025-10-22T20:13:35+00:00",
+            "headline": "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) ",
+            "evidence": [
+              "https://www.benzinga.com/trading-ideas/previews/25/10/48366571/intel-q3-preview-nvidia-us-government-stakes-dont-change-narrative-do-not-believe-valuatio"
+            ],
+            "summary": [
+              "Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel  ( NASDAQ:INTC ) "
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T19:37:00+00:00",
+            "headline": "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes",
+            "evidence": [
+              "https://finnhub.io/api/news?id=c703c0877e7447f4c8eeda5586c3bd191b66dda13649bf357fcca9bea73c8804"
+            ],
+            "summary": [
+              "Wall Street's sleeping on Nvidia, AMD, and Broadcom? A major investment bank says yes"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          },
+          {
+            "type": "news_item",
+            "ticker": [
+              "AMD"
+            ],
+            "publisher": "Yahoo",
+            "published_at": "2025-10-22T19:20:46+00:00",
+            "headline": "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today",
+            "evidence": [
+              "https://finnhub.io/api/news?id=e77bddae1baede262768dd4688bfad7952612e444db01d70b0a5bf2ed1acba33"
+            ],
+            "summary": [
+              "Why Lattice Semiconductor (LSCC) Stock Is Trading Lower Today"
+            ],
+            "stance": "neutral",
+            "stance_confidence": 0.5,
+            "signals": [],
+            "finbert": null
+          }
+        ],
+        "generated_at": "2025-10-23T08:38:13.126289+00:00"
+      },
+      "error": null,
+      "cached": false
+    },
+    "fundamentals": {
+      "data": {
+        "ticker": "AMD",
+        "company": {
+          "name": "Advanced Micro Devices Inc",
+          "exchange": "NASDAQ NMS",
+          "country": "US",
+          "currency": "USD"
+        },
+        "metrics": {
+          "market_cap_usd": 372622780000.0,
+          "revenue_per_share_ttm": 18.1595
+        },
+        "insiders": [
+          {
+            "person": "Papermaster Mark D",
+            "code": "M",
+            "date": "2025-10-15",
+            "price": 0,
+            "change_shares": -16800,
+            "post_shares": 17108,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 226.17,
+            "change_shares": -200,
+            "post_shares": 1714505,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 225.59,
+            "change_shares": -5516,
+            "post_shares": 1714705,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 224.51,
+            "change_shares": -5695,
+            "post_shares": 1720221,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          },
+          {
+            "person": "Papermaster Mark D",
+            "code": "S",
+            "date": "2025-10-15",
+            "price": 223.4,
+            "change_shares": -1700,
+            "post_shares": 1725916,
+            "filing_id": "0000002488-25-000159",
+            "source": "sec"
+          }
+        ],
+        "retrieved_at": "2025-10-23T08:38:07.642118"
+      },
+      "error": null,
+      "cached": false
+    },
+    "market": {
+      "data": {
+        "ticker": "AMD",
+        "period": "1mo",
+        "interval": "1d",
+        "retrieved_at": "2025-10-23T08:38:04.492092",
+        "stock_basic_info": {
+          "ticker": "AMD",
+          "current_price": 230.23,
+          "change": -7.8,
+          "change_percent": -3.28,
+          "volume": 57075407,
+          "market_cap": 373627289600,
+          "pe_ratio": 137.04167,
+          "pb_ratio": 6.258801,
+          "beta": 1.894,
+          "high_52w": 242.88,
+          "low_52w": 76.48,
+          "timestamp": "2025-10-23T16:38:04.491523"
+        },
+        "technical_indicators": {
+          "moving_averages": {
+            "ma_20": 204.5214988708496,
+            "price_vs_ma_20": 112.57007062759878
+          },
+          "oscillators": {
+            "rsi": 71.05959128035292,
+            "stochastic_k": 84.13593142232992,
+            "stochastic_d": 91.7459240648274
+          },
+          "bollinger_bands": {
+            "upper_band": 269.80261154632313,
+            "lower_band": 139.24038619537606,
+            "price_vs_upper_band": 85.33275286255346
+          },
+          "volume_indicators": {
+            "volume_ma20": 77153725.0,
+            "volume_vs_ma20": 76.01136562103774
+          },
+          "volatility_indicators": {
+            "atr": 16.48357173374721,
+            "atr_percent": 7.159610841175687
+          }
+        },
+        "price_analysis": {
+          "price_range": {
+            "high_1mo": 242.8800048828125,
+            "low_1mo": 154.77999877929688,
+            "avg_close": 200.55499891801313,
+            "volatility": 33.59705163876174
+          },
+          "trend_analysis": {
+            "trend_20_days": 42.760581402709114
+          },
+          "key_levels": [
+            242.8800048828125
+          ]
+        },
+        "data_summary": {
+          "historical_data_points": 22,
+          "data_period": "1mo",
+          "start_date": "2025-09-23",
+          "end_date": "2025-10-22",
+          "last_updated": "2025-10-23T16:38:04.492089"
+        }
+      },
+      "error": null,
+      "cached": false
+    },
+    "sentiment": {
+      "data": {
+        "ticker": "AMD",
+        "channel": "sentiment",
+        "overall_sentiment": "strong_bullish",
+        "sentiment_score": 0.5124,
+        "sentiment_breakdown": {
+          "bullish": 0.075,
+          "bearish": 0.025,
+          "neutral": 0.9
+        },
+        "metrics": {
+          "total_tweets": 80,
+          "total_influence": 2575,
+          "influence_concentration": 0.422,
+          "sentiment_volatility": 40.11,
+          "quality_score": 0.325
+        },
+        "top_tweets": [
+          {
+            "username": "Daniel Romero",
+            "content": "$AMD reports Q3 earnings on November 4\n\nThis is what the market is expecting:\n\n Revenue growth: +28% YoY\n EBITDA growth: +39.5% YoY\n EPS growth: +27.2% YoY",
+            "timestamp": "2025-10-19T13:39:32.000Z",
+            "influence_score": 32.98,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 913,
+              "retweets": 72,
+              "replies": 31
+            }
+          },
+          {
+            "username": "Mike",
+            "content": "$AMD $AMZN partnership will  in 2026 Part 2\n\n$INTC to lose more market share to \n@AMD\n EPYC in 2026 \n\nTLDR: Not many are covering AMD 2026 EPYC Venice, so I will, to support my case for FY2026 to have $70B-$100B revenue. I won't be able to give u a price target since, 3 digits",
+            "timestamp": "2025-10-20T18:25:40.000Z",
+            "influence_score": 14.11,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 165,
+              "retweets": 16,
+              "replies": 2
+            }
+          },
+          {
+            "username": "Adam Khoo",
+            "content": "This bull market reminds me of the one that started in March 2020 amd caught Hitler off guard, losing his life savings \n\nThumbs up if you want me to create a 2023 updated version of this video and share an ideas you want to include in the dialogue",
+            "timestamp": "2023-07-01T04:18:41.000Z",
+            "influence_score": 11.22,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 112,
+              "retweets": 5,
+              "replies": 4
+            }
+          },
+          {
+            "username": "Brian Shannon, CMT",
+            "content": "Stock Market & Crypto Analysis for Week Ending 10/17/25\n\n$SPY $QQQ $SMH $AMD $NVDA $IWM #Bitcoin #Ethereum #Solana etc",
+            "timestamp": "2025-10-17T21:01:58.000Z",
+            "influence_score": 14.66,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 172,
+              "retweets": 18,
+              "replies": 7
+            }
+          },
+          {
+            "username": "StockOnHighAlert",
+            "content": "$CBDL Dubai Chocolate Bar is a game-changing product for CBD Life Sciences Inc. — $CBDL! This is going to shake up the market, mark my words!” \nhttps://\nfinance.yahoo.com/news/cbd-life-\nsciences-inc-cbdl-110000945.html\n… \n@CrusaderStocks\n \n\n@hedgestreetcap\n\n\n@TenAssocLLC\n $GME $GWAV $AMC $IPW $BURU $AAPL $META $NFLX $AMD $QQQ $TSLA $SLV",
+            "timestamp": "2025-10-22T17:49:28.000Z",
+            "influence_score": 9.17,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 38,
+              "retweets": 23,
+              "replies": 0
+            }
+          },
+          {
+            "username": "TheTradingChamp",
+            "content": "$AMD stock should be much higher\n\nhigher very very soon.",
+            "timestamp": "2025-10-08T21:04:21.000Z",
+            "influence_score": 14.56,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 164,
+              "retweets": 7,
+              "replies": 34
+            }
+          },
+          {
+            "username": "TrendSpider",
+            "content": "$AMD  $SMCI 98% correlation.\n\nSidekick measures volatility, range, & sector profile to rank every stock in the market by similarity.\n\nFind what trades like your favorite ticker.\n \nhttp://\ntrendspider.cc/sidekickscanni\nng\n…",
+            "timestamp": "2025-10-23T04:30:00.000Z",
+            "influence_score": 9.43,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 72,
+              "retweets": 7,
+              "replies": 3
+            }
+          },
+          {
+            "username": "TslaGroupie",
+            "content": "Most people panic sell when the stock market drops \n\nI panic sell when a stock a runs up 40%+ in 2 days $AMD \n\nNot regretting this decision (yet)",
+            "timestamp": "2025-10-11T14:02:18.000Z",
+            "influence_score": 7.94,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 46,
+              "retweets": 0,
+              "replies": 17
+            }
+          },
+          {
+            "username": "Dannie Talas",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #Securities $AMD \n #Portfolio $JNJ  \n #CandlestickChart $JXG \n #Volatility $CPOP",
+            "timestamp": "2025-10-22T18:38:06.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Ehtesham",
+            "content": "Thanks to \n@AlyaBarrys\n! I followed all six of his signal sources! Entering the market at the right time helped me make $30,000 in two days.\n$BYND $ARMP #STOCK\n #BearMarket $AMD\n #Equity $ADBE  \n #DividendYield $GS  \n #InsiderTrading $CPOP",
+            "timestamp": "2025-10-22T22:59:51.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "q7vrabokozras",
+            "content": "If you want to make money in stock investment, please \n@Kolevcarte\n . Share internal stock rising signals before the market opens every day.\n #BestStocks $ATMV \n  #Dividends $LYFT \n #MarginTrading $AMD \n #MovingAverage $XLV \n #Stock $HIT",
+            "timestamp": "2025-10-22T19:57:02.000Z",
+            "influence_score": 5.92,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 8,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Biggr",
+            "content": "7. $AMD\n\n- It's catching up with $NVDA in GPU design.\n- Just signed $70 billion deal with OpenAI.\n- Its chips are better suited for inference workloads.\n\nThe math is simple: If it can just take 10% market share from $NVDA in data center GPUs, the revenue will grow 5x.",
+            "timestamp": "2025-10-13T20:50:40.000Z",
+            "influence_score": 5.29,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 22,
+              "retweets": 2,
+              "replies": 2
+            }
+          },
+          {
+            "username": "MINTU DAS",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#CapitalGains  $PYPL\n#Arbitrage  $AMD\n#Stock  $PFE\n#HedgeFund  $TGT",
+            "timestamp": "2025-10-23T08:18:45.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Md Asaduzzaman Jony",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#Portfolio  $PG\n#HedgeFund  $PG\n#Stock  $AMD\n#CommonStock  $LYFT",
+            "timestamp": "2025-10-23T07:21:26.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Fanesh Kumar",
+            "content": "Thanks to \n@xhybaniqued\n, while traders panic, I just made $51,698. The setup worked even in a flat market \n#StockMarket $BYND $REPL \n#PERatio  $NKE\n#InsiderTrading  $DIS\n#Stock  $NVDA\n#Stock  $AMD",
+            "timestamp": "2025-10-23T08:05:09.000Z",
+            "influence_score": 6.0,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 9,
+              "replies": 9
+            }
+          },
+          {
+            "username": "StockOnHighAlert",
+            "content": "$ADHC now has: A favorable FDA review Up to $5 million in non-toxic funding No convertible debt A tiny $4.2M market cap And serious biotech momentum \n\nhttps://\nyoutube.com/watch?v=wrEcw4\nX0XNE\n…\n $GME $GWAV $AMC $IPW $BURU $AAPL $META $NFLX $AMD $QQQ $TSLA $SLV $CTNT $SPY $HOLO $FSRN $NVDA",
+            "timestamp": "2025-10-22T17:38:36.000Z",
+            "influence_score": 4.9,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 10,
+              "retweets": 7,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Nouman",
+            "content": "$AMD I $AMD today is a prime example of a Balanced session. \n\nWhen a stock fails to break above or below its opening range for the session, it reveals a great deal about the intent of both buyers and sellers\n\nHere's the current price action breakdown for $AMD and what today's",
+            "timestamp": "2025-10-14T15:07:45.000Z",
+            "influence_score": 4.69,
+            "sentiment": "bearish",
+            "raw_metrics": {
+              "likes": 14,
+              "retweets": 4,
+              "replies": 0
+            }
+          },
+          {
+            "username": "Israel Marczak",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #Portfolio $AMD #ROE $PYPL #RoboAdvisor $F \n #Trading $BGM",
+            "timestamp": "2025-10-22T22:07:30.000Z",
+            "influence_score": 3.87,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 3,
+              "replies": 9
+            }
+          },
+          {
+            "username": "InvestingDiary",
+            "content": "$AMD is a huge player and is here to stay. People are really underestimating it based of stock price movements, not the business itself.",
+            "timestamp": "2025-10-20T12:26:46.000Z",
+            "influence_score": 4.12,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 0,
+              "replies": 11
+            }
+          },
+          {
+            "username": "Howie9x_pi  π",
+            "content": "Its a scam thanks to founders of Project like $KDA $OVPP $DIONE i lost 200k usd which should make me 5-10x if i just throw them in stock market like Nvdia amd meta etc. Fuck crypto This is my last cycle",
+            "timestamp": "2025-10-23T01:08:02.000Z",
+            "influence_score": 3.46,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 2,
+              "replies": 5
+            }
+          },
+          {
+            "username": "Bilaal- BD investing",
+            "content": "$ASML great earnings. I bought more today. \n\nWhile the market obsesses over $NVDA, $AMD, and $TSM, ASML quietly controls the entire semiconductor supply chain.\nOnly they make the machines that make the chips.",
+            "timestamp": "2025-10-15T14:51:12.000Z",
+            "influence_score": 3.32,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 0,
+              "replies": 2
+            }
+          },
+          {
+            "username": "Reiko Aredondo",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #StockMarket $SQ #DividendYield $AMZN  #MarketManipulation $JPM  \n #Trading $HD",
+            "timestamp": "2025-10-22T21:09:54.000Z",
+            "influence_score": 3.32,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "MarketWatch",
+            "content": "Can AMD’s stock live up to the hype? Depends on how you look at it.",
+            "timestamp": "2025-10-20T15:24:30.000Z",
+            "influence_score": 4.58,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 9,
+              "retweets": 3,
+              "replies": 6
+            }
+          },
+          {
+            "username": "Rachel Haymer",
+            "content": "Stock prices are moving wildly every day. \n@du42tbmxv\n gives you accurate buy/sell signals before the bell. $TSLA $NFLX $AMD #Nasdaq $MRNA #MarginTrading $CRM #ROE $MRK \n #Trading $NVDA",
+            "timestamp": "2025-10-22T20:21:03.000Z",
+            "influence_score": 3.32,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Ally",
+            "content": "$100K in $AMD\n\nThe stock price will outperform $NVDA in % going forward from now",
+            "timestamp": "2025-10-12T19:12:37.000Z",
+            "influence_score": 4.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 16,
+              "retweets": 0,
+              "replies": 2
+            }
+          },
+          {
+            "username": "TradeVision",
+            "content": "The deal structure shows AMD's expected future value. \n\nAMD gave OpenAI special rights to buy 160 million AMD shares when the stock price hits $600 per share.\n\nAMD stock costs about $200 now, suggesting a potential tripling.",
+            "timestamp": "2025-10-14T11:00:40.000Z",
+            "influence_score": 3.0,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 6,
+              "retweets": 1,
+              "replies": 1
+            }
+          },
+          {
+            "username": "Glennis Loveridge",
+            "content": "Gold medal-class analyst \n@aklnqqi\n delivers stock recommendations daily via Whatsapp.$NVDA $OPEN #STOCK #NYSE $AMD #CME $GM #Brokerage $PFE \n #Trading $WMT",
+            "timestamp": "2025-10-22T14:27:56.000Z",
+            "influence_score": 3.32,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 1,
+              "replies": 9
+            }
+          },
+          {
+            "username": "Kandra Farney",
+            "content": "Stock prices are moving wildly every day. \n@azvdsbc\n gives you accurate buy/sell signals before the bell. $NVDA $META #STOCK  #Beta $WBD #ROE $AMD  #Stock $GS  \n #Trading $MS",
+            "timestamp": "2025-10-22T21:20:54.000Z",
+            "influence_score": 3.0,
+            "sentiment": "mixed",
+            "raw_metrics": {
+              "likes": 0,
+              "retweets": 0,
+              "replies": 9
+            }
+          },
+          {
+            "username": "SAMSOFT",
+            "content": "Their market share of GPU is 90% and their next biggest competitor AMD is around 8%,crazy.\nBig tech companies keep on buying thousands and thousands of NVIDIA’s GPUs for their data centers.\n\nHere is what it will take to beat NVIDIA,(Check thread below)\n#TheNewRich",
+            "timestamp": "2025-10-23T06:35:59.000Z",
+            "influence_score": 2.45,
+            "sentiment": "bullish",
+            "raw_metrics": {
+              "likes": 3,
+              "retweets": 1,
+              "replies": 1
+            }
+          },
+          {
+            "username": "JKR Investing",
+            "content": "All in todays video!\n\n- Draft Kings double their TAM overnight by entering the predictions market with an acquisition $DKNG\n\n- Zotefoams continues to have a fantastic year $ZTF.L\n\n- AMD has another surge in the share price after analysts increase their target prices $AMD\n\n-",
+            "timestamp": "2025-10-22T19:47:06.000Z",
+            "influence_score": 2.24,
+            "sentiment": "neutral",
+            "raw_metrics": {
+              "likes": 5,
+              "retweets": 0,
+              "replies": 0
+            }
+          }
+        ],
+        "analysis_metadata": {
+          "algorithm_version": "3.0-professional",
+          "confidence_level": 1.0,
+          "search_keywords": [
+            "$AMD"
+          ],
+          "generated_at": "2025-10-23T08:38:19.854826+00:00",
+          "processing_note": "Professional sentiment analysis with integrated architecture"
+        }
+      },
+      "error": null,
+      "cached": false
+    }
+  },
+  "bullish_research": {
+    "stance": "bullish",
+    "thesis": "Advanced Micro Devices (AMD) presents a compelling investment opportunity, characterized by robust market momentum, strong future growth potential driven by competitive positioning and anticipated financial expansion, and overwhelmingly positive social sentiment.",
+    "arguments": [
+      "AMD exhibits robust market momentum, with its current price trading significantly above its 20-day moving average and near its 52-week high, signaling sustained investor confidence and a clear upward trend despite minor daily fluctuations.",
+      "The company is poised for substantial future growth, evidenced by strong Q3 earnings projections for revenue, EBITDA, and EPS, anticipated market share gains in key segments like EPYC server CPUs and data center GPUs, and strategic partnerships exemplified by potential share acquisition rights for OpenAI implying significant price upside.",
+      "Social sentiment surrounding AMD is decisively bullish, with an overall 'strong_bullish' rating, and key influencers forecasting substantial stock appreciation and strong competitive performance against major rivals."
+    ],
+    "counters": [
+      {
+        "claim_id": "technical_overextension",
+        "rebuttal": "While the RSI of 71.1 indicates a technically overbought condition, this is often characteristic of stocks experiencing strong upward momentum. The current price trades significantly above its 20-day moving average and remains near its 52-week high, reflecting persistent buying interest and a robust upward trend that outweighs short-term daily depreciation.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI: 71.1",
+            "note": "Acknowledges RSI value as stated in bearish claim."
+          },
+          {
+            "source": "market",
+            "pointer": "Current: $230.23",
+            "note": "Current price point relative to highs."
+          },
+          {
+            "source": "market",
+            "pointer": "52w: $76.48 - $242.88",
+            "note": "Current price near its 52-week high."
+          },
+          {
+            "source": "market",
+            "pointer": "MA: ma_20=204.52, price_vs_ma_20=112.57",
+            "note": "Price is significantly above its 20-day moving average, indicating strong momentum."
+          }
+        ]
+      },
+      {
+        "claim_id": "opaque_fundamental_valuation",
+        "rebuttal": "While detailed EPS and debt figures are not provided in the summary fundamentals, social sentiment offers strong forward-looking indicators. Projections for Q3 suggest substantial year-over-year growth in revenue (+28%), EBITDA (+39.5%), and EPS (+27.2%), indicating a positive fundamental trajectory. Furthermore, the implied $600 price target from the OpenAI share acquisition rights suggests significant future valuation potential. The provided revenue per share of 18.1595 also highlights current operational scale.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "Acknowledges missing EPS data."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Debt=None",
+            "note": "Acknowledges missing debt data."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Rev/Share=18.1595",
+            "note": "Demonstrates current operational scale."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[0].content",
+            "note": "Mentions Q3 earnings expectations: Revenue growth: +28% YoY, EBITDA growth: +39.5% YoY, EPS growth: +27.2% YoY."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets[25].content",
+            "note": "AMD gave OpenAI special rights to buy 160 million AMD shares when the stock price hits $600 per share, implying a potential tripling."
+          }
+        ]
+      },
+      {
+        "claim_id": "signs_of_market_underperformance",
+        "rebuttal": "Despite isolated reports of AMD falling more steeply than the broader market and general 'unfortunate news,' the overarching market sentiment for AMD remains 'strong_bullish.' The stock's sustained position near its 52-week high and well above its 20-day moving average demonstrates underlying resilience and strong investor demand, suggesting any short-term underperformance is temporary within a broader positive trend.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "overall_sentiment=strong_bullish",
+            "note": "Indicates strong overall positive sentiment for AMD."
+          },
+          {
+            "source": "news",
+            "pointer": "[3]",
+            "note": "Mentions AMD falling more steeply than the broader market as stated in the bearish claim."
+          },
+          {
+            "source": "news",
+            "pointer": "[4]",
+            "note": "Mentions 'unfortunate news' for AMD and its peers as stated in the bearish claim."
+          },
+          {
+            "source": "market",
+            "pointer": "Current: $230.23",
+            "note": "Current price point."
+          },
+          {
+            "source": "market",
+            "pointer": "52w: $76.48 - $242.88",
+            "note": "Current price near 52-week high, demonstrating resilience."
+          },
+          {
+            "source": "market",
+            "pointer": "MA: ma_20=204.52, price_vs_ma_20=112.57",
+            "note": "Price significantly above 20-day moving average, demonstrating strength."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "Lack of reported Earnings Per Share (EPS) in the fundamental metrics summary.",
+      "Absence of detailed debt information in the fundamental metrics summary.",
+      "The impact of the broader 'neutral' news environment and general 'unfortunate news' cited for the sector on long-term investor perception, despite current bullish social sentiment."
+    ],
+    "evidence_map": [
+      {
+        "source": "market",
+        "pointer": "Current: $230.23",
+        "note": "Supports robust market momentum in thesis and Argument 1."
+      },
+      {
+        "source": "market",
+        "pointer": "52w: $76.48 - $242.88",
+        "note": "Supports robust market momentum in thesis and Argument 1, indicating current price near 52-week high."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: ma_20=204.52, price_vs_ma_20=112.57",
+        "note": "Supports robust market momentum in thesis and Argument 1, indicating price significantly above 20-day moving average."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[1].content",
+        "note": "Supports future growth potential in thesis and Argument 2 (anticipated EPYC market share gains, FY2026 revenue projections), and competitive performance in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[25].content",
+        "note": "Supports future growth potential in thesis and Argument 2 (potential OpenAI share acquisition rights and implied $600 price target), and stock appreciation in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish",
+        "note": "Supports overwhelmingly positive social sentiment in thesis and Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[0].content",
+        "note": "Supports strong Q3 earnings projections for revenue, EBITDA, and EPS in Argument 2."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[11].content",
+        "note": "Supports anticipated market share gains in data center GPUs in Argument 2 and competitive performance in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[28].content",
+        "note": "Supports strong competitive performance against major rivals in Argument 3, by positioning AMD as a key competitor to NVIDIA."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Rev/Share=18.1595",
+        "note": "Provides a fundamental operational metric."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.5124",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "AMD",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-23T08:38:07.642118",
+      "news_ref": "2025-10-23T08:38:13.126289+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "bearish_research": {
+    "stance": "bearish",
+    "thesis": "Advanced Micro Devices (AMD) exhibits significant downside risk driven by extreme technical overextension, a lack of transparent fundamental valuation data, and recent market underperformance, signaling a probable near-term price correction despite prevailing social bullish sentiment.",
+    "arguments": [
+      "The stock is in an extreme technically overbought condition, indicated by an RSI of 71.1, which is significantly above the 70 threshold. This suggests that the asset's recent upward price movement is unsustainable and highly susceptible to a significant pullback. This risk is compounded by the current daily depreciation of -3.28% and the price trading at a substantial premium of 112.57% above its 20-day moving average.",
+      "Critical financial metrics essential for robust valuation, such as Earnings Per Share (EPS) and detailed debt information, are absent from the provided fundamentals. This data gap precludes a comprehensive fundamental assessment and raises concerns regarding the justification for AMD's elevated market capitalization. In a semiconductor sector where valuation concerns are explicitly noted for competitors, this lack of transparency amplifies investment risk.",
+      "Recent market performance shows AMD falling more steeply than the broader market, as reported in news summaries. This underperformance, coupled with general 'unfortunate news' cited for AMD and its peers, indicates a potential erosion of investor confidence or heightened sensitivity to negative catalysts, challenging the narrative of sustained market momentum."
+    ],
+    "counters": [
+      {
+        "claim_id": "1",
+        "rebuttal": "While the price is trading above its 20-day moving average and near its 52-week high, these are indicators of technical overextension rather than sustainable momentum. An RSI of 71.1 confirms an overbought condition, making the stock highly susceptible to a significant pullback, as further evidenced by the current daily depreciation of -3.28%.",
+        "evidence": [
+          {
+            "source": "market",
+            "pointer": "RSI: 71.1",
+            "note": "The RSI of 71.1 indicates an overbought condition, suggesting a high probability of a price correction."
+          },
+          {
+            "source": "market",
+            "pointer": "ma_20=204.52, price_vs_ma_20=112.57",
+            "note": "The current price trading at a 112.57% premium to its 20-day moving average highlights significant technical overextension."
+          },
+          {
+            "source": "market",
+            "pointer": "Current: $230.23 (-3.28%)",
+            "note": "The current daily depreciation of -3.28% signals a potential reversal of recent upward momentum and increased selling pressure."
+          }
+        ]
+      },
+      {
+        "claim_id": "2",
+        "rebuttal": "Projections for future growth, while present in social sentiment, lack corroboration from official fundamental data in the provided summary. Crucially, the absence of reported EPS and detailed debt information prevents any robust fundamental assessment to justify current or projected valuations. News sentiment regarding overall sector valuation concerns also provides a cautionary context for these growth expectations.",
+        "evidence": [
+          {
+            "source": "fundamentals",
+            "pointer": "EPS=None",
+            "note": "The absence of reported Earnings Per Share (EPS) prevents an evidence-based validation of earnings growth projections."
+          },
+          {
+            "source": "fundamentals",
+            "pointer": "Debt=None",
+            "note": "The lack of detailed debt information impedes a comprehensive fundamental analysis of the company's financial leverage and solvency, crucial for evaluating future growth potential."
+          },
+          {
+            "source": "news",
+            "pointer": "[5] neutral: Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel (src=Benzinga)",
+            "note": "Broader sector-specific valuation concerns, explicitly mentioned for a key competitor, suggest a potentially overheated market that could transmit risk to AMD regardless of individual growth projections."
+          }
+        ]
+      },
+      {
+        "claim_id": "3",
+        "rebuttal": "While the overall sentiment is rated 'strong_bullish', the sentiment breakdown shows 90% neutral and only 7.5% explicitly bullish posts. This suggests the 'strong_bullish' rating might be influenced by a few high-influence posts rather than a broad market consensus. Furthermore, specific bearish tweets indicate apprehension regarding rapid price appreciation and potential for profit-taking, aligning with technical overextension.",
+        "evidence": [
+          {
+            "source": "sentiment",
+            "pointer": "overall_sentiment=strong_bullish, sentiment_breakdown={'bullish': 0.075, 'bearish': 0.025, 'neutral': 0.9}",
+            "note": "The sentiment breakdown reveals a high proportion of neutral posts (90%) and a relatively low percentage of explicitly bullish posts (7.5%), suggesting that the 'strong_bullish' overall rating may not reflect broad market consensus."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets=[..., {'username': 'TslaGroupie', 'content': '...I panic sell when a stock a runs up 40%+ in 2 days $AMD ...', 'timestamp': '2025-10-11T14:02:18.000Z', 'influence_score': 7.94, 'sentiment': 'bearish'}, ...]",
+            "note": "A top tweet explicitly indicating 'panic selling' after rapid price run-ups highlights investor apprehension and potential for profit-taking, aligning with overextension risks."
+          },
+          {
+            "source": "sentiment",
+            "pointer": "top_tweets=[..., {'username': 'Nouman', 'content': '$AMD I $AMD today is a prime example of a Balanced session. ...', 'timestamp': '2025-10-14T15:07:45.000Z', 'influence_score': 4.69, 'sentiment': 'bearish'}, ...]",
+            "note": "A top tweet, explicitly marked as bearish, characterizes recent price action as a 'Balanced session' where the stock struggled to break its opening range, suggesting a lack of decisive upward momentum and contradicting strong bullish sentiment."
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "The absence of Earnings Per Share (EPS) data precludes a comprehensive fundamental valuation based on profitability metrics.",
+      "Lack of detailed debt information prevents a thorough assessment of the company's financial leverage and solvency, impacting overall risk analysis.",
+      "Specific reasons and quantitative impact for AMD falling more steeply than the broader market are not detailed, limiting the ability to ascertain the exact transmission channels of this underperformance.",
+      "The methodology behind the 'strong_bullish' overall sentiment score, given the high proportion of neutral tweets, is not fully transparent, introducing potential ambiguity in interpreting social sentiment."
+    ],
+    "evidence_map": [
+      {
+        "source": "market",
+        "pointer": "RSI: 71.1",
+        "note": "Indicates an overbought condition."
+      },
+      {
+        "source": "market",
+        "pointer": "Current: $230.23 (-3.28%)",
+        "note": "Shows current daily depreciation."
+      },
+      {
+        "source": "market",
+        "pointer": "ma_20=204.52, price_vs_ma_20=112.57",
+        "note": "Price trading at a significant premium to its 20-day moving average."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "EPS=None",
+        "note": "Missing critical profitability metric for fundamental valuation."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt=None",
+        "note": "Missing critical debt information for financial leverage assessment."
+      },
+      {
+        "source": "news",
+        "pointer": "[3] neutral: Advanced Micro Devices (AMD) Falls More Steeply Than Broader Market: What Investors Need to Know (src=Zacks Commentary)",
+        "note": "Highlights AMD's underperformance relative to the broader market."
+      },
+      {
+        "source": "news",
+        "pointer": "[4] neutral: Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors! (src=Motley Fool)",
+        "note": "Indicates general negative news sentiment impacting AMD and peers."
+      },
+      {
+        "source": "news",
+        "pointer": "[5] neutral: Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel (src=Benzinga)",
+        "note": "Notes broader sector valuation concerns that could affect AMD."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_breakdown={'bullish': 0.075, 'bearish': 0.025, 'neutral': 0.9}",
+        "note": "Details the overall sentiment and its component breakdown, showing high neutrality despite a 'strong_bullish' label."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets=[..., {'username': 'TslaGroupie', 'content': '...I panic sell when a stock a runs up 40%+ in 2 days $AMD ...', 'sentiment': 'bearish'}, ...]",
+        "note": "Captures a bearish sentiment regarding rapid price increases and potential for profit-taking."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets=[..., {'username': 'Nouman', 'content': '$AMD I $AMD today is a prime example of a Balanced session. ...', 'sentiment': 'bearish'}, ...]",
+        "note": "Captures a bearish sentiment indicating a lack of decisive momentum."
+      },
+      {
+        "source": "market",
+        "pointer": "52w: $76.48 - $242.88",
+        "note": "Current price near 52-week high, suggesting limited upside potential from a technical standpoint."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment=strong_bullish, sentiment_score=0.5124",
+        "note": "Aggregated social sentiment"
+      }
+    ],
+    "language": "en",
+    "currency": "USD",
+    "market": "NASDAQ NMS",
+    "ticker": "AMD",
+    "input_refs": {
+      "fundamentals_ref": "2025-10-23T08:38:07.642118",
+      "news_ref": "2025-10-23T08:38:13.126289+00:00"
+    },
+    "meta": {
+      "model": "gpt-4o-mini",
+      "language": "en"
+    }
+  },
+  "final_decision": {
+    "ticker": "AMD",
+    "stance_summary": {
+      "bullish_thesis": "Advanced Micro Devices (AMD) is viewed as a compelling investment due to robust market momentum (trading above MA, near 52-week high), strong future growth potential (Q3 earnings projections, market share gains in EPYC and data center GPUs, strategic partnerships like OpenAI with an implied $600 price target), and overwhelmingly positive social sentiment.",
+      "bearish_thesis": "AMD presents significant downside risk, primarily driven by extreme technical overextension (RSI 71.1, high premium to 20-day MA, daily depreciation), a critical lack of transparent fundamental valuation data (missing EPS and detailed debt), and recent market underperformance coupled with nuanced social sentiment that suggests potential for a near-term price correction."
+    },
+    "consensus": [
+      "AMD's current price is $230.23, trading near its 52-week high ($242.88) and significantly above its 20-day moving average ($204.52).",
+      "The Relative Strength Index (RSI) for AMD is 71.1.",
+      "Critical financial metrics such as Earnings Per Share (EPS) and detailed debt information are currently absent from the provided fundamental summaries.",
+      "The overall social sentiment rating for AMD is 'strong_bullish'.",
+      "There are reports of AMD falling more steeply than the broader market on certain days.",
+      "There is general 'unfortunate news' cited for AMD and its peers in the semiconductor sector.",
+      "Revenue per share for AMD is 18.1595."
+    ],
+    "disagreements": [
+      {
+        "topic": "Technical Condition & Market Momentum",
+        "bull_view": "Robust market momentum is indicated by the price trading significantly above its 20-day moving average and near its 52-week high. An RSI of 71.1 is characteristic of strong upward trends and sustained buying interest, outweighing minor daily fluctuations.",
+        "bear_view": "The stock is in an extreme technically overbought condition (RSI 71.1, price 112.57% above 20-day MA), suggesting unsustainable upward movement and high susceptibility to a significant pullback, evidenced by current daily depreciation of -3.28%."
+      },
+      {
+        "topic": "Fundamental Valuation & Future Growth",
+        "bull_view": "Strong future growth is evidenced by Q3 projections for revenue (+28%), EBITDA (+39.5%), and EPS (+27.2%), anticipated market share gains, and strategic partnerships (OpenAI share acquisition rights implying a $600 price target), with social sentiment providing forward-looking indicators.",
+        "bear_view": "The absence of critical financial metrics (EPS, detailed debt) from official fundamentals precludes a comprehensive valuation, raising concerns about AMD's elevated market capitalization. Sector-wide valuation concerns (e.g., for Intel) suggest the market may be overheated, casting doubt on projected growth without corroborating official data."
+      },
+      {
+        "topic": "Social Sentiment & Market Underperformance",
+        "bull_view": "Despite isolated reports of underperformance, the overarching 'strong_bullish' social sentiment, coupled with the stock's resilience (near 52-week high, above 20-day MA), suggests any short-term underperformance is temporary within a broader positive trend.",
+        "bear_view": "The 'strong_bullish' overall sentiment is misleading, as 90% of posts are neutral and only 7.5% are explicitly bullish. Bearish tweets indicate investor apprehension about rapid price appreciation, potential for profit-taking, and lack of decisive upward momentum, aligning with recent market underperformance."
+      }
+    ],
+    "key_upside": [
+      "Anticipated strong Q3 earnings projections with significant year-over-year growth in revenue (+28%), EBITDA (+39.5%), and EPS (+27.2%).",
+      "Strategic partnerships, notably the OpenAI share acquisition rights implying a potential price target of $600, signaling significant future valuation potential.",
+      "Expected market share gains in key segments such as EPYC server CPUs and data center GPUs, strengthening competitive positioning."
+    ],
+    "key_risks": [
+      "Extreme technical overextension, with an RSI of 71.1 and the price trading at a 112.57% premium to its 20-day moving average, making the stock highly susceptible to a significant pullback.",
+      "Critical lack of transparent fundamental valuation data, including absent Earnings Per Share (EPS) and detailed debt information, which hinders comprehensive financial assessment and raises concerns about justified market capitalization.",
+      "Recent market underperformance, with AMD falling more steeply than the broader market, coupled with general 'unfortunate news' for the semiconductor sector, indicating potential erosion of investor confidence.",
+      "Ambiguity in social sentiment interpretation, where an overall 'strong_bullish' rating masks a predominant neutral sentiment (90%) and specific bearish concerns regarding rapid price appreciation and profit-taking."
+    ],
+    "scorecard": {
+      "bull_strength": 0.6,
+      "bear_strength": 0.8,
+      "uncertainty": 0.7,
+      "net_score": -0.9
+    },
+    "action": {
+      "recommendation": "SELL",
+      "confidence": 0.9,
+      "time_horizon": "medium",
+      "triggers_up": [
+        "Official release of strong Q3 earnings that validate or exceed current projections for revenue, EBITDA, and EPS.",
+        "Disclosure of detailed and positive fundamental data, including robust EPS and manageable debt levels.",
+        "Sustained breach of the 52-week high ($242.88) with signs of cooling RSI or healthy consolidation."
+      ],
+      "triggers_down": [
+        "Failure to meet Q3 earnings projections, particularly for revenue and EPS.",
+        "A confirmed technical breakdown, such as the price falling below its 20-day moving average ($204.52) for a sustained period.",
+        "Any negative news or regulatory actions impacting AMD's market share or strategic partnerships."
+      ]
+    },
+    "rationale": "Advanced Micro Devices (AMD) currently presents a significant downside risk, leading to a 'SELL' recommendation for a medium-term horizon, aligning with a medium risk tolerance. While bullish arguments highlight strong projected Q3 earnings, potential market share gains, and strategic partnerships with an implied high price target, these are substantially outweighed by critical bearish indicators.\n\nThe stock exhibits extreme technical overextension, with an RSI of 71.1 and trading at a substantial premium (112.57%) to its 20-day moving average, signaling a high probability of a near-term correction, exacerbated by recent daily depreciation. Crucially, the absence of key fundamental data, such as Earnings Per Share (EPS) and detailed debt information, makes a robust valuation impossible, raising significant concerns about the justification for its current market capitalization, especially in a sector facing broader valuation scrutiny.\n\nFurthermore, while an 'overall strong_bullish' social sentiment is reported, a deeper dive reveals 90% neutral posts and specific bearish sentiments about rapid run-ups and profit-taking, suggesting the bullish narrative may be less broadly supported than implied. Recent market underperformance, with AMD falling more steeply than the broader market, further undermines confidence. Given the confluence of these strong technical warnings, fundamental opaqueness, and nuanced market sentiment, the risks of a significant pullback are substantial and outweigh the potential upside, making a 'SELL' action prudent.",
+    "evidence_citations": [
+      {
+        "source": "market",
+        "pointer": "Current: $230.23",
+        "note": "Supports robust market momentum in thesis and Argument 1."
+      },
+      {
+        "source": "market",
+        "pointer": "52w: $76.48 - $242.88",
+        "note": "Supports robust market momentum in thesis and Argument 1, indicating current price near 52-week high."
+      },
+      {
+        "source": "market",
+        "pointer": "MA: ma_20",
+        "note": "Supports robust market momentum in thesis and Argument 1, indicating price significantly above 20-day moving average."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[1].content",
+        "note": "Supports future growth potential in thesis and Argument 2 (anticipated EPYC market share gains, FY2026 revenue projections), and competitive performance in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[25].content",
+        "note": "Supports future growth potential in thesis and Argument 2 (potential OpenAI share acquisition rights and implied $600 price target), and stock appreciation in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "overall_sentiment",
+        "note": "Supports overwhelmingly positive social sentiment in thesis and Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[0].content",
+        "note": "Supports strong Q3 earnings projections for revenue, EBITDA, and EPS in Argument 2."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[11].content",
+        "note": "Supports anticipated market share gains in data center GPUs in Argument 2 and competitive performance in Argument 3."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets[28].content",
+        "note": "Supports strong competitive performance against major rivals in Argument 3, by positioning AMD as a key competitor to NVIDIA."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.revenue_per_share_ttm",
+        "note": "Provides a fundamental operational metric."
+      },
+      {
+        "source": "market",
+        "pointer": "RSI: 71.1",
+        "note": "Indicates an overbought condition."
+      },
+      {
+        "source": "market",
+        "pointer": "Current: $230.23 (-3.28%)",
+        "note": "Shows current daily depreciation."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "metrics.eps_ttm",
+        "note": "Missing critical profitability metric for fundamental valuation."
+      },
+      {
+        "source": "fundamentals",
+        "pointer": "Debt",
+        "note": "Missing critical debt information for financial leverage assessment."
+      },
+      {
+        "source": "news",
+        "pointer": "[3] neutral: Advanced Micro Devices (AMD) Falls More Steeply Than Broader Market: What Investors Need to Know (src",
+        "note": "Highlights AMD's underperformance relative to the broader market."
+      },
+      {
+        "source": "news",
+        "pointer": "[4] neutral: Unfortunate News for Nvidia Stock, AMD Stock, Microsoft Stock, and Oracle Stock Investors! (src",
+        "note": "Indicates general negative news sentiment impacting AMD and peers."
+      },
+      {
+        "source": "news",
+        "pointer": "[5] neutral: Intel Q3 Preview: Nvidia, US Government Stakes Don't Change Narrative - 'Do Not Believe Valuation Is Justified' - Intel (src",
+        "note": "Notes broader sector valuation concerns that could affect AMD."
+      },
+      {
+        "source": "sentiment",
+        "pointer": "top_tweets",
+        "note": "Captures a bearish sentiment regarding rapid price increases and potential for profit-taking."
+      }
+    ],
+    "meta": {
+      "ticker": "AMD",
+      "risk_tolerance": "medium",
+      "time_horizon": "medium",
+      "input_refs": {
+        "fundamentals_ref": "2025-10-23T08:38:07.642118",
+        "news_ref": "2025-10-23T08:38:13.126289+00:00"
+      },
+      "model": "gemini-2.5-pro"
+    }
+  },
+  "debate_history": [
+    {
+      "role": "bullish",
+      "text": "Advanced Micro Devices (AMD) presents a compelling investment opportunity, characterized by strong market momentum, robust future growth potential driven by strategic market positioning and projected competitive gains, and overwhelmingly positive social sentiment.\n- AMD exhibits strong market momentum, with its current price trading near its 52-week high and significantly above its 20-day moving average, signaling a sustained upward trend and consistent buying interest.\n- The company demonstrates substantial future growth potential, underscored by projections from social sentiment of significant revenue expansion by 2026, anticipated market share gains in the server CPU and GPU segments, and strategic engagements as highlighted by potential future share acquisition rights for OpenAI implying a $600 price target.\n- Social sentiment surrounding AMD is decisively bullish, with an overall 'strong_bullish' rating and specific influencers forecasting substantial stock appreciation and outperformance against key competitors."
+    },
+    {
+      "role": "bearish",
+      "text": "Advanced Micro Devices (AMD) exhibits significant downside risk driven by overextended technical indicators, a lack of transparent fundamental justification for its high valuation, and signs of market underperformance despite a superficially bullish sentiment, signaling a probable near-term price correction.\n- The stock is currently in an overbought condition, indicated by an RSI of 71.1, suggesting that its recent upward price movement is overextended and susceptible to a significant pullback. This technical imbalance is compounded by the current daily depreciation.\n- Critical financial metrics such as Earnings Per Share (EPS) and detailed debt information are absent from the provided fundamentals, precluding a robust valuation assessment and raising concerns about the fundamental justification for its elevated market capitalization, particularly when sector-wide valuation concerns are noted for competitors.\n- Recent market performance shows AMD falling more steeply than the broader market, indicative of a potential erosion of investor confidence or heightened sensitivity to negative catalysts. This is further supported by general 'unfortunate news' cited for AMD and its peers."
+    },
+    {
+      "role": "bullish",
+      "text": "Advanced Micro Devices (AMD) presents a compelling long-term investment opportunity, underpinned by robust market momentum, strong future growth potential driven by strategic positioning in key technology sectors, and overwhelmingly positive social sentiment.\n- AMD exhibits robust market momentum, with its current price trading significantly above its 20-day moving average and near its 52-week high, signaling sustained buying interest and a confirmed upward trend.\n- The company demonstrates substantial future growth potential, as evidenced by social sentiment projections of double-digit revenue, EBITDA, and EPS growth for Q3, anticipated market share gains in the EPYC server segment by 2026, and strategic engagements such as the potential OpenAI share acquisition rights implying a $600 price target, alongside expectations of capturing significant market share in data center GPUs.\n- Social sentiment surrounding AMD is decisively bullish, with an overall 'strong_bullish' rating, and key influencers forecasting substantial stock appreciation and competitive outperformance against major rivals."
+    },
+    {
+      "role": "bearish",
+      "text": "Advanced Micro Devices (AMD) exhibits significant downside risk, characterized by technical overextension and an opaque fundamental valuation, which combine with signs of market underperformance to create a precarious investment profile despite superficial bullish sentiment.\n- The stock is currently in an overbought condition, indicated by an RSI of 71.1, suggesting that its recent upward price movement is overextended and susceptible to a significant pullback. This technical imbalance is compounded by the current daily depreciation of -3.28%.\n- Critical financial metrics such as Earnings Per Share (EPS) and detailed debt information are absent from the provided fundamentals, precluding a robust valuation assessment and raising concerns about the fundamental justification for its elevated market capitalization, particularly when sector-wide valuation concerns are noted for competitors.\n- Recent market performance shows AMD falling more steeply than the broader market, indicative of a potential erosion of investor confidence or heightened sensitivity to negative catalysts. This is further supported by general 'unfortunate news' cited for AMD and its peers, as well as broader skepticism regarding sector valuations."
+    },
+    {
+      "role": "bullish",
+      "text": "Advanced Micro Devices (AMD) presents a compelling investment opportunity, characterized by robust market momentum, strong future growth potential driven by competitive positioning and anticipated financial expansion, and overwhelmingly positive social sentiment.\n- AMD exhibits robust market momentum, with its current price trading significantly above its 20-day moving average and near its 52-week high, signaling sustained investor confidence and a clear upward trend despite minor daily fluctuations.\n- The company is poised for substantial future growth, evidenced by strong Q3 earnings projections for revenue, EBITDA, and EPS, anticipated market share gains in key segments like EPYC server CPUs and data center GPUs, and strategic partnerships exemplified by potential share acquisition rights for OpenAI implying significant price upside.\n- Social sentiment surrounding AMD is decisively bullish, with an overall 'strong_bullish' rating, and key influencers forecasting substantial stock appreciation and strong competitive performance against major rivals."
+    },
+    {
+      "role": "bearish",
+      "text": "Advanced Micro Devices (AMD) exhibits significant downside risk driven by extreme technical overextension, a lack of transparent fundamental valuation data, and recent market underperformance, signaling a probable near-term price correction despite prevailing social bullish sentiment.\n- The stock is in an extreme technically overbought condition, indicated by an RSI of 71.1, which is significantly above the 70 threshold. This suggests that the asset's recent upward price movement is unsustainable and highly susceptible to a significant pullback. This risk is compounded by the current daily depreciation of -3.28% and the price trading at a substantial premium of 112.57% above its 20-day moving average.\n- Critical financial metrics essential for robust valuation, such as Earnings Per Share (EPS) and detailed debt information, are absent from the provided fundamentals. This data gap precludes a comprehensive fundamental assessment and raises concerns regarding the justification for AMD's elevated market capitalization. In a semiconductor sector where valuation concerns are explicitly noted for competitors, this lack of transparency amplifies investment risk.\n- Recent market performance shows AMD falling more steeply than the broader market, as reported in news summaries. This underperformance, coupled with general 'unfortunate news' cited for AMD and its peers, indicates a potential erosion of investor confidence or heightened sensitivity to negative catalysts, challenging the narrative of sustained market momentum."
+    }
+  ],
+  "rounds": 3,
+  "ticker": "AMD",
+  "data_validation": {
+    "news_available": true,
+    "fundamentals_available": true,
+    "sentiment_available": true,
+    "market_available": true
+  },
+  "meta": {
+    "risk_tolerance": "medium",
+    "time_horizon": "medium"
+  },
+  "csv_path": "/Users/foreverwaterrr/Desktop/MarketLens/database/2025-10-23/AMD/market_csv/AMD_3mo_1d_20251023_163803.csv"
+}
