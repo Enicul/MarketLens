@@ -11,7 +11,7 @@ MarketLens is our end-to-end research console that fuses analyst, researcher, tr
 
 **[🎥 Watch on YouTube](https://www.youtube.com/watch?v=vwrfRTDYhqI)** 
 
-*2-minute promotional clip summarizing MarketLens business value proposition*
+*promotional clip summarizing MarketLens business value proposition*
 
 ---
 
